@@ -47,9 +47,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-#       Will uncomment when a testing framework is set up for the FE
-#      - name: Run Frontend Tests
-#        run: npm test
+      - name: Run Frontend Tests
+        run: npm test
 
       - name: Build Frontend
         run: npm run build
