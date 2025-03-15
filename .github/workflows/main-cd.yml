@@ -1,11 +1,8 @@
 name: Main CD Pipeline
 
 on:
-# Testing on dev branch
-#  push:
-#    branches: [ main ]
-  pull_request:
-    branches: [ dev ]
+  push:
+    branches: [ main ]
 
 jobs:
 #  backend-build:
