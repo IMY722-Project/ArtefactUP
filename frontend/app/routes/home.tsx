@@ -1,24 +1,14 @@
-import type {Route} from "./+types/home";
-import {NavLink} from "react-router";
+// src/Home.tsx
 
-export function meta({}: Route.MetaArgs) {
-    return [
-        {title: "Artifact UP"},
-    ];
-}
+import React from 'react';
 
-export default function Home() {
+const Home: React.FC = () => {
     return (
-        <>
-            <nav className="bg-blue-500 p-4 shadow-md">
-                <div className="container mx-auto flex justify-between items-center">
-                    <NavLink to="/" className="text-white text-xl font-semibold">
-                        Home
-                    </NavLink>
-                </div>
-            </nav>
-            <main>
-            </main>
-        </>
+        <div>
+            <h1>Frontend is working!</h1>
+            <p>This is a simple React app running on port 80.</p>
+        </div>
     );
 }
+
+export default Home;
