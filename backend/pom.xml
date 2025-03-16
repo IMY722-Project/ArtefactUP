@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>up.ac.za</groupId>
-	<artifactId>ArtifactUP</artifactId>
+	<artifactId>ArtefactUP</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>backend</name>
 	<description>backend</description>
