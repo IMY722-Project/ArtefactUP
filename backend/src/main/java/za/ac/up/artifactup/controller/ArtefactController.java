@@ -9,7 +9,7 @@ import za.ac.up.artifactup.service.ArtefactService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/artifact")
+@RequestMapping("/api/artefact")
 @RequiredArgsConstructor
 public class ArtefactController {
 
@@ -22,7 +22,7 @@ public class ArtefactController {
 
   @PostMapping
   public ResponseEntity<ArtefactDTO> createArtifact(@RequestBody ArtefactDTO artefactDTO) {
-    return ResponseEntity.ok(artefactService.saveArtifact(artefactDTO));
+    return ResponseEntity.ok(artefactService.saveArtefact(artefactDTO));
   }
 
   @GetMapping("/category/{categoryId}")

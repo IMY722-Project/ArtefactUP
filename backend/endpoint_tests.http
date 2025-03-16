@@ -1,8 +1,8 @@
-### get all artifacts
-GET http://localhost:8080/api/artifact
+### get all artefacts
+GET http://localhost:8080/api/artefact
 
-### create an artifact
-POST http://localhost:8080/api/artifact
+### create an artefact
+POST http://localhost:8080/api/artefact
 Content-Type: application/json
 
 {
@@ -14,5 +14,5 @@ Content-Type: application/json
   "date": "1830-01-01"
 }
 
-### get all artifacts by categoryId
-GET http://localhost:8080/api/artifact/category/1
+### get all artefacts by categoryId
+GET http://localhost:8080/api/artefact/category/1

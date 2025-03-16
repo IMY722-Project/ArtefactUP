@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>up.ac.za</groupId>
-	<artifactId>ArtifactUP</artifactId>
+	<artifactId>ArtefactUP</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>backend</name>
 	<description>backend</description>
@@ -87,7 +87,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<spring.profiles.active>local</spring.profiles.active>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<spring.profiles.active>prod</spring.profiles.active>
+			</properties>
+		</profile>
+	</profiles>
 </project>

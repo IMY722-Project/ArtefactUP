@@ -27,7 +27,7 @@ public class ArtefactServiceImpl implements ArtefactService<Artefact> {
   }
 
   @Override
-  public Artefact saveArtifact(Artefact artefact) {
+  public Artefact saveArtefact(Artefact artefact) {
     Category category = categoryService.findByName(artefact.getCategory().getName())
                                        .orElse(categoryService.saveCategory(artefact.getCategory()));
     artefact.setCategory(category);

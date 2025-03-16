@@ -4,12 +4,7 @@ spring:
   docker:
     compose:
       enabled: false
+  profiles:
+    active: @spring.profiles.active@
   datasource:
-    url: jdbc:postgresql://artifactup.cpiogs86w7dt.af-south-1.rds.amazonaws.com:5432/museum_db
-    username: ${AWS_DB_USER}
-    password: ${AWS_DB_PASS}
     driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
