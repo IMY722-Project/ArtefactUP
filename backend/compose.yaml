@@ -1,1 +1,10 @@
-#services:
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:17
+    environment:
+      - POSTGRES_DB=museum_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"

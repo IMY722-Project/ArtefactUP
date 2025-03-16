@@ -25,7 +25,7 @@ jobs:
         env:
           AWS_DB_USER: ${{ secrets.AWS_DB_USER }}
           AWS_DB_PASS: ${{ secrets.AWS_DB_PASS }}
-        run: mvn clean install -DskipTests
+        run: mvn clean install -DskipTests -P prod
 
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DH_USER }} -p ${{ secrets.DH_PASS }}
