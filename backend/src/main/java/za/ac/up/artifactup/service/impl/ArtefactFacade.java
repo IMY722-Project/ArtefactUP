@@ -27,8 +27,8 @@ public class ArtefactFacade implements ArtefactService<ArtefactDTO> {
   }
 
   @Override
-  public ArtefactDTO saveArtifact(ArtefactDTO artefactDTO) {
-    return mapper.toDTO(artefactService.saveArtifact(mapper.toEntity(artefactDTO)));
+  public ArtefactDTO saveArtefact(ArtefactDTO artefact) {
+    return mapper.toDTO(artefactService.saveArtefact(mapper.toEntity(artefact)));
   }
 
   @Override
