@@ -1,0 +1,13 @@
+package za.ac.up.artifactup.dto;
+
+
+import lombok.*;
+
+@Data
+public class OpeningHoursDTO {
+    private Long id;
+    private String day;
+    private String openTime;
+    private String closeTime;
+    private Long museumId;
+}

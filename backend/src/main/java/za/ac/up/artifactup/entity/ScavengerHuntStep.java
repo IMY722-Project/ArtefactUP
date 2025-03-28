@@ -2,36 +2,45 @@ package za.ac.up.artifactup.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "file_storage")
+@Table(name = "scavenger_hunt_steps")
 @Data
 @NoArgsConstructor
-public class FileStorage {
+@AllArgsConstructor
+public class ScavengerHuntStep {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "hunt_id", nullable = false)
+    private ScavengerHunt hunt;
+
+    @Column(nullable = false)
+    private int stepNumber;
+
+    @ManyToOne
     @JoinColumn(name = "artefact_id", nullable = false)
     private Artefact artefact;
 
-    // enum FileType { IMAGE, VIDEO, DOCUMENT }
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private FileType fileType;
+    @ManyToOne
+    @JoinColumn(name = "museum_id", nullable = false)
+    private Museum museum;
 
-    @Column(nullable = false, length = 500)
-    private String s3Url;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String clue;
 
+    @Column(nullable = false, unique = true)
+    private String qrCode;
 }

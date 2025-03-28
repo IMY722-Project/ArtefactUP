@@ -2,36 +2,37 @@ package za.ac.up.artifactup.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "file_storage")
+@Table(name = "user_hunt_progress")
 @Data
 @NoArgsConstructor
-public class FileStorage {
+@AllArgsConstructor
+public class UserHuntProgress {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "cognito_user_id", nullable = false)
+    private String cognitoUserId;
+
     @ManyToOne
-    @JoinColumn(name = "artefact_id", nullable = false)
-    private Artefact artefact;
+    @JoinColumn(name = "hunt_id", nullable = false)
+    private ScavengerHunt hunt;
 
-    // enum FileType { IMAGE, VIDEO, DOCUMENT }
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private FileType fileType;
+    @Column(nullable = false)
+    private int currentStep = 1;
 
-    @Column(nullable = false, length = 500)
-    private String s3Url;
-
+    @Column(nullable = false)
+    private boolean completed = false;
 }

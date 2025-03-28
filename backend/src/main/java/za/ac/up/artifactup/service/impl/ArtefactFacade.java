@@ -2,7 +2,7 @@ package za.ac.up.artifactup.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import za.ac.up.artifactup.dto.ArtefactMapper;
+import za.ac.up.artifactup.dto.mappers.ArtefactMapper;
 import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.service.ArtefactService;

@@ -1,28 +1,20 @@
 package za.ac.up.artifactup.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import za.ac.up.artifactup.entity.Category;
-
-import java.time.LocalDate;
+import lombok.*;
+import za.ac.up.artifactup.entity.*;
 
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class ArtefactDTO {
-
-  private String title;
-
-  private String description;
-
-  private String category;
-
-  private String artist;
-
-  private String location;
-
-  private LocalDate date;
+    private Long id;
+    private String title;
+    private String creator;
+    private String description;
+    private String collectionName;
+    private String museumName;
+    private String dateCreated;
+    private String locationCreated;
+    private String physicalDimensions;
+    private ArtefactType type;
+    private String rights;
+    private String medium;
 }

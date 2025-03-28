@@ -8,11 +8,11 @@ Content-Type: application/json
 {
   "title": "Portrait of an old man",
   "description" : "'Portrait of an Old Man' after Rembrandt van Rijn is a painting that explores the artist's fascination with old age and character studies, often referred to as a 'tronie,' and is known for its realistic, expressive, and psychologically dense portrayal. ",
-  "category" : "Painting",
+  "collection" : "Painting",
   "artist" : "After Rembrandt van Rijn",
   "location": "Van Tilburg Gallery, Old Arts 2-10",
   "date": "1830-01-01"
 }
 
 ### get all artefacts by categoryId
-GET http://localhost:8080/api/artefact/category/1
+GET http://localhost:8080/api/artefact/collection/1

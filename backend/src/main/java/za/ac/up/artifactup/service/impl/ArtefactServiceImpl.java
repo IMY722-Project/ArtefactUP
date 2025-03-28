@@ -2,12 +2,12 @@ package za.ac.up.artifactup.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import za.ac.up.artifactup.dto.ArtefactMapper;
+import za.ac.up.artifactup.dto.mappers.ArtefactMapper;
 import za.ac.up.artifactup.entity.Artefact;
-import za.ac.up.artifactup.entity.Category;
+import za.ac.up.artifactup.entity.Collection;
 import za.ac.up.artifactup.repository.ArtefactRepository;
 import za.ac.up.artifactup.service.ArtefactService;
-import za.ac.up.artifactup.service.CategoryService;
+import za.ac.up.artifactup.service.CollectionService;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class ArtefactServiceImpl implements ArtefactService<Artefact> {
 
   private final ArtefactRepository artefactRepository;
 
-  private final CategoryService categoryService;
+  private final CollectionService collectionService;
 
   private final ArtefactMapper artefactMapper;
 
@@ -28,9 +28,9 @@ public class ArtefactServiceImpl implements ArtefactService<Artefact> {
 
   @Override
   public Artefact saveArtefact(Artefact artefact) {
-    Category category = categoryService.findByName(artefact.getCategory().getName())
-                                       .orElse(categoryService.saveCategory(artefact.getCategory()));
-    artefact.setCategory(category);
+    Collection collection = collectionService.findByName(artefact.getCollection().getName())
+                                       .orElse(collectionService.saveCollection(artefact.getCollection()));
+    artefact.setCollection(collection);
     return artefactRepository.save(artefact);
   }
 

@@ -10,28 +10,32 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.DayOfWeek;
 
 @Entity
-@Table(name = "file_storage")
-@Data
-@NoArgsConstructor
-public class FileStorage {
+@Getter
+@Setter
+@Table(name = "opening_hours")
+public class OpeningHours {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "artefact_id", nullable = false)
-    private Artefact artefact;
-
-    // enum FileType { IMAGE, VIDEO, DOCUMENT }
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private FileType fileType;
+    @Column(nullable = false)
+    private DayOfWeek day;
 
-    @Column(nullable = false, length = 500)
-    private String s3Url;
+    @Column(nullable = false)
+    private String openingTime; // Format: "HH:mm"
 
+    @Column(nullable = false)
+    private String closingTime; // Format: "HH:mm"
+
+    @ManyToOne
+    @JoinColumn(name = "museum_id", nullable = false)
+    private Museum museum;
 }
