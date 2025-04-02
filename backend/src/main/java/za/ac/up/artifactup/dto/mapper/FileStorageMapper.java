@@ -1,4 +1,4 @@
-package za.ac.up.artifactup.dto.mappers;
+package za.ac.up.artifactup.dto.mapper;
 
 import org.mapstruct.*;
 import za.ac.up.artifactup.dto.*;

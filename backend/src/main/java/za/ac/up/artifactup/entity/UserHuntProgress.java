@@ -13,7 +13,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "user_hunt_progress")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +22,7 @@ public class UserHuntProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cognito_user_id", nullable = false)
+    @Column(nullable = false)
     private String cognitoUserId;
 
     @ManyToOne

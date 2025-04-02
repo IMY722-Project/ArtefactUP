@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface ArtefactRepository extends JpaRepository<Artefact,Long> {
 
-  List<Artefact> findByCategoryId(Long categoryId);
+  List<Artefact> findByCollectionName(String collectionName);
+
+  List<Artefact> findAllByMuseumName(String museumName);
 }

@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: artefactUP_postgres
     image: postgres:17
     environment:
       - POSTGRES_DB=museum_db

@@ -1,18 +1,44 @@
 ### get all artefacts
 GET http://localhost:8080/api/artefact
 
-### create an artefact
-POST http://localhost:8080/api/artefact
+
+###
+POST http://localhost:8080/api/museum/create
 Content-Type: application/json
 
 {
-  "title": "Portrait of an old man",
-  "description" : "'Portrait of an Old Man' after Rembrandt van Rijn is a painting that explores the artist's fascination with old age and character studies, often referred to as a 'tronie,' and is known for its realistic, expressive, and psychologically dense portrayal. ",
-  "collection" : "Painting",
-  "artist" : "After Rembrandt van Rijn",
-  "location": "Van Tilburg Gallery, Old Arts 2-10",
-  "date": "1830-01-01"
+  "name": "Old Arts Building",
+  "location": "Hatfield, Pretoria",
+  "description": "The Old Arts Building was designed by the London-born architect, Piercy (Patrick) James Eagle (1875-1932).",
+  "openingHours": [
+    {
+      "day": "Monday",
+      "openingTime": "09:00",
+      "closingTime": "17:00"
+    }
+  ],
+  "imageUrl": "string"
 }
+
+### create an artefact
+POST http://localhost:8080/api/artefact/create
+Content-Type: application/json
+
+{
+  "title": "Potrait of an Old Man",
+  "creator": "Vincent Van Gogh",
+  "description": "string",
+  "collectionName": "string",
+  "museumName": "string",
+  "dateCreated": "string",
+  "locationCreated": "string",
+  "physicalDimensions": "string",
+  "type": "Portrait",
+  "rights": " Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation), Van Gogh Museum, Amsterdam (Vincent van Gogh Foundation)",
+  "medium": "string"
+}
+
+
 
 ### get all artefacts by categoryId
 GET http://localhost:8080/api/artefact/collection/1

@@ -14,7 +14,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "file_storage")
 @Data
 @NoArgsConstructor
 public class FileStorage {

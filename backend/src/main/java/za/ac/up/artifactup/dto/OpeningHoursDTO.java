@@ -7,7 +7,7 @@ import lombok.*;
 public class OpeningHoursDTO {
     private Long id;
     private String day;
-    private String openTime;
-    private String closeTime;
+    private String openingTime;
+    private String closingTime;
     private Long museumId;
 }

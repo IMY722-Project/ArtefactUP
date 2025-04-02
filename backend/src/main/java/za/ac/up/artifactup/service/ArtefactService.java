@@ -6,7 +6,11 @@ public interface ArtefactService<T> {
 
   List<T> findAll();
 
-  T saveArtefact(T artefact);
+  T create(T artefact);
 
-  List<T> findAllArtifactsByCategoryId(Long categoryId);
+  List<T> findAllArtifactsByCollectionName(String collectionName);
+
+  List<T> findAllArtifactsByMuseumName(String museumName);
+
+  void deleteById(Long id);
 }

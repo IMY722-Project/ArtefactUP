@@ -16,9 +16,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "museums")
 public class Museum {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,10 +30,7 @@ public class Museum {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "museum", cascade = CascadeType.ALL)
-    private List<Artefact> artefacts;
-
-    @OneToMany(mappedBy = "museum", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OpeningHours> openingHours;
 
     @Column(nullable = false)

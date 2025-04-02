@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "scavenger_hunts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

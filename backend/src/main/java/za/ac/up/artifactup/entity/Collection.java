@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Table(name = "collections")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

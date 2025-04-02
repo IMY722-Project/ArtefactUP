@@ -1,4 +1,4 @@
-package za.ac.up.artifactup.dto.mappers;
+package za.ac.up.artifactup.dto.mapper;
 
 import org.mapstruct.Mapper;
 import za.ac.up.artifactup.dto.CollectionDTO;
@@ -9,7 +9,6 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CollectionMapper {
-
 
     CollectionDTO toDTO(Collection collection);
 
