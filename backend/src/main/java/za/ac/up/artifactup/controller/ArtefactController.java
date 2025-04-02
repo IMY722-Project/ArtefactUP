@@ -7,7 +7,6 @@ import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.service.ArtefactService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/artefact")
@@ -33,18 +32,19 @@ public class ArtefactController {
 
   @DeleteMapping("delete/{id}")
   public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-     serviceFacade.deleteById(id);
-     return ResponseEntity.noContent().build();
+    serviceFacade.deleteById(id);
+    return ResponseEntity.noContent().build();
   }
 
-  @GetMapping("/collection/{collectionId}")
-  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByCollectionId(@PathVariable
-  String collectionId) {
-    return ResponseEntity.ok(serviceFacade.findAllArtifactsByCollectionName(collectionId));
+  @GetMapping("/collection/{collectionName}")
+  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByCollectionName(
+      @PathVariable String collectionName) {
+    return ResponseEntity.ok(serviceFacade.findAllArtifactsByCollectionName(collectionName));
   }
 
   @GetMapping("/museum/{museumName}")
-  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByMuseumName(@PathVariable String museumName) {
+  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByMuseumName(
+      @PathVariable String museumName) {
     return ResponseEntity.ok(serviceFacade.findAllArtifactsByMuseumName(museumName));
   }
 
