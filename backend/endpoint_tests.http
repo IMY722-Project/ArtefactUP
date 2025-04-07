@@ -29,7 +29,7 @@ Content-Type: application/json
   "creator": "Vincent Van Gogh",
   "description": "string",
   "collectionName": "string",
-  "museumName": "string",
+  "museumName": "Old Arts Building",
   "dateCreated": "string",
   "locationCreated": "string",
   "physicalDimensions": "string",
@@ -38,7 +38,5 @@ Content-Type: application/json
   "medium": "string"
 }
 
-
-
-### get all artefacts by categoryId
-GET http://localhost:8080/api/artefact/collection/1
+### get all artefacts by categoryName
+GET http://localhost:8080/api/artefact/collection/Portrait

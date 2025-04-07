@@ -40,8 +40,8 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
   }
 
   @Override
-  public List<ArtefactDTO> findAllArtifactsByMuseumName(String museumName) {
-    return mapper.toDTOs(service.findAllArtifactsByMuseumName(museumName));
+  public List<ArtefactDTO> findAllArtefactsByMuseumName(String museumName) {
+    return mapper.toDTOs(service.findAllArtefactsByMuseumName(museumName));
   }
 
   @Override
