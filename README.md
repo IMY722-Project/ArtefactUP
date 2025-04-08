@@ -10,5 +10,9 @@ A Progressive Web App (PWA) showcasing artifacts from various museums at the Uni
 - `cd backend`
 - `.\mvnw spring-boot:run` or `./mvnw spring-boot:run`
 
+# Starting local s3 instance
+- `cd backend`
+- docker compose -f localstack-compose.yml up
+
 # Api Docs
 - navigate to http://localhost:8080/swagger-ui/index.html#/
