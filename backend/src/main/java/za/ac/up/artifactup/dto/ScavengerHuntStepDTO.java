@@ -8,8 +8,7 @@ public class ScavengerHuntStepDTO {
     private Long id;
     private String scavengerHuntName;
     private int stepNumber;
-    private String artefactName;
+    private ArtefactDTO artefact;
     private String museumName;
     private String clue;
-    private String qrCode;
 }

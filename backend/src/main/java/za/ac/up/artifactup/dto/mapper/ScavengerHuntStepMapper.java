@@ -10,15 +10,15 @@ import za.ac.up.artifactup.dto.qualifier.MuseumQualifier;
 import za.ac.up.artifactup.dto.qualifier.ScavengerHuntQualifier;
 import za.ac.up.artifactup.entity.ScavengerHuntStep;
 
-@Mapper(componentModel = "spring", uses = {MuseumQualifier.class, ArtefactQualifier.class, ScavengerHuntQualifier.class})
+@Mapper(componentModel = "spring", uses = {MuseumQualifier.class, ArtefactQualifier.class, ScavengerHuntQualifier.class, ArtefactMapper.class})
 public interface ScavengerHuntStepMapper {
 
     @Mapping(target = "scavengerHuntName", source = "hunt.name")
     @Mapping(target = "museumName", source = "museum.name")
-    @Mapping(target = "artefactName", source = "artefact.title")
+    @Mapping(target = "artefact", source = "artefact")
     ScavengerHuntStepDTO toDto(ScavengerHuntStep scavengerHuntStep);
 
-    @Mapping(target = "artefact", source = "artefactName", qualifiedByName = "stringToArtefact")
+    @Mapping(target = "artefact", source = "artefact")
     @Mapping(target = "museum", source = "museumName", qualifiedByName = "stringToMuseum")
     @Mapping(target = "hunt", source = "scavengerHuntName", qualifiedByName = "stringToScavengerHunt")
     ScavengerHuntStep toEntity(ScavengerHuntStepDTO scavengerHuntStepDTO);
