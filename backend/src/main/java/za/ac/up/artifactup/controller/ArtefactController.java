@@ -20,8 +20,8 @@ public class ArtefactController {
     return ResponseEntity.ok(serviceFacade.findAll());
   }
 
-  @PostMapping("/create")
-  public ResponseEntity<ArtefactDTO> createArtefact(@RequestBody ArtefactDTO artefactDTO) {
+  @PostMapping(value = "/create")
+  public ResponseEntity<ArtefactDTO> createArtefact(@ModelAttribute ArtefactDTO artefactDTO) {
     return ResponseEntity.ok(serviceFacade.create(artefactDTO));
   }
 

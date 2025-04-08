@@ -30,8 +30,8 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
 
   @Override
   @Transactional
-  public ArtefactDTO create(ArtefactDTO artefact) {
-    return mapper.toDTO(service.create(mapper.toEntity(artefact)));
+  public ArtefactDTO create(ArtefactDTO dto) {
+    return mapper.toDTO(service.create(mapper.toEntity(dto)));
   }
 
   @Override

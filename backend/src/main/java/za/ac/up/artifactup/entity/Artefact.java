@@ -47,6 +47,9 @@ public class Artefact {
     @Column(nullable = false)
     private String medium;
 
+    @Column(nullable = false)
+    private String imageUrl;
+
     @ElementCollection
     @CollectionTable(name = "artefact_field_link",
         joinColumns = {@JoinColumn(name = "artefact_id", referencedColumnName = "id")})
