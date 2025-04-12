@@ -1,0 +1,142 @@
+/* Container for the entire page */
+.scavenger-page {
+    display: flex;
+    flex-direction: column;
+    background: #f2f2f2;
+    min-height: 100vh;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Header / Top Bar */
+  .scavenger-header {
+    background: #444;
+    color: #fff;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .scavenger-title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* Optional progress bar / line */
+  .scavenger-progress {
+    height: 5px;
+    background: linear-gradient(to right, #444, #888);
+  }
+  
+  /* Main content container */
+  .scavenger-main {
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Clue card */
+  .clue-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 16px;
+    position: relative;
+  }
+  
+  /* Clue card header (clue number & question) */
+  .clue-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  
+  .clue-number {
+    background: #777;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .clue-question {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Image container */
+  .clue-image-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  
+  .clue-image {
+    width: 60%;
+    max-width: 250px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Pixelation or blur effect */
+  .pixelated {
+    image-rendering: pixelated; /* For certain modern browsers */
+    filter: blur(3px);          /* Fallback blur for others */
+  }
+  
+  /* Action buttons (camera, hint, reveal) */
+  .clue-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .clue-btn {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .clue-btn:hover {
+    background: #ddd;
+  }
+  
+  /* Specific style for each button type (optional) */
+  .camera-btn {
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hint-btn {
+    font-weight: 500;
+  }
+  .reveal-btn {
+    color: #fff;
+    background: #c33;
+    border: 1px solid #c33;
+  }
+  .reveal-btn:hover {
+    background: #a22;
+    border-color: #a22;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 600px) {
+    .clue-image {
+      width: 40%;
+    }
+  }
+  
