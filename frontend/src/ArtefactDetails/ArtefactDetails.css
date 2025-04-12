@@ -1,0 +1,187 @@
+/* Overall Container */
+.artefact-details {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #111; /* Fallback background if museum image not loaded */
+}
+
+/* Background Scene */
+.museum-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/artwork.jpeg') center center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Close Button - upper-right corner */
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(25, 25, 25, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content Overlay (center portion) */
+.content-overlay {
+  display: flex;
+  flex-direction: row;
+  margin: 80px auto 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Left Section: Artefact Visual */
+.artefact-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.artefact-image {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #eee;
+}
+
+.artefact-title-box {
+  padding: 12px;
+  text-align: center;
+  color: #333;
+}
+.artefact-index {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+.artefact-name {
+  margin: 5px 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.artefact-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: #777;
+}
+
+/* Right Section: Info & Audio */
+.artefact-info {
+  flex: 2;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.audio-player {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+}
+.audio-player audio {
+  width: 100%;
+  outline: none;
+}
+
+/* Meta & Description */
+.artefact-meta {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.artefact-description {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+.artefact-description p {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Bottom Carousel */
+.artefact-carousel {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 0 auto 30px auto;
+  width: 90%;
+  max-width: 1200px;
+  padding: 10px 0;
+}
+
+.carousel-item {
+  min-width: 80px;
+  text-align: center;
+  color: #fff;
+}
+
+.carousel-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.carousel-caption {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .content-overlay {
+    flex-direction: column;
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+
+  .artefact-visual,
+  .artefact-info {
+    width: 100%;
+    flex: unset;
+    padding: 20px 10px;
+  }
+
+  .image-card {
+    margin: 0 auto;
+  }
+}
