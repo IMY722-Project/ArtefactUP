@@ -9,11 +9,11 @@ import ScanPage from './ScanPage/ScanPage';
 function App() {
   return (
       <Routes>
-          <Route path="/H" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/a" element={<ArtefactDetails />} />
-          <Route path="/ac" element={<ArtefactsCollection />} />
-          <Route path="/" element={<ScanPage />} />
+          <Route path="/artefactDetails" element={<ArtefactDetails />} />
+          <Route path="/artefactsCollection" element={<ArtefactsCollection />} />
+          <Route path="/scan" element={<ScanPage />} />
 
       </Routes>
   );

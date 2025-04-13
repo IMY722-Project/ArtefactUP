@@ -1,31 +1,37 @@
 import React from 'react';
 import './ArtefactDetails.css';
 
-// Dummy data for the carousel images
 const relatedArtefacts = [
   { id: 1, title: 'Artefact 1', img: '/images/Image-courtesy-of-UP-Museums.jpg' },
   { id: 2, title: 'Artefact 2', img: '/images/art-2.jpg' },
   { id: 3, title: 'Artefact 3', img: '/images/art-3.jpg' },
   { id: 4, title: 'Artefact 4', img: '/images/art-4.jpg' },
-  // ... add more if needed
+  // Add more if needed
 ];
 
 const ArtefactDetails = () => {
   return (
     <div className="artefact-details">
-      {/* Background Museum Setting */}
-      <div className="museum-background">
-        {/* Upper-Right Close Button */}
-        <button className="close-button">✕</button>
+      {/* Header with a Close Button */}
+      <header className="artefact-header">
+        <button 
+          className="close-button" 
+          onClick={() => window.location.href = '/artefactsCollection'}
+        >
+          &times;
+        </button>
+      </header>
 
+      {/* Museum Background */}
+      <div className="museum-background">
         {/* Main Content Overlay */}
         <div className="content-overlay">
-          {/* Left Section: Artefact Image & Title */}
+          {/* Left: Artefact Visual Card */}
           <div className="artefact-visual">
             <div className="image-card">
-              <img
-                src="/images/Image-courtesy-of-UP-Museums.jpg"
-                alt="Mona Lisa"
+              <img 
+                src="/images/Image-courtesy-of-UP-Museums.jpg" 
+                alt="Mona Lisa" 
                 className="artefact-image"
               />
               <div className="artefact-title-box">
@@ -36,43 +42,34 @@ const ArtefactDetails = () => {
             </div>
           </div>
 
-          {/* Right Section: Details & Audio */}
+          {/* Right: Artefact Info & Description */}
           <div className="artefact-info">
-
-            {/* Meta Info */}
             <p className="artefact-meta">
-              <strong>Estimated date:</strong> 1503 to 1506
+              <strong>Estimated date:</strong> 1503 &ndash; 1506
             </p>
             <p className="artefact-meta">
               <strong>Where to see it:</strong> Louvre Museum (Paris)
             </p>
-
-            {/* Description */}
             <div className="artefact-description">
               <p>
-                It should come as no surprise that the most famous painting in
-                the world is the work of the mysterious and groundbreaking Leonardo
-                da Vinci. But there's more to this iconic piece than meets the eye.
-              </p>
-              <p>
-                Also known as La Gioconda, the portrait was commissioned by Francesco
-                del Giocondo, the husband of Lisa Gherardini. The subtle expression,
-                geometric composition, and revolutionary painting techniques have
-                fascinated the world for centuries. It was famously stolen from the
-                Louvre in 1911 and recovered in 1913.
+                Experience the world-renowned masterpiece – the Mona Lisa.
+                Renowned for its enigmatic smile and mysterious allure, this painting 
+                continues to fascinate art lovers around the globe. Discover the subtle 
+                details, innovative techniques, and historical significance behind da Vinci’s 
+                iconic work.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Carousel of Related Artefacts */}
+        {/* Carousel Directly Under the Overlay */}
         <div className="artefact-carousel">
           {relatedArtefacts.map((item) => (
             <div key={item.id} className="carousel-item">
-              <img
-                src={item.img}
-                alt={item.title}
-                className="carousel-image"
+              <img 
+                src={item.img} 
+                alt={item.title} 
+                className="carousel-image" 
               />
               <p className="carousel-caption">{item.title}</p>
             </div>

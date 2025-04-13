@@ -1,61 +1,80 @@
+/* CSS Variables for consistency */
+:root {
+  --primary-color: #ff5a5f;
+  --secondary-color: #1a1a1a;
+  --overlay-color: rgba(0, 0, 0, 0.55);
+  --bg-dark: #111;
+  --text-light: #f7f7f7;
+  --text-dark: #333;
+  --font-family: 'Montserrat', sans-serif;
+}
+
 /* Overall Container */
 .artefact-details {
   position: relative;
   width: 100%;
   height: 100vh;
+  font-family: var(--font-family);
   overflow: hidden;
-  background: #111; /* Fallback background if museum image not loaded */
+  background: var(--bg-dark);
 }
 
-/* Background Scene */
-.museum-background {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/artwork.jpeg') center center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* Close Button - upper-right corner */
-.close-button {
+/* Header with Close Button */
+.artefact-header {
   position: absolute;
   top: 20px;
-  right: 20px;
-  background: rgba(25, 25, 25, 0.7);
+  left: 20px;
+  z-index: 10;
+}
+
+.close-button {
+  background: rgba(0, 0, 0, 0.7);
   border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  width: 32px;
-  height: 32px;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
+
 .close-button:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Main Content Overlay (center portion) */
+/* Museum Background */
+.museum-background {
+  width: 100%;
+  height: 100%;
+  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/Musuem_back.jpg') center center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Main Content Overlay */
 .content-overlay {
   display: flex;
   flex-direction: row;
-  margin: 80px auto 20px auto;
+  margin: 80px auto 10px;
   width: 90%;
   max-width: 1200px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
+  background: var(--overlay-color);
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
-/* Left Section: Artefact Visual */
+/* Artefact Visual Section */
 .artefact-visual {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px;
 }
 
 .image-card {
@@ -63,31 +82,35 @@
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  width: 300px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .artefact-image {
   width: 100%;
   display: block;
+  object-fit: cover;
   border-bottom: 1px solid #eee;
 }
 
 .artefact-title-box {
-  padding: 12px;
+  padding: 16px;
   text-align: center;
-  color: #333;
+  color: var(--text-dark);
 }
+
 .artefact-index {
   margin: 0;
   font-size: 0.9rem;
   color: #777;
 }
+
 .artefact-name {
-  margin: 5px 0;
-  font-size: 1.4rem;
+  margin: 6px 0;
+  font-size: 1.6rem;
   font-weight: bold;
 }
+
 .artefact-subtitle {
   margin: 0;
   font-size: 1rem;
@@ -95,74 +118,59 @@
   color: #777;
 }
 
-/* Right Section: Info & Audio */
+/* Artefact Info Section */
 .artefact-info {
-  flex: 2;
-  padding: 20px;
-  color: #fff;
+  flex: 1.2;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: var(--text-light);
 }
 
-.audio-player {
-  margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 10px;
-}
-.audio-player audio {
-  width: 100%;
-  outline: none;
-}
-
-/* Meta & Description */
 .artefact-meta {
-  margin: 0 0 10px 0;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
 }
+
 .artefact-description {
   background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
+  font-size: 1rem;
+  line-height: 1.5;
   margin-top: 20px;
-}
-.artefact-description p {
-  margin: 0 0 10px 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
 }
 
 /* Bottom Carousel */
 .artefact-carousel {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   overflow-x: auto;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
+  padding: 10px 0 20px;
   width: 90%;
   max-width: 1200px;
-  padding: 10px 0;
 }
 
 .carousel-item {
-  min-width: 80px;
+  min-width: 100px;
   text-align: center;
-  color: #fff;
+  color: var(--text-light);
 }
 
 .carousel-image {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
   display: block;
-  margin: 0 auto 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  margin: 0 auto 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-caption {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   margin: 0;
 }
 
@@ -170,18 +178,41 @@
 @media (max-width: 768px) {
   .content-overlay {
     flex-direction: column;
-    margin-top: 60px;
-    margin-bottom: 10px;
+    margin: 60px auto 10px;
   }
-
+  
   .artefact-visual,
   .artefact-info {
     width: 100%;
-    flex: unset;
-    padding: 20px 10px;
+    padding: 20px;
   }
-
+  
   .image-card {
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .artefact-name {
+    font-size: 1.4rem;
+  }
+  .artefact-meta, .artefact-description {
+    font-size: 0.95rem;
+  }
+  .close-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .content-overlay {
+    margin: 40px auto 10px;
+    width: 95%;
+  }
+  .artefact-carousel {
+    gap: 10px;
+  }
+  .carousel-image {
+    width: 80px;
+    height: 80px;
   }
 }

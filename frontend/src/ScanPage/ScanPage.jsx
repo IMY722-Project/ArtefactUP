@@ -1,24 +1,20 @@
-import React, { useRef, useState, useCallback } from "react";
+import React, { useState } from "react";
 
 import "./ScanPage.css";
 
-const videoConstraints = {
-  width: 1280,
-  height: 720,
-  facingMode: "environment",
-};
-
 const ScanPage = () => {
-  const webcamRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
-
-  const capture = useCallback(() => {});
 
   return (
     <div className="scan-page">
       {/* Header with Back Button and Title */}
       <header className="scan-header">
-        <button className="back-button">←</button>
+        <button
+          className="back-button"
+          onClick={() => (window.location.href = "/artefactsCollection")}
+        >
+          ←
+        </button>
         <h1 className="scan-title">Scan Artefact</h1>
       </header>
 
@@ -52,11 +48,7 @@ const ScanPage = () => {
 
       {/* Action Buttons */}
       <div className="scan-actions">
-        {!capturedImage && (
-          <button onClick={capture} className="capture-button">
-            Capture
-          </button>
-        )}
+        {!capturedImage && <button className="capture-button">Capture</button>}
         {capturedImage && (
           <button
             onClick={() => setCapturedImage(null)}

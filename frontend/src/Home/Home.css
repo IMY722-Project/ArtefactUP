@@ -1,72 +1,72 @@
 /* Global Styles */
-* {
-  box-sizing: border-box;
-}
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-/* Home Container */
 .home {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: #f7f7f7;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
   position: sticky;
   top: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 100;
+  padding: 10px 20px;
 }
+
 .navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 15px;
 }
+
 .brand a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
+  color: #333;
+  text-decoration: none;
 }
+
 .nav-links {
   display: none;
-  flex-direction: column;
-  width: 100%;
-  background-color: #fff;
-  position: absolute;
-  top: 55px;
-  left: 0;
-  border-top: 1px solid #ddd;
+  flex-direction: row;
 }
-.nav-links a {
-  padding: 10px 15px;
-  text-decoration: none;
-  color: #333;
-  border-bottom: 1px solid #eee;
-}
+
 .nav-links.open {
   display: flex;
 }
+
+.nav-links a {
+  margin-left: 20px;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff5a5f;
+}
+
 .menu-btn {
   background: none;
   border: none;
   cursor: pointer;
   padding: 5px;
 }
+
 .menu-icon {
-  display: block;
   width: 25px;
   height: 3px;
   background-color: #333;
   position: relative;
+  display: block;
 }
+
 .menu-icon::before,
 .menu-icon::after {
   content: "";
@@ -75,119 +75,52 @@ body, html {
   height: 3px;
   background-color: #333;
   left: 0;
+  transition: all 0.3s;
 }
+
 .menu-icon::before {
   top: -8px;
 }
+
 .menu-icon::after {
   top: 8px;
 }
 
 /* Hero Section */
 .hero {
-  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/old-arts-building-up.jpg') bottom center/cover no-repeat;
+  background: linear-gradient(135deg, #ff5a5f, #f7a18d);
   text-align: center;
   color: #fff;
   padding: 80px 20px;
 }
+
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
 }
+
 .hero p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 30px;
 }
+
 .cta-button {
-  background-color: #ff5a5f;
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-/* Walkthrough Scroll Effect */
-.museum-walkthrough {
-  width: 100%;
-}
-.step {
-  position: relative;
-  height: 100vh; /* each step occupies full viewport height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  background-attachment: fixed;
-  color: #fff;
-  text-align: center;
-}
-.sticky-content {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-}
-/* Background images for each step */
-.step-entrance {
-  background-image: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/entrace.jpeg');
-}
-.step-lobby {
-  background-image: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/lobby.jpg');
-}
-.step-exhibit {
-  background-image: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/artwork.jpeg');
-}
-
-/* Info Section */
-.info-section {
-  padding: 40px 20px;
   background: #fff;
-}
-.info-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-.info-content h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-.info-content p {
+  color: #ff5a5f;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
   font-size: 1rem;
-  line-height: 1.5;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Desktop Adjustments */
-@media (min-width: 768px) {
-  .navbar-container {
-    padding: 15px 30px;
-  }
-  .nav-links {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    width: auto;
-    background: none;
-    border: none;
-  }
-  .nav-links a {
-    margin-left: 20px;
-    padding: 0;
-    border: none;
-  }
-  .menu-btn {
-    display: none;
-  }
-  .hero {
-    padding: 120px 40px;
-  }
-  .hero h1 {
-    font-size: 3rem;
-  }
-  .hero p {
-    font-size: 1.25rem;
-  }
+.cta-button:hover {
+  background: #ff5a5f;
+  color: #fff;
+}
+
+/* Content Sections */
+.content-section {
+  padding: 40px 20px;
 }

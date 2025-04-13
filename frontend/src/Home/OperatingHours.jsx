@@ -1,5 +1,5 @@
-import React from 'react';
-import './OperatingHours.css';
+import React from "react";
+import "./OperatingHours.css";
 
 const OperatingHours = () => {
   return (
