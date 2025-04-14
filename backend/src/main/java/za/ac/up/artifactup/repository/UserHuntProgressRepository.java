@@ -1,11 +1,11 @@
 package za.ac.up.artifactup.repository;
 
-import org.springframework.data.jpa.repository.*;
-import za.ac.up.artifactup.entity.*;
+import java.util.Optional;
 
-import java.util.*;
+import org.springframework.data.jpa.repository.JpaRepository;
+import za.ac.up.artifactup.entity.UserHuntProgress;
 
 public interface UserHuntProgressRepository extends JpaRepository<UserHuntProgress, Long> {
 
-    Optional<UserHuntProgress> findByCognitoUserIdAndHuntId(String cognitoUserId, Long huntId);
+    Optional<UserHuntProgress> findBySessionUserIdAndHuntId(String sessionId, Long huntId);
 }

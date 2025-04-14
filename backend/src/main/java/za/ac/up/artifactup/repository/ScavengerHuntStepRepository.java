@@ -1,5 +1,6 @@
 package za.ac.up.artifactup.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +13,8 @@ public interface ScavengerHuntStepRepository extends JpaRepository<ScavengerHunt
 
     Optional<ScavengerHuntStep> findByHuntIdAndStepNumber(Long huntId, int stepNumber);
 
-    long countByHuntId(Long huntId);
+    Optional<ScavengerHuntStep> findScavengerHuntStepByHuntName(String name);
+
+    List<ScavengerHuntStep> findByHuntIdOrderByStepNumberAsc(long id);
+
 }

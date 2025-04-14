@@ -35,4 +35,5 @@ public class ScavengerHuntController {
     public ResponseEntity<List<ScavengerHuntDTO>> getAllHunts() {
         return ResponseEntity.ok(scavengerHuntServiceFacade.findAll());
     }
+
 }

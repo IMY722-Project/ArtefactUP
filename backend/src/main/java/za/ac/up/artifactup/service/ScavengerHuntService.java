@@ -9,11 +9,9 @@ public interface ScavengerHuntService<T> {
 
     T create(T hunt);
 
-//    T startHunt(Long huntId, String cognitoUserId);
+    //    T startHunt(Long huntId, String cognitoUserId);
 //
-//    T validateStep(Long huntId, String cognitoUserId, String qrCode);
 //
-//    T getUserProgress(Long huntId, String cognitoUserId);
 
     void deleteById(Long id);
 

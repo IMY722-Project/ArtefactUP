@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.ScavengerHuntDTO;
-import za.ac.up.artifactup.dto.mapper.ScavengerHuntMapper;
+import za.ac.up.artifactup.dto.mapper.ScavengerHuntMapperImpl;
 import za.ac.up.artifactup.entity.ScavengerHunt;
 import za.ac.up.artifactup.service.ScavengerHuntService;
 
@@ -18,7 +18,7 @@ import za.ac.up.artifactup.service.ScavengerHuntService;
 public class ScavengerHuntServiceFacade implements ScavengerHuntService<ScavengerHuntDTO> {
 
     private final ScavengerHuntService<ScavengerHunt> service;
-    private final ScavengerHuntMapper mapper;
+    private final ScavengerHuntMapperImpl mapper;
 
     @Override
     @Transactional
@@ -32,17 +32,12 @@ public class ScavengerHuntServiceFacade implements ScavengerHuntService<Scavenge
         return Optional.ofNullable(service.create(mapper.toEntity(dto))).map(mapper::toDto).orElse(null);
     }
 
-//    @Override
+    //    @Override
 //    @Transactional
 //    public ScavengerHuntDTO startHunt(Long huntId, String userId) {
 //        return mapper.toDto(service.startHunt(huntId, userId));
 //    }
 //
-//    @Override
-//    @Transactional
-//    public ScavengerHuntDTO validateStep(Long huntId, String userId, String qr) {
-//        return mapper.toDto(service.validateStep(huntId, userId, qr));
-//    }
 //
 //    @Override
 //    public ScavengerHuntDTO getUserProgress(Long huntId, String userId) {
