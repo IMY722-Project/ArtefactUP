@@ -34,7 +34,6 @@ const navigate = useNavigate();
 
 return (
     <section className="scavenger-hunts">
-        <h2 className="scavenger-hunts-title">Scavenger Hunts</h2>
         <div className="scavenger-hunts-list">
             {scavengerHunts.map((hunt) => (
                 <div key={hunt.id} className="hunt-card" style={{ borderColor: hunt.color }}>
