@@ -14,11 +14,12 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: var(--bg-color);
+  background-color: #f9ebd7;
   font-family: var(--font-family);
   color: var(--text-dark);
   overflow: hidden;
   padding-top: 60px; /* Space for header */
+  padding: 10px;
 }
 
 /* Header with Close Button */

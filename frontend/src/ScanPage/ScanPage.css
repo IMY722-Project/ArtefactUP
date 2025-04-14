@@ -19,10 +19,11 @@
     background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
     padding: 10px 20px;
     z-index: 10;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    gap: 20px;
   }
   
   .back-button {

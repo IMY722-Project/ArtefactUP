@@ -70,16 +70,17 @@ const ArtefactsCollection = () => {
   };
 
   return (
-    <div className="artefacts-collection">
-      <header className="ac-header">
-        <h1>Artefact Collection</h1>
-      </header>
+    <div className="artefacts-collection-page">
+    {/* Half-circle header */}
+    <div className="top-circle-ac">
+      <h1 className="artefacts-title">Artefact Collection</h1>
+    </div>
       <main className="ac-main">
         {items.map((item) => (
           <ClueCard key={item.id} item={item} />
         ))}
       </main>
-    </div>
+   </div>
   );
 };
 
