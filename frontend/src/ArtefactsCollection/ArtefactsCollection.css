@@ -1,180 +1,152 @@
-/* Define color variables and fonts */
+/* Mobile-first design using CSS variables */
 :root {
   --primary-color: #ff5a5f;
   --secondary-color: #1a1a1a;
-  --light-gray: #f7f7f7;
-  --medium-gray: #999;
-  --dark-gray: #333;
-  --card-bg: #ffffff;
-  --shadow-light: rgba(0, 0, 0, 0.1);
-  --shadow-medium: rgba(0, 0, 0, 0.15);
-  --font-family: "Montserrat", sans-serif;
+  --treasure-gold: #d4af37;
+  --bg-color: #f7f7f7;
+  --card-bg: #fdf7e3;  /* Parchment-like background */
+  --font-family: 'Montserrat', sans-serif;
+  --text-color: #333;
 }
 
-/* Overall page styling */
-.scavenger-page {
+.artefacts-collection {
+  /* background: var(--bg-color); */
+  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/map.jpg') center center/cover no-repeat;
+  font-family: var(--font-family);
+  min-height: 100vh;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  background: var(--light-gray);
-  min-height: 100vh;
-  font-family: var(--font-family);
-  padding-bottom: 40px;
+  color: var(--text-color);
 }
 
 /* Header */
-.scavenger-header {
-  background: var(--primary-color);
-  color: #fff;
-  padding: 20px;
+.ac-header {
   text-align: center;
-  box-shadow: 0 2px 4px var(--shadow-light);
+  margin-bottom: 16px;
 }
 
-.scavenger-title {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
+.ac-header h1 {
+  font-size: 1.8rem;
+  color: var(--text-color);
 }
 
-/* Progress bar */
-.scavenger-progress {
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary-color), #09b456);
-  margin: 0 20px;
-  border-radius: 3px;
+/* Main content – Mobile defaults as a vertical list */
+.ac-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* Main content grid */
-.scavenger-main {
-  padding: 30px 20px;
-  display: grid;
-  gap: 30px;
-}
-
-/* Clue card styling */
-.clue-card {
+/* Artefact Card */
+.ac-card {
   background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px var(--shadow-light);
-  padding: 20px;
+  border: 2px solid var(--treasure-gold);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
 }
 
-.clue-card:hover {
+.ac-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px var(--shadow-medium);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Clue card header */
-.clue-header {
+/* Card Header */
+.ac-card-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
-.clue-number {
-  background: var(--medium-gray);
-  color: #fff;
+.ac-clue-number {
   font-weight: bold;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-right: 10px;
+  color: var(--treasure-gold);
+  padding: 4px 8px;
+  background: var(--bg-color);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.ac-clue-question {
   font-size: 1rem;
 }
 
-.clue-question {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--dark-gray);
-}
-
-/* Image container */
-.clue-image-container {
+/* Card Image */
+.ac-card-image {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
-.clue-image {
-  width: 80%;
-  max-width: 250px;
+.ac-image {
+  width: 100%;
+  max-width: 300px;
   border-radius: 8px;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
 }
 
-/* Pixelation / blur effect */
+/* Pixelated/Blur Effect */
 .pixelated {
   filter: blur(4px);
   transition: filter 0.3s ease;
 }
 
-/* Actions row */
-.clue-actions {
+/* Card Actions */
+.ac-card-actions {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-around;
+  gap: 8px;
 }
 
-.clue-btn {
-  background: #eee;
+/* Button Styles */
+.ac-btn {
+  padding: 8px 12px;
   border: none;
-  border-radius: 25px;
-  padding: 10px 16px;
+  border-radius: 20px;
   font-size: 0.9rem;
-  font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-.clue-btn:hover {
-  background: #ddd;
-}
-
-/* Camera button as circular icon */
-.camera-btn {
-  background: var(--primary-color);
-  color: #fff;
-  width: 48px;
-  height: 48px;
+.scan-btn {
+  background: var(--treasure-gold);
+  color: var(--secondary-color);
+  /* width: 48px;
+  height: 48px; */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   font-size: 1.2rem;
-  padding: 0;
-  border: none;
-  cursor: pointer;
 }
 
-/* Hint and reveal buttons */
 .hint-btn {
   background: var(--primary-color);
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
 }
 
 .reveal-btn {
   background: var(--secondary-color);
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 25px;
 }
 
-/* Hint drop-down styling */
-.clue-hint {
+.ac-btn:hover {
+  opacity: 0.9;
+}
+
+/* Hint Drop Down Styling */
+.ac-hint {
   margin-top: 10px;
   padding: 12px;
-  background: #fafafa;
-  border-left: 4px solid var(--primary-color);
-  font-size: 0.95rem;
-  color: var(--dark-gray);
-  animation: dropDown 0.3s ease-out;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-color);
+  border-left: 4px solid var(--treasure-gold);
   border-radius: 4px;
+  font-size: 0.95rem;
+  animation: dropDown 0.3s ease-out;
 }
 
 @keyframes dropDown {
@@ -188,9 +160,31 @@
   }
 }
 
-/* Responsive adjustments */
-@media (min-width: 600px) {
-  .clue-image {
-    width: 60%;
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  /* Grid layout for larger screens */
+  .ac-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    justify-items: center;
+  }
+  .ac-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ac-header h1 {
+    font-size: 1.8rem;
+  }
+  .ac-btn {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+  .scan-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }

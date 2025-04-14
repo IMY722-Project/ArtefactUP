@@ -27,71 +27,54 @@ const ArtefactsCollection = () => {
     },
   ];
 
-  // Placeholder functions – replace these with your actual logic
+  // Placeholder functions – replace with your actual scanning/hint/reveal logic
   const handleScan = (id) => {
-    window.location.href = `/scan`;
+    window.location.href = "/scan";
   };
   const handleReveal = (id) => {
-    window.location.href = `/artefactDetails`;
+    window.location.href = "/artefactDetails";
   };
 
-  // Clue card component with local hint visibility state
+  // ClueCard component that uses local state for the hint drop-down
   const ClueCard = ({ item }) => {
     const [hintVisible, setHintVisible] = useState(false);
-
-    const toggleHint = () => {
-      setHintVisible((prev) => !prev);
-    };
+    const toggleHint = () => setHintVisible((prev) => !prev);
 
     return (
-      <div className="clue-card">
-        <div className="clue-header">
-          <span className="clue-number">{item.clueNumber}</span>
-          <span className="clue-question">{item.question}</span>
+      <div className="ac-card">
+        <div className="ac-card-header">
+          <span className="ac-clue-number">Clue #{item.clueNumber}</span>
+          <span className="ac-clue-question">{item.question}</span>
         </div>
-        <div className="clue-image-container">
+        <div className="ac-card-image">
           <img
             src={item.image}
             alt={`Clue #${item.clueNumber}`}
-            className="clue-image pixelated"
+            className="ac-image pixelated"
           />
         </div>
-        <div className="clue-actions">
-          <button
-            className="clue-btn camera-btn"
-            onClick={() => handleScan(item.id)}
-          >
-            <span role="img" aria-label="camera">
-              📷
-            </span>
+        <div className="ac-card-actions">
+          <button className="ac-btn scan-btn" onClick={() => handleScan(item.id)}>
+            <span role="img" aria-label="camera">📷</span>
           </button>
-          <button className="clue-btn hint-btn" onClick={toggleHint}>
+          <button className="ac-btn hint-btn" onClick={toggleHint}>
             Hint
           </button>
-          <button
-            className="clue-btn reveal-btn"
-            onClick={() => handleReveal(item.id)}
-          >
+          <button className="ac-btn reveal-btn" onClick={() => handleReveal(item.id)}>
             Reveal
           </button>
         </div>
-        {hintVisible && <div className="clue-hint">{item.hint}</div>}
+        {hintVisible && <div className="ac-hint">{item.hint}</div>}
       </div>
     );
   };
 
   return (
-    <div className="scavenger-page">
-      {/* Header */}
-      <header className="scavenger-header">
-        <h1 className="scavenger-title">Red Collection</h1>
+    <div className="artefacts-collection">
+      <header className="ac-header">
+        <h1>Artefact Collection</h1>
       </header>
-
-      {/* Optional progress bar for visual interest */}
-      <div className="scavenger-progress"></div>
-
-      {/* Main Content */}
-      <main className="scavenger-main">
+      <main className="ac-main">
         {items.map((item) => (
           <ClueCard key={item.id} item={item} />
         ))}
