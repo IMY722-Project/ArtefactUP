@@ -22,7 +22,7 @@ public class UserHuntProgress {
     private Long id;
 
     @Column(nullable = false)
-    private String cognitoUserId;
+    private String sessionId;
 
     @ManyToOne
     @JoinColumn(name = "hunt_id", nullable = false)
