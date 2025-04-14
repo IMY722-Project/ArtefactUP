@@ -20,12 +20,21 @@ public class UserHuntProgressFacade implements UserHuntProgressService<UserHuntP
 
     @Override
     @Transactional
-    public Optional<UserHuntProgressDTO> getUserProgress(Long huntId, String sessionId) {
-        return userHuntProgressService.getUserProgress(huntId, sessionId).map(userHuntProgressMapper::toDto);
+    public UserHuntProgressDTO getUserProgress(Long huntId, String sessionId) {
+        return Optional.ofNullable(userHuntProgressService.getUserProgress(huntId, sessionId))
+                .map(userHuntProgressMapper::toDto)
+                .orElse(null);
     }
 
     @Override
+    @Transactional
     public UserHuntProgressDTO saveUserProgress(final UserHuntProgressDTO userHuntProgress) {
         return Optional.ofNullable(userHuntProgressService.saveUserProgress(userHuntProgressMapper.toEntity(userHuntProgress))).map(userHuntProgressMapper::toDto).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public UserHuntProgressDTO startHunt(Long huntId, String sessionId) {
+        return Optional.ofNullable(userHuntProgressService.startHunt(huntId, sessionId)).map(userHuntProgressMapper::toDto).orElse(null);
     }
 }

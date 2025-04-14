@@ -29,4 +29,14 @@ public class ApiExceptionHandler {
                 exception.getMessage()
         ));
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiError> handleIllegalArgumentException(IllegalArgumentException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiError(
+                exception.getMessage(),
+                "BAD_REQUEST",
+                "Bad Request",
+                exception.getMessage()
+        ));
+    }
 }

@@ -40,4 +40,8 @@ public class ScavengerHuntServiceImpl implements ScavengerHuntService<ScavengerH
         return huntRepo.findByName(name);
     }
 
+    @Transactional
+    public Optional<ScavengerHunt> findById(Long id) {
+        return huntRepo.findById(id);
+    }
 }

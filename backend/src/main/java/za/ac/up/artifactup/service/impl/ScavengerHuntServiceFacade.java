@@ -32,18 +32,6 @@ public class ScavengerHuntServiceFacade implements ScavengerHuntService<Scavenge
         return Optional.ofNullable(service.create(mapper.toEntity(dto))).map(mapper::toDto).orElse(null);
     }
 
-    //    @Override
-//    @Transactional
-//    public ScavengerHuntDTO startHunt(Long huntId, String userId) {
-//        return mapper.toDto(service.startHunt(huntId, userId));
-//    }
-//
-//
-//    @Override
-//    public ScavengerHuntDTO getUserProgress(Long huntId, String userId) {
-//        return mapper.toDto(service.getUserProgress(huntId, userId));
-//    }
-
     @Override
     @Transactional
     public void deleteById(Long id) {

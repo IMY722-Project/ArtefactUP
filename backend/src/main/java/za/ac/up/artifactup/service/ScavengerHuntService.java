@@ -9,10 +9,6 @@ public interface ScavengerHuntService<T> {
 
     T create(T hunt);
 
-    //    T startHunt(Long huntId, String cognitoUserId);
-//
-//
-
     void deleteById(Long id);
 
     Optional<T> findByName(String name);

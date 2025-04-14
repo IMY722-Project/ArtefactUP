@@ -23,4 +23,5 @@ public class ScavengerHuntStepController {
     public ResponseEntity<StepValidationResultDTO> validateHuntStep(@PathVariable Long huntId, @RequestParam("imageFile") MultipartFile image, @RequestHeader("Session-id") String sessionId) {
         return ResponseEntity.ok(scavengerHuntStepFacade.validateStep(sessionId, huntId, image));
     }
+
 }

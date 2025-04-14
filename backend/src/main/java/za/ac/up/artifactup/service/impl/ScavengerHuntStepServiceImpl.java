@@ -47,51 +47,52 @@ public class ScavengerHuntStepServiceImpl implements ScavengerHuntStepService<Sc
 
         log.info("ValidateStep | sessionId={} huntId={} file={}", sessionId, huntId, image.getOriginalFilename());
 
-        UserHuntProgress userHuntProgress = userHuntProgressService.getUserProgress(huntId, sessionId)
-                .orElseThrow(() -> {
-                    log.warn("Progress not found | sessionId={} huntId={}", sessionId, huntId);
-                    return new NotFoundException(String.format("Progress not found | sessionId=%s huntId=%s", sessionId, huntId));
-                });
+        UserHuntProgress userHuntProgress = getUserProgress(huntId, sessionId);
 
-        // fix this
         if (userHuntProgress.isCompleted()) {
             log.info("Hunt already completed | sessionId={} huntId={}", sessionId, huntId);
-            return null;
+            return new StepValidationResultDTO(true, true, null, "Congratulations! You have completed the hunt!");
         }
 
-        ScavengerHuntStep scavengerHuntStep = scavengerHuntStepRepository.findByHuntIdAndStepNumber(huntId, userHuntProgress.getCurrentStep())
-                .orElseThrow(() -> {
-                    log.error("Step {} missing for hunt {}", userHuntProgress.getCurrentStep(), huntId);
-                    return new NotFoundException(String.format("Step %s missing for hunt %s", userHuntProgress.getCurrentStep(), huntId));
-                });
+        ScavengerHuntStep scavengerHuntStep = getScavengerHuntStep(huntId, userHuntProgress.getCurrentStep());
 
         boolean isValidMatch = imageValidation.validateImage(scavengerHuntStep.getArtefact(), image);
 
         if (isValidMatch) {
-            userHuntProgress.setCurrentStep(userHuntProgress.getCurrentStep() + 1);
             if (userHuntProgress.getCurrentStep() > scavengerHuntStep.getHunt().getSteps().size()) {
                 userHuntProgress.setCompleted(true);
                 return new StepValidationResultDTO(true, true, null, "Congratulations! You have completed the hunt!");
+            } else {
+                userHuntProgress.setCurrentStep(userHuntProgress.getCurrentStep() + 1);
             }
             userHuntProgressService.saveUserProgress(userHuntProgress);
-            return new StepValidationResultDTO(true, false, getNextHuntStep(scavengerHuntStep),
-                    "Correct! Here is your next clue!");
+
+            return new StepValidationResultDTO(true, false, getNextHuntStep(scavengerHuntStep), "Correct! Here is your next clue!");
         } else {
             log.info("Incorrect image | sessionId={} huntId={} file={}", sessionId, huntId, image.getOriginalFilename());
-            return new StepValidationResultDTO(false, false, scavengerHuntStepMapper.toDto(scavengerHuntStep),
-                    "Incorrect image. Please try again.");
+            return new StepValidationResultDTO(false, false, scavengerHuntStepMapper.toDto(scavengerHuntStep), "Incorrect image. Please try again.");
         }
 
     }
 
     private ScavengerHuntStepDTO getNextHuntStep(ScavengerHuntStep scavengerHuntStep) {
-        return scavengerHuntStepRepository.findByHuntIdOrderByStepNumberAsc(scavengerHuntStep.getHunt().getId()).stream()
-                .filter(step -> step.getStepNumber() == scavengerHuntStep.getStepNumber() + 1)
-                .findFirst()
-                .map(scavengerHuntStepMapper::toDto)
-                .orElseThrow(() -> {
-                    log.error("Next step not found for hunt {}", scavengerHuntStep.getHunt().getId());
-                    return new NotFoundException(String.format("Next step not found for hunt %s", scavengerHuntStep.getHunt().getId()));
-                });
+        return scavengerHuntStepRepository.findByHuntIdOrderByStepNumberAsc(scavengerHuntStep.getHunt().getId()).stream().filter(step -> step.getStepNumber() == scavengerHuntStep.getStepNumber() + 1).findFirst().map(scavengerHuntStepMapper::toDto).orElseThrow(() -> {
+            log.error("Next step not found for hunt {}", scavengerHuntStep.getHunt().getId());
+            return new NotFoundException(String.format("Next step not found for hunt %s", scavengerHuntStep.getHunt().getId()));
+        });
+    }
+
+    private UserHuntProgress getUserProgress(Long huntId, String sessionId) {
+        return Optional.ofNullable(userHuntProgressService.getUserProgress(huntId, sessionId)).orElseThrow(() -> {
+            log.warn("Progress not found | sessionId={} huntId={}", sessionId, huntId);
+            return new NotFoundException(String.format("Progress not found | sessionId=%s huntId=%s", sessionId, huntId));
+        });
+    }
+
+    private ScavengerHuntStep getScavengerHuntStep(Long huntId, int currentStep) {
+        return scavengerHuntStepRepository.findByHuntIdAndStepNumber(huntId, currentStep).orElseThrow(() -> {
+            log.error("Step {} missing for hunt {}", currentStep, huntId);
+            return new NotFoundException(String.format("Step %s missing for hunt %s", currentStep, huntId));
+        });
     }
 }
