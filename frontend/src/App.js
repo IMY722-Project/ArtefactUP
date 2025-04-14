@@ -5,6 +5,7 @@ import Admin from "./Admin/Admin";
 import ArtefactDetails from './ArtefactDetails/ArtefactDetails';
 import ArtefactsCollection from './ArtefactsCollection/ArtefactsCollection';
 import ScanPage from './ScanPage/ScanPage';
+import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/artefactDetails" element={<ArtefactDetails />} />
           <Route path="/artefactsCollection" element={<ArtefactsCollection />} />
+          <Route path="/scavengerHunts" element={<ScavengerHuntsPage />} />
           <Route path="/scan" element={<ScanPage />} />
 
       </Routes>

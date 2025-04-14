@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Home.css";
 import OperatingHours from "./OperatingHours.jsx";
 import TourPackages from "./TourPackages/TourPackages.tsx";
-import ScavengerHunts from "./ScavengerHunts/ScavengerHunts.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(prev => !prev);
+  // const [menuOpen, setMenuOpen] = useState(false);
+  // const toggleMenu = () => setMenuOpen(prev => !prev);
+  
+  const navigate = useNavigate();
 
   return (
     <div className="home">
@@ -32,15 +34,14 @@ function Home() {
       </nav>
 
       <header className="hero">
-        <h1>Welcome to the University Museum</h1>
+        <h1>Welcome to the University of Pretoria Museum Scavebger hunts</h1>
         <p>Discover history, art, and innovation on campus.</p>
-        <a href="#walkthrough" className="cta-button">
-          Explore Now
-        </a>
+        <button className="cta-button" onClick={() => navigate(`/scavengerHunts`)}>
+          Explore Hunts
+        </button>
       </header>
 
       <div className="content-section">
-        <ScavengerHunts />
         <OperatingHours />
         <TourPackages />
       </div>

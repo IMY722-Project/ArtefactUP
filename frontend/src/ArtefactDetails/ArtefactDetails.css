@@ -1,22 +1,24 @@
-/* CSS Variables for consistency */
+/* Define CSS Variables for easy customization */
 :root {
   --primary-color: #ff5a5f;
   --secondary-color: #1a1a1a;
-  --overlay-color: rgba(0, 0, 0, 0.55);
-  --bg-dark: #111;
-  --text-light: #f7f7f7;
+  --bg-color: #f7f7f7;
   --text-dark: #333;
+  --text-light: #f7f7f7;
+  --accent-color: #ff5a5f;
   --font-family: 'Montserrat', sans-serif;
 }
 
-/* Overall Container */
+/* Overall Page Container */
 .artefact-details {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  background: var(--bg-color);
   font-family: var(--font-family);
+  color: var(--text-dark);
   overflow: hidden;
-  background: var(--bg-dark);
+  padding-top: 60px; /* Space for header */
 }
 
 /* Header with Close Button */
@@ -31,7 +33,7 @@
   background: rgba(0, 0, 0, 0.7);
   border: none;
   color: var(--text-light);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -43,176 +45,144 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* Museum Background */
-.museum-background {
-  width: 100%;
-  height: 100%;
-  background: url('/Users/ksookdhew/Documents/GitHub/ArtifactUP/frontend/public/images/Musuem_back.jpg') center center/cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-}
-
-/* Main Content Overlay */
-.content-overlay {
-  display: flex;
-  flex-direction: row;
-  margin: 80px auto 10px;
+/* Main Content */
+.artefact-content {
   width: 90%;
   max-width: 1200px;
-  background: var(--overlay-color);
+  margin: 80px auto 20px;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
-/* Artefact Visual Section */
-.artefact-visual {
-  flex: 1;
+/* Info Section: Artefact Image and Details */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
-
-.image-card {
-  position: relative;
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  width: 320px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .artefact-image {
   width: 100%;
-  display: block;
-  object-fit: cover;
-  border-bottom: 1px solid #eee;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.artefact-title-box {
-  padding: 16px;
-  text-align: center;
-  color: var(--text-dark);
+.text-info {
+  padding: 0 20px;
+  text-align: left;
 }
 
-.artefact-index {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #777;
-}
-
-.artefact-name {
-  margin: 6px 0;
-  font-size: 1.6rem;
-  font-weight: bold;
+.artefact-title {
+  font-size: 2rem;
+  margin: 10px 0;
+  color: var(--secondary-color);
 }
 
 .artefact-subtitle {
-  margin: 0;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-style: italic;
-  color: #777;
-}
-
-/* Artefact Info Section */
-.artefact-info {
-  flex: 1.2;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: var(--text-light);
+  color: var(--accent-color);
+  margin-bottom: 10px;
 }
 
 .artefact-meta {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
+  font-size: 1rem;
+  margin-bottom: 10px;
 }
 
-.artefact-description {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 8px;
+.artefact-description p {
   font-size: 1rem;
   line-height: 1.5;
-  margin-top: 20px;
 }
 
-/* Bottom Carousel */
-.artefact-carousel {
+/* Mascot Section */
+.mascot-section {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
-  overflow-x: auto;
-  margin: 0 auto 30px;
-  padding: 10px 0 20px;
-  width: 90%;
-  max-width: 1200px;
-}
-
-.carousel-item {
-  min-width: 100px;
-  text-align: center;
-  color: var(--text-light);
-}
-
-.carousel-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  padding: 20px;
+  background: var(--primary-color);
   border-radius: 12px;
-  display: block;
-  margin: 0 auto 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
 }
 
-.carousel-caption {
-  font-size: 0.85rem;
-  margin: 0;
+.mascot-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .content-overlay {
+.mascot-bubble {
+  background: rgba(255,255,255,0.9);
+  color: var(--secondary-color);
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  flex: 1;
+  position: relative;
+}
+
+/* Speech bubble triangle */
+.mascot-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.9) transparent transparent transparent;
+}
+
+/* Mobile-First: Vertical Layout */
+@media (max-width: 767px) {
+  .artefact-content {
     flex-direction: column;
-    margin: 60px auto 10px;
-  }
-  
-  .artefact-visual,
-  .artefact-info {
-    width: 100%;
+    margin: 60px auto 20px;
     padding: 20px;
   }
-  
-  .image-card {
-    margin: 0 auto;
+
+  .text-info {
+    padding: 0;
+  }
+
+  .mascot-section {
+    flex-direction: row;
+    align-items: center;
   }
 }
 
-@media (max-width: 480px) {
-  .artefact-name {
-    font-size: 1.4rem;
+/* Tablet/Large Screen: Horizontal Layout for Info Section */
+@media (min-width: 768px) {
+  .artefact-content {
+    flex-direction: row;
+    gap: 40px;
+    padding: 40px;
   }
-  .artefact-meta, .artefact-description {
-    font-size: 0.95rem;
+  
+  .info-section {
+    flex: 2;
+    flex-direction: column;
+    gap: 20px;
   }
-  .close-button {
-    width: 36px;
-    height: 36px;
-    font-size: 1.2rem;
-  }
-  .content-overlay {
-    margin: 40px auto 10px;
-    width: 95%;
-  }
-  .artefact-carousel {
-    gap: 10px;
-  }
-  .carousel-image {
-    width: 80px;
-    height: 80px;
+  
+  .mascot-section {
+    flex: 1;
+    align-items: center;
+    margin-top: 0;
   }
 }
