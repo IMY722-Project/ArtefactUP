@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./ArtefactsCollection.css";
+import { FaTimes } from "react-icons/fa";
+
 
 const ArtefactsCollection = () => {
   // Sample artefact data
@@ -28,17 +30,17 @@ const ArtefactsCollection = () => {
   ];
 
   // Placeholder functions – replace with your actual scanning/hint/reveal logic
-  const handleScan = (id) => {
+  const handleScan = id => {
     window.location.href = "/scan";
   };
-  const handleReveal = (id) => {
+  const handleReveal = id => {
     window.location.href = "/artefactDetails";
   };
 
   // ClueCard component that uses local state for the hint drop-down
   const ClueCard = ({ item }) => {
     const [hintVisible, setHintVisible] = useState(false);
-    const toggleHint = () => setHintVisible((prev) => !prev);
+    const toggleHint = () => setHintVisible(prev => !prev);
 
     return (
       <div className="ac-card">
@@ -54,13 +56,21 @@ const ArtefactsCollection = () => {
           />
         </div>
         <div className="ac-card-actions">
-          <button className="ac-btn scan-btn" onClick={() => handleScan(item.id)}>
-            <span role="img" aria-label="camera">📷</span>
+          <button
+            className="ac-btn scan-btn"
+            onClick={() => handleScan(item.id)}
+          >
+            <span role="img" aria-label="camera">
+              📷
+            </span>
           </button>
           <button className="ac-btn hint-btn" onClick={toggleHint}>
             Hint
           </button>
-          <button className="ac-btn reveal-btn" onClick={() => handleReveal(item.id)}>
+          <button
+            className="ac-btn reveal-btn"
+            onClick={() => handleReveal(item.id)}
+          >
             Reveal
           </button>
         </div>
@@ -71,24 +81,24 @@ const ArtefactsCollection = () => {
 
   return (
     <div className="artefacts-collection-page">
-    {/* Half-circle header */}
-    <div className="top-circle-ac">
-      <div className="close-button-container">
-    <button 
-          className="close-button" 
-          onClick={() => window.location.href = '/scavengerHunts'}
-        >
-          &times;
-        </button>
+      {/* Half-circle header */}
+      <div className="top-circle-ac">
+        <div className="close-button-container-ac">
+        <button
+            className="close-button-ac"
+            onClick={() => (window.location.href = "/scavengerHunts")}
+          >
+            <FaTimes />
+          </button>
         </div>
-      <h1 className="artefacts-title">Artefact Collection</h1>
-    </div>
+        <h1 className="artefacts-title">Artefact Collection</h1>
+      </div>
       <main className="ac-main">
-        {items.map((item) => (
+        {items.map(item => (
           <ClueCard key={item.id} item={item} />
         ))}
       </main>
-   </div>
+    </div>
   );
 };
 

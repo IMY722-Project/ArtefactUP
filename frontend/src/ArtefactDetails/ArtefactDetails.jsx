@@ -1,17 +1,18 @@
 import React from 'react';
 import './ArtefactDetails.css';
+import { FaTimes } from 'react-icons/fa';
 
 const ArtefactDetails = () => {
   return (
     <div className="artefact-details">
       {/* Header with a Close Button */}
       <header className="artefact-header">
-        <button 
-          className="close-button" 
-          onClick={() => window.location.href = '/artefactsCollection'}
-        >
-          &times;
-        </button>
+        <button
+            className="close-button"
+            onClick={() => (window.location.href = "/artefactsCollection")}
+          >
+            <FaTimes />
+          </button>
       </header>
 
       {/* Main Content Container */}

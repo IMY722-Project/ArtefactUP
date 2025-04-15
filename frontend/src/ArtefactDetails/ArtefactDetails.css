@@ -12,7 +12,7 @@
 /* Overall Page Container */
 .artefact-details {
   position: relative;
-  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   background-color: #f9ebd7;
   font-family: var(--font-family);
@@ -33,13 +33,16 @@
 .close-button {
   background: rgba(0, 0, 0, 0.7);
   border: none;
-  color: var(--text-light);
-  font-size: 1.8rem;
+  color: #fff;
+  font-size: 0.8rem;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-button:hover {
