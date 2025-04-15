@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/artefact
 
 
-###
+### Create Musuem
 POST http://localhost:8080/api/museum/create
 Content-Type: application/json
 
@@ -29,7 +29,7 @@ Content-Type: application/json
   "creator": "Vincent Van Gogh",
   "description": "string",
   "collectionName": "string",
-  "museumName": "string",
+  "museumName": "Old Arts Building",
   "dateCreated": "string",
   "locationCreated": "string",
   "physicalDimensions": "string",
@@ -38,7 +38,58 @@ Content-Type: application/json
   "medium": "string"
 }
 
+### get all artefacts by categoryName
+GET http://localhost:8080/api/artefact/collection/Portrait
 
 
-### get all artefacts by categoryId
-GET http://localhost:8080/api/artefact/collection/1
+### Upload using @ModelAttribute
+POST http://localhost:8080/api/artefact/create
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="title"
+
+Potrait of an Old Man
+--boundary123
+Content-Disposition: form-data; name="creator"
+
+Vincent Van Gogh
+--boundary123
+Content-Disposition: form-data; name="description"
+
+A post-impressionist portrait
+--boundary123
+Content-Disposition: form-data; name="museumName"
+
+Old Arts Building
+--boundary123
+Content-Disposition: form-data; name="dateCreated"
+
+1889
+--boundary123
+Content-Disposition: form-data; name="locationCreated"
+
+Saint-Rémy
+--boundary123
+Content-Disposition: form-data; name="physicalDimensions"
+
+65x50 cm
+--boundary123
+Content-Disposition: form-data; name="type"
+
+Portrait
+--boundary123
+Content-Disposition: form-data; name="rights"
+
+Van Gogh Museum
+--boundary123
+Content-Disposition: form-data; name="medium"
+
+Oil on canvas
+--boundary123
+Content-Disposition: form-data; name="imageFile"; filename="portrait.jpg"
+Content-Type: image/jpeg
+
+< ./portrait.jpg
+--boundary123--
+

@@ -20,39 +20,34 @@ import za.ac.up.artifactup.service.ArtefactService;
 @RequiredArgsConstructor
 public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
 
-    private final ArtefactService<Artefact> service;
+  private final ArtefactService<Artefact> service;
 
-    private final ArtefactMapper mapper;
+  private final ArtefactMapper mapper;
 
-    @Override
-    public List<ArtefactDTO> findAll() {
-        return mapper.toDTOs(service.findAll());
-    }
+  @Override
+  public List<ArtefactDTO> findAll() {
+    return mapper.toDTOs(service.findAll());
+  }
 
-    @Override
-    @Transactional
-    public ArtefactDTO create(ArtefactDTO artefact) {
-        return mapper.toDTO(service.create(mapper.toEntity(artefact)));
-    }
+  @Override
+  @Transactional
+  public ArtefactDTO create(ArtefactDTO dto) {
+    return mapper.toDTO(service.create(mapper.toEntity(dto)));
+  }
 
-    @Override
-    public List<ArtefactDTO> findAllArtifactsByCollectionName(String collectionName) {
-        return mapper.toDTOs(service.findAllArtifactsByCollectionName(collectionName));
-    }
+  @Override
+  public List<ArtefactDTO> findAllArtifactsByCollectionName(String collectionName) {
+    return mapper.toDTOs(service.findAllArtifactsByCollectionName(collectionName));
+  }
 
-    @Override
-    public List<ArtefactDTO> findAllArtifactsByMuseumName(String museumName) {
-        return mapper.toDTOs(service.findAllArtifactsByMuseumName(museumName));
-    }
+  @Override
+  public List<ArtefactDTO> findAllArtefactsByMuseumName(String museumName) {
+    return mapper.toDTOs(service.findAllArtefactsByMuseumName(museumName));
+  }
 
-    @Override
-    @Transactional
-    public void deleteById(Long id) {
-        service.deleteById(id);
-    }
-
-    @Override
-    public Optional<ArtefactDTO> findByName(String name) {
-        return service.findByName(name).map(mapper::toDTO);
-    }
+  @Override
+  @Transactional
+  public void deleteById(Long id) {
+    service.deleteById(id);
+  }
 }

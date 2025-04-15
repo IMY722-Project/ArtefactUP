@@ -9,5 +9,4 @@ public class OpeningHoursDTO {
     private String day;
     private String openingTime;
     private String closingTime;
-    private Long museumId;
 }
