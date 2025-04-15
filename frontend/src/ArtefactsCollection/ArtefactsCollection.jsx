@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ArtefactsCollection.css";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ArtefactsCollection = () => {
   // Sample artefact data
@@ -35,6 +36,8 @@ const ArtefactsCollection = () => {
   const handleReveal = id => {
     window.location.href = "/artefactDetails";
   };
+  
+  const navigate = useNavigate();
 
   // ClueCard component that uses local state for the hint drop-down
   const ClueCard = ({ item }) => {
@@ -85,7 +88,7 @@ const ArtefactsCollection = () => {
         <div className="close-button-container-ac">
         <button
             className="close-button-ac"
-            onClick={() => (window.location.href = "/scavengerHunts")}
+            onClick={() => navigate(-1)}
           >
             <MdArrowBackIosNew  size={30}/>
           </button>

@@ -1,15 +1,18 @@
 import React from 'react';
 import './ArtefactDetails.css';
 import { FaTimes } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 const ArtefactDetails = () => {
+  const navigate = useNavigate();
   return (
     <div className="artefact-details">
       {/* Header with a Close Button */}
       <header className="artefact-header">
         <button
             className="close-button"
-            onClick={() => (window.location.href = "/artefactsCollection")}
+            onClick={() => navigate(-1)}
           >
             <FaTimes />
           </button>
