@@ -1,0 +1,14 @@
+services:
+  localstack:
+    container_name: "${LOCALSTACK_DOCKER_NAME-localstack_main}"
+    image: localstack/localstack-pro:latest  # Explicitly use latest
+    ports:
+      - "4566:4566"  # Only port 4566 needed (modern versions)
+    environment:
+      - SERVICES=s3
+      - PERSISTENCE=1  # The ONLY setting needed for persistence
+      - LOCALSTACK_AUTH_TOKEN=<secret>
+      - AWS_ACCESS_KEY_ID=testkey
+      - AWS_SECRET_ACCESS_KEY=testsecret
+    volumes:
+      - "./localstack_data:/var/lib/localstack"  # Default volume path
