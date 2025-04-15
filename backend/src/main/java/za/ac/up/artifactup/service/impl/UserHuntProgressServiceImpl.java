@@ -37,12 +37,14 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
     }
 
     @Override
+    @Transactional
     public UserHuntProgress saveUserProgress(final UserHuntProgress userHuntProgress) {
         return userHuntProgressRepository.save(userHuntProgress);
     }
 
     @Override
     @ValidateInputUserProgress
+    @Transactional
     public UserHuntProgress startHunt(final Long huntId, final String sessionId) {
 
         Optional<UserHuntProgress> userHuntProgress = userHuntProgressRepository.findBySessionIdAndHuntId(sessionId, huntId);

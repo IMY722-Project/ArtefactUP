@@ -25,11 +25,11 @@ import za.ac.up.artifactup.service.BucketService;
 @RequiredArgsConstructor
 public class ImageValidation {
 
-    private final BucketService amazonS3;
-    private final String bucketName = "museum-artefacts";
+    private final BucketService bucketService;
 
     public boolean validateImage(Artefact artefact, MultipartFile image) {
 
+        nu.pattern.OpenCV.loadLocally();
         String s3Key = artefact.getImageUrl();
         byte[] refBytes;
 
@@ -52,7 +52,7 @@ public class ImageValidation {
     }
 
     private byte[] getS3ImageBytes(String s3Key) throws IOException {
-        return amazonS3.getObjectFromBucket(s3Key);
+        return bucketService.getObjectFromBucket(s3Key);
     }
 
     private byte[] getImageBytes(MultipartFile image) {

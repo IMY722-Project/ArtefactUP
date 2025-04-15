@@ -29,16 +29,19 @@ public class ScavengerHuntStepFacade implements ScavengerHuntStepService<Scaveng
     }
 
     @Override
+    @Transactional
     public List<ScavengerHuntStepDTO> findAllStepsByScavengerHuntId(final long id) {
         return scavengerHuntStepService.findAllStepsByScavengerHuntId(id).stream().map(scavengerHuntStepMapper::toDto).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional
     public StepValidationResultDTO validateStep(final String sessionId, final Long huntId, final MultipartFile image) {
         return scavengerHuntStepService.validateStep(sessionId, huntId, image);
     }
 
     @Override
+    @Transactional
     public ScavengerHuntStepDTO getScavengerHuntStep(final Long huntId, final int currentStep) {
         return scavengerHuntStepMapper.toDto(scavengerHuntStepService.getScavengerHuntStep(huntId, currentStep));
     }

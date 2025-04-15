@@ -58,13 +58,15 @@ public class ScavengerHuntStepServiceImpl implements ScavengerHuntStepService<Sc
         boolean isValidMatch = imageValidation.validateImage(scavengerHuntStep.getArtefact(), image);
 
         if (isValidMatch) {
-            if (userHuntProgress.getCurrentStep() > scavengerHuntStep.getHunt().getSteps().size()) {
+            if (userHuntProgress.getCurrentStep() + 1 > scavengerHuntStep.getHunt().getSteps().size()) {
                 userHuntProgress.setCompleted(true);
+                userHuntProgressService.saveUserProgress(userHuntProgress);
                 return new StepValidationResultDTO(true, true, null, "Congratulations! You have completed the hunt!");
             } else {
                 userHuntProgress.setCurrentStep(userHuntProgress.getCurrentStep() + 1);
+                log.info(String.format("UserHuntProgress updated | sessionId=%s huntId=%s currentStep=%d", sessionId, huntId, userHuntProgress.getCurrentStep()));
+                userHuntProgressService.saveUserProgress(userHuntProgress);
             }
-            userHuntProgressService.saveUserProgress(userHuntProgress);
 
             return new StepValidationResultDTO(true, false, getNextHuntStep(scavengerHuntStep), "Correct! Here is your next clue!");
         } else {
