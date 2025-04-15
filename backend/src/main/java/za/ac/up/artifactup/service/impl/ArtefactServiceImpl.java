@@ -48,7 +48,7 @@ public class ArtefactServiceImpl implements ArtefactService<Artefact> {
     }
 
     @Override
-    public List<Artefact> findAllArtifactsByMuseumName(String museumName) {
+    public List<Artefact> findAllArtefactsByMuseumName(String museumName) {
         return repository.findAllByMuseumName(museumName);
     }
 

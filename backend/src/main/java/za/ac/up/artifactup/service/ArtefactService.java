@@ -11,7 +11,7 @@ public interface ArtefactService<T> {
 
     List<T> findAllArtifactsByCollectionName(String collectionName);
 
-    List<T> findAllArtifactsByMuseumName(String museumName);
+    List<T> findAllArtefactsByMuseumName(String museumName);
 
     void deleteById(Long id);
 

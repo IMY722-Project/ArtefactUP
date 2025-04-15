@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.ArtefactDTO;
-import za.ac.up.artifactup.dto.mapper.ArtefactMapper;
+import za.ac.up.artifactup.dto.mapper.ArtefactMapperImpl;
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.service.ArtefactService;
 
@@ -20,34 +20,39 @@ import za.ac.up.artifactup.service.ArtefactService;
 @RequiredArgsConstructor
 public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
 
-  private final ArtefactService<Artefact> service;
+    private final ArtefactService<Artefact> service;
 
-  private final ArtefactMapper mapper;
+    private final ArtefactMapperImpl mapper;
 
-  @Override
-  public List<ArtefactDTO> findAll() {
-    return mapper.toDTOs(service.findAll());
-  }
+    @Override
+    public List<ArtefactDTO> findAll() {
+        return mapper.toDTOs(service.findAll());
+    }
 
-  @Override
-  @Transactional
-  public ArtefactDTO create(ArtefactDTO dto) {
-    return mapper.toDTO(service.create(mapper.toEntity(dto)));
-  }
+    @Override
+    @Transactional
+    public ArtefactDTO create(ArtefactDTO dto) {
+        return mapper.toDTO(service.create(mapper.toEntity(dto)));
+    }
 
-  @Override
-  public List<ArtefactDTO> findAllArtifactsByCollectionName(String collectionName) {
-    return mapper.toDTOs(service.findAllArtifactsByCollectionName(collectionName));
-  }
+    @Override
+    public List<ArtefactDTO> findAllArtifactsByCollectionName(String collectionName) {
+        return mapper.toDTOs(service.findAllArtifactsByCollectionName(collectionName));
+    }
 
-  @Override
-  public List<ArtefactDTO> findAllArtefactsByMuseumName(String museumName) {
-    return mapper.toDTOs(service.findAllArtefactsByMuseumName(museumName));
-  }
+    @Override
+    public List<ArtefactDTO> findAllArtefactsByMuseumName(String museumName) {
+        return mapper.toDTOs(service.findAllArtefactsByMuseumName(museumName));
+    }
 
-  @Override
-  @Transactional
-  public void deleteById(Long id) {
-    service.deleteById(id);
-  }
+    @Override
+    @Transactional
+    public void deleteById(Long id) {
+        service.deleteById(id);
+    }
+
+    @Override
+    public Optional<ArtefactDTO> findByName(final String name) {
+        return Optional.empty();
+    }
 }

@@ -15,7 +15,8 @@ public class ValidationAspectUserProgress {
     @Before("@annotation(za.ac.up.artifactup.aspect.ValidateInputUserProgress)")
     public void validateInputs(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
-        if (args.length < 2 || args[0] == null || args[1] == null || !(args[0] instanceof Long huntId) || !(args[1] instanceof String sessionId)) {
+        if (args.length < 2 || args[0] == null || args[1] == null || !(args[0] instanceof final Long huntId) || !(args[1] instanceof final String sessionId)) {
+            throw new ValidationException("Invalid input: huntId and sessionId must not be null or invalid.");
         }
 
         if (huntId <= 0 || sessionId.isEmpty()) {
