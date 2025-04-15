@@ -83,7 +83,7 @@ const ScavengerHunts = () => {
             style={{ backgroundColor: hunt.color }}
             onClick={() => navigate(`/artefactsCollection`)}
           >
-            Join Hunt
+            Try Hunt
           </button>
           
           {/* Rotating orbit images container */}

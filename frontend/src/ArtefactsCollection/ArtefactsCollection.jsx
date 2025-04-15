@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ArtefactsCollection.css";
-import { FaTimes } from "react-icons/fa";
-
+import { MdArrowBackIosNew } from "react-icons/md";
 
 const ArtefactsCollection = () => {
   // Sample artefact data
@@ -88,7 +87,7 @@ const ArtefactsCollection = () => {
             className="close-button-ac"
             onClick={() => (window.location.href = "/scavengerHunts")}
           >
-            <FaTimes />
+            <MdArrowBackIosNew  size={30}/>
           </button>
         </div>
         <h1 className="artefacts-title">Artefact Collection</h1>

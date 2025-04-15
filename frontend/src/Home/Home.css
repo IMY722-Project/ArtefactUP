@@ -15,13 +15,15 @@
   background: rgba(255,255,255,0.95);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 100;
-  padding: 10px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
 }
 
 .brand a {
@@ -29,6 +31,7 @@
   font-weight: bold;
   color: #333;
   text-decoration: none;
+  text-align: center;
 }
 
 .nav-links {
