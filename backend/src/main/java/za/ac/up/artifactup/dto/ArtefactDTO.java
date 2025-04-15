@@ -1,6 +1,7 @@
 package za.ac.up.artifactup.dto;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class ArtefactDTO {
@@ -15,4 +16,5 @@ public class ArtefactDTO {
     private String type;
     private String rights;
     private String medium;
+    private MultipartFile imageFile;
 }

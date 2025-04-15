@@ -20,32 +20,32 @@ public class ArtefactController {
     return ResponseEntity.ok(serviceFacade.findAll());
   }
 
-  @PostMapping("/create")
-  public ResponseEntity<ArtefactDTO> createArtifact(@RequestBody ArtefactDTO artefactDTO) {
+  @PostMapping(value = "/create")
+  public ResponseEntity<ArtefactDTO> createArtefact(@ModelAttribute ArtefactDTO artefactDTO) {
     return ResponseEntity.ok(serviceFacade.create(artefactDTO));
   }
 
   @PutMapping("/update")
-  public ResponseEntity<ArtefactDTO> updateArtifact(@RequestBody ArtefactDTO artefactDTO) {
+  public ResponseEntity<ArtefactDTO> updateArtefact(@RequestBody ArtefactDTO artefactDTO) {
     return ResponseEntity.ok(serviceFacade.create(artefactDTO));
   }
 
   @DeleteMapping("delete/{id}")
-  public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+  public ResponseEntity<Void> deleteArtefact(@PathVariable Long id) {
     serviceFacade.deleteById(id);
     return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/collection/{collectionName}")
-  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByCollectionName(
+  public ResponseEntity<List<ArtefactDTO>> findAllArtefactsByCollectionName(
       @PathVariable String collectionName) {
     return ResponseEntity.ok(serviceFacade.findAllArtifactsByCollectionName(collectionName));
   }
 
   @GetMapping("/museum/{museumName}")
-  public ResponseEntity<List<ArtefactDTO>> findAllArtifactsByMuseumName(
+  public ResponseEntity<List<ArtefactDTO>> findAllArtefactsByMuseumName(
       @PathVariable String museumName) {
-    return ResponseEntity.ok(serviceFacade.findAllArtifactsByMuseumName(museumName));
+    return ResponseEntity.ok(serviceFacade.findAllArtefactsByMuseumName(museumName));
   }
 
 }

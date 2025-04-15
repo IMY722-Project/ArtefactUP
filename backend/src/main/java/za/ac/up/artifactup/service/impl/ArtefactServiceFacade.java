@@ -30,8 +30,8 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
 
   @Override
   @Transactional
-  public ArtefactDTO create(ArtefactDTO artefact) {
-    return mapper.toDTO(service.create(mapper.toEntity(artefact)));
+  public ArtefactDTO create(ArtefactDTO dto) {
+    return mapper.toDTO(service.create(mapper.toEntity(dto)));
   }
 
   @Override
@@ -40,8 +40,8 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
   }
 
   @Override
-  public List<ArtefactDTO> findAllArtifactsByMuseumName(String museumName) {
-    return mapper.toDTOs(service.findAllArtifactsByMuseumName(museumName));
+  public List<ArtefactDTO> findAllArtefactsByMuseumName(String museumName) {
+    return mapper.toDTOs(service.findAllArtefactsByMuseumName(museumName));
   }
 
   @Override
