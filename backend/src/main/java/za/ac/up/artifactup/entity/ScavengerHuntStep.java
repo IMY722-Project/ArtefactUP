@@ -7,11 +7,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/***
+ * TODO:
+ * 1. Add S3 url for image
+ */
 @Entity
 @Data
 @NoArgsConstructor
@@ -39,7 +42,4 @@ public class ScavengerHuntStep {
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String clue;
-
-    @Column(nullable = false, unique = true)
-    private String qrCode;
 }

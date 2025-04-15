@@ -1,5 +1,8 @@
 package za.ac.up.artifactup.service.impl;
 
+import java.util.List;
+import java.util.Optional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,8 +10,6 @@ import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.dto.mapper.ArtefactMapper;
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.service.ArtefactService;
-
-import java.util.List;
 
 /**
  * An implementation of ArtefactService to be used with DTO's.
