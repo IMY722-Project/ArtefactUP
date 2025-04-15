@@ -4,43 +4,56 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
-@Table(name = "artefacts")
 @Data
 @NoArgsConstructor
 public class Artefact {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Column(nullable = false, length = 500)
-  private String title;
+    @Column(nullable = false, length = 500)
+    private String title;
 
-  @Column(nullable = false)
-  private String artist;
+    @Column(nullable = false)
+    private String creator;
 
-  @Column(columnDefinition = "TEXT")
-  private String description;
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
-  @ManyToOne
-  @JoinColumn(name = "cat_id", nullable = false)
-  private Category category;
+    @ManyToOne
+    @JoinColumn(name = "collection_id", nullable = false)
+    private Collection collection;
 
-  @Column(nullable = false)
-  private String location;
+    @ManyToOne
+    @JoinColumn(name = "museum_id", nullable = false)
+    private Museum museum;
 
-  @Column(nullable = false)
-  private LocalDate date;
+    @Column(nullable = false)
+    private String dateCreated;
 
-  @Column(nullable = false, updatable = false)
-  private LocalDateTime created;
+    @Column(nullable = false)
+    private String locationCreated;
 
-  @PrePersist
-  protected void onCreate() {
-    this.created = LocalDateTime.now();
-  }
+    @Column(nullable = false)
+    private String physicalDimensions;
+
+    @Column(nullable = false)
+    private String rights;
+
+    @Column(nullable = false)
+    private String medium;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @ElementCollection
+    @CollectionTable(name = "artefact_field_link",
+        joinColumns = {@JoinColumn(name = "artefact_id", referencedColumnName = "id")})
+    @MapKeyColumn(name = "artefact_field")
+    @Column(name = "link")
+    private Map<String,String> fieldAdditionalInfoHttpLinks;
 }
