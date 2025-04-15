@@ -6,9 +6,11 @@ import ArtefactDetails from './ArtefactDetails/ArtefactDetails';
 import ArtefactsCollection from './ArtefactsCollection/ArtefactsCollection';
 import ScanPage from './ScanPage/ScanPage';
 import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
   return (
+    <ParallaxProvider>
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
@@ -18,6 +20,7 @@ function App() {
           <Route path="/scan" element={<ScanPage />} />
 
       </Routes>
+    </ParallaxProvider>
   );
 }
 
