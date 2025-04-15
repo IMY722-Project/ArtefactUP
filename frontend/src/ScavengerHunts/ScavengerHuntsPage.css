@@ -1,10 +1,11 @@
 /* Container for the entire page */
 .scavenger-hunts-page {
-  width: 100%;
+  max-width:100%;
   min-height: 100vh;
   background-color: #f9ebd7; /* Optional background color */
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Wrapper for top circle and overlay */

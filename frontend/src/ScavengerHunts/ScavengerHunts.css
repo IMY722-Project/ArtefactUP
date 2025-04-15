@@ -14,9 +14,9 @@
 
 /* Container for the scavenger hunts section */
 .scavenger-hunts {
+  max-width: 100%;
   padding: 40px 20px;
   text-align: center;
-  background: var(--bg-color);
   font-family: var(--font-family);
 }
 
