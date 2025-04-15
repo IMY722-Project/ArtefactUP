@@ -3,6 +3,7 @@ import "./Home.css";
 import OperatingHours from "./OperatingHours.jsx";
 import TourPackages from "./TourPackages/TourPackages.tsx";
 import { useNavigate } from "react-router-dom";
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 
 function Home() {
   // const [menuOpen, setMenuOpen] = useState(false);
@@ -12,14 +13,9 @@ function Home() {
 
   return (
     <div className="home">
-      <nav className="navbar">
-        <div className="navbar-container">
-          <div className="brand">
-            <a href="/">University of Pretoria</a>
+<div className="menu-button">
+          <HamburgerMenu  />
           </div>
-        </div>
-      </nav>
-
       <header className="hero">
         <h1>Welcome to the Museum Scavenger hunts</h1>
         <p>Discover history, art, and innovation on campus.</p>

@@ -86,7 +86,7 @@
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-size: 1rem;
-  z-index: 2;
+  
 }
 .center-button:hover {
   opacity: 0.9;
@@ -101,7 +101,7 @@
   height: 100%;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
+  
 }
 
 /* Orbit Images (using images instead of icons) */
