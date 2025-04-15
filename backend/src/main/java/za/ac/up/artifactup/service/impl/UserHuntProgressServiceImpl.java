@@ -25,7 +25,7 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
     @Override
     @ValidateInputUserProgress
     public UserHuntProgress getUserProgress(final Long huntId, final String sessionId) {
-        Optional<UserHuntProgress> userHuntProgress = userHuntProgressRepository.findBySessionUserIdAndHuntId(sessionId, huntId);
+        Optional<UserHuntProgress> userHuntProgress = userHuntProgressRepository.findBySessionIdAndHuntId(sessionId, huntId);
         if (userHuntProgress.isPresent()) {
             log.info("UserHuntProgress found for sessionId: {} and huntId: {}", sessionId, huntId);
             return userHuntProgress.get();
@@ -44,7 +44,7 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
     @ValidateInputUserProgress
     public UserHuntProgress startHunt(final Long huntId, final String sessionId) {
 
-        Optional<UserHuntProgress> userHuntProgress = userHuntProgressRepository.findBySessionUserIdAndHuntId(sessionId, huntId);
+        Optional<UserHuntProgress> userHuntProgress = userHuntProgressRepository.findBySessionIdAndHuntId(sessionId, huntId);
         if (userHuntProgress.isPresent()) {
             log.info("UserHuntProgress already exists");
             return userHuntProgress.get();

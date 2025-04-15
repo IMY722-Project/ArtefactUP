@@ -109,8 +109,5 @@ public class ImageValidation {
 
         return matched;
     }
-
-    static {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
+    
 }

@@ -7,5 +7,5 @@ import za.ac.up.artifactup.entity.UserHuntProgress;
 
 public interface UserHuntProgressRepository extends JpaRepository<UserHuntProgress, Long> {
 
-    Optional<UserHuntProgress> findBySessionUserIdAndHuntId(String sessionId, Long huntId);
+    Optional<UserHuntProgress> findBySessionIdAndHuntId(String sessionId, Long huntId);
 }
