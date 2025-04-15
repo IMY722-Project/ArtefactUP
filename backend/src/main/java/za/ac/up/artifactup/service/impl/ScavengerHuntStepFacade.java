@@ -38,5 +38,10 @@ public class ScavengerHuntStepFacade implements ScavengerHuntStepService<Scaveng
         return scavengerHuntStepService.validateStep(sessionId, huntId, image);
     }
 
+    @Override
+    public ScavengerHuntStepDTO getScavengerHuntStep(final Long huntId, final int currentStep) {
+        return scavengerHuntStepMapper.toDto(scavengerHuntStepService.getScavengerHuntStep(huntId, currentStep));
+    }
+
 }
 

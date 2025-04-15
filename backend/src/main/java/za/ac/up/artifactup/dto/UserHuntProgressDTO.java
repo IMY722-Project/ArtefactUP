@@ -6,8 +6,8 @@ import lombok.Data;
 public class UserHuntProgressDTO {
 
     private long id;
-    private String cognitoUserId;
+    private String sessionId;
     private String scavengerHuntName;
-    private int currentStep;
+    private ScavengerHuntStepDTO currentStep;
     private boolean completed;
 }

@@ -24,8 +24,8 @@ public class UserHuntProgressController {
     }
 
     @PostMapping("/start/{huntId}")
-    public ResponseEntity<Void> startHunt(@PathVariable Long huntId, @RequestHeader("Session-id") String sessionId) {
-        userHuntProgressFacade.startHunt(huntId, sessionId);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<UserHuntProgressDTO> startHunt(@PathVariable Long huntId, @RequestHeader("Session-id") String sessionId) {
+
+        return ResponseEntity.ok(userHuntProgressFacade.startHunt(huntId, sessionId));
     }
 }

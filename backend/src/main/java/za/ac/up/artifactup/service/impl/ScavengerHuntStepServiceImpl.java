@@ -89,7 +89,9 @@ public class ScavengerHuntStepServiceImpl implements ScavengerHuntStepService<Sc
         });
     }
 
-    private ScavengerHuntStep getScavengerHuntStep(Long huntId, int currentStep) {
+    @Override
+    @Transactional
+    public ScavengerHuntStep getScavengerHuntStep(Long huntId, int currentStep) {
         return scavengerHuntStepRepository.findByHuntIdAndStepNumber(huntId, currentStep).orElseThrow(() -> {
             log.error("Step {} missing for hunt {}", currentStep, huntId);
             return new NotFoundException(String.format("Step %s missing for hunt %s", currentStep, huntId));

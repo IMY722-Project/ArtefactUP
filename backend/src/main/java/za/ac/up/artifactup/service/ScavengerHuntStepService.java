@@ -13,4 +13,7 @@ public interface ScavengerHuntStepService<T> {
     List<T> findAllStepsByScavengerHuntId(long id);
 
     StepValidationResultDTO validateStep(String sessionId, Long huntId, MultipartFile image);
+
+    T getScavengerHuntStep(Long huntId, int currentStep);
+
 }
