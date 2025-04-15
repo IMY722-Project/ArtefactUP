@@ -12,5 +12,7 @@ public interface ScavengerHuntService<T> {
     void deleteById(Long id);
 
     Optional<T> findByName(String name);
+
+    Optional<T> findById(Long id);
 }
 

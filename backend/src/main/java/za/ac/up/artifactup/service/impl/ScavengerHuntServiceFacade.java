@@ -43,4 +43,10 @@ public class ScavengerHuntServiceFacade implements ScavengerHuntService<Scavenge
     public Optional<ScavengerHuntDTO> findByName(String name) {
         return service.findByName(name).map(mapper::toDto);
     }
+
+    @Override
+    public Optional<ScavengerHuntDTO> findById(final Long id) {
+        return service.findById(id)
+                .map(mapper::toDto);
+    }
 }

@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.up.artifactup.dto.UserHuntProgressDTO;
-import za.ac.up.artifactup.service.impl.UserHuntProgressFacade;
+import za.ac.up.artifactup.service.UserHuntProgressService;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/hunts/progress")
 public class UserHuntProgressController {
 
-    private final UserHuntProgressFacade userHuntProgressFacade;
+    private final UserHuntProgressService<UserHuntProgressDTO> userHuntProgressFacade;
 
     @GetMapping("{huntId}")
     public ResponseEntity<UserHuntProgressDTO> getUserProgress(@PathVariable Long huntId, @RequestHeader("Session-id") String sessionId) {

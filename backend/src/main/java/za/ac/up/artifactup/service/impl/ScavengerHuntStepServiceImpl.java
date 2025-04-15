@@ -14,7 +14,6 @@ import za.ac.up.artifactup.dto.mapper.ScavengerHuntStepMapper;
 import za.ac.up.artifactup.entity.ScavengerHuntStep;
 import za.ac.up.artifactup.entity.UserHuntProgress;
 import za.ac.up.artifactup.repository.ScavengerHuntStepRepository;
-import za.ac.up.artifactup.service.ImageValidation;
 import za.ac.up.artifactup.service.ScavengerHuntStepService;
 import za.ac.up.artifactup.service.UserHuntProgressService;
 import za.ac.up.artifactup.service.exceptions.NotFoundException;

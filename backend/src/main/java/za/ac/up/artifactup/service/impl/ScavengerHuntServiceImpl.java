@@ -41,6 +41,7 @@ public class ScavengerHuntServiceImpl implements ScavengerHuntService<ScavengerH
     }
 
     @Transactional
+    @Override
     public Optional<ScavengerHunt> findById(Long id) {
         return huntRepo.findById(id);
     }

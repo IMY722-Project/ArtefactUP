@@ -10,6 +10,7 @@ import za.ac.up.artifactup.aspect.ValidateInputUserProgress;
 import za.ac.up.artifactup.entity.ScavengerHunt;
 import za.ac.up.artifactup.entity.UserHuntProgress;
 import za.ac.up.artifactup.repository.UserHuntProgressRepository;
+import za.ac.up.artifactup.service.ScavengerHuntService;
 import za.ac.up.artifactup.service.UserHuntProgressService;
 import za.ac.up.artifactup.service.exceptions.NotFoundException;
 
@@ -20,7 +21,7 @@ import za.ac.up.artifactup.service.exceptions.NotFoundException;
 public class UserHuntProgressServiceImpl implements UserHuntProgressService<UserHuntProgress> {
 
     private final UserHuntProgressRepository userHuntProgressRepository;
-    private final ScavengerHuntServiceImpl scavengerHuntService;
+    private final ScavengerHuntService<ScavengerHunt> scavengerHuntService;
 
     @Override
     @ValidateInputUserProgress
