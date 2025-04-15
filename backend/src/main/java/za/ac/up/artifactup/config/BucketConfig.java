@@ -9,6 +9,7 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import java.net.URI;
+import java.util.function.Supplier;
 
 @Configuration
 public class BucketConfig {
@@ -32,4 +33,5 @@ public class BucketConfig {
         .credentialsProvider(StaticCredentialsProvider.create(credentials))
         .build();
   }
+
 }

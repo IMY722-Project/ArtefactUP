@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 localstack_data/
+images/
 
 ### STS ###
 .apt_generated

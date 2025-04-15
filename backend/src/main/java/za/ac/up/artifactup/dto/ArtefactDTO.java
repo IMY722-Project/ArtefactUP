@@ -16,5 +16,6 @@ public class ArtefactDTO {
     private String type;
     private String rights;
     private String medium;
+    private String imageUrl;
     private MultipartFile imageFile;
 }

@@ -29,6 +29,6 @@ public class BucketServiceImpl implements BucketService {
         .build();
 
     s3Client.putObject(request, RequestBody.fromBytes(file.getBytes()));
-    return "%s/%s/%s".formatted(awsEndpoint, "museum-artefacts", file.getOriginalFilename());
+    return file.getOriginalFilename();
   }
 }

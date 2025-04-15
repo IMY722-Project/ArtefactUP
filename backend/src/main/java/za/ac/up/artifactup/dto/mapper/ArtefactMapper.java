@@ -15,6 +15,7 @@ public interface ArtefactMapper {
 
   @Mapping(target = "type", expression = "java(artefact.getCollection().getName())")
   @Mapping(target = "museumName", source = "museum.name")
+  @Mapping(target = "imageUrl", source = "imageUrl",qualifiedByName = "mapToURL")
   ArtefactDTO toDTO(Artefact artefact);
 
   List<ArtefactDTO> toDTOs(List<Artefact> artefacts);
