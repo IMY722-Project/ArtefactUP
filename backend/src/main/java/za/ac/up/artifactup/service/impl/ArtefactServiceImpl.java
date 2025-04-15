@@ -60,7 +60,7 @@ public class ArtefactServiceImpl implements ArtefactService<Artefact> {
 
     @Override
     @Transactional
-    public Optional<Artefact> findByName(String name) {
-        return repository.findByName(name);
+    public Optional<Artefact> findByTitle(String name) {
+        return repository.findByTitle(name);
     }
 }

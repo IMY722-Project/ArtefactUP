@@ -17,8 +17,8 @@ public class ArtefactQualifier {
     private final BucketService bucketService;
 
     @Named("stringToArtefact")
-    public Artefact stringToArtefact(String artefactName) {
-        return artefactService.findByName(artefactName).orElseThrow(() -> new RuntimeException("Artefact \"" + artefactName + "\" does not exist"));
+    public Artefact stringToArtefact(String artefactTitle) {
+        return artefactService.findByTitle(artefactTitle).orElseThrow(() -> new RuntimeException("Artefact \"" + artefactTitle + "\" does not exist"));
     }
 
 

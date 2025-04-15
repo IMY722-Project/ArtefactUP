@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.ArtefactDTO;
-import za.ac.up.artifactup.dto.mapper.ArtefactMapperImpl;
+import za.ac.up.artifactup.dto.mapper.ArtefactMapper;
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.service.ArtefactService;
 
@@ -22,7 +22,7 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
 
     private final ArtefactService<Artefact> service;
 
-    private final ArtefactMapperImpl mapper;
+    private final ArtefactMapper mapper;
 
     @Override
     public List<ArtefactDTO> findAll() {
@@ -52,7 +52,7 @@ public class ArtefactServiceFacade implements ArtefactService<ArtefactDTO> {
     }
 
     @Override
-    public Optional<ArtefactDTO> findByName(final String name) {
+    public Optional<ArtefactDTO> findByTitle(final String name) {
         return Optional.empty();
     }
 }

@@ -15,5 +15,5 @@ public interface ArtefactService<T> {
 
     void deleteById(Long id);
 
-    Optional<T> findByName(String name);
+    Optional<T> findByTitle(String name);
 }

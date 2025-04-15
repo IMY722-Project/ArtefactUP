@@ -14,5 +14,5 @@ public interface ArtefactRepository extends JpaRepository<Artefact, Long> {
 
     List<Artefact> findAllByMuseumName(String museumName);
 
-    Optional<Artefact> findByName(String name);
+    Optional<Artefact> findByTitle(String name);
 }
