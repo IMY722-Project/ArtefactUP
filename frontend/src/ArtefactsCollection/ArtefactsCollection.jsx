@@ -73,6 +73,14 @@ const ArtefactsCollection = () => {
     <div className="artefacts-collection-page">
     {/* Half-circle header */}
     <div className="top-circle-ac">
+      <div className="close-button-container">
+    <button 
+          className="close-button" 
+          onClick={() => window.location.href = '/scavengerHunts'}
+        >
+          &times;
+        </button>
+        </div>
       <h1 className="artefacts-title">Artefact Collection</h1>
     </div>
       <main className="ac-main">

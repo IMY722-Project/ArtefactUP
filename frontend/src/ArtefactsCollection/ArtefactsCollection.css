@@ -17,7 +17,27 @@
   flex-direction: column;
   color: var(--text-color);
 }
+.close-button-container{
+  width: 100%;
+  padding-left: 40px;
+  padding-top: 20px;
+}
 
+.close-button {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: var(--text-light);
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 /* Header */
 .ac-header {
   text-align: center;
@@ -198,9 +218,10 @@
   border-bottom-right-radius: 100% 50%;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   padding-top: 10px;
   overflow: hidden;
 }
@@ -218,7 +239,7 @@
 /* Responsive adjustments */
 @media (min-width: 768px) {
   .top-circle {
-    height: 180px;         /* Increased height on larger screens */
+    height:200px;         /* Increased height on larger screens */
     padding: 20px;
   }
   .artefacts-title {
