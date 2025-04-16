@@ -1,0 +1,192 @@
+/* Define CSS Variables for easy customization */
+:root {
+  --primary-color: #ff5a5f;
+  --secondary-color: #1a1a1a;
+  --bg-color: #f7f7f7;
+  --text-dark: #333;
+  --text-light: #f7f7f7;
+  --accent-color: #ff5a5f;
+  --font-family: 'Montserrat', sans-serif;
+}
+
+/* Overall Page Container */
+.artefact-details {
+  position: relative;
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: #f9ebd7;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  overflow: hidden;
+  padding-top: 60px; /* Space for header */
+  padding: 10px;
+}
+
+/* Header with Close Button */
+.artefact-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.close-button {
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: #fff;
+  font-size: 0.8rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content */
+.artefact-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Info Section: Artefact Image and Details */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.artefact-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.text-info {
+  padding: 0 20px;
+  text-align: left;
+}
+
+.artefact-title {
+  font-size: 2rem;
+  margin: 10px 0;
+  color: var(--secondary-color);
+}
+
+.artefact-subtitle {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.artefact-meta {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.artefact-description p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Mascot Section */
+.mascot-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background: var(--primary-color);
+  border-radius: 12px;
+  color: #fff;
+  margin-top: 20px;
+  position: relative;
+}
+
+.mascot-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.mascot-bubble {
+  background: rgba(255,255,255,0.9);
+  color: var(--secondary-color);
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  flex: 1;
+  position: relative;
+}
+
+/* Speech bubble triangle */
+.mascot-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.9) transparent transparent transparent;
+}
+
+/* Mobile-First: Vertical Layout */
+@media (max-width: 767px) {
+  .artefact-content {
+    flex-direction: column;
+    margin: 60px auto 20px;
+    padding: 20px;
+  }
+
+  .text-info {
+    padding: 0;
+  }
+
+  .mascot-section {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Tablet/Large Screen: Horizontal Layout for Info Section */
+@media (min-width: 768px) {
+  .artefact-content {
+    flex-direction: row;
+    gap: 40px;
+    padding: 40px;
+  }
+  
+  .info-section {
+    flex: 2;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mascot-section {
+    flex: 1;
+    align-items: center;
+    margin-top: 0;
+  }
+}

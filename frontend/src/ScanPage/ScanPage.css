@@ -1,0 +1,97 @@
+/* Overall page styling */
+.scan-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #000;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    padding-top: 60px; /* space for fixed header */
+  }
+  
+  /* Header styling */
+  .scan-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 20px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    gap: 20px;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .scan-title {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  /* Container for the webcam / captured image */
+  .scan-container {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Webcam and captured image styles */
+  .webcam-feed,
+  .captured-image {
+    width: 100%;
+    height: 500px;
+    /* height: auto; */
+    display: block;
+  }
+  
+  /* Overlay on camera preview */
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Action buttons */
+  .scan-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .capture-button,
+  .retake-button {
+    padding: 10px 20px;
+    background: #ff5a5f;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .capture-button:hover,
+  .retake-button:hover {
+    background: #e04a4e;
+  }
+  

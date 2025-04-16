@@ -1,0 +1,152 @@
+/* CSS Variables for easy customization */
+:root {
+  --red: #ff5a5f;
+  --blue: #1e90ff;
+  --green: #28a745;
+  --yellow: #ffc107;
+  --text-color: #333;
+  --bg-color: #f7f7f7;
+  --card-bg: #ffffff;
+  --font-family: 'Montserrat', sans-serif;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Container for the scavenger hunts section */
+.scavenger-hunts {
+  max-width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+/* Layout for hunt cards */
+.scavenger-hunts-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Hunt Card Styling */
+.hunt-card {
+  border-radius: 10px;
+  width: 380px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
+}
+.hunt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header of the Card */
+.hunt-header {
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #fff;
+}
+.hunt-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* Description Text */
+.hunt-description {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin: 15px 0;
+}
+
+/* Orbit Container */
+.orbit-container {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  margin: 0 auto; /* Center horizontally */
+  border-radius: 50%;
+}
+
+/* Center "Join Hunt" Button: Static */
+.center-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  padding: 10px 20px;
+  background: #000; /* fallback color */
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  
+}
+.center-button:hover {
+  opacity: 0.9;
+}
+
+/* Orbit Images Container that rotates */
+.orbit-icons-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+  
+}
+
+/* Orbit Images (using images instead of icons) */
+.orbit-icon {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Position orbit images around the center (adjust percentages to space them out) */
+.orbit-icon-1 {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.orbit-icon-2 {
+  top: 50%;
+  right: 10%;
+  transform: translate(0, -50%);
+}
+.orbit-icon-3 {
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.orbit-icon-4 {
+  top: 50%;
+  left: 10%;
+  transform: translate(0, -50%);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .center-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .orbit-container {
+    width: 300px;
+    height: 300px;
+  }
+  .orbit-icon {
+    width: 65px;
+    height: 65px;
+  }
+}

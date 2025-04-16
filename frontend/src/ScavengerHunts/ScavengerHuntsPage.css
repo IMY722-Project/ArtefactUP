@@ -1,0 +1,73 @@
+/* Container for the entire page */
+.scavenger-hunts-page {
+  max-width:100%;
+  min-height: 100vh;
+  background-color: #f9ebd7; /* Optional background color */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Wrapper for top circle and overlay */
+.top-circle-wrapper {
+  position: relative;
+  display: flex;
+}
+
+/* Half-Circle at the Top */
+.top-circle {
+  width: 100%;
+  height: 250px; /* Fixed height for mobile-first design */
+  background: linear-gradient(135deg, #FFAF40, #C48B3B);
+  border-bottom-left-radius: 100% 50%;
+  border-bottom-right-radius: 100% 50%;
+  display: flex;
+  justify-content: center; 
+  position: relative;
+  z-index: 1;
+}
+
+/* Title Overlaid on the Half-Circle */
+.scavenger-title {
+  padding-top: 40px;
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Progress Overlay: positioned to overlap the bottom of the circle */
+.progress-overlay {
+  position: absolute;
+  bottom: -60px; /* Adjust overlap as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Lower z-index than the title so it doesn't cover the title text */
+  z-index: 1;
+}
+
+.menu-button{
+  position: absolute;
+  top: 15px;
+  left:10px;
+  z-index: 10;
+ }
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .top-circle {
+    height: 300px;
+    
+  }
+  .scavenger-title {
+    font-size: 2.5rem;
+  }
+  .menu-button{
+    top: 20px;
+    left:20px;
+   }
+}
+
+
