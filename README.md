@@ -12,7 +12,10 @@ A Progressive Web App (PWA) showcasing artifacts from various museums at the Uni
 
 # Starting local s3 instance
 - `cd backend`
-- docker compose -f localstack-compose.yml up
+- docker compose -f compose_localstack.yml up
+- aws --endpoint-url=http://localhost:4566
+- to upload images `aws --endpoint-url=http://localhost:4566 s3 cp ./images/ s3://museum-artefacts/ --recursive --exclude "*" --include "*.jpg"`
+- to list all artefacts in folder `aws --endpoint-url=http://localhost:4566 s3 ls s3://museum-artefacts/`
 
 # Api Docs
 - navigate to http://localhost:8080/swagger-ui/index.html#/
