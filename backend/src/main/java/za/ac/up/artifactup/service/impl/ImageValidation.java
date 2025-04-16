@@ -1,11 +1,9 @@
-package za.ac.up.artifactup.service;
+package za.ac.up.artifactup.service.impl;
 
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.S3Object;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.opencv.core.Core;
@@ -20,31 +18,27 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import za.ac.up.artifactup.entity.Artefact;
-import za.ac.up.artifactup.entity.FileStorage;
-import za.ac.up.artifactup.entity.FileType;
-import za.ac.up.artifactup.repository.FileStorageRepository;
+import za.ac.up.artifactup.service.BucketService;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class ImageValidation {
 
-    private final FileStorageRepository fileStorageRepository;
-    private final AmazonS3 amazonS3;
-    private final String bucketName = "museum-artefacts";
+    private final BucketService bucketService;
 
     public boolean validateImage(Artefact artefact, MultipartFile image) {
 
-        FileStorage ref = fileStorageRepository
-                .findFirstByArtefactAndFileType(artefact, FileType.IMAGE)
-                .orElseThrow(() -> {
-                    log.error("No reference image for artefact {}", artefact.getId());
-                    return new IllegalStateException("Reference image missing");
-                });
+        nu.pattern.OpenCV.loadLocally();
+        String s3Key = artefact.getImageUrl();
+        byte[] refBytes;
 
-        String s3Key = ref.getS3Url();
-
-        byte[] refBytes = getS3ImageBytes(s3Key);
+        try {
+            refBytes = getS3ImageBytes(s3Key);
+        } catch (IOException e) {
+            log.error("Could not get image from S3 bucket: {}", s3Key, e);
+            return false;
+        }
         byte[] userBytes = getImageBytes(image);
 
         Mat refMat = Imgcodecs.imdecode(new MatOfByte(refBytes), Imgcodecs.IMREAD_COLOR);
@@ -57,13 +51,8 @@ public class ImageValidation {
         return imageMatching(refMat, userMat);
     }
 
-    private byte[] getS3ImageBytes(String s3Key) {
-        try (S3Object obj = amazonS3.getObject(bucketName, s3Key)) {
-            return obj.getObjectContent().readAllBytes();
-        } catch (IOException ex) {
-            log.error("S3 download failed for {}", s3Key, ex);
-            throw new RuntimeException("Cannot download reference image", ex);
-        }
+    private byte[] getS3ImageBytes(String s3Key) throws IOException {
+        return bucketService.getObjectFromBucket(s3Key);
     }
 
     private byte[] getImageBytes(MultipartFile image) {
@@ -109,5 +98,5 @@ public class ImageValidation {
 
         return matched;
     }
-    
+
 }

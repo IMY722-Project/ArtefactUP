@@ -14,7 +14,6 @@ import za.ac.up.artifactup.dto.mapper.ScavengerHuntStepMapper;
 import za.ac.up.artifactup.entity.ScavengerHuntStep;
 import za.ac.up.artifactup.entity.UserHuntProgress;
 import za.ac.up.artifactup.repository.ScavengerHuntStepRepository;
-import za.ac.up.artifactup.service.ImageValidation;
 import za.ac.up.artifactup.service.ScavengerHuntStepService;
 import za.ac.up.artifactup.service.UserHuntProgressService;
 import za.ac.up.artifactup.service.exceptions.NotFoundException;
@@ -59,13 +58,15 @@ public class ScavengerHuntStepServiceImpl implements ScavengerHuntStepService<Sc
         boolean isValidMatch = imageValidation.validateImage(scavengerHuntStep.getArtefact(), image);
 
         if (isValidMatch) {
-            if (userHuntProgress.getCurrentStep() > scavengerHuntStep.getHunt().getSteps().size()) {
+            if (userHuntProgress.getCurrentStep() + 1 > scavengerHuntStep.getHunt().getSteps().size()) {
                 userHuntProgress.setCompleted(true);
+                userHuntProgressService.saveUserProgress(userHuntProgress);
                 return new StepValidationResultDTO(true, true, null, "Congratulations! You have completed the hunt!");
             } else {
                 userHuntProgress.setCurrentStep(userHuntProgress.getCurrentStep() + 1);
+                log.info(String.format("UserHuntProgress updated | sessionId=%s huntId=%s currentStep=%d", sessionId, huntId, userHuntProgress.getCurrentStep()));
+                userHuntProgressService.saveUserProgress(userHuntProgress);
             }
-            userHuntProgressService.saveUserProgress(userHuntProgress);
 
             return new StepValidationResultDTO(true, false, getNextHuntStep(scavengerHuntStep), "Correct! Here is your next clue!");
         } else {

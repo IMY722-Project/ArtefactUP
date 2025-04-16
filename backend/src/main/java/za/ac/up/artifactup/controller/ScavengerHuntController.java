@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.up.artifactup.dto.ScavengerHuntDTO;
-import za.ac.up.artifactup.service.impl.ScavengerHuntServiceFacade;
+import za.ac.up.artifactup.service.ScavengerHuntService;
 
 @RestController
 @RequestMapping("/api/hunts")
 @RequiredArgsConstructor
 public class ScavengerHuntController {
 
-    private final ScavengerHuntServiceFacade scavengerHuntServiceFacade;
+    private final ScavengerHuntService<ScavengerHuntDTO> scavengerHuntServiceFacade;
 
     @PostMapping("/create")
     public ResponseEntity<ScavengerHuntDTO> createHunt(@RequestBody ScavengerHuntDTO scavengerHuntDTO) {
