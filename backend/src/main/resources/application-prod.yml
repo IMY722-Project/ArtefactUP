@@ -11,3 +11,7 @@ aws:
   secret.key: ${AWS_SECRET_KEY}
   access.key: ${AWS_ACCESS_KEY}
   endpoint: https://s3.af-south-1.amazonaws.com
+
+openai:
+  secret.key: ${OPENAI_SECRET_KEY}
+  endpoint: https://api.openai.com/v1/chat/completions
