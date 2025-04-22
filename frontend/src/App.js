@@ -7,6 +7,7 @@ import ArtefactsCollection from './ArtefactsCollection/ArtefactsCollection';
 import ScanPage from './ScanPage/ScanPage';
 import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import Chatbot from './Chatbot';
 
 function App() {
   return (
@@ -23,5 +24,17 @@ function App() {
     </ParallaxProvider>
   );
 }
+
+
+
+function App() {
+  return (
+    <div className="App">
+      {/* Other components */}
+      <Chatbot />
+    </div>
+  );
+}
+
 
 export default App;
