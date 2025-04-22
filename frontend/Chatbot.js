@@ -1,6 +1,6 @@
-// src/components/Chatbot.js
+
 import React, { useState } from 'react';
-import './Chatbot.css'; // You'll style this as per your design
+import './Chatbot.css';
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([{ role: 'assistant', content: 'Hi! How can I help you with the scavenger hunt?' }]);
@@ -23,6 +23,14 @@ const Chatbot = () => {
 
     setMessages(prev => [...prev, botMessage]);
     setInput('');
+
+    const askResponse = await fetch('/api/chatbot/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: input })
+    });
+    const askData = await askResponse.json();
+    
   };
 
   return (
@@ -46,5 +54,8 @@ const Chatbot = () => {
     </div>
   );
 };
+
+
+
 
 export default Chatbot;
