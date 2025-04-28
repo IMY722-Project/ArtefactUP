@@ -1,5 +1,5 @@
 /* Define CSS Variables for easy customization */
-:root {
+/* :root {
   --primary-color: #ff5a5f;
   --secondary-color: #1a1a1a;
   --bg-color: #f7f7f7;
@@ -7,7 +7,7 @@
   --text-light: #f7f7f7;
   --accent-color: #ff5a5f;
   --font-family: 'Montserrat', sans-serif;
-}
+} */
 
 /* Overall Page Container */
 .artefact-details {

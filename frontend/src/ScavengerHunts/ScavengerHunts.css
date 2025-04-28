@@ -7,7 +7,7 @@
   --text-color: #333;
   --bg-color: #f7f7f7;
   --card-bg: #ffffff;
-  --font-family: 'Montserrat', sans-serif;
+  /* --font-family: 'Montserrat', sans-serif; */
   --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

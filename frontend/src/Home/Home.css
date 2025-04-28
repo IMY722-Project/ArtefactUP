@@ -1,9 +1,11 @@
 /* Global Styles */
+
 .home {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  
   background: #f7f7f7;
 }
 
@@ -91,10 +93,14 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #ff5a5f, #f7a18d);
+  background: var(--bg-grad1);
   text-align: center;
   color: #fff;
-  padding: 80px 20px;
+  padding: 150px 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-content: space-around;
 }
 
 .hero h1 {
@@ -109,17 +115,22 @@
 
 .cta-button {
   background: #fff;
-  color: #ff5a5f;
+  color: #cf214c;
   text-decoration: none;
   padding: 12px 30px;
   border-radius: 30px;
   font-size: 1rem;
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 50px 0px;
+  filter: drop-shadow( #cf214c 0px 7px 4px);
 }
 
 .cta-button:hover {
-  background: #ff5a5f;
+  background: #ff7277;
   color: #fff;
 }
 
@@ -127,3 +138,20 @@
 .content-section {
   padding: 40px 20px;
 }
+
+.wave-container {
+  height: 100%; width: 100%;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  line-height: 0; */
+}
+
+/*       <div class="wave-container">
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0,30 Q125,80 250,30 T500,30 V150 H0 Z" ></path>
+          </svg>
+        </div> */

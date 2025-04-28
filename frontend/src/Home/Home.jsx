@@ -8,18 +8,18 @@ import HamburgerMenu from "../HamburgerMenu/HamburgerMenu.jsx";
 function Home() {
   // const [menuOpen, setMenuOpen] = useState(false);
   // const toggleMenu = () => setMenuOpen(prev => !prev);
-  
+
   const navigate = useNavigate();
 
   return (
     <div className="home">
-<div className="menu-button">
-          <HamburgerMenu  />
-          </div>
+      <div className="menu-button">
+        <HamburgerMenu />
+      </div>
       <header className="hero">
-        <h1>Welcome to the Museum Scavenger hunts</h1>
+        <h1>UP Museum Scavenger Hunt</h1>
         <p>Discover history, art, and innovation on campus.</p>
-        <button className="cta-button" onClick={() => navigate(`/scavengerHunts`)}>
+        <button id="explore-hunts-btn" className="cta-button" onClick={() => navigate(`/scavengerHunts`)}>
           Explore Hunts
         </button>
       </header>
