@@ -31,12 +31,13 @@
 
 /* Hunt Card Styling */
 .hunt-card {
-  border-radius: 10px;
-  width: 380px;
+  border-radius: 20px;
+  width: 80%;
   padding: 20px;
   background-color: var(--card-bg);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow);
+  
 }
 .hunt-card:hover {
   transform: translateY(-5px);
@@ -48,7 +49,7 @@
   padding: 10px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  color: #fff;
+  color: var(--text-dark);
 }
 .hunt-header h3 {
   margin: 0;
@@ -57,37 +58,64 @@
 }
 
 /* Description Text */
-.hunt-description {
+/* .hunt-description {
   font-size: 1rem;
   color: var(--text-color);
   margin: 15px 0;
-}
+} */
 
 /* Orbit Container */
 .orbit-container {
   position: relative;
-  width: 380px;
-  height: 380px;
-  margin: 0 auto; /* Center horizontally */
+  width: 100%;
+  height: 30vh;
+  margin: 0 auto; 
   border-radius: 50%;
 }
 
-/* Center "Join Hunt" Button: Static */
+/* .center-button {
+  background-color: var(--hunt-color);
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+} */
+
 .center-button {
+  background: #fff;
+  color: var(--text-bright);
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+  border: solid 2px var(--text-bright);
+  border-radius: 25px;
+  font-size: 1.5rem;
+  /* filter: drop-shadow(var(--text-bright) 0px 7px 4px); */
+}
+
+
+/* Center "Join Hunt" Button: Static */
+/* .center-button {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: none;
   padding: 10px 20px;
-  background: #000; /* fallback color */
+  background: #000;
   color: #fff;
   border-radius: 25px;
   cursor: pointer;
   transition: opacity 0.3s ease, transform 0.3s ease;
   font-size: 1rem;
-  
-}
+} */
+
 .center-button:hover {
   opacity: 0.9;
 }
@@ -104,17 +132,21 @@
   
 }
 
+.orbit-icons-container img{
+  width: 100px;
+}
+
 /* Orbit Images (using images instead of icons) */
-.orbit-icon {
+/* .orbit-icon {
   position: absolute;
   width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-}
+} */
 
 /* Position orbit images around the center (adjust percentages to space them out) */
-.orbit-icon-1 {
+/* .orbit-icon-1 {
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -133,10 +165,10 @@
   top: 50%;
   left: 10%;
   transform: translate(0, -50%);
-}
+} */
 
 /* Responsive Adjustments */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .center-button {
     padding: 8px 16px;
     font-size: 0.9rem;
@@ -149,4 +181,4 @@
     width: 65px;
     height: 65px;
   }
-}
+} */

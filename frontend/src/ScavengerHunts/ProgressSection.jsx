@@ -14,7 +14,7 @@ const ProgressSection = ({
 
   return (
     <section className="progress-section">
-      <h2 className="progress-title">Quest Meter</h2>
+      {/* <h2 className="progress-title">Quest Meter</h2> */}
       
       <div className="progress-bar-container">
         <div

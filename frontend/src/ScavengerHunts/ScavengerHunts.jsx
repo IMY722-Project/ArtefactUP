@@ -6,7 +6,7 @@ import "./ScavengerHunts.css";
 const scavengerHunts = [
   {
     id: 1,
-    title: "Red Hunt",
+    title: "The Crimson Quest",
     description:
       "Uncover artefacts that resonate with passion and history in the red-themed hunt.",
     color: "#ff5a5f",
@@ -64,30 +64,24 @@ const ScavengerHunts = () => {
   // HuntOrbit Component inside ScavengerHunts
   const HuntOrbit = ({ hunt, navigate }) => {
     // We apply parallax rotation only to the container of orbit images.
-    const { ref } = useParallax({
-      rotate: [-135, 360],
-    });
+    // const { ref } = useParallax({
+    //   rotate: [-135, 360],
+    // });
 
     return (
-      <div className="hunt-card" style={{ borderColor: hunt.color }}>
-        <div className="hunt-header" style={{ backgroundColor: hunt.color }}>
+      <div className="hunt-card" style={{ '--hunt-color': hunt.color }}>
+        <div className="hunt-header">
           <h3>{hunt.title}</h3>
         </div>
-        <p className="hunt-description">{hunt.description}</p>
+        {/* <p className="hunt-description">{hunt.description}</p> */}
 
         {/* Orbit container wrapper */}
         <div className="orbit-container">
           {/* Center Join Hunt button (remains static) */}
-          <button
-            className="hunt-button center-button"
-            style={{ backgroundColor: hunt.color }}
-            onClick={() => navigate(`/artefactsCollection`)}
-          >
-            Try Hunt
-          </button>
           
           {/* Rotating orbit images container */}
-          <div ref={ref} className="orbit-icons-container">
+          <div 
+          className="orbit-icons-container">
             {hunt.orbitImages.map((imgUrl, index) => (
               <img
                 key={index}
@@ -98,6 +92,15 @@ const ScavengerHunts = () => {
             ))}
           </div>
         </div>
+        <div className="btnDiv">
+          <button
+            className="hunt-button center-button"
+            
+            onClick={() => navigate(`/artefactsCollection`)}
+          >
+            Explore
+          </button>
+          </div>
       </div>
     );
   };
