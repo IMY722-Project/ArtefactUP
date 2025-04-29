@@ -8,10 +8,14 @@
   --bg-color: #f7f7f7;
   --text-dark: #202224;
   --text-light: #f7f7f7;
+  --text-bright:#ff4b4b;
   --accent-color: #ff5a5f;
   --font-family: 'Montserrat', 'Hevetica',sans-serif;
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b,#c01943);
-  --menu-bg: linear-gradient(135deg, #ffb057, #d66049);
+  /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
+  --menu-bg: linear-gradient(135deg, rgba(255, 203, 143, 0.915), #d66049);
+  --bg-grad2: linear-gradient(135deg, #ff8b3e, #ff4b4b,#931a38);
+
 }
 
 body {

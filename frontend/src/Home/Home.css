@@ -98,6 +98,7 @@
   color: #fff;
   padding: 150px 20px;
   height: 100vh;
+  width: 100%;
   box-sizing: border-box;
   flex-direction: column;
   align-content: space-around;
@@ -111,6 +112,18 @@
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
+}
+
+.hero::after {
+  /* swooping line at bottom - will find a better solution later, but this works for now */
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: white;
+  border-radius: 50% 50% 0 0;
 }
 
 .cta-button {

@@ -13,7 +13,8 @@ const ScavengerHuntsPage = () => {
           <div className="menu-button">
           <HamburgerMenu  />
           </div>
-          <h1 className="scavenger-title">Scavenger Hunts</h1>
+          <h1 className="scavenger-title">Museum Quests</h1>
+          {/* playing around with names, can change it back later */}
           <div className="progress-overlay">
             <ProgressSection
               completedHunts={3}

@@ -1,5 +1,7 @@
 import React from 'react';
 import './ProgressSection.css';
+import { TiStar } from "react-icons/ti";
+
 
 const ProgressSection = ({
   completedHunts = 2,
@@ -12,7 +14,7 @@ const ProgressSection = ({
 
   return (
     <section className="progress-section">
-      <h2 className="progress-title">Hunt Progress</h2>
+      <h2 className="progress-title">Quest Meter</h2>
       
       <div className="progress-bar-container">
         <div
@@ -22,13 +24,15 @@ const ProgressSection = ({
       </div>
       
       <p className="progress-text">
-        {completedHunts} out of {totalHunts} hunts completed ({huntProgressPercent}%)
+        {completedHunts} / {totalHunts} <TiStar/> 
       </p>
       <p className="progress-text">
-        {totalArtefactsFound} artefacts found out of {totalArtefacts}
+        {totalArtefactsFound} / {totalArtefacts} <TiStar/> 
       </p>
     </section>
   );
 };
 
 export default ProgressSection;
+// TODO: replace w more descriptive icons
+// museum quests, museum missions, quest meter, quest log, 
