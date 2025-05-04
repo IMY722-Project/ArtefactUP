@@ -47,9 +47,9 @@ const ArtefactDetails = () => {
             <p className="artefact-meta">
               <strong>Medium:</strong> {artefact.medium}
             </p>
-            <div className="artefact-description">
-              <p>{artefact.description}</p>
-            </div>
+            <div className="artefact-description"
+            dangerouslySetInnerHTML={{ __html: artefact.description }}/>
+           
           </div>
         </div>
 
