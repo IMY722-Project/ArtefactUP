@@ -5,7 +5,7 @@
   --bg-color: #f7f7f7;
   --text-dark: #333;
   --text-light: #f7f7f7;
-  --accent-color: #ff5a5f;
+  --accent-color: #EB2456;
   --font-family: 'Montserrat', sans-serif;
 }
 
@@ -14,7 +14,7 @@
   position: relative;
   max-width: 100%;
   min-height: 100vh;
-  background-color: #f9ebd7;
+  background-color: #fadd9d;
   font-family: var(--font-family);
   color: var(--text-dark);
   overflow: hidden;

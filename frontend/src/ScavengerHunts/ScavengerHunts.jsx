@@ -4,12 +4,7 @@ import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
 
 const COLOR_PALETTE = [
-  "#ff5a5f",
-  "#1e90ff",
-  "#28a745",
-  "#ffc107",
-  "#6f42c1",
-  "#fd7e14",
+  "#FF5C0C",
 ];
 
 const ScavengerHunts = () => {

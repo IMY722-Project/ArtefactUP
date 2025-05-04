@@ -2,7 +2,8 @@
 :root {
   --primary-color: #ff5a5f;
   --secondary-color: #1a1a1a;
-  --treasure-gold: #d4af37;
+  --treasure-gold: #FFAE2B;
+  --btn-gold:#ffbc40;
   --font-family: "Montserrat", sans-serif;
   --text-color: #333;
 }
@@ -61,7 +62,7 @@
 
 /* Artefact Card */
 .ac-card {
-  background: rgba(253, 247, 227, 0.95); /* Parchment-like overlay */
+  background: #fff4e0; /* Parchment-like overlay */
   border: 2px solid var(--treasure-gold);
   border-radius: 8px;
   padding: 12px;
@@ -85,7 +86,7 @@
 }
 .ac-clue-number {
   font-weight: bold;
-  color: var(--treasure-gold);
+  color: #FFAE2B;
   padding: 4px 8px;
   background: rgba(247, 247, 247, 0.9);
   border-radius: 4px;
@@ -130,7 +131,7 @@
   height: 40px;
 }
 .scan-btn {
-  background: var(--treasure-gold);
+  background: var(--btn-gold);
   color: var(--secondary-color);
   display: flex;
   align-items: center;
@@ -138,11 +139,11 @@
   font-size: 1.2rem;
 }
 .hint-btn {
-  background: var(--primary-color);
+  background: var(--btn-gold);
   color: #fff;
 }
 .reveal-btn {
-  background: var(--secondary-color);
+  background: #FF4412;
   color: #fff;
 }
 .ac-btn:hover {
@@ -207,7 +208,7 @@
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  background-color: #f9ebd7; /* Page background color */
+  background-color: #ffedd1; /* Page background color */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -217,7 +218,7 @@
 .top-circle-ac {
   width: 100%;
   height: 80px; /* Mobile-first reduced height */
-  background: linear-gradient(135deg, #ffbc40, #f99f20);
+  background: linear-gradient(135deg, #ffbc40, #ff9914);
   border-bottom-left-radius: 100% 50%;
   border-bottom-right-radius: 100% 50%;
   position: relative;
