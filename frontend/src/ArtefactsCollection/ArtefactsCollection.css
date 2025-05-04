@@ -217,7 +217,7 @@
 .top-circle-ac {
   width: 100%;
   height: 80px; /* Mobile-first reduced height */
-  background: linear-gradient(135deg, #ffaf40, #c48b3b);
+  background: linear-gradient(135deg, #ffbc40, #f99f20);
   border-bottom-left-radius: 100% 50%;
   border-bottom-right-radius: 100% 50%;
   position: relative;
