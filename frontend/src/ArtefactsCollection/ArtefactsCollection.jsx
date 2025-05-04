@@ -66,10 +66,6 @@ const ArtefactsCollection = () => {
             onClick={() => handleScan(item.id)}
           >
             <FaCameraRetro className="cam-icon"/>
-
-            {/* <span role="img" aria-label="camera">
-              📷
-            </span> */}
           </button>
           <button className="ac-btn hint-btn" onClick={toggleHint}>
             Hint

@@ -3,6 +3,11 @@ import "./ScavengerHuntsPage.css";
 import ScavengerHunts from "./ScavengerHunts";
 import ProgressSection from "./ProgressSection";
 import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import { GiAncientColumns } from "react-icons/gi";
+import { RiBankLine } from "react-icons/ri";
+
+
+
 
 const ScavengerHuntsPage = () => {
   return (
@@ -11,9 +16,15 @@ const ScavengerHuntsPage = () => {
       <div className="top-circle-wrapper">
         <div className="top-circle">
           <div className="menu-button">
-          <HamburgerMenu  />
+            <HamburgerMenu />
           </div>
-          <h1 className="scavenger-title">Museum Quests</h1>
+          <div className="scavenger-header">
+            <div className="museum-icon">
+              <GiAncientColumns />
+              <RiBankLine />
+            </div>
+            <h1 className="scavenger-title">Museum Quests</h1>
+          </div>
           {/* playing around with names, can change it back later */}
           <div className="progress-overlay">
             <ProgressSection

@@ -3,6 +3,13 @@ import './ProgressSection.css';
 // import { GiAchievement } from "react-icons/gi";
 import { FaTrophy } from "react-icons/fa";
 import { GiTiedScroll } from "react-icons/gi";
+import { GiTreasureMap } from "react-icons/gi";
+
+import { RiTreasureMapLine } from "react-icons/ri";
+import { RiCopperCoinLine } from "react-icons/ri";
+
+
+
 
 
 
@@ -34,7 +41,8 @@ const ProgressSection = ({
           </p>
 
           <div className='progress-icon'>
-            <FaTrophy />
+            <GiTreasureMap />
+            <RiTreasureMapLine/>
           </div>
         </div>
         <div>
@@ -44,6 +52,7 @@ const ProgressSection = ({
 
           <div className='progress-icon'>
             <GiTiedScroll />
+            <RiCopperCoinLine/>
           </div>
         </div>
       </div>
