@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdArrowBackIosNew } from "react-icons/md";
 import "./ScanPage.css";
 
 const ScanPage = () => {
@@ -8,12 +9,19 @@ const ScanPage = () => {
   return (
     <div className="scan-page">
       {/* Header with Back Button and Title */}
-      <header className="scan-header">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          ←
-        </button>
-        <h1 className="scan-title">Scan Artefact</h1>
-      </header>
+      <div className="top-circle-ac">
+        <div className="close-button-container-scan">
+          <button
+            className="close-button-ac"
+            onClick={() => navigate(-1)}
+          >
+            <MdArrowBackIosNew size={30} />
+          </button>
+        </div>
+        <div className="header-title-container">
+        <h1 className="page-title">Scan</h1>
+        </div>
+      </div>
 
       <div className="scan-container">
         <img
