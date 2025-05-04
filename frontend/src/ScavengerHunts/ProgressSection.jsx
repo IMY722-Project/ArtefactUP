@@ -1,6 +1,10 @@
 import React from 'react';
 import './ProgressSection.css';
-import { TiStar } from "react-icons/ti";
+// import { GiAchievement } from "react-icons/gi";
+import { FaTrophy } from "react-icons/fa";
+import { GiTiedScroll } from "react-icons/gi";
+
+
 
 
 const ProgressSection = ({
@@ -15,20 +19,34 @@ const ProgressSection = ({
   return (
     <section className="progress-section">
       {/* <h2 className="progress-title">Quest Meter</h2> */}
-      
+
       <div className="progress-bar-container">
         <div
           className="progress-bar"
           style={{ width: `${huntProgressPercent}%` }}
         />
       </div>
-      
-      <p className="progress-text">
-        {completedHunts} / {totalHunts} <TiStar/> 
-      </p>
-      <p className="progress-text">
-        {totalArtefactsFound} / {totalArtefacts} <TiStar/> 
-      </p>
+
+      <div className='progress-markers-wrapper'>
+        <div>
+          <p className="progress-text">
+            {completedHunts} / {totalHunts}
+          </p>
+
+          <div className='progress-icon'>
+            <FaTrophy />
+          </div>
+        </div>
+        <div>
+          <p className="progress-text">
+            {totalArtefactsFound} / {totalArtefacts}
+          </p>
+
+          <div className='progress-icon'>
+            <GiTiedScroll />
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

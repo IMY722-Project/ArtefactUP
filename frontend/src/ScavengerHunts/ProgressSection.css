@@ -49,11 +49,19 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     .progress-section {
       padding: 16px;
       margin: 16px 10px;
     }
     
-  }
+  } */
   
+  .progress-icon {
+    padding: 10px;
+    font-size: 2rem
+  }
+
+  .progress-markers-wrapper {
+    display: flex;
+    justify-content: space-evenly }

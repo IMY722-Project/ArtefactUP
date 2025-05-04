@@ -31,7 +31,7 @@
   border: none;
   font-size: larger;
   font-weight: bolder;
-  color: #fff;
+  color: var(--text-bright);
   width: fit-content;
   height:40px;
   cursor: pointer;
@@ -61,14 +61,15 @@
 
 /* Artefact Card */
 .ac-card {
-  background: rgba(253, 247, 227, 0.95); /* Parchment-like overlay */
-  border: 2px solid var(--treasure-gold);
+  background: rgba(255, 252, 244, 0.69); /* Parchment-like overlay */
+  /* border: 2px solid var(--treasure-gold); */
   border-radius: 8px;
   padding: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 85%;
+  margin: 10px auto;
 }
 
 .ac-card:hover {
@@ -85,32 +86,42 @@
 }
 .ac-clue-number {
   font-weight: bold;
-  color: var(--treasure-gold);
-  padding: 4px 8px;
-  background: rgba(247, 247, 247, 0.9);
+  color: var(--text-dark);
+  padding: 4px 18px 4px 8px;
   border-radius: 4px;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .ac-clue-question {
   font-size: 1rem;
+  padding: 10px 2px;
 }
 
 /* Card Image */
 .ac-card-image {
   text-align: center;
   margin-bottom: 8px;
+  padding: 30px;
+  height: 160px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .ac-image {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: fill;
+  border-radius: 10px;
+  /* max-width: 300px; */
 }
 
 /* Pixelated/Blur Effect */
 .pixelated {
-  filter: blur(4px);
-  transition: filter 0.3s ease;
+  /* filter: blur(4px);
+  transition: filter 0.3s ease; */
+
+  image-rendering: pixelated;
+  transform: scale(100); 
 }
 
 /* Card Actions */
@@ -119,17 +130,26 @@
   justify-content: space-around;
   gap: 8px;
 }
+
 .ac-btn {
   padding: 8px 12px;
   border: none;
   border-radius: 20px;
-  font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  width: 40%;
+  width: 30%;
   height: 40px;
+  font-weight: 550;
+  font-size: 1rem;
+  color: var(--text-bright-dark);
 }
-.scan-btn {
+
+.cam-icon {
+  color: var(--text-bright-dark);
+  font-size: 1.5rem;
+}
+
+/* .scan-btn {
   background: var(--treasure-gold);
   color: var(--secondary-color);
   display: flex;
@@ -144,7 +164,7 @@
 .reveal-btn {
   background: var(--secondary-color);
   color: #fff;
-}
+} */
 .ac-btn:hover {
   opacity: 0.9;
 }
@@ -173,8 +193,7 @@
 }
 
 /* Responsive Adjustments */
-@media (min-width: 768px) {
-  /* Switch to grid layout on larger screens */
+/* @media (min-width: 768px) {
   .ac-main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -201,13 +220,13 @@
     height: 40px;
     font-size: 1rem;
   }
-}
+} */
 
 /* Container for the entire page */
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  background-color: #f9ebd7; /* Page background color */
+  background: var(--bg-grad2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -217,7 +236,7 @@
 .top-circle-ac {
   width: 100%;
   height: 80px; /* Mobile-first reduced height */
-  background: linear-gradient(135deg, #ffaf40, #c48b3b);
+  background: white;
   border-bottom-left-radius: 100% 50%;
   border-bottom-right-radius: 100% 50%;
   position: relative;
@@ -232,16 +251,16 @@
 .artefacts-title {
   margin: 0;
   font-size: 1.8rem;
-  color: #fff;
+  color: var(--text-bright);
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
 /* Responsive adjustments */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .top-circle-ac {
-    height: 100px; /* Increased height on larger screens */
+    height: 100px; 
     padding: 20px;
     justify-content: center;
     gap: 0;
@@ -255,4 +274,4 @@
     left: 40px;
     z-index: 10;
   }
-}
+} */

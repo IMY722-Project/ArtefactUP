@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./ArtefactsCollection.css";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { FaCameraRetro } from "react-icons/fa";
+
 
 const ArtefactsCollection = () => {
   // Sample artefact data
@@ -39,6 +41,7 @@ const ArtefactsCollection = () => {
   
   const navigate = useNavigate();
 
+  // TODO: add to cards: completed state when scanned, and revealed state
   // ClueCard component that uses local state for the hint drop-down
   const ClueCard = ({ item }) => {
     const [hintVisible, setHintVisible] = useState(false);
@@ -47,8 +50,8 @@ const ArtefactsCollection = () => {
     return (
       <div className="ac-card">
         <div className="ac-card-header">
-          <span className="ac-clue-number">Clue #{item.clueNumber}</span>
-          <span className="ac-clue-question">{item.question}</span>
+          <span className="ac-clue-number">#{item.clueNumber}</span>
+          <span className="ac-clue-question">some wordy clue here for artifact comes here can you guess the answer bla bla {item.question}</span>
         </div>
         <div className="ac-card-image">
           <img
@@ -62,9 +65,11 @@ const ArtefactsCollection = () => {
             className="ac-btn scan-btn"
             onClick={() => handleScan(item.id)}
           >
-            <span role="img" aria-label="camera">
+            <FaCameraRetro className="cam-icon"/>
+
+            {/* <span role="img" aria-label="camera">
               📷
-            </span>
+            </span> */}
           </button>
           <button className="ac-btn hint-btn" onClick={toggleHint}>
             Hint
@@ -99,6 +104,9 @@ const ArtefactsCollection = () => {
         {items.map(item => (
           <ClueCard key={item.id} item={item} />
         ))}
+        <div className="ac-card last-ac-card">
+          either link to other hunts or show progress of current hunt or add some other way to see progress in current hunt
+        </div>
       </main>
     </div>
   );
