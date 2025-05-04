@@ -1,6 +1,6 @@
 .tour-package-card {
   background: #fff;
-  border-radius: 8px;
+  border-radius: 16px;
   padding: 20px;
   width: 280px;
   margin: 10px;
@@ -16,14 +16,14 @@
 .tour-title {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  border-bottom: 2px solid #ff5a5f;
+  border-bottom: 2px solid #f99f20;
   padding-bottom: 8px;
   color: #333;
 }
 
 .tour-price {
   font-weight: bold;
-  color: #ff5a5f;
+  color: #f99f20;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
@@ -41,6 +41,6 @@
 }
 
 .bullet-icon {
-  color: #ff5a5f;
+  color: #f99f20;
   margin-right: 6px;
 }
