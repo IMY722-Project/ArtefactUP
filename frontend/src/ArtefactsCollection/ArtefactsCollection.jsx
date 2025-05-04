@@ -28,7 +28,7 @@ const ArtefactsCollection = () => {
       <div className="ac-card">
         <div className="ac-card-header">
           <span className="ac-clue-number">Clue #{step.stepNumber}</span>
-          <span className="ac-clue-question">{step.artefact.title}</span>
+          <span className="ac-clue-question">???</span>
         </div>
         <div className="ac-card-image">
           <img
