@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: backend
+  docker:
+    compose:
+      enabled: false
+  profiles:
+    active: @spring.profiles.active@
+  datasource:
+    driver-class-name: org.postgresql.Driver
