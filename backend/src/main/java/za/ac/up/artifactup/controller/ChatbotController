@@ -1,0 +1,31 @@
+package za.ac.up.artifactup.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import za.ac.up.artifactup.dto.MuseumDTO;
+import za.ac.up.artifactup.service.MuseumService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/museum")
+
+class ChatbotController {
+
+  private final ChatClient chatClient;
+
+  public ChatbotController(ChatClient.Builder chatClientBuilder) {
+    this.chatClient = chatClientBuilder.build();
+  }
+
+  @GetMapping("v1")
+  String askQuestion(@RequestParam(name = "question") String question) {
+    return chatClient.prompt()
+    .user(question)
+    .call()
+    .chatResponse()
+    .getResult()
+    .getOutput()
+    .getContent();
+  }
