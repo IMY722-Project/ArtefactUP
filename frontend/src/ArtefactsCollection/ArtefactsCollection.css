@@ -141,11 +141,11 @@
   height: 40px;
   font-weight: 550;
   font-size: 1rem;
-  color: var(--text-bright-dark);
+  color: var(--text-bright);
 }
 
 .cam-icon {
-  color: var(--text-bright-dark);
+  color: var(--text-bright);
   font-size: 1.5rem;
 }
 
@@ -175,7 +175,7 @@
   padding: 12px;
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-color);
-  border-left: 4px solid var(--treasure-gold);
+  /* border-left: 4px solid var(--treasure-gold); */
   border-radius: 4px;
   font-size: 0.95rem;
   animation: dropDown 0.3s ease-out;

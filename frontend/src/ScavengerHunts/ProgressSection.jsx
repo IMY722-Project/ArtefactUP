@@ -42,7 +42,7 @@ const ProgressSection = ({
 
           <div className='progress-icon'>
             <GiTreasureMap />
-            <RiTreasureMapLine/>
+            {/* <RiTreasureMapLine/> */}
           </div>
         </div>
         <div>
@@ -52,7 +52,7 @@ const ProgressSection = ({
 
           <div className='progress-icon'>
             <GiTiedScroll />
-            <RiCopperCoinLine/>
+            {/* <RiCopperCoinLine/> */}
           </div>
         </div>
       </div>
