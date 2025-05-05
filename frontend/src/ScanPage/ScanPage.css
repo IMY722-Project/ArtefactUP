@@ -51,7 +51,8 @@
   }
   
   .capture-button,
-  .retake-button {
+  .retake-button, 
+  .submit-button {
     padding: 10px 20px;
     background: #FF4412;
     border: none;
@@ -63,7 +64,8 @@
   }
   
   .capture-button:hover,
-  .retake-button:hover {
+  .retake-button:hover, 
+  .submit-button:hover {
     background: #FF4412;
   }
   

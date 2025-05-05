@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
+import { getSessionId } from "../utils/session.js";
 
 const COLOR_PALETTE = [
   "#FF5C0C",
@@ -46,6 +47,26 @@ const ScavengerHunts = () => {
       .filter(url => url)
       .slice(0, 4);
 
+
+
+      const handleStartHunt = async (hunt) => {
+        const sessionId = getSessionId();
+        try {
+          const res = await fetch(`/api/hunts/progress/start/${hunt.id}`, {
+            method: "POST",
+            headers: { "Session-id": sessionId },
+          });
+          if (!res.ok) {
+            throw new Error(`Failed to start hunt (${res.status})`);
+          }
+          // only navigate once the POST succeeds
+          navigate("/artefactsCollection", { state: { hunt } });
+        } catch (e) {
+          console.error("Error starting hunt:", e);
+          alert("Unable to start hunt. Please try again.");
+        }
+      };
+
     return (
       <div className="hunt-card" style={{ borderColor: color }}>
         <div className="hunt-header" style={{ backgroundColor: color }}>
@@ -56,14 +77,13 @@ const ScavengerHunts = () => {
         <div className="orbit-container">
           {/* Static center button */}
           <button
-            className="hunt-button center-button"
-            style={{ backgroundColor: color }}
-            onClick={() =>
-              navigate("/artefactsCollection", { state: { hunt } })
-            }
-          >
-            Try Hunt
-          </button>
+          className="hunt-button center-button"
+          style={{ backgroundColor: color }}
+          onClick={() => handleStartHunt(hunt)}
+        >
+          Try Hunt
+        </button>
+
           {/* Rotating orbit images */}
           <div ref={ref} className="orbit-icons-container">
             {orbitImages.map((url, i) => (
