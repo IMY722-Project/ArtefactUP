@@ -16,14 +16,14 @@
 .tour-title {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  border-bottom: 2px solid #f99f20;
+  border-bottom: 2px solid #ff9914;
   padding-bottom: 8px;
   color: #333;
 }
 
 .tour-price {
   font-weight: bold;
-  color: #f99f20;
+  color: #ff9914;
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
@@ -41,6 +41,6 @@
 }
 
 .bullet-icon {
-  color: #f99f20;
+  color: #ff9914;
   margin-right: 6px;
 }

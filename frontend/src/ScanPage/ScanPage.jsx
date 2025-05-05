@@ -1,20 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./ScanPage.css";
+import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 
 const ScanPage = () => {
   const [capturedImage, setCapturedImage] = useState(null);
-  const navigate = useNavigate();
   return (
     <div className="scan-page">
-      {/* Header with Back Button and Title */}
-      <header className="scan-header">
-        <button className="back-button" onClick={() => navigate(-1)}>
-          ←
-        </button>
-        <h1 className="scan-title">Scan Artefact</h1>
-      </header>
-
+      <TopCircle pageTitle="Scan" />
       <div className="scan-container">
         <img
           src={capturedImage}

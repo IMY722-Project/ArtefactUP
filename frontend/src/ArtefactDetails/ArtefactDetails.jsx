@@ -1,7 +1,7 @@
-import React from 'react';
-import './ArtefactDetails.css';
-import { FaTimes } from 'react-icons/fa';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React from "react";
+import "./ArtefactDetails.css";
+import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ArtefactDetails = () => {
   const navigate = useNavigate();
@@ -15,23 +15,14 @@ const ArtefactDetails = () => {
 
   return (
     <div className="artefact-details">
-      <header className="artefact-header">
-        <button
-          className="close-button"
-          onClick={() => navigate(-1)}
-        >
-          <FaTimes />
-        </button>
-      </header>
+      <TopCircle pageTitle="Artefact" />
 
-      {/* Main Content Container */}
       <main className="artefact-content">
-        {/* Info Section: Artefact Image and Details */}
         <div className="info-section">
           <div className="image-wrapper">
-            <img 
-              src={artefact.imageUrl} 
-              alt={artefact.title} 
+            <img
+              src={artefact.imageUrl}
+              alt={artefact.title}
               className="artefact-image"
             />
           </div>
@@ -47,22 +38,20 @@ const ArtefactDetails = () => {
             <p className="artefact-meta">
               <strong>Medium:</strong> {artefact.medium}
             </p>
-            <div className="artefact-description">
-              <p>{artefact.description}</p>
-            </div>
+            <div
+              className="artefact-description"
+              dangerouslySetInnerHTML={{ __html: artefact.description }}
+            />
           </div>
         </div>
 
         {/* Mascot Section */}
         <div className="mascot-section">
-          <img 
-            src="/images/mascot.png" 
-            alt="Mascot" 
-            className="mascot-image"
-          />
+          <img src="/images/mascot.png" alt="Mascot" className="mascot-image" />
           <div className="mascot-bubble">
             <p>
-              Hi there! I'm Masey, your guide. Did you know that this artefact is wonderfully curated at the {artefact.museumName}?
+              Hi there! I'm Masey, your guide. Did you know that this artefact
+              is wonderfully curated at the {artefact.museumName}?
             </p>
           </div>
         </div>
