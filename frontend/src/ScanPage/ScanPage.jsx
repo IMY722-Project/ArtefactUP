@@ -1,28 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { MdArrowBackIosNew } from "react-icons/md";
 import "./ScanPage.css";
+import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 
 const ScanPage = () => {
   const [capturedImage, setCapturedImage] = useState(null);
-  const navigate = useNavigate();
   return (
     <div className="scan-page">
-      {/* Header with Back Button and Title */}
-      <div className="top-circle-ac">
-        <div className="close-button-container-scan">
-          <button
-            className="close-button-ac"
-            onClick={() => navigate(-1)}
-          >
-            <MdArrowBackIosNew size={30} />
-          </button>
-        </div>
-        <div className="header-title-container">
-        <h1 className="page-title">Scan</h1>
-        </div>
-      </div>
-
+      <TopCircle pageTitle="Scan" />
       <div className="scan-container">
         <img
           src={capturedImage}

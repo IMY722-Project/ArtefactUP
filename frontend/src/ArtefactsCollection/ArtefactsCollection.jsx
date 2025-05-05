@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdArrowBackIosNew } from "react-icons/md";
+import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ArtefactsCollection.css";
 
@@ -63,18 +63,7 @@ const ArtefactsCollection = () => {
 
   return (
     <div className="artefacts-collection-page">
-      {/* Half-circle header with back button */}
-      <div className="top-circle-ac">
-        <div className="close-button-container-ac">
-          <button
-            className="close-button-ac"
-            onClick={() => navigate(-1)}
-          >
-            <MdArrowBackIosNew size={30} />
-          </button>
-        </div>
-        <h1 className="artefacts-title">{hunt.name}</h1>
-      </div>
+       <TopCircle pageTitle={hunt.name} />
 
       <main className="ac-main">
         {hunt.steps.map((step) => (

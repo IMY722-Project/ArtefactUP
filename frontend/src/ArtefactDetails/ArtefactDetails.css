@@ -18,35 +18,9 @@
   font-family: var(--font-family);
   color: var(--text-dark);
   overflow: hidden;
-  padding-top: 60px; /* Space for header */
-  padding: 10px;
-}
-
-/* Header with Close Button */
-.artefact-header {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
-
-.close-button {
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  color: #fff;
-  font-size: 0.8rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  flex-direction: column;
 
-.close-button:hover {
-  background: rgba(255, 255, 255, 0.3);
 }
 
 /* Main Content */
@@ -156,8 +130,11 @@
 @media (max-width: 767px) {
   .artefact-content {
     flex-direction: column;
-    margin: 60px auto 20px;
-    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 15px;
+    justify-self: center;
+    align-self: center;
   }
 
   .text-info {
