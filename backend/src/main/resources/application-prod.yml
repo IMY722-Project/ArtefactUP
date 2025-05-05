@@ -13,3 +13,5 @@ aws:
   endpoint: https://s3.af-south-1.amazonaws.com
   s3:
     bucket-name: museum-artefacts-aup
+
+spring.ai.openai.api-key: YOUR_OPENAI_API_KEY
