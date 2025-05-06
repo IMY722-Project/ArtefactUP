@@ -1,5 +1,6 @@
 .tour-packages-container {
   background: #fff;
+  border-radius: 8px;
   padding: 40px 20px;
   text-align: center;
   margin-top: 20px;
@@ -16,4 +17,21 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+}
+
+.show-all-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff9914;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.show-all-btn:hover {
+  background-color: #ff9914;
 }
