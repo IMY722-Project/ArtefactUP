@@ -13,9 +13,15 @@ const ArtefactsCollection = () => {
     return null;
   }
 
-  const handleScan = (id) => {
-    navigate("/scan");
+  const handleScan = (stepId) => {
+    console.log(stepId)
+    const huntId = hunt.id
+   const  artefactId = stepId
+    navigate("/scan", {
+      state: { huntId, artefactId }
+    });
   };
+  
   const handleReveal = (artefact) => {
     navigate("/artefactDetails", { state: { artefact } });
   };
