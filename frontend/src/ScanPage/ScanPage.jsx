@@ -8,6 +8,8 @@ import { useLocation } from "react-router-dom";
 
 const ScanPage = () => {
   const { state } = useLocation();
+   // Will remove after discussion regarding scavenger hunt
+  // eslint-disable-next-line no-unused-vars
   const { huntId, artefactId } = state || {};
   const navigate = useNavigate();
   const [capturedImage, setCapturedImage] = useState(null);
