@@ -26,4 +26,9 @@ public class ScavengerHuntStepController {
         return ResponseEntity.ok(scavengerHuntStepFacade.validateStep(sessionId, huntId, image));
     }
 
+    @PostMapping(value = "/{huntId}/reveal")
+    public ResponseEntity<StepValidationResultDTO> revealHuntStep(@PathVariable Long huntId, @RequestHeader("Session-id") String sessionId) {
+        return ResponseEntity.ok(scavengerHuntStepFacade.revealStep(huntId, sessionId));
+    }
+
 }
