@@ -5,6 +5,7 @@ import { getSessionId } from "../utils/session.js";
 import ValidationPopup from "./ValidationPopup.jsx";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { API } from "../utils/config.js";
 
 const ScanPage = () => {
   const { state } = useLocation();
@@ -61,7 +62,7 @@ const ScanPage = () => {
 
       const sessionId = getSessionId();
 
-      const response = await fetch(`/api/hunts/steps/${huntId}/validate`, {
+      const response = await fetch(`${API}/api/hunts/steps/${huntId}/validate`, {
         method: "POST",
         headers: {
           "Session-id": sessionId,

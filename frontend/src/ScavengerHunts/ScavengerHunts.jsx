@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
+import { API } from "../utils/config.js";
 
 const COLOR_PALETTE = [
   "#FF5C0C",
@@ -15,7 +16,7 @@ const ScavengerHunts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/hunts/all")
+    fetch(`${API}/api/hunts/all`)
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -52,7 +53,7 @@ const ScavengerHunts = () => {
       const handleStartHunt = async (hunt) => {
         const sessionId = getSessionId();
         try {
-          const res = await fetch(`/api/hunts/progress/start/${hunt.id}`, {
+          const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
             method: "POST",
             headers: { "Session-id": sessionId },
           });
