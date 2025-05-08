@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://artifactup.cpiogs86w7dt.af-south-1.rds.amazonaws.com:5432/museum_db
+    url: jdbc:postgresql://artifactup.czwyiwimints.af-south-1.rds.amazonaws.com:5432/museum_db
     username: ${AWS_DB_USER}
     password: ${AWS_DB_PASS}
   jpa:
