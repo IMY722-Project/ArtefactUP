@@ -1,15 +1,15 @@
 package za.ac.up.artifactup.service.impl;
 
-import java.io.IOException;
-
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+import za.ac.up.artifactup.config.BucketConfig;
 import za.ac.up.artifactup.service.BucketService;
+
+import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
@@ -17,13 +17,12 @@ public class BucketServiceImpl implements BucketService {
 
     private final S3Client s3Client;
 
-    @Value("${aws.endpoint}")
-    private String awsEndpoint;
+    private final BucketConfig bucketConfig;
 
     @Override
     public String putObjectIntoBucket(MultipartFile file) throws IOException {
         PutObjectRequest request = PutObjectRequest.builder()
-                .bucket("museum-artefacts")
+                .bucket(bucketConfig.getS3BucketName())
                 .key(file.getOriginalFilename())
                 .contentType(file.getContentType())
                 .build();
@@ -34,7 +33,7 @@ public class BucketServiceImpl implements BucketService {
 
     @Override
     public byte[] getObjectFromBucket(final String objectName) throws IOException {
-        return s3Client.getObjectAsBytes(b -> b.bucket("museum-artefacts").key(objectName)).asByteArray();
+        return s3Client.getObjectAsBytes(b -> b.bucket(bucketConfig.getS3BucketName()).key(objectName)).asByteArray();
     }
 
 }
