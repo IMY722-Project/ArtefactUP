@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.up.artifactup.dto.UserHuntProgressDTO;
+import za.ac.up.artifactup.dto.UserHuntStatsDTO;
 import za.ac.up.artifactup.service.UserHuntProgressService;
 
 @RestController
@@ -27,5 +28,10 @@ public class UserHuntProgressController {
     public ResponseEntity<UserHuntProgressDTO> startHunt(@PathVariable Long huntId, @RequestHeader("Session-id") String sessionId) {
 
         return ResponseEntity.ok(userHuntProgressFacade.startHunt(huntId, sessionId));
+    }
+
+    @GetMapping({"/completed/count"})
+    public ResponseEntity<UserHuntStatsDTO> getCompletedHuntCount(@RequestHeader("Session-id") String sessionId) {
+        return ResponseEntity.ok(userHuntProgressFacade.getUserHuntStats(sessionId));
     }
 }

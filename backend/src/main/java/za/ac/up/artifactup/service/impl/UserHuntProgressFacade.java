@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.UserHuntProgressDTO;
+import za.ac.up.artifactup.dto.UserHuntStatsDTO;
 import za.ac.up.artifactup.dto.mapper.UserHuntProgressMapper;
 import za.ac.up.artifactup.entity.UserHuntProgress;
 import za.ac.up.artifactup.service.UserHuntProgressService;
@@ -36,5 +37,10 @@ public class UserHuntProgressFacade implements UserHuntProgressService<UserHuntP
     @Transactional
     public UserHuntProgressDTO startHunt(Long huntId, String sessionId) {
         return Optional.ofNullable(userHuntProgressService.startHunt(huntId, sessionId)).map(userHuntProgressMapper::toDto).orElse(null);
+    }
+
+    @Override
+    public UserHuntStatsDTO getUserHuntStats(final String sessionId) {
+        return userHuntProgressService.getUserHuntStats(sessionId);
     }
 }

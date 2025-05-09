@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import za.ac.up.artifactup.entity.ScavengerHuntStep;
 
 public interface ScavengerHuntStepRepository extends JpaRepository<ScavengerHuntStep, Long> {
@@ -13,5 +14,8 @@ public interface ScavengerHuntStepRepository extends JpaRepository<ScavengerHunt
     Optional<ScavengerHuntStep> findScavengerHuntStepByHuntName(String name);
 
     List<ScavengerHuntStep> findByHuntIdOrderByStepNumberAsc(long id);
+
+    @Query("SELECT COUNT(s) FROM ScavengerHuntStep s")
+    long countAllSteps();
 
 }
