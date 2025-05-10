@@ -16,4 +16,5 @@ public interface ScavengerHuntStepService<T> {
 
     T getScavengerHuntStep(Long huntId, int currentStep);
 
+    StepValidationResultDTO revealStep(Long huntId, String sessionId);
 }

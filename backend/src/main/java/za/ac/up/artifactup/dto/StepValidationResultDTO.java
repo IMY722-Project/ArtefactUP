@@ -11,4 +11,5 @@ public class StepValidationResultDTO {
     private boolean completed;
     private ScavengerHuntStepDTO scavengerHuntStep;
     private String message;
+    private ScavengerHuntDTO scavengerHunt;
 }

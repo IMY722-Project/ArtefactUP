@@ -11,4 +11,5 @@ public class ScavengerHuntStepDTO {
     private ArtefactDTO artefact;
     private String museumName;
     private String clue;
+    private String hint;
 }
