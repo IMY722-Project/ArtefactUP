@@ -9,7 +9,7 @@
   --text-dark: #202224;
   --text-light: #f7f7f7;
   --text-bright:#ff4b4b;
-  --accent-color: #ff5a5f;
+  --accent-color: #ffbf3e;
   --font-family: 'Montserrat', 'Hevetica',sans-serif;
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b,#c01943);
   /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
@@ -17,6 +17,8 @@
   --bg-grad2: linear-gradient(135deg, #ff8b3e, #ff4b4b,#931a38);
   --text-bright-dark: #931a38;
 
+  --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
+  
 }
 
 body {
@@ -32,4 +34,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+img {
+  max-width: 100%;
 }

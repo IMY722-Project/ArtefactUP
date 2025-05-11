@@ -36,24 +36,24 @@ const ProgressSection = ({
 
       <div className='progress-markers-wrapper'>
         <div>
+          <div className='progress-icon'>
+            {/* <GiTreasureMap /> */}
+            <img src='/images/map_brown.png' className='icon-illustration'/>
+          </div>
+
           <p className="progress-text">
             {completedHunts} / {totalHunts}
           </p>
-
-          <div className='progress-icon'>
-            <GiTreasureMap />
-            {/* <RiTreasureMapLine/> */}
-          </div>
         </div>
         <div>
+          <div className='progress-icon'>
+            {/* <GiTiedScroll /> */}
+            <img src='/images/map_brown.png' className='icon-illustration'/>
+          </div>
           <p className="progress-text">
             {totalArtefactsFound} / {totalArtefacts}
           </p>
 
-          <div className='progress-icon'>
-            <GiTiedScroll />
-            {/* <RiCopperCoinLine/> */}
-          </div>
         </div>
       </div>
     </section>

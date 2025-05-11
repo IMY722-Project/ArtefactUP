@@ -32,7 +32,7 @@ const ArtefactDetails = () => {
           <div className="text-info">
             <h1 className="artefact-title">Mona Lisa</h1>
             <p className="artefact-subtitle">Leonardo da Vinci</p>
-            <p className="artefact-meta"><strong>Estimated date:</strong> 1503 – 1506</p>
+            <p className="artefact-meta"><strong>Date:</strong> 1503 – 1506</p>
             <p className="artefact-meta"><strong>Location:</strong> Louvre Museum (Paris)</p>
             <div className="artefact-description">
               <p>
@@ -44,11 +44,11 @@ const ArtefactDetails = () => {
 
         {/* Mascot Section */}
         <div className="mascot-section">
-          <img 
+          {/* <img 
             src="/images/mascot.png" 
             alt="Mascot" 
             className="mascot-image"
-          />
+          /> */}
           <div className="mascot-bubble">
             <p>
               Hi there! I'm Masey, your guide. Did you know that this iconic painting holds secrets that inspire art lovers around the world?

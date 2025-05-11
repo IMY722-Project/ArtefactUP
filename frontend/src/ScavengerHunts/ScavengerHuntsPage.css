@@ -22,14 +22,17 @@
   height: 45%;
   /* Fixed height for mobile-first design */
   /* background: linear-gradient(135deg, #FFAF40, #C48B3B); */
-  background: #fff;
-  border-bottom-left-radius: 100% 50%;
-  border-bottom-right-radius: 100% 50%;
+  /* background: #ffffff; */
+  background: #ffffffcc;
+
+  border-bottom-left-radius: 100% 30%;
+  border-bottom-right-radius: 100% 30%;
   display: flex;
   justify-content: center;
   position: relative;
   z-index: 1;
   flex-direction: column;
+  padding-bottom: 40px;
 }
 
 /* Title Overlaid on the Half-Circle */

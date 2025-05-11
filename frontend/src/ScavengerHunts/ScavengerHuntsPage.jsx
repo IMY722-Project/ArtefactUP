@@ -20,8 +20,8 @@ const ScavengerHuntsPage = () => {
           </div>
           <div className="scavenger-header">
             <div className="museum-icon">
-              <GiAncientColumns />
-              {/* <RiBankLine /> */}
+              {/* <GiAncientColumns /> */}
+              <img src="/images/museum_illustration.png"/>
             </div>
             <h1 className="scavenger-title">Museum Quests</h1>
           </div>
