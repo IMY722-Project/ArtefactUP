@@ -44,7 +44,7 @@
 /* Progress text */
 .progress-text {
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--text-dark);
   margin: 4px 0;
   font-weight: 600;
 }

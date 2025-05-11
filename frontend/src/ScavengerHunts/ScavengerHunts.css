@@ -37,6 +37,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow);
   background-color: #ffffffb4;
+  margin-bottom: 40px;
 }
 .hunt-card:hover {
   transform: translateY(-5px);

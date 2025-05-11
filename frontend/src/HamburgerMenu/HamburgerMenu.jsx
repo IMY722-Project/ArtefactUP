@@ -8,8 +8,8 @@ const HamburgerMenu = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const links = [
         { label: "Home", href: "/" },
+        { label: "Quests", href: "/scavengerHunts" },
         { label: "About", href: "/about" },
-        { label: "Hunts", href: "/scavengerHunts" },
         { label: "Chat", href: "/chat" },
       ];
   return (
