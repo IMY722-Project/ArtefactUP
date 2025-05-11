@@ -11,49 +11,27 @@ const scavengerHunts = [
       "Uncover artefacts that resonate with passion and history in the red-themed hunt.",
     color: "#ff5a5f",
     orbitImages: [
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
+      "/images/map_red.png"
     ],
   },
   {
     id: 2,
-    title: "Blue Hunt",
+    title: "The Cobalt Quest",
     description:
       "Dive into a cool journey through artefacts imbued with soothing blue tones.",
     color: "#1e90ff",
     orbitImages: [
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
+      "/images/map_blue.png"
     ],
   },
   {
     id: 3,
-    title: "Green Hunt",
+    title: "The Gold Quest",
     description:
       "Explore the rich details and nature-inspired artefacts in the green hunt.",
     color: "#28a745",
     orbitImages: [
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
-    ],
-  },
-  {
-    id: 4,
-    title: "Yellow Hunt",
-    description:
-      "Follow the bright trail of clues and artefacts in the yellow-themed hunt.",
-    color: "#ffc107",
-    orbitImages: [
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
-      "/images/mascot.png",
+      "/images/map_gold.png"
     ],
   },
 ];
@@ -69,7 +47,8 @@ const ScavengerHunts = () => {
     // });
 
     return (
-      <div className="hunt-card" style={{ '--hunt-color': hunt.color }}>
+      <div className="hunt-card" style={{ '--hunt-color': hunt.color }} onClick={() => navigate(`/artefactsCollection`)}
+>
         <div className="hunt-header">
           <h3>{hunt.title}</h3>
         </div>
@@ -92,7 +71,7 @@ const ScavengerHunts = () => {
             ))}
           </div>
         </div>
-        <div className="btnDiv">
+        {/* <div className="btnDiv">
           <button
             className="hunt-button center-button"
             
@@ -100,7 +79,7 @@ const ScavengerHunts = () => {
           >
             Explore
           </button>
-          </div>
+          </div> */}
       </div>
     );
   };

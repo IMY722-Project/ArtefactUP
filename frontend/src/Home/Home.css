@@ -93,7 +93,7 @@
 
 /* Hero Section */
 .hero {
-  background: var(--bg-grad1);
+  background: var(--bg-home-grad);
   text-align: center;
   color: #fff;
   padding: 150px 20px;
@@ -116,7 +116,8 @@
 
 .cta-button {
   background: #fff;
-  color: #cf214c;
+  /* color: #cf214c; */
+  color: var(--primary-color);
   text-decoration: none;
   padding: 12px 30px;
   border-radius: 30px;
@@ -127,7 +128,7 @@
   border-radius: 10px;
   font-size: 1.5rem;
   margin: 50px 0px;
-  filter: drop-shadow( #cf214c 0px 7px 4px);
+  filter: drop-shadow( #b73232 0px 7px 4px);
 }
 
 .cta-button:hover {

@@ -17,10 +17,11 @@ function Home() {
         <HamburgerMenu />
       </div>
       <header className="hero">
-        <h1>UP Museum Scavenger Hunt</h1>
-        <p>Discover history, art, and innovation on campus.</p>
+        <img src="/images/museum_illustration.png"/>
+        <h1>Museum Quest</h1>
+        <p>Discover history, art, and innovation in the UP museums.</p>
         <button id="explore-hunts-btn" className="cta-button" onClick={() => navigate(`/scavengerHunts`)}>
-          Explore Hunts
+          Explore Quests
         </button>
       </header>
 
