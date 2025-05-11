@@ -96,12 +96,13 @@
   background: var(--bg-home-grad);
   text-align: center;
   color: #fff;
-  padding: 150px 20px;
+  padding: 50px 20px;
   height: 90vh;
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
   align-content: space-around;
+  min-height: fit-content;
 }
 
 .hero h1 {
@@ -150,6 +151,22 @@
   height: 80px;
   overflow: hidden;
   line-height: 0; */
+}
+
+.museum-illustration {
+  max-height: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+
+  .museum-illustration {
+    height: 400px;
+  }
+
+  .cta-button {
+    margin: 10px auto
+  }
+
 }
 
 /*       <div class="wave-container">
