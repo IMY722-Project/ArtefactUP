@@ -94,7 +94,7 @@ const ArtefactsCollection = () => {
             <MdArrowBackIosNew  size={30}/>
           </button>
         </div>
-        <h1 className="artefacts-title">Artefact Collection</h1>
+        <h1 className="artefacts-title">Quest name</h1>
       </div>
       <main className="ac-main">
         {items.map(item => (
