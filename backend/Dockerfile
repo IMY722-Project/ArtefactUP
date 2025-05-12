@@ -1,15 +1,20 @@
-FROM eclipse-temurin:21-jdk-alpine
+# Use Debian-based JDK image (compatible with OpenCV native libs)
+FROM eclipse-temurin:21-jdk
 
-# ✅ Add required native libraries for OpenCV to work
-RUN apk add --no-cache libstdc++ ffmpeg
+# Install native libraries required for OpenCV and video/image handling
+RUN apt-get update && apt-get install -y \
+    libstdc++ \
+    ffmpeg \
+ && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
+# Set working directory
 WORKDIR /backend
 
-# Copy your application JAR
-COPY target/ArtefactUP-1.0.0-SNAPSHOT.jar ArtefactUP-1.0.0-SNAPSHOT.jar
+# Copy the compiled JAR from your build
+COPY target/ArtefactUP-1.0.0-SNAPSHOT.jar app.jar
 
-# Expose application and debug ports
+# Expose standard HTTP port and remote debug port
 EXPOSE 8080 5005
 
-# Start the app with remote debugging enabled
-CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "ArtefactUP-1.0.0-SNAPSHOT.jar"]
+# Start application with remote debugging enabled
+CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "app.jar"]
