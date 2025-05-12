@@ -1,20 +1,17 @@
-# Use Debian-based JDK image (compatible with OpenCV native libs)
 FROM eclipse-temurin:21-jdk
 
-# Install native libraries required for OpenCV and video/image handling
-RUN apt-get update && apt-get install -y \
-    libstdc++6 \
-    ffmpeg \
- && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
+# Install OpenCV and dependencies
+RUN apt-get update && \
+    apt-get install -y libopencv-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
+# Set path so Java can find OpenCV native libraries
+ENV LD_LIBRARY_PATH=/usr/lib/jni
+
 WORKDIR /backend
 
-# Copy the compiled JAR from your build
 COPY target/ArtefactUP-1.0.0-SNAPSHOT.jar app.jar
 
-# Expose standard HTTP port and remote debug port
 EXPOSE 8080 5005
 
-# Start application with remote debugging enabled
 CMD ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "app.jar"]
