@@ -3,7 +3,7 @@ FROM eclipse-temurin:21-jdk
 
 # Install native libraries required for OpenCV and video/image handling
 RUN apt-get update && apt-get install -y \
-    libstdc++ \
+    libstdc++6 \
     ffmpeg \
  && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
 
