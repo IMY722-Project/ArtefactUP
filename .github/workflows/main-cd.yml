@@ -36,28 +36,6 @@ jobs:
       - name: Publish image to docker hub
         run: docker push maverickgdn01/artifactup:latest
 
-  #  Build the frontend, React app
-  frontend-build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Frontend
-        run: npm run build
-
-
 
   deploy-backend:
     needs: backend-build
@@ -71,7 +49,7 @@ jobs:
         run: docker rm -f artifactup
       - name: Run Docker Container
         run: |
-          docker run -d -p 8080:8080 --name artifactup \
+          docker run -d -p 8080:8080 -p 5005:5005 --name artifactup \
             -e AWS_DB_USER=${{ secrets.AWS_DB_USER }} \
             -e AWS_DB_PASS=${{ secrets.AWS_DB_PASS }} \
             -e AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} \
