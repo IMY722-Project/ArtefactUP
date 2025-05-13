@@ -1,0 +1,29 @@
+.error-message {
+    text-align: center;
+    flex-direction: column;
+    color: #922;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+  }
+  
+  .error-text {
+    margin: 0 0 16px;
+    font-size: 2rem;
+  }
+  
+  .error-retry-btn {
+    padding: 8px 16px;
+    background: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .error-retry-btn:hover {
+    background: #e14d4f;
+  }
+  

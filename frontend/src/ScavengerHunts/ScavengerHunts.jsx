@@ -4,6 +4,8 @@ import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
 import { API } from "../utils/config.js";
+import Spinner from "../Loader/LoadingIndicator.jsx";
+import ErrorMessage from "../Error/ErrorMessage.jsx";
 
 const COLOR_PALETTE = [
   "#FF5C0C",
@@ -32,8 +34,14 @@ const ScavengerHunts = () => {
       });
   }, []);
 
-  if (loading) return <p className="loading">Loading hunts…</p>;
-  if (error) return <p className="error">Error loading hunts: {error}</p>;
+  if (loading) return <Spinner />;
+  if (error) 
+    return (
+      <ErrorMessage
+        message={`Error loading hunts`}
+        onRetry={() => window.location.reload()}
+      />
+    );
 
   const HuntOrbit = ({ hunt, index }) => {
     // pick a color based on index
