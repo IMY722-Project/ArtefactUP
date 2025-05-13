@@ -6,6 +6,7 @@ import ValidationPopup from "./ValidationPopup.jsx";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { API } from "../utils/config.js";
+import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ScanPage = () => {
   const { state } = useLocation();
@@ -19,6 +20,8 @@ const ScanPage = () => {
   const streamRef = useRef(null);
   const [showIncorrect, setShowIncorrect] = useState(false);
   const [currentStep, setCurrentStep] = useState({});
+  const { markStepFound } =
+    useHuntStore();
 
   useEffect(() => {
     if (!capturedImage) {
@@ -79,6 +82,7 @@ const ScanPage = () => {
       if (!result.matched) {
         setShowIncorrect(true);
       } else {
+        markStepFound(huntId, artefactId);
         navigate("/artefactDetails", { state: { artefact: currentStep.artefact } });
       }
     } catch (err) {

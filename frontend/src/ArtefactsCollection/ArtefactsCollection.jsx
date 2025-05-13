@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ArtefactsCollection.css";
+import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ArtefactsCollection = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const hunt = state?.hunt;
+  const huntData = state?.hunt;
+  const { hunts } = useHuntStore();
+  const hunt = hunts.find((h) => h.id === huntData.id);
 
-  if (!hunt) {
+  if (!huntData) {
     navigate(-1);
     return null;
   }
 
   const handleScan = (stepId) => {
-    console.log(stepId)
-    const huntId = hunt.id
-   const  artefactId = stepId
+    const huntId = huntData.id;
+    const artefactId = stepId;
     navigate("/scan", {
-      state: { huntId, artefactId }
+      state: { huntId, artefactId },
     });
   };
-  
+
   const handleReveal = (artefact) => {
     navigate("/artefactDetails", { state: { artefact } });
   };
@@ -29,6 +31,7 @@ const ArtefactsCollection = () => {
   const ClueCard = ({ step }) => {
     const [hintVisible, setHintVisible] = useState(false);
     const toggleHint = () => setHintVisible((v) => !v);
+
 
     return (
       <div className="ac-card">
@@ -67,12 +70,17 @@ const ArtefactsCollection = () => {
     );
   };
 
+  const visibleStepIds = hunt.steps
+  .filter(s => s.found || s.id === hunt.currentStepId)
+  .map(s => s.id);
+  const visibleSteps = (huntData?.steps || [])
+  .filter(step => visibleStepIds.includes(step.id));
+
   return (
     <div className="artefacts-collection-page">
-       <TopCircle pageTitle={hunt.name} />
-
+      <TopCircle pageTitle={huntData.name} />
       <main className="ac-main">
-        {hunt.steps.map((step) => (
+        {visibleSteps.map((step) => (
           <ClueCard key={step.id} step={step} />
         ))}
       </main>
