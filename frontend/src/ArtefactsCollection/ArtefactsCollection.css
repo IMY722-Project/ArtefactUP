@@ -48,13 +48,15 @@
   align-items: center;
   margin-bottom: 8px;
 }
-.ac-clue-number {
+.ac-clue {
   font-weight: bold;
   color: #FFAE2B;
   padding: 4px 8px;
   background: rgba(247, 247, 247, 0.9);
   border-radius: 4px;
   font-size: 0.9rem;
+  width: 100%;
+  text-align: center;
 }
 .ac-clue-question {
   font-size: 1rem;
@@ -83,17 +85,30 @@
 /* Card Actions */
 .ac-card-actions {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   gap: 8px;
+  width: 100%;
+}
+.ac-current-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  gap: 8px;
+  .ac-btn{
+    width: 50%;
+  }
 }
 .ac-btn {
   padding: 8px 12px;
   border: none;
-  border-radius: 20px;
+  border-radius: 12px;
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.3s ease;
-  width: 40%;
+  width: 80%;
   height: 40px;
 }
 .scan-btn {
@@ -103,6 +118,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  color: #fff;
 }
 .hint-btn {
   background: var(--btn-gold);
@@ -164,8 +180,6 @@
     min-width: 25%;
   }
   .scan-btn {
-    width: 40px;
-    height: 40px;
     font-size: 1rem;
   }
 }
