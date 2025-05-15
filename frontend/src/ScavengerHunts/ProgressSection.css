@@ -58,9 +58,15 @@
     
   } */
 
+.progress-icon-div {
+  /* padding: 30px 30px 3px 30px; */
+  /* font-size: 2rem */
+  margin-top: 10px;
+}
+
 .progress-icon {
-  padding: 30px 30px 3px 30px;
-  font-size: 2rem
+  height: 100px;
+  width: auto;
 }
 
 .progress-markers-wrapper {
