@@ -196,7 +196,7 @@
 #root {
   background: url(../../public/images/bg_pattern.png) repeat-y;
   background-size: 100%;
-  background-attachment: fixed;  
+  background-attachment: fixed;
 }
 
 /* Container for the entire page */
@@ -204,10 +204,14 @@
   max-width: 100%;
   min-height: 100vh;
   /*  var(--bg-grad2) */
-  /* background: url(../../public/images/bg_gallery.png) repeat-y;
-  background-size: 100%;
-  background-attachment: fixed; */
-  background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7,#931a38d5);
+  /* background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7,#931a38d5); */
+  /* background: linear-gradient(135deg, #ff3e3e9f, #ff7e4ba7,#931a38d5); */
+  /*red*/
+  /* background: linear-gradient(135deg, #3ed5ff9f, #863c88a7,#3c1e82d5); */
+  /*blue*/
+  background: linear-gradient(135deg, #ffba189f, #d15151a7, #964e0fd5);
+
+
 
   display: flex;
   flex-direction: column;
