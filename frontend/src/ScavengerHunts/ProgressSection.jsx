@@ -41,24 +41,34 @@ const ProgressSection = () => {
 
   const { completedHunts, totalHunts, artefactsFound, totalArtefacts } =
     progress;
+  const artefactsFoundNoCurrent = artefactsFound - 1;
 
-  const huntPercent = Math.round((completedHunts / totalHunts) * 100);
+  const huntPercent =
+    totalHunts > 0 ? Math.round((completedHunts / totalHunts) * 100) : 0;
 
   return (
     <section className="progress-section">
       <h2 className="progress-title">Hunt Progress</h2>
-
-      <div className="progress-bar-container">
-        <div className="progress-bar" style={{ width: `${huntPercent}%` }} />
-      </div>
-
-      <p className="progress-text">
-        {completedHunts} of {totalHunts} hunts completed ({huntPercent}%)
-      </p>
-      <p className="progress-text">
-        {artefactsFound} {artefactsFound === 1 ? "artefact" : "artefacts"} found
-        of {totalArtefacts}
-      </p>
+      {totalHunts > 0 ? (
+        <>
+          <div className="progress-bar-container">
+            <div
+              className="progress-bar"
+              style={{ width: `${huntPercent}%` }}
+            />
+          </div>
+          <p className="progress-text">
+            {completedHunts} of {totalHunts} hunts completed ({huntPercent}%)
+          </p>
+          <p className="progress-text">
+            {artefactsFoundNoCurrent}{" "}
+            {artefactsFoundNoCurrent === 1 ? "artefact" : "artefacts"} found of{" "}
+            {totalArtefacts}
+          </p>
+        </>
+      ) : (
+        <p className="progress-text">Begin a hunt!</p>
+      )}
     </section>
   );
 };
