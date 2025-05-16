@@ -2,7 +2,7 @@ spring:
   docker:
     compose:
       enabled: true
-      file: "./compose_db.yaml"
+      file: "./backend/compose_db.yaml"
   datasource:
     url: jdbc:postgresql://localhost:5432/museum_db
     username: postgres
