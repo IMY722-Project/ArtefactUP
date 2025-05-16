@@ -10,7 +10,6 @@ const HamburgerMenu = () => {
         { label: "Home", href: "/" },
         { label: "About", href: "/about" },
         { label: "Hunts", href: "/scavengerHunts" },
-        { label: "Chat", href: "/chat" },
       ];
   return (
     <div className="hamburger-menu">

@@ -1,6 +1,7 @@
 package za.ac.up.artifactup.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.up.artifactup.dto.ChatDTO;
 
@@ -23,16 +24,16 @@ class ChatBotController {
     this.chatClient = chatClientBuilder.build();
   }
 
-  @GetMapping("chat")
-  String askQuestion(@RequestBody ChatDTO chatDTO) {
-    return chatClient.prompt()
-                     .system(SYSTEM_PROMPT)
-                     .user(chatDTO.getQuestion())
-                     .call()
-                     .chatResponse()
-                     .getResult()
-                     .getOutput()
-                     .getText();
-
+  @PostMapping("chat")
+  public ResponseEntity<String> askQuestion(@RequestBody ChatDTO chatDTO) {
+    String answer = chatClient.prompt()
+                            .system(SYSTEM_PROMPT)
+                            .user(chatDTO.getQuestion())
+                            .call()
+                            .chatResponse()
+                            .getResult()
+                            .getOutput()
+                            .getText();
+    return ResponseEntity.ok(answer);
   }
 }

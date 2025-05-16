@@ -22,3 +22,9 @@ aws:
   endpoint: https://s3.af-south-1.amazonaws.com
   s3:
     bucket-name: museum-artefacts-aup
+logging:
+  level:
+    root: info
+    org:
+      apache:
+        coyote: trace
