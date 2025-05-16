@@ -93,3 +93,10 @@ Content-Type: image/jpeg
 < ./portrait.jpg
 --boundary123--
 
+###
+GET http://localhost:8080/api/museum/chat
+Content-Type: application/json
+
+{
+  "question": "How do I use this app?"
+}
