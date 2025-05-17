@@ -2,7 +2,7 @@ spring:
   docker:
     compose:
       enabled: true
-      file: "./compose_db.yaml"
+      file: "./backend/compose_db.yaml"
   datasource:
     url: jdbc:postgresql://localhost:5432/museum_db
     username: postgres
@@ -15,4 +15,16 @@ spring:
 aws:
   secret.key: testkey
   access.key: testsecret
-  endpoint: http://s3.localhost.localstack.cloud:4566
+# uncomment to use localstack instead
+#  endpoint: http://s3.localhost.localstack.cloud:4566
+#  s3:
+#    bucket-name: museum-artefacts
+  endpoint: https://s3.af-south-1.amazonaws.com
+  s3:
+    bucket-name: museum-artefacts-aup
+logging:
+  level:
+    root: info
+    org:
+      apache:
+        coyote: trace

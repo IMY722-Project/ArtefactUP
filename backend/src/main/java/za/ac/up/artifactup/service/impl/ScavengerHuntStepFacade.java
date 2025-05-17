@@ -46,5 +46,11 @@ public class ScavengerHuntStepFacade implements ScavengerHuntStepService<Scaveng
         return scavengerHuntStepMapper.toDto(scavengerHuntStepService.getScavengerHuntStep(huntId, currentStep));
     }
 
+    @Override
+    @Transactional
+    public StepValidationResultDTO revealStep(final Long huntId, final String sessionId) {
+        return scavengerHuntStepService.revealStep(huntId, sessionId);
+    }
+
 }
 

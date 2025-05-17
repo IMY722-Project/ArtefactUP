@@ -36,7 +36,7 @@ jobs:
       - name: Publish image to docker hub
         run: docker push maverickgdn01/artifactup:latest
 
-#  Build the frontend, React app and push to dockerhub
+  #  Build the frontend, React app
   frontend-build:
     runs-on: ubuntu-latest
     defaults:
@@ -57,18 +57,11 @@ jobs:
       - name: Build Frontend
         run: npm run build
 
-      - name: Login to docker hub
-        run: docker login -u ${{ secrets.DH_USER }} -p ${{ secrets.DH_PASS }}
-      - name: Build docker image
-        run: docker build -t maverickgdn01/artifactup-frontend .
-      - name: Publish image to docker hub
-        run: docker push maverickgdn01/artifactup-frontend:latest
-
 
 
   deploy-backend:
     needs: backend-build
-    runs-on: [aws-ec2-backend]
+    runs-on: [ aws-ec2-backend ]
     steps:
       - name: Verify Docker Installation
         run: docker --version
@@ -84,18 +77,3 @@ jobs:
             -e AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} \
             -e AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} \
             maverickgdn01/artifactup:latest
-
-  deploy-frontend:
-    needs: frontend-build
-    runs-on: [aws-ec2-backend]
-    steps:
-      - name: Verify Docker Installation
-        run: docker --version
-      - name: Pull Image from Docker Hub
-        run: docker pull maverickgdn01/artifactup-frontend:latest
-      - name: Delete Existing Container
-        run: docker rm -f artifactup-frontend
-      - name: Run Docker Container
-        run: |
-          docker run -d -p 80:80 --name artifactup-frontend \
-            maverickgdn01/artifactup-frontend:latest

@@ -45,4 +45,8 @@ public class ScavengerHuntStep {
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String clue;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String hint;
+
 }

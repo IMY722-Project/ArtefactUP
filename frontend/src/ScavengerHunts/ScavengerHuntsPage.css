@@ -2,7 +2,7 @@
 .scavenger-hunts-page {
   max-width:100%;
   min-height: 100vh;
-  background-color: #f9ebd7; /* Optional background color */
+  background-color: #ffedd1; /* Optional background color */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -18,7 +18,7 @@
 .top-circle {
   width: 100%;
   height: 250px; /* Fixed height for mobile-first design */
-  background: linear-gradient(135deg, #FFAF40, #C48B3B);
+  background: linear-gradient(135deg, #ffbc40, #ff9914);
   border-bottom-left-radius: 100% 50%;
   border-bottom-right-radius: 100% 50%;
   display: flex;

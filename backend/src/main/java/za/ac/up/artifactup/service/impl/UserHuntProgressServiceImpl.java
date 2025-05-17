@@ -7,8 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.aspect.ValidateInputUserProgress;
+import za.ac.up.artifactup.dto.UserHuntStatsDTO;
 import za.ac.up.artifactup.entity.ScavengerHunt;
 import za.ac.up.artifactup.entity.UserHuntProgress;
+import za.ac.up.artifactup.repository.ScavengerHuntStepRepository;
 import za.ac.up.artifactup.repository.UserHuntProgressRepository;
 import za.ac.up.artifactup.service.ScavengerHuntService;
 import za.ac.up.artifactup.service.UserHuntProgressService;
@@ -22,6 +24,7 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
 
     private final UserHuntProgressRepository userHuntProgressRepository;
     private final ScavengerHuntService<ScavengerHunt> scavengerHuntService;
+    private final ScavengerHuntStepRepository scavengerHuntStepRepository;
 
     @Override
     @ValidateInputUserProgress
@@ -67,6 +70,16 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
         newUserHuntProgress.setCompleted(false);
 
         return userHuntProgressRepository.save(newUserHuntProgress);
+    }
+
+    @Override
+    public UserHuntStatsDTO getUserHuntStats(final String sessionId) {
+        int attempted = (int) userHuntProgressRepository.countBySessionId(sessionId);
+        int completed = (int) userHuntProgressRepository.countBySessionIdAndCompletedTrue(sessionId);
+        int artefactsFound = Math.toIntExact(Optional.ofNullable(userHuntProgressRepository.sumOfArtefactsFound(sessionId)).orElse(0L));
+        int totalArtefacts = (int) scavengerHuntStepRepository.count();
+
+        return new UserHuntStatsDTO(attempted, completed, artefactsFound, totalArtefacts);
     }
 
 }

@@ -8,3 +8,6 @@ spring:
     active: @spring.profiles.active@
   datasource:
     driver-class-name: org.postgresql.Driver
+  ai:
+    openai:
+      api-key: <secret>

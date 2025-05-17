@@ -1,5 +1,6 @@
 package za.ac.up.artifactup.config;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,9 +10,9 @@ import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import java.net.URI;
-import java.util.function.Supplier;
 
 @Configuration
+@Getter
 public class BucketConfig {
 
   @Value("${aws.access.key}")
@@ -22,6 +23,9 @@ public class BucketConfig {
 
   @Value("${aws.endpoint}")
   String awsEndpoint;
+
+  @Value("${aws.s3.bucket-name}")
+  String s3BucketName;
 
   @Bean
   public S3Client getAmazonS3Client() {

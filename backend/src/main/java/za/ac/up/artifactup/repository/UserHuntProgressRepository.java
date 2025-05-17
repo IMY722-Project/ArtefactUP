@@ -3,9 +3,19 @@ package za.ac.up.artifactup.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import za.ac.up.artifactup.entity.UserHuntProgress;
 
 public interface UserHuntProgressRepository extends JpaRepository<UserHuntProgress, Long> {
 
     Optional<UserHuntProgress> findBySessionIdAndHuntId(String sessionId, Long huntId);
+
+    long countBySessionId(String sessionId); // hunts attempted
+
+    long countBySessionIdAndCompletedTrue(String sessionId); // hunts completed
+
+    @Query("SELECT SUM(u.currentStep) FROM UserHuntProgress u WHERE u.sessionId = :sessionId")
+    Long sumOfArtefactsFound(@Param("sessionId") String sessionId);
+
 }

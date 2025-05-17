@@ -1,11 +1,8 @@
 import React from "react";
 import "./TourPackageComponent.css";
+import { TourPackage } from "./tourPackagesData";
 
-export interface TourPackage {
-  title: string;
-  price: string;
-  bullets: string[];
-}
+
 
 interface TourPackageComponentProps {
   tour: TourPackage;
