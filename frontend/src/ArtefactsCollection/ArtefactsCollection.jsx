@@ -3,43 +3,69 @@ import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import "./ArtefactsCollection.css";
+import { getSessionId } from "../utils/session.js";
+import { API } from "../utils/config.js";
+import { useEffect } from "react";
 
 const ArtefactsCollection = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const huntData = state?.hunt;
-  const { hunts } = useHuntStore();
+  const { hunts, markStepFound, goToStep, setHunts } = useHuntStore();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hunt = hunts.find(h => h.id === huntData?.id);
+  const [visibleSteps, setVisibleSteps] = useState([]);
+  let hunt = hunts.find(h => h.id === huntData?.id);
+
+  useEffect(() => {
+    const visibleStepIds = hunt.steps
+      .filter(s => s.found || s.id === hunt.currentStepId)
+      .map(s => s.id);
+    setVisibleSteps(
+      huntData.steps.filter(step => visibleStepIds.includes(step.id))
+    );
+    setCurrentIndex(
+      huntData.steps.findIndex(s => s.id === hunt.currentStepId)
+    );
+  }, [hunts, huntData]);
+
 
   if (!huntData) {
     navigate(-1);
     return null;
   }
 
-  // Determine which steps to show
-  const visibleStepIds = hunt.steps
-    .filter(s => s.found || s.id === hunt.currentStepId)
-    .map(s => s.id);
-  const visibleSteps = huntData.steps.filter(step =>
-    visibleStepIds.includes(step.id)
-  );
-
-  // Track current index
-
   const currentStep = visibleSteps[currentIndex];
 
-  // Navigation handlers
   const handlePrev = () => setCurrentIndex(i => Math.max(i - 1, 0));
   const handleNext = () =>
     setCurrentIndex(i => Math.min(i + 1, visibleSteps.length - 1));
 
-  // Scan and reveal
   const handleScan = stepId => {
     navigate("/scan", { state: { huntId: huntData.id, artefactId: stepId } });
   };
-  const handleReveal = artefact => {
-    navigate("/artefactDetails", { state: { artefact } });
+  const handleReveal = async step => {
+    const sessionId = getSessionId();
+    try {
+      const res = await fetch(`${API}/api/hunts/steps/${huntData.id}/reveal`, {
+        method: "POST",
+        headers: { "Session-id": sessionId },
+      });
+      if (!res.ok) {
+        throw new Error(`Reveal failed (${res.status})`);
+      }
+      markStepFound(huntData.id, step.id);
+      
+      const thisHunt = hunts.find(h => h.id === huntData.id);
+      const idx = thisHunt.steps.findIndex(s => s.id === step.id);
+      const nextStepObj = thisHunt.steps[idx + 1];
+      if (nextStepObj) {
+        goToStep(huntData.id, nextStepObj.id);
+      }
+      navigate("/artefactDetails", { state: { artefact: step.artefact } });
+    } catch (e) {
+      console.error("Error revealing artefact:", e);
+      alert("Sorry, could not reveal artefact. Please try again.");
+    }
   };
 
   return (
@@ -61,17 +87,15 @@ const ArtefactsCollection = () => {
             </button>
           )}
         </div>
-
-      {/* Current Clue Card */}
-      {currentStep && (
-        <ClueCard
-          step={currentStep}
-          isCurrent={currentStep.id === hunt.currentStepId}
-          onScan={handleScan}
-          onReveal={handleReveal}
-        />
-      )}
-    </div>
+        {currentStep && (
+          <ClueCard
+            step={currentStep}
+            isCurrent={currentStep.id === hunt.currentStepId}
+            onScan={handleScan}
+            onReveal={handleReveal}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -104,10 +128,7 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
           </>
         )}
 
-        <button
-          className="ac-btn reveal-btn"
-          onClick={() => onReveal(step.artefact)}
-        >
+        <button className="ac-btn reveal-btn" onClick={() => onReveal(step)}>
           Reveal
         </button>
       </div>

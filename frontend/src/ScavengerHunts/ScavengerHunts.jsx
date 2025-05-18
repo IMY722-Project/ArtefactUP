@@ -15,7 +15,7 @@ const ScavengerHunts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const {setHunts, startHunt, } =
+  const {hunts, setHunts, startHunt } =
     useHuntStore();
 
     useEffect(() => {
@@ -70,24 +70,34 @@ const ScavengerHunts = () => {
       .filter(url => url)
       .slice(0, 4);
 
-    const handleStartHunt = async hunt => {
-      const sessionId = getSessionId();
-      try {
-        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
-          method: "POST",
-          headers: { "Session-id": sessionId },
-        });
-        if (!res.ok) {
-          throw new Error(`Failed to start hunt (${res.status})`);
+      const handleStartHunt = async (hunt) => {
+        const local = hunts.find(h => h.id === hunt.id);
+        if (local?.currentStepId != null || local?.currentStepId !== hunt.steps[0]?.id) {
+          console.log("Already started this hunt:", local);
+          console.log("Current step ID:", hunts);
+          return navigate("/artefactsCollection", { state: { hunt } });
         }
-        // only navigate once the POST succeeds
-        startHunt(hunt.id);
-        navigate("/artefactsCollection", { state: { hunt } });
-      } catch (e) {
-        console.error("Error starting hunt:", e);
-        alert("Unable to start hunt. Please try again.");
-      }
-    };
+    
+        const sessionId = getSessionId();
+        try {
+          const res = await fetch(
+            `${API}/api/hunts/progress/start/${hunt.id}`,
+            {
+              method: "POST",
+              headers: { "Session-id": sessionId },
+            }
+          );
+          if (!res.ok) {
+            throw new Error(`Failed to start hunt (${res.status})`);
+          }
+    
+          startHunt(hunt.id);
+          navigate("/artefactsCollection", { state: { hunt } });
+        } catch (e) {
+          console.error("Error starting hunt:", e);
+          alert("Unable to start hunt. Please try again.");
+        }
+      };
 
     return (
       <div className="hunt-card" style={{ borderColor: color }}>
