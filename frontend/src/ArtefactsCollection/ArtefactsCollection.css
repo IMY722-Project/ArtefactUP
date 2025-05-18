@@ -198,7 +198,7 @@
   background-size: 100%;
   background-attachment: fixed;
 }
-
+/* TODO: dont apply this to root - may beed a new div */
 /* Container for the entire page */
 .artefacts-collection-page {
   max-width: 100%;

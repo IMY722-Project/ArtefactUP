@@ -1,24 +1,18 @@
-/* Define CSS Variables for easy customization */
-/* :root {
-  --primary-color: #ff5a5f;
-  --secondary-color: #1a1a1a;
-  --bg-color: #f7f7f7;
-  --text-dark: #333;
-  --text-light: #f7f7f7;
-  --accent-color: #ff5a5f;
-  --font-family: 'Montserrat', sans-serif;
-} */
+
 
 /* Overall Page Container */
 .artefact-details {
   position: relative;
   max-width: 100%;
   min-height: 100vh;
-  background: var(--bg-grad3);
+  /* background: var(--bg-grad3); */
+  background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7, #931a38d5);
+
   font-family: var(--font-family);
   color: var(--text-dark);
   overflow: hidden;
-  padding-top: 60px; /* Space for header */
+  padding-top: 60px;
+  /* Space for header */
   padding: 10px 10px 100px 10px;
 }
 
@@ -79,7 +73,7 @@
   width: 100%;
   max-width: 400px;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .text-info {
