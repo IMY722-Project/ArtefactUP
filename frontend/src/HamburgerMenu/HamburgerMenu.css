@@ -19,7 +19,6 @@
     max-width: 100%;
     padding: 10px;
     z-index: 9; 
-    /* font-size:xx-large; */
     color: var(--text-bright);
   }
   
@@ -73,9 +72,10 @@
   .menu a {
     text-decoration: none;
     color: var(--text-dark);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     transition: color 0.3s ease;
     font-weight: bold;
+    font-family: var(--font-heading);
   }
   
   .menu a:hover {

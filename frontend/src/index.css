@@ -15,7 +15,7 @@
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b,#c01943);
   --bg-home-grad: linear-gradient( #ffd7a3, #da9456, #ff4b4b);
   /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
-  --menu-bg: linear-gradient(135deg, rgba(255, 203, 143, 0.915), #d66049);
+  --menu-bg: linear-gradient(180deg, #ffcf5ed7,#c34c4ce5, #8b2035);
   --bg-grad2: linear-gradient(135deg, #ff8b3e, #ff4b4b,#931a38);
   --text-bright-dark: #931a38;
 
