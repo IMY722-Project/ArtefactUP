@@ -237,7 +237,7 @@
 /* Title Overlaid on the Half-Circle */
 .artefacts-title {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--text-bright);
   text-align: center;
   position: relative;
