@@ -1,19 +1,36 @@
-/* Mobile-first Design using CSS Variables */
-:root {
-  --primary-color: #ff5a5f;
-  --secondary-color: #1a1a1a;
-  --treasure-gold: #FFAE2B;
-  --btn-gold:#ffbc40;
-  --font-family: "Montserrat", sans-serif;
-  --text-color: #333;
+.close-button-container-ac {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
+
+/* Close Button Styles */
+.close-button-ac {
+  background-color: transparent;
+  border: none;
+  font-size: larger;
+  font-weight: bolder;
+  color: var(--text-bright);
+  width: fit-content;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Header */
 .ac-header {
   text-align: center;
   margin-bottom: 16px;
 }
+
 .ac-header h1 {
   font-size: 1.8rem;
-  color: var(--text-color);
+  color: var(--text-dark);
 }
 
 /* Main content – vertical list by default */
@@ -27,14 +44,18 @@
 
 /* Artefact Card */
 .ac-card {
+  background: #ffffffb4;
+  /* Parchment-like overlay */
+  /* border: 2px solid var(--treasure-gold); */
   background: #fff4e0; /* Parchment-like overlay */
   border: 2px solid var(--treasure-gold);
   border-radius: 8px;
   padding: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 85%;
+  margin: 10px auto;
 }
 
 .ac-card:hover {
@@ -49,38 +70,47 @@
   align-items: center;
   margin-bottom: 8px;
 }
-.ac-clue {
+
+.ac-clue-number {
   font-weight: bold;
-  color: #FFAE2B;
-  padding: 4px 8px;
-  background: rgba(247, 247, 247, 0.9);
+  color: var(--text-dark);
+  padding: 4px 18px 4px 8px;
   border-radius: 4px;
-  font-size: 0.9rem;
-  width: 100%;
-  text-align: center;
+  font-size: 1rem;
 }
+
 .ac-clue-question {
   font-size: 1rem;
+  padding: 10px 2px;
 }
 
 /* Card Image */
 .ac-card-image {
   text-align: center;
   margin-bottom: 8px;
+  padding: 30px;
+  height: 160px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
+
 .ac-image {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: fill;
+  border-radius: 10px;
+  /* max-width: 300px; */
 }
 
 /* Pixelated/Blur Effect */
 .pixelated {
-  filter: blur(4px);
-  transition: filter 0.3s ease;
+  /* filter: blur(4px);
+  transition: filter 0.3s ease; */
+
+  image-rendering: pixelated;
+  transform: scale(100);
 }
 
 /* Card Actions */
@@ -123,21 +153,19 @@
 .ac-btn {
   padding: 8px 12px;
   border: none;
-  border-radius: 12px;
-  font-size: 0.9rem;
+  border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
-  width: 80%;
+  width: 30%;
   height: 40px;
+  font-weight: 550;
+  font-size: 1rem;
+  color: var(--text-bright);
 }
-.scan-btn {
-  background: var(--btn-gold);
-  color: var(--secondary-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: #fff;
+
+.cam-icon {
+  color: var(--text-bright);
+  font-size: 1.5rem;
 }
 .hint-btn {
   background: var(--btn-gold);
@@ -156,8 +184,8 @@
   margin-top: 10px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.9);
-  color: var(--text-color);
-  border-left: 4px solid var(--treasure-gold);
+  color: var(--text-dark);
+  /* border-left: 4px solid var(--treasure-gold); */
   border-radius: 4px;
   font-size: 0.95rem;
   animation: dropDown 0.3s ease-out;
@@ -168,6 +196,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -198,14 +227,74 @@
   .scan-btn {
     font-size: 1rem;
   }
-}
+} */
 
+#root {
+  background: url(../../public/images/bg_pattern.png) repeat-y;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+/* TODO: dont apply this to root - may beed a new div */
 /* Container for the entire page */
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  background-color: #ffedd1; /* Page background color */
+  /*  var(--bg-grad2) */
+  /* background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7,#931a38d5); */
+  /* background: linear-gradient(135deg, #ff3e3e9f, #ff7e4ba7,#931a38d5); */
+  /*red*/
+  /* background: linear-gradient(135deg, #3ed5ff9f, #863c88a7,#3c1e82d5); */
+  /*blue*/
+  background: linear-gradient(135deg, #ffba189f, #d15151a7, #964e0fd5);
+
+
+
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
+
+/* Half-Circle Header */
+.top-circle-ac {
+  width: 100%;
+  height: 80px;
+  background: #ffffffcc;
+  border-bottom-left-radius: 100% 30%;
+  border-bottom-right-radius: 100% 30%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* padding: 10px 20px; */
+  overflow: hidden;
+  gap: 10px;
+}
+
+/* Title Overlaid on the Half-Circle */
+.artefacts-title {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--text-bright);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+/* @media (min-width: 768px) {
+  .top-circle-ac {
+    height: 100px; 
+    padding: 20px;
+    justify-content: center;
+    gap: 0;
+  }
+  .artefacts-title {
+    font-size: 2.5rem;
+  }
+
+  .close-button-container-ac {
+    position: absolute;
+    left: 40px;
+    z-index: 10;
+  }
+} */

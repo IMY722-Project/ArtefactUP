@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import "./HamburgerMenu.css";
 import { TiThMenu } from "react-icons/ti";
+import "./HamburgerMenu.css";
 
 const HamburgerMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const links = [
         { label: "Home", href: "/" },
-        { label: "Hunts", href: "/scavengerHunts" },
+        { label: "Quests", href: "/scavengerHunts" },
       ];
   return (
     <div className="hamburger-menu">

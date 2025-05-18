@@ -1,9 +1,9 @@
 // src/components/ProgressSection.jsx
-import React, { useState, useEffect } from "react";
-import "./ProgressSection.css";
-import { getSessionId } from "../utils/session.js";
-import { API } from "../utils/config.js";
+import React, { useEffect, useState } from "react";
 import Spinner from "../Loader/LoadingIndicator.jsx";
+import { API } from "../utils/config.js";
+import { getSessionId } from "../utils/session.js";
+import "./ProgressSection.css";
 
 const ProgressSection = () => {
   const [progress, setProgress] = useState(null);
@@ -74,3 +74,5 @@ const ProgressSection = () => {
 };
 
 export default ProgressSection;
+// TODO: replace w more descriptive icons
+// museum quests, museum missions, quest meter, quest log, 

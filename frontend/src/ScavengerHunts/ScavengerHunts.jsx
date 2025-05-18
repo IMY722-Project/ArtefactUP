@@ -90,11 +90,15 @@ const ScavengerHunts = () => {
     };
 
     return (
+      <div className="hunt-card" style={{ '--hunt-color': hunt.color }} onClick={() => navigate(`/artefactsCollection`)}
+>
+        <div className="hunt-header">
+          <h3>{hunt.title}</h3>
       <div className="hunt-card" style={{ borderColor: color }}>
         <div className="hunt-header" style={{ backgroundColor: color }}>
           <h3>{hunt.name}</h3>
         </div>
-        <p className="hunt-description">{hunt.description}</p>
+        {/* <p className="hunt-description">{hunt.description}</p> */}
 
         <div className="orbit-container">
           {/* Static center button */}
@@ -118,6 +122,15 @@ const ScavengerHunts = () => {
             ))}
           </div>
         </div>
+        {/* <div className="btnDiv">
+          <button
+            className="hunt-button center-button"
+            
+            onClick={() => navigate(`/artefactsCollection`)}
+          >
+            Explore
+          </button>
+          </div> */}
       </div>
     );
   };
