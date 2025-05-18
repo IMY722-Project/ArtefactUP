@@ -8,9 +8,7 @@ const HamburgerMenu = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const links = [
         { label: "Home", href: "/" },
-        { label: "About", href: "/about" },
         { label: "Hunts", href: "/scavengerHunts" },
-        { label: "Chat", href: "/chat" },
       ];
   return (
     <div className="hamburger-menu">
