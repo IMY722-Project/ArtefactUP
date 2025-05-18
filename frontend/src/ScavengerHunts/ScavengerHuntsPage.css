@@ -68,7 +68,16 @@
   z-index: 10;
 }
 
+@media (min-width: 900px) {
+   .museum-icon {
+    width: 30%;
+    margin: auto;
+   }
 
+   .orbit-icon {
+    height: 190px;
+   }
+}
 
 /* Responsive Adjustments */
 /* @media (min-width: 768px) {
