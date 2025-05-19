@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
+import { FaCameraRetro } from "react-icons/fa";
+
 import "./ArtefactsCollection.css";
 
 
@@ -63,16 +65,16 @@ const ArtefactsCollection = () => {
           )}
         </div>
 
-      {/* Current Clue Card */}
-      {currentStep && (
-        <ClueCard
-          step={currentStep}
-          isCurrent={currentStep.id === hunt.currentStepId}
-          onScan={handleScan}
-          onReveal={handleReveal}
-        />
-      )}
-    </div>
+        {/* Current Clue Card */}
+        {currentStep && (
+          <ClueCard
+            step={currentStep}
+            isCurrent={currentStep.id === hunt.currentStepId}
+            onScan={handleScan}
+            onReveal={handleReveal}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -97,7 +99,8 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
         {isCurrent && (
           <>
             <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
-              Scan 📷
+              <FaCameraRetro className="cam-icon" />
+
             </button>
             <button className="ac-btn hint-btn" onClick={toggleHint}>
               Hint
