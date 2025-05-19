@@ -5,9 +5,7 @@ spring:
     compose:
       enabled: false
   profiles:
-    active: @spring.profiles.active@
+    active: ${spring.profiles.active}
   datasource:
     driver-class-name: org.postgresql.Driver
-  ai:
-    openai:
-      api-key: <secret>
+  
