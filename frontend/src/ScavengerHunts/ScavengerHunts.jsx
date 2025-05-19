@@ -45,7 +45,7 @@ const ScavengerHunts = () => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [hunts.length, setHunts]);
 
   if (loading) return <Spinner />;
   if (error)

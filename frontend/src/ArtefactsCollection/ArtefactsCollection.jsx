@@ -11,7 +11,7 @@ const ArtefactsCollection = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const huntData = state?.hunt;
-  const { hunts, markStepFound, goToStep, setHunts } = useHuntStore();
+  const { hunts, markStepFound, goToStep } = useHuntStore();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleSteps, setVisibleSteps] = useState([]);
   let hunt = hunts.find(h => h.id === huntData?.id);
@@ -26,6 +26,7 @@ const ArtefactsCollection = () => {
     setCurrentIndex(
       huntData.steps.findIndex(s => s.id === hunt.currentStepId)
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
 
 
