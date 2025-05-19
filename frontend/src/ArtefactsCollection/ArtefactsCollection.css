@@ -149,31 +149,6 @@
   }
 }
 
-/* Responsive Adjustments */
-/* @media (min-width: 768px) {
-
-.ac-card {
-  max-width: 680px;
-}
-
-  .ac-header h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .ac-header h1 {
-    font-size: 1.8rem;
-  }
-  .ac-btn {
-    padding: 8px 10px;
-    font-size: 0.85rem;
-    min-width: 25%;
-  }
-  .scan-btn {
-    font-size: 1rem;
-  }
-} */ */
 
 #root {
   background: url(../../public/images/bg_pattern.png) repeat-y;
