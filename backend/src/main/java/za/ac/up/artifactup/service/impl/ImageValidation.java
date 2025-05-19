@@ -29,7 +29,7 @@ public class ImageValidation {
 
     public boolean validateImage(Artefact artefact, MultipartFile image) {
 
-        nu.pattern.OpenCV.loadLocally();
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         String s3Key = artefact.getImageUrl();
         byte[] refBytes;
 

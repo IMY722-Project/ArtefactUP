@@ -15,38 +15,37 @@ const ScavengerHunts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const {setHunts, startHunt, } =
-    useHuntStore();
+  const { hunts, setHunts, startHunt } = useHuntStore();
 
-    useEffect(() => {
-      fetch(`${API}/api/hunts/all`)
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          setHuntsData(data);
-    
-          const transformed = data.map((h) => ({
-            id: h.id,
-            currentStepId: h.steps[0]?.id ?? null,
-            steps: h.steps.map((s) => ({
-              id: s.id,
-              found: false,
-            })),
-          }));
-          
-          setHunts(transformed);
-          setLoading(false);
-        })
-        .catch(err => {
-          console.error("Failed to load hunts:", err);
-          setError(err.message);
-          setLoading(false);
-        });
-        // eslint-disable-next-line
-    }, []);  // ← empty array means “run once, on mount”
-
+  useEffect(() => {
+   
+    fetch(`${API}/api/hunts/all`)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        setHuntsData(data);
+        if (hunts.length === 0) {
+        const transformed = data.map(h => ({
+          id: h.id,
+          currentStepId: h.steps[0]?.id ?? null,
+          steps: h.steps.map(s => ({
+            id: s.id,
+            found: false,
+          })),
+        }));
+        
+        setHunts(transformed);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load hunts:", err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [hunts.length, setHunts]);
 
   if (loading) return <Spinner />;
   if (error)
@@ -71,6 +70,14 @@ const ScavengerHunts = () => {
       .slice(0, 4);
 
     const handleStartHunt = async hunt => {
+      const local = hunts.find(h => h.id === hunt.id);
+      if (
+        local?.currentStepId != null ||
+        local?.currentStepId !== hunt.steps[0]?.id
+      ) {
+        return navigate("/artefactsCollection", { state: { hunt } });
+      }
+
       const sessionId = getSessionId();
       try {
         const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
@@ -80,7 +87,7 @@ const ScavengerHunts = () => {
         if (!res.ok) {
           throw new Error(`Failed to start hunt (${res.status})`);
         }
-        // only navigate once the POST succeeds
+
         startHunt(hunt.id);
         navigate("/artefactsCollection", { state: { hunt } });
       } catch (e) {
