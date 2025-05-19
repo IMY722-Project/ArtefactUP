@@ -63,6 +63,10 @@
   cursor: pointer;
   padding: 5px;
 }
+/* TODO: why is there a menu-btn and a menu-button? */
+.menu-button {
+  background-color: #fff;
+}
 
 .menu-icon {
   width: 25px;

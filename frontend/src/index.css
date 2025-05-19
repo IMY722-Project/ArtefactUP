@@ -13,7 +13,7 @@
   --font-family: 'Montserrat', 'Hevetica',sans-serif;
   --font-heading: 'Kurale','Grenze Gotisch','PT Serif', 'Monserrat', 'Helvetica', sans-serif;
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b,#c01943);
-  --bg-home-grad: linear-gradient( #ffd7a3, #da9456, #ff4b4b);
+  --bg-home-grad: linear-gradient( #ffffff, #f5a764, #ff4b4b);
   /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
   --menu-bg: linear-gradient(180deg, #e39e69, #b15d4c);
   --bg-grad2: linear-gradient(135deg, #ff8b3e, #ff4b4b,#931a38);
