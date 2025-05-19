@@ -8,7 +8,7 @@ import Spinner from '../Loader/LoadingIndicator.jsx';
 import ErrorMessage from '../Error/ErrorMessage.jsx';
 import { useHuntStore } from '../stores/useHuntStore.js';
 
-const COLOR_PALETTE = ['#FF5C0C'];
+const COLOR_PALETTE = ['orange', 'blue', 'green'];
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
@@ -51,7 +51,6 @@ const ScavengerHunts = () => {
 
   const HuntOrbit = ({ hunt, index }) => {
     const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
-    const { ref } = useParallax({ rotate: [-135, 360] });
 
     // grab up to 4 artefact images
     const orbitImages = hunt.steps
@@ -79,21 +78,14 @@ const ScavengerHunts = () => {
     };
 
     return (
-      <div className="hunt-card" style={{ borderColor: color }}>
-        <div className="hunt-header" style={{ backgroundColor: color }}>
+      <div  className={`hunt-card ${color}Color`} onClick={handleStart}>
+        <div className={`hunt-header ${color}Color`}>
           <h3>{hunt.name}</h3>
         </div>
 
         <div className="orbit-container">
-          <button
-            className="hunt-button center-button"
-            style={{ backgroundColor: color }}
-            onClick={handleStart}
-          >
-            Try Hunt
-          </button>
 
-          <div ref={ref} className="orbit-icons-container">
+          <div className="orbit-icons-container">
             {orbitImages.map((url, i) => (
               <img
                 key={i}

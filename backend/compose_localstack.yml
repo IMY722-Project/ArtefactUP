@@ -7,7 +7,7 @@ services:
     environment:
       - SERVICES=s3
       - PERSISTENCE=1  # The ONLY setting needed for persistence
-      - LOCALSTACK_AUTH_TOKEN=<secret>
+      - LOCALSTACK_AUTH_TOKEN=ls-jiWukUkI-moVi-7324-6569-ToWOGAPo5956
       - AWS_ACCESS_KEY_ID=testkey
       - AWS_SECRET_ACCESS_KEY=testsecret
     volumes:

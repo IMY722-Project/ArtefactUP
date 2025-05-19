@@ -1,17 +1,31 @@
-/* TopCircle.css */
- .top-circle-gen {
-    width: 100%;
-    min-height: 100px; 
-    background: linear-gradient(135deg, #ffbc40, #ff9914);
-    border-bottom-left-radius: 100% 50%;
-    border-bottom-right-radius: 100% 50%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  
-  }
+/* Half-Circle Header */
+.top-circle-gen {
+  width: 100%;
+  height: 80px;
+  background: #ffffffcc;
+  border-bottom-left-radius: 100% 30%;
+  border-bottom-right-radius: 100% 30%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* padding: 10px 20px; */
+  overflow: hidden;
+  gap: 10px;
+}
+
+/* Title Overlaid on the Half-Circle */
+.title-container-gen {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-bright);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* TopCircle.css
   .title-container-gen{
     display: flex;
     align-items: center;
@@ -70,4 +84,4 @@
       z-index: 10;
     }
   }
-  
+   */

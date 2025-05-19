@@ -46,18 +46,6 @@
   z-index: 2;
 }
 
-/* Progress Overlay: positioned to overlap the bottom of the circle */
-.progress-overlay {
-  /* Adjust overlap as needed */
-
-  /* position: absolute;
-  bottom: -80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%; */
-  /* Lower z-index than the title so it doesn't cover the title text */
-  z-index: 1;
-}
 
 .menu-button {
     /* TODO: change - fix overlap */
