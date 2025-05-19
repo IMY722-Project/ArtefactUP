@@ -8,11 +8,7 @@
         <version>3.4.3</version>
         <relativePath/>
     </parent>
-    <dependency>
-    <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-    </dependency>
-    <groupId>up.ac.za</groupId>
+<groupId>up.ac.za</groupId>
     <artifactId>ArtefactUP</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>backend</name>
@@ -35,7 +31,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+             </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
@@ -55,7 +51,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
@@ -75,7 +71,7 @@
             <groupId>org.openpnp</groupId>
             <artifactId>opencv</artifactId>
             <version>${opencv.version}</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
