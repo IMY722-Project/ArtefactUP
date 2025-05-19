@@ -53,6 +53,7 @@ const ScavengerHunts = () => {
     const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
 
     // grab up to 4 artefact images
+    // TODO: map to treasuremap images
     const orbitImages = hunt.steps
       .map(step => step.artefact.imageUrl)
       .filter(Boolean)

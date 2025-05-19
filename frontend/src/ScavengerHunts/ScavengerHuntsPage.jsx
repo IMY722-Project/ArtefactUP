@@ -20,12 +20,10 @@ const ScavengerHuntsPage = () => {
           </div>
           <div className="scavenger-header">
             <div className="museum-icon">
-              {/* <GiAncientColumns /> */}
               <img src="/images/museum_illustration.png"/>
             </div>
             <h1 className="scavenger-title">Museum Quests</h1>
           </div>
-          {/* playing around with names, can change it back later */}
           <div className="progress-overlay">
             <ProgressSection
             />
