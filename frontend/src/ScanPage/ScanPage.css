@@ -62,10 +62,10 @@
     cursor: pointer;
     transition: background 0.3s;
   }
-  
+/*   
   .capture-button:hover,
   .retake-button:hover, 
   .submit-button:hover {
     background: #FF4412;
-  }
+  } */
   

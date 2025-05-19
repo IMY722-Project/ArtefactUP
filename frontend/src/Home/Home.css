@@ -137,11 +137,6 @@
   font-family: var(--font-heading);
 }
 
-.cta-button:hover {
-  background: #ff7277;
-  color: #fff;
-}
-
 /* Content Sections */
 .content-section {
   padding: 40px 20px;
@@ -162,6 +157,12 @@
   max-height: 100%;
 }
 
+/* TODO: make that line at the bottom less harsh */
+/* .content-section {
+background: linear-gradient(#ff4b4b,#fff, #fff,#fff);
+} */
+
+/* adjusting for larger screen instead of smaller */
 @media only screen and (min-width: 900px) {
 
   .museum-illustration {
@@ -173,9 +174,3 @@
   }
 
 }
-
-/*       <div class="wave-container">
-          <svg viewBox="0 0 500 150" preserveAspectRatio="none">
-            <path d="M0,30 Q125,80 250,30 T500,30 V150 H0 Z" ></path>
-          </svg>
-        </div> */

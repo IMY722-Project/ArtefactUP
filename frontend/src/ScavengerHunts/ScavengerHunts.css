@@ -29,11 +29,6 @@
   margin-bottom: 40px;
 }
 
-.hunt-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
 /* Header of the Card */
 .hunt-header {
   padding: 10px;
@@ -78,8 +73,4 @@
 .orbit-icons-container {
   padding: 20px;
   margin: auto;
-}
-
-.center-button:hover {
-  opacity: 0.9;
 }
