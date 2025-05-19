@@ -73,19 +73,19 @@ const ArtefactsCollection = () => {
       <TopCircle pageTitle={huntData.name} />
       <div className="ac-main">
         <div className="ac-navigation">
-          {currentIndex > 0 && (
-            <button onClick={handlePrev} className="nav-btn">
+         
+          <button onClick={handlePrev} className={currentIndex > 0 ?"nav-btn" : "nav-btn-disabled"}>
               Prev
             </button>
-          )}
+        
           <span className="nav-indicator">
             {currentIndex + 1} / {visibleSteps.length}
           </span>
-          {currentIndex < visibleSteps.length - 1 && (
-            <button onClick={handleNext} className="nav-btn">
+         
+            <button onClick={handleNext} className={currentIndex < visibleSteps.length - 1?"nav-btn": "nav-btn-disabled"}>
               Next
             </button>
-          )}
+          
         </div>
         {currentStep && (
           <ClueCard

@@ -104,10 +104,11 @@
 }
 .ac-navigation{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
   width: 80%;
+
 }
 .nav-btn {
   background: var(--primary-color);
@@ -119,6 +120,10 @@
   cursor: pointer;
   transition: background 0.3s ease;
 
+}
+.nav-btn-disabled {
+  visibility: hidden;
+  cursor: not-allowed;
 }
 .ac-btn {
   padding: 8px 12px;
