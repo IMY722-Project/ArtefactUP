@@ -35,16 +35,11 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
-  align-items: center;
 }
 
 /* Artefact Card */
 .ac-card {
   background: #ffffffb4;
-  /* Parchment-like overlay */
-  /* border: 2px solid var(--treasure-gold); */
-  background: #fff4e0; /* Parchment-like overlay */
-  border: 2px solid var(--treasure-gold);
   border-radius: 8px;
   padding: 12px;
   display: flex;
@@ -53,6 +48,7 @@
   width: 85%;
   margin: 10px auto;
 }
+
 
 /* Card Header */
 .ac-card-header {
@@ -107,40 +103,10 @@
 /* Card Actions */
 .ac-card-actions {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-around;
   gap: 8px;
-  width: 100%;
 }
-.ac-current-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  gap: 8px;
-  .ac-btn{
-    width: 50%;
-  }
-}
-.ac-navigation{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 80%;
-}
-.nav-btn {
-  background: var(--primary-color);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
 
-}
 .ac-btn {
   padding: 8px 12px;
   border: none;
