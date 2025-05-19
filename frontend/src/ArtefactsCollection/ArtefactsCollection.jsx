@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
-import { FaCameraRetro } from "react-icons/fa";
+// import { FaCameraRetro } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { FaEye } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
+
+
 
 import "./ArtefactsCollection.css";
 
@@ -97,22 +102,22 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
       </div>
       <div className="ac-card-actions">
         {isCurrent && (
-          <>
-            <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
-              <FaCameraRetro className="cam-icon" />
-
-            </button>
-            <button className="ac-btn hint-btn" onClick={toggleHint}>
-              Hint
-            </button>
-          </>
+          <button className="ac-btn hint-btn" onClick={toggleHint}>
+            <FaMagnifyingGlass className="btn-icon "/> Hint
+          </button>
         )}
 
         <button
           className="ac-btn reveal-btn"
           onClick={() => onReveal(step.artefact)}
         >
-          Reveal
+          <FaEye className="btn-icon "/> Show
+          {/* skip, show, reveal */}
+        </button>
+        <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
+          {/* <FaCameraRetro className="cam-icon" /> */}
+          <FaCheck className="btn-icon "/> Got it
+          {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
         </button>
       </div>
       {hintVisible && <div className="ac-hint">{step.hint}</div>}

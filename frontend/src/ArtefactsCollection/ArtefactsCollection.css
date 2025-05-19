@@ -107,22 +107,22 @@
   gap: 8px;
 }
 
+/* TODO: make responsive for smaller screens */
 .ac-btn {
   padding: 8px 12px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s ease;
-  width: 30%;
+  min-width: fit-content;
   height: 40px;
   font-weight: 550;
   font-size: 1rem;
   color: var(--text-bright);
 }
 
-.cam-icon {
-  color: var(--text-bright);
-  font-size: 1.5rem;
+.btn-icon {
+  margin-right: 0.5rem; /* or 8px */
 }
 
 /* Hint Drop Down Styling */
