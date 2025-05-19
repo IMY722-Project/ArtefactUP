@@ -18,7 +18,6 @@ const ScavengerHunts = () => {
   const { hunts, setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
-   
     fetch(`${API}/api/hunts/all`)
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -27,16 +26,16 @@ const ScavengerHunts = () => {
       .then(data => {
         setHuntsData(data);
         if (hunts.length === 0) {
-        const transformed = data.map(h => ({
-          id: h.id,
-          currentStepId: h.steps[0]?.id ?? null,
-          steps: h.steps.map(s => ({
-            id: s.id,
-            found: false,
-          })),
-        }));
-        
-        setHunts(transformed);
+          const transformed = data.map(h => ({
+            id: h.id,
+            currentStepId: h.steps[0]?.id ?? null,
+            steps: h.steps.map(s => ({
+              id: s.id,
+              found: false,
+            })),
+          }));
+
+          setHunts(transformed);
         }
         setLoading(false);
       })
@@ -70,14 +69,6 @@ const ScavengerHunts = () => {
       .slice(0, 4);
 
     const handleStartHunt = async hunt => {
-      const local = hunts.find(h => h.id === hunt.id);
-      if (
-        local?.currentStepId != null ||
-        local?.currentStepId !== hunt.steps[0]?.id
-      ) {
-        return navigate("/artefactsCollection", { state: { hunt } });
-      }
-
       const sessionId = getSessionId();
       try {
         const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
@@ -86,6 +77,13 @@ const ScavengerHunts = () => {
         });
         if (!res.ok) {
           throw new Error(`Failed to start hunt (${res.status})`);
+        }
+        const local = hunts.find(h => h.id === hunt.id);
+        if (
+          local?.currentStepId != null ||
+          local?.currentStepId !== hunt.steps[0]?.id
+        ) {
+          return navigate("/artefactsCollection", { state: { hunt } });
         }
 
         startHunt(hunt.id);
