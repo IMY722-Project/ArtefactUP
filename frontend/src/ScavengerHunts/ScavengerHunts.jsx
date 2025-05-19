@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useParallax } from 'react-scroll-parallax';
 import './ScavengerHunts.css';
 import { getSessionId } from '../utils/session.js';
 import { API } from '../utils/config.js';
@@ -12,8 +11,8 @@ const COLOR_PALETTE = ['orange', 'blue', 'green'];
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { setHunts, startHunt } = useHuntStore();
 
@@ -78,8 +77,10 @@ const ScavengerHunts = () => {
       }
     };
 
+
+
     return (
-      <div  className={`hunt-card ${color}Color`} onClick={handleStart}>
+      <div className={`hunt-card ${color}Color`} onClick={handleStart}>
         <div className={`hunt-header ${color}Color`}>
           <h3>{hunt.name}</h3>
         </div>
@@ -103,7 +104,14 @@ const ScavengerHunts = () => {
 
   return (
     <section className="scavenger-hunts">
+      <div className={`hunt-explanation`}>
+        <div className={`hunt-header `}>
+          <h3>Explore the Museum </h3>
+        </div>
+          <p>explain pics</p>
+      </div>
       <div className="scavenger-hunts-list">
+
         {huntsData.map((hunt, idx) => (
           <HuntOrbit key={hunt.id} hunt={hunt} index={idx} />
         ))}
@@ -113,3 +121,9 @@ const ScavengerHunts = () => {
 };
 
 export default ScavengerHunts;
+
+/*
+
+*/
+
+
