@@ -23,17 +23,17 @@
   /* background: #ffffffcc; */
 
   /* opt1 */
-  /* background: linear-gradient(#fff, #ffffff71);
+  background: linear-gradient(#fff, #ffffff71);
   border-bottom-left-radius: 100% 30%;
-  border-bottom-right-radius: 100% 30%; */
+  border-bottom-right-radius: 100% 30%;
   /* -- */
-  background: linear-gradient(#fff,#fff,#ffc491, #ffffff00);
+  /* background: linear-gradient(#fff,#fff,#ffc491, #ffffff00); */
   display: flex;
   justify-content: center;
   position: relative;
   z-index: 1;
   flex-direction: column;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
 }
 
 /* Title Overlaid on the Half-Circle */
