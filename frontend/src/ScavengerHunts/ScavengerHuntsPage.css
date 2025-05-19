@@ -20,10 +20,9 @@
 .top-circle {
   width: 100%;
   height: 45%;
-  /* background: #ffffffcc; */
 
   /* opt1 */
-  background: linear-gradient(#fff, #ffffff71);
+  background: var(--top-circle-grad);
   border-bottom-left-radius: 100% 30%;
   border-bottom-right-radius: 100% 30%;
   /* -- */
