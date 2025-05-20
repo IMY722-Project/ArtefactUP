@@ -34,7 +34,7 @@ class ChatbotController {
     .system(SYSTEM_PROMPT)
     .user(question)
     .call()
-    .content();
+    .content()
     .chatResponse()
     .getResult()
     .getOutput()
