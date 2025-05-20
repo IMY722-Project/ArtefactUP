@@ -9,6 +9,8 @@ import { create } from "zustand";
  * @typedef {Object} Hunt
  * @property {number}   id
  * @property {number}   currentStepId
+ * @property {boolean}  started
+ * @property {boolean}  completed
  * @property {Step[]}   steps
  */
 
@@ -25,36 +27,49 @@ import { create } from "zustand";
 export const useHuntStore = create((set, get) => ({
   hunts: [],
 
-  setHunts: (hunts) => set({ hunts }),
+  // Initialize hunts with default flags
+  setHunts: hunts => 
+    set({ hunts: hunts.map(h => ({
+      ...h,
+      started: false,
+      completed: false
+    })) }),
 
-  startHunt: (huntId) =>
-    set((state) => ({
-      hunts: state.hunts.map((h) =>
+  // Mark a hunt as started and set its first step
+  startHunt: huntId =>
+    set(state => ({
+      hunts: state.hunts.map(h =>
         h.id === huntId
-          ? { ...h, currentStepId: h.steps[0]?.id ?? h.currentStepId }
+          ? { ...h, currentStepId: h.steps[0]?.id ?? h.currentStepId, started: true }
           : h
       ),
     })),
 
+  // Mark a step as found; if it's the last one, complete the hunt
   markStepFound: (huntId, stepId) =>
-    set((state) => ({
-      hunts: state.hunts.map((h) => {
+    set(state => ({
+      hunts: state.hunts.map(h => {
         if (h.id !== huntId) return h;
+        const updatedSteps = h.steps.map(s =>
+          s.id === stepId ? { ...s, found: true } : s
+        );
+        const allFound = updatedSteps.every(s => s.found);
         return {
           ...h,
-          steps: h.steps.map((s) =>
-            s.id === stepId ? { ...s, found: true } : s
-          ),
+          steps: updatedSteps,
+          ...(allFound ? { completed: true } : {})
         };
       }),
     })),
 
+  // Advance to a specific step
   goToStep: (huntId, stepId) =>
-    set((state) => ({
-      hunts: state.hunts.map((h) =>
+    set(state => ({
+      hunts: state.hunts.map(h =>
         h.id === huntId ? { ...h, currentStepId: stepId } : h
       ),
     })),
 
+  // Reset all hunts
   resetAll: () => set({ hunts: [] }),
 }));

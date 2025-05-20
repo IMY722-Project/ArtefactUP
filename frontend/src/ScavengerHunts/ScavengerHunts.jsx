@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
@@ -7,14 +8,11 @@ import Spinner from "../Loader/LoadingIndicator.jsx";
 import ErrorMessage from "../Error/ErrorMessage.jsx";
 import { useHuntStore } from "../stores/useHuntStore.js";
 
-const COLOR_PALETTE = ["orange", "blue", "green"];
-
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState(null);
   const navigate = useNavigate();
-
   const { hunts, setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
@@ -25,16 +23,12 @@ const ScavengerHunts = () => {
       })
       .then(data => {
         setHuntsData(data);
-        if (hunts.length === 0) {
+        if (!hunts.length) {
           const transformed = data.map(h => ({
             id: h.id,
             currentStepId: h.steps[0]?.id ?? null,
-            steps: h.steps.map(s => ({
-              id: s.id,
-              found: false,
-            })),
+            steps: h.steps.map(s => ({ id: s.id, found: false }))
           }));
-
           setHunts(transformed);
         }
         setLoading(false);
@@ -55,17 +49,14 @@ const ScavengerHunts = () => {
       />
     );
 
-  const HuntOrbit = ({ hunt, index }) => {
-    const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
-
-    // grab up to 4 artefact images
-    // TODO: map to treasuremap images
-    const orbitImages = hunt.steps
-      .map(step => step.artefact.imageUrl)
-      .filter(Boolean)
-      .slice(0, 4);
-
     const handleStartHunt = async hunt => {
+      const local = hunts.find(h => h.id === hunt.id);
+      if (
+        local?.started
+      ) {
+        return navigate("/artefactsCollection", { state: { hunt } });
+      }
+
       const sessionId = getSessionId();
       try {
         const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
@@ -74,13 +65,6 @@ const ScavengerHunts = () => {
         });
         if (!res.ok) {
           throw new Error(`Failed to start hunt (${res.status})`);
-        }
-        const local = hunts.find(h => h.id === hunt.id);
-        if (
-          local?.currentStepId != null ||
-          local?.currentStepId !== hunt.steps[0]?.id
-        ) {
-          return navigate("/artefactsCollection", { state: { hunt } });
         }
 
         startHunt(hunt.id);
@@ -91,37 +75,18 @@ const ScavengerHunts = () => {
       }
     };
 
-    return (
-      <div
-        className={`hunt-card ${color}Color`}
-        onClick={() => handleStartHunt(hunt)}
-      >
-        <div className={`hunt-header ${color}Color`}>
-          <h3>{hunt.name}</h3>
-        </div>
-
-        <div className="orbit-container">
-          <div className="orbit-icons-container">
-            {orbitImages.map((url, i) => (
-              <img
-                key={i}
-                src={url}
-                alt={`${hunt.name} artefact ${i + 1}`}
-                className={`orbit-icon orbit-icon-${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <section className="scavenger-hunts">
-
-      <div className="scavenger-hunts-list">
+      <div className="hunt-path">
         {huntsData.map((hunt, idx) => (
-          <HuntOrbit key={hunt.id} hunt={hunt} index={idx} />
+          <div
+            key={hunt.id}
+            className="hunt-circle"
+            onClick={() => handleStartHunt(hunt)}
+          >
+            <FaStar className="circle-icon" />
+            <span className="hunt-label">{hunt.name}</span>
+          </div>
         ))}
       </div>
     </section>
