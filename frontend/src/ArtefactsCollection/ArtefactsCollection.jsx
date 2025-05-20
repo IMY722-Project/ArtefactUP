@@ -154,12 +154,14 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
           <FaEye className="btn-icon "/> Show
           {/* skip, show, reveal */}
         </button>
+        {isCurrent && (
         <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
           {/* <FaCameraRetro className="cam-icon" /> */}
           <FaCheck className="btn-icon "/> Got it
           {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
 
         </button>
+        )}
       </div>
       {hintVisible && <div className="ac-hint">{step.hint}</div>}
     </div>
