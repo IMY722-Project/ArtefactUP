@@ -16,10 +16,10 @@ aws:
   secret.key: testkey
   access.key: testsecret
 # uncomment to use localstack instead
-  endpoint: http://s3.localhost.localstack.cloud:4566
+#   endpoint: http://s3.localhost.localstack.cloud:4566
+#   s3:
+#     bucket-name: museum-artefacts
+# # ---
+  endpoint: https://s3.af-south-1.amazonaws.com
   s3:
-    bucket-name: museum-artefacts
-# ---
-  # endpoint: https://s3.af-south-1.amazonaws.com
-  # s3:
-  #   bucket-name: museum-artefacts-aup
+    bucket-name: museum-artefacts-aup
