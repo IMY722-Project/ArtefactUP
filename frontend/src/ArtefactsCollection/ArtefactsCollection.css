@@ -106,8 +106,6 @@
   justify-content: space-around;
   gap: 8px;
 }
-
-/* TODO: make responsive for smaller screens */
 .ac-btn {
   padding: 8px 12px;
   border: none;

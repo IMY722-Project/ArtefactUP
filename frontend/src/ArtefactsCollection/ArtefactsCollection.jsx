@@ -10,44 +10,71 @@ import { FaCheck } from "react-icons/fa";
 
 
 import "./ArtefactsCollection.css";
+import { getSessionId } from "../utils/session.js";
+import { API } from "../utils/config.js";
+import { useEffect } from "react";
 
 
 const ArtefactsCollection = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const huntData = state?.hunt;
-  const { hunts } = useHuntStore();
+  const { hunts, markStepFound, goToStep } = useHuntStore();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const hunt = hunts.find(h => h.id === huntData?.id);
+  const [visibleSteps, setVisibleSteps] = useState([]);
+  let hunt = hunts.find(h => h.id === huntData?.id);
+
+  useEffect(() => {
+    const visibleStepIds = hunt.steps
+      .filter(s => s.found || s.id === hunt.currentStepId)
+      .map(s => s.id);
+    setVisibleSteps(
+      huntData.steps.filter(step => visibleStepIds.includes(step.id))
+    );
+    setCurrentIndex(
+      huntData.steps.findIndex(s => s.id === hunt.currentStepId)
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hunts, huntData]);
+
 
   if (!huntData) {
     navigate(-1);
     return null;
   }
 
-  // Determine which steps to show
-  const visibleStepIds = hunt.steps
-    .filter(s => s.found || s.id === hunt.currentStepId)
-    .map(s => s.id);
-  const visibleSteps = huntData.steps.filter(step =>
-    visibleStepIds.includes(step.id)
-  );
-
-  // Track current index
-
   const currentStep = visibleSteps[currentIndex];
 
-  // Navigation handlers
   const handlePrev = () => setCurrentIndex(i => Math.max(i - 1, 0));
   const handleNext = () =>
     setCurrentIndex(i => Math.min(i + 1, visibleSteps.length - 1));
 
-  // Scan and reveal
   const handleScan = stepId => {
     navigate("/scan", { state: { huntId: huntData.id, artefactId: stepId } });
   };
-  const handleReveal = artefact => {
-    navigate("/artefactDetails", { state: { artefact } });
+  const handleReveal = async step => {
+    const sessionId = getSessionId();
+    try {
+      const res = await fetch(`${API}/api/hunts/steps/${huntData.id}/reveal`, {
+        method: "POST",
+        headers: { "Session-id": sessionId },
+      });
+      if (!res.ok) {
+        throw new Error(`Reveal failed (${res.status})`);
+      }
+      markStepFound(huntData.id, step.id);
+      
+      const thisHunt = hunts.find(h => h.id === huntData.id);
+      const idx = thisHunt.steps.findIndex(s => s.id === step.id);
+      const nextStepObj = thisHunt.steps[idx + 1];
+      if (nextStepObj) {
+        goToStep(huntData.id, nextStepObj.id);
+      }
+      navigate("/artefactDetails", { state: { artefact: step.artefact } });
+    } catch (e) {
+      console.error("Error revealing artefact:", e);
+      alert("Sorry, could not reveal artefact. Please try again.");
+    }
   };
 
   return (
@@ -55,22 +82,20 @@ const ArtefactsCollection = () => {
       <TopCircle pageTitle={huntData.name} />
       <div className="ac-main">
         <div className="ac-navigation">
-          {currentIndex > 0 && (
-            <button onClick={handlePrev} className="nav-btn">
+         
+          <button onClick={handlePrev} className={currentIndex > 0 ?"nav-btn" : "nav-btn-disabled"}>
               Prev
             </button>
-          )}
+        
           <span className="nav-indicator">
             {currentIndex + 1} / {visibleSteps.length}
           </span>
-          {currentIndex < visibleSteps.length - 1 && (
-            <button onClick={handleNext} className="nav-btn">
+         
+            <button onClick={handleNext} className={currentIndex < visibleSteps.length - 1?"nav-btn": "nav-btn-disabled"}>
               Next
             </button>
-          )}
+          
         </div>
-
-        {/* Current Clue Card */}
         {currentStep && (
           <ClueCard
             step={currentStep}
@@ -118,6 +143,7 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
           {/* <FaCameraRetro className="cam-icon" /> */}
           <FaCheck className="btn-icon "/> Got it
           {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
+
         </button>
       </div>
       {hintVisible && <div className="ac-hint">{step.hint}</div>}

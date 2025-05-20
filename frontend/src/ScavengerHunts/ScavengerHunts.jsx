@@ -16,6 +16,7 @@ const ScavengerHunts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   const { setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const ScavengerHunts = () => {
       });
   }, []);
 
+
   if (loading) return <Spinner />;
   if (error)
     return (
@@ -63,14 +65,21 @@ const ScavengerHunts = () => {
     const handleStart = async () => {
       const sessionId = getSessionId();
       try {
-        const res = await fetch(
-          `${API}/api/hunts/progress/start/${hunt.id}`,
-          {
-            method: 'POST',
-            headers: { 'Session-id': sessionId },
-          }
-        );
-        if (!res.ok) throw new Error(`Start failed (${res.status})`);
+        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
+          method: "POST",
+          headers: { "Session-id": sessionId },
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to start hunt (${res.status})`);
+        }
+        const local = hunts.find(h => h.id === hunt.id);
+        if (
+          local?.currentStepId != null ||
+          local?.currentStepId !== hunt.steps[0]?.id
+        ) {
+          return navigate("/artefactsCollection", { state: { hunt } });
+        }
+
         startHunt(hunt.id);
         navigate('/artefactsCollection', { state: { hunt } });
       } catch (e) {
