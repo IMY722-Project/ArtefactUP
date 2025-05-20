@@ -64,6 +64,7 @@ const ArtefactsCollection = () => {
       }
       markStepFound(huntData.id, step.id);
       
+      
       const thisHunt = hunts.find(h => h.id === huntData.id);
       const idx = thisHunt.steps.findIndex(s => s.id === step.id);
       const nextStepObj = thisHunt.steps[idx + 1];
@@ -80,22 +81,30 @@ const ArtefactsCollection = () => {
   return (
     <div className="artefacts-collection-page">
       <TopCircle pageTitle={huntData.name} />
+
       <div className="ac-main">
         <div className="ac-navigation">
-         
-          <button onClick={handlePrev} className={currentIndex > 0 ?"nav-btn" : "nav-btn-disabled"}>
-              Prev
-            </button>
-        
+          <button
+            onClick={handlePrev}
+            className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
+          >
+            Prev
+          </button>
+
           <span className="nav-indicator">
             {currentIndex + 1} / {visibleSteps.length}
           </span>
-         
-            <button onClick={handleNext} className={currentIndex < visibleSteps.length - 1?"nav-btn": "nav-btn-disabled"}>
-              Next
-            </button>
-          
+
+          <button
+            onClick={handleNext}                     // always wired up
+            className={currentIndex < visibleSteps.length - 1
+              ? "nav-btn"
+              : "nav-btn-disabled"}
+          >
+            Next
+          </button>
         </div>
+
         {currentStep && (
           <ClueCard
             step={currentStep}
@@ -104,10 +113,16 @@ const ArtefactsCollection = () => {
             onReveal={handleReveal}
           />
         )}
+
+        {hunt.completed && (
+          <div className="congrats-banner">
+            🎉 Congratulations, you’ve completed this hunt! 🎉
+          </div>
+        )}
       </div>
     </div>
   );
-};
+}
 
 const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
   const [hintVisible, setHintVisible] = useState(false);

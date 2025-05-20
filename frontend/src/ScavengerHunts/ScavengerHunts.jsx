@@ -49,24 +49,31 @@ const ScavengerHunts = () => {
       />
     );
 
-  const handleStartHunt = async (hunt) => {
-    const sessionId = getSessionId();
-    try {
-      const res = await fetch(
-        `${API}/api/hunts/progress/start/${hunt.id}`,
-        {
+    const handleStartHunt = async hunt => {
+      const local = hunts.find(h => h.id === hunt.id);
+      if (
+        local?.started
+      ) {
+        return navigate("/artefactsCollection", { state: { hunt } });
+      }
+
+      const sessionId = getSessionId();
+      try {
+        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
           method: "POST",
           headers: { "Session-id": sessionId },
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to start hunt (${res.status})`);
         }
-      );
-      if (!res.ok) throw new Error(`Start failed (${res.status})`);
-      startHunt(hunt.id);
-      navigate("/artefactsCollection", { state: { hunt } });
-    } catch (e) {
-      console.error("Error starting hunt:", e);
-      alert("Unable to start hunt. Please try again.");
-    }
-  };
+
+        startHunt(hunt.id);
+        navigate("/artefactsCollection", { state: { hunt } });
+      } catch (e) {
+        console.error("Error starting hunt:", e);
+        alert("Unable to start hunt. Please try again.");
+      }
+    };
 
   return (
     <section className="scavenger-hunts">
