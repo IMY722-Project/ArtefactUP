@@ -8,6 +8,7 @@ import ErrorMessage from '../Error/ErrorMessage.jsx';
 import { useHuntStore } from '../stores/useHuntStore.js';
 import { FaCameraRetro } from "react-icons/fa";
 
+// trying something
 
 const COLOR_PALETTE = ['orange', 'blue', 'green'];
 
