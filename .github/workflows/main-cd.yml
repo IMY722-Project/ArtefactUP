@@ -54,4 +54,5 @@ jobs:
             -e AWS_DB_PASS=${{ secrets.AWS_DB_PASS }} \
             -e AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} \
             -e AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} \
+            -e LAMBDAKEY=${{ secrets.LAMBDAKEY }} \
             maverickgdn01/artifactup:latest
