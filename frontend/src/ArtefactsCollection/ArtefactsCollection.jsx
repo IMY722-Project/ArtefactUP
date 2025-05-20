@@ -128,7 +128,6 @@ const ArtefactsCollection = () => {
 const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
   const [hintVisible, setHintVisible] = useState(false);
   const toggleHint = () => setHintVisible(v => !v);
-console.log("ArtefactsCollection step", step);
   return (
     <div className="ac-card">
       <div className="ac-card-image">
@@ -142,7 +141,7 @@ console.log("ArtefactsCollection step", step);
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-        {isCurrent && (
+        {isCurrent && !isFound&& (
           <button className="ac-btn hint-btn" onClick={toggleHint}>
             <FaMagnifyingGlass className="btn-icon "/> Hint
           </button>
@@ -155,7 +154,7 @@ console.log("ArtefactsCollection step", step);
           <FaEye className="btn-icon "/> Show
           {/* skip, show, reveal */}
         </button>
-        {isCurrent && (
+        {isCurrent && !isFound &&(
         <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
           {/* <FaCameraRetro className="cam-icon" /> */}
           <FaCheck className="btn-icon "/> Got it
