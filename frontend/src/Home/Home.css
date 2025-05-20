@@ -105,7 +105,9 @@
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
+  display: flex;
   align-content: space-around;
+  align-items: center;
   min-height: fit-content;
 }
 
@@ -155,6 +157,7 @@
 
 .museum-illustration {
   max-height: 100%;
+  width: fit-content;
 }
 
 /* TODO: make that line at the bottom less harsh */
