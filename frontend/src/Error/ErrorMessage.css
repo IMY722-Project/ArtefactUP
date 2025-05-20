@@ -22,8 +22,3 @@
     cursor: pointer;
     transition: background 0.2s;
   }
-  
-  .error-retry-btn:hover {
-    background: #e14d4f;
-  }
-  

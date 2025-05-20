@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
 import { API } from "../utils/config.js";
@@ -8,13 +7,14 @@ import Spinner from "../Loader/LoadingIndicator.jsx";
 import ErrorMessage from "../Error/ErrorMessage.jsx";
 import { useHuntStore } from "../stores/useHuntStore.js";
 
-const COLOR_PALETTE = ["#FF5C0C"];
+const COLOR_PALETTE = ["orange", "blue", "green"];
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   const { hunts, setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
@@ -50,22 +50,19 @@ const ScavengerHunts = () => {
   if (error)
     return (
       <ErrorMessage
-        message={`Error loading hunts`}
+        message={`Error loading hunts: ${error}`}
         onRetry={() => window.location.reload()}
       />
     );
 
   const HuntOrbit = ({ hunt, index }) => {
-    // pick a color based on index
     const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
 
-    // parallax rotate only the orbit images
-    const { ref } = useParallax({ rotate: [-135, 360] });
-
-    // take up to 4 images from steps
+    // grab up to 4 artefact images
+    // TODO: map to treasuremap images
     const orbitImages = hunt.steps
       .map(step => step.artefact.imageUrl)
-      .filter(url => url)
+      .filter(Boolean)
       .slice(0, 4);
 
     const handleStartHunt = async hunt => {
@@ -95,24 +92,16 @@ const ScavengerHunts = () => {
     };
 
     return (
-      <div className="hunt-card" style={{ borderColor: color }}>
-        <div className="hunt-header" style={{ backgroundColor: color }}>
+      <div
+        className={`hunt-card ${color}Color`}
+        onClick={() => handleStartHunt(hunt)}
+      >
+        <div className={`hunt-header ${color}Color`}>
           <h3>{hunt.name}</h3>
         </div>
-        <p className="hunt-description">{hunt.description}</p>
 
         <div className="orbit-container">
-          {/* Static center button */}
-          <button
-            className="hunt-button center-button"
-            style={{ backgroundColor: color }}
-            onClick={() => handleStartHunt(hunt)}
-          >
-            Try Hunt
-          </button>
-
-          {/* Rotating orbit images */}
-          <div ref={ref} className="orbit-icons-container">
+          <div className="orbit-icons-container">
             {orbitImages.map((url, i) => (
               <img
                 key={i}
@@ -129,6 +118,7 @@ const ScavengerHunts = () => {
 
   return (
     <section className="scavenger-hunts">
+
       <div className="scavenger-hunts-list">
         {huntsData.map((hunt, idx) => (
           <HuntOrbit key={hunt.id} hunt={hunt} index={idx} />
