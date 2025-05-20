@@ -1,7 +1,7 @@
 import React from "react";
-import "./ArtefactDetails.css";
+import { useLocation, useNavigate } from "react-router-dom";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import "./ArtefactDetails.css";
 
 const ArtefactDetails = () => {
   const navigate = useNavigate();

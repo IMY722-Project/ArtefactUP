@@ -1,65 +1,61 @@
-/* Base Styles for the Progress Section */
-:root {
-    --primary-color: #FFAE2B;
-    --bg-color: #fff;
-    --text-color: #333;
-    --font-family: 'Montserrat', sans-serif;
-  }
-  
-  .progress-section {
-    background: var(--bg-color);
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    max-width: 600px;
-    text-align: center;
-    font-family: var(--font-family);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .progress-title {
-    margin-bottom: 16px;
-    font-size: 1.8rem;
-    color: var(--text-color);
-  }
-  
-  /* Container for the progress bar */
-  .progress-bar-container {
-    width: 90%;
-    height: 20px;
-    background: #eee;
-    border-radius: 10px;
-    margin: 0 auto 10px;
-    overflow: hidden;
-  }
-  
-  /* The progress bar itself */
-  .progress-bar {
-    height: 100%;
-    background: var(--primary-color);
-    transition: width 0.3s ease-in-out;
-  }
-  
-  /* Progress text */
-  .progress-text {
-    font-size: 1rem;
-    color: var(--text-color);
-    margin: 4px 0;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .progress-section {
-      padding: 16px;
-      margin: 16px 10px;
-    }
-    
-    .progress-title {
-      font-size: 1.6rem;
-    }
-    
-    .progress-text {
-      font-size: 0.9rem;
-    }
-  }
-  
+.progress-section {
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 8px;
+  max-width: 600px;
+  text-align: center;
+  font-family: var(--font-family);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.progress-title {
+  /* margin-bottom: 16px; */
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 5px;
+}
+
+/* Container for the progress bar */
+.progress-bar-container {
+  width: 90%;
+  height: 20px;
+  background: #9f8578;
+  border-radius: 10px;
+  margin: 0 auto 10px;
+  overflow: hidden;
+}
+
+/* The progress bar itself */
+.progress-bar {
+  height: 100%;
+  /* background: var(--bg-grad1); */
+  background: linear-gradient(90deg,#ff4875, #ff7b3d, #ffbe5b);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Progress text */
+.progress-text {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin: 4px 0;
+  font-weight: 600;
+}
+
+.progress-icon-div {
+  /* padding: 30px 30px 3px 30px; */
+  /* font-size: 2rem */
+  margin-top: 10px;
+}
+
+.progress-icon {
+  height: 100px;
+  width: auto;
+}
+
+.progress-markers-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-evenly
+}
+

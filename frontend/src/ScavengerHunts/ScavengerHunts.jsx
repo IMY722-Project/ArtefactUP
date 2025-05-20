@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParallax } from "react-scroll-parallax";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
 import { API } from "../utils/config.js";
 import Spinner from "../Loader/LoadingIndicator.jsx";
 import ErrorMessage from "../Error/ErrorMessage.jsx";
+import { useHuntStore } from "../stores/useHuntStore.js";
 
-const COLOR_PALETTE = [
-  "#FF5C0C",
-];
+const COLOR_PALETTE = ["orange", "blue", "green"];
 
 const ScavengerHunts = () => {
-  const [hunts, setHunts] = useState([]);
+  const [huntsData, setHuntsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const { hunts, setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
     fetch(`${API}/api/hunts/all`)
@@ -24,7 +24,19 @@ const ScavengerHunts = () => {
         return res.json();
       })
       .then(data => {
-        setHunts(data);
+        setHuntsData(data);
+        if (hunts.length === 0) {
+          const transformed = data.map(h => ({
+            id: h.id,
+            currentStepId: h.steps[0]?.id ?? null,
+            steps: h.steps.map(s => ({
+              id: s.id,
+              found: false,
+            })),
+          }));
+
+          setHunts(transformed);
+        }
         setLoading(false);
       })
       .catch(err => {
@@ -32,69 +44,64 @@ const ScavengerHunts = () => {
         setError(err.message);
         setLoading(false);
       });
-  }, []);
+  }, [hunts.length, setHunts]);
 
   if (loading) return <Spinner />;
-  if (error) 
+  if (error)
     return (
       <ErrorMessage
-        message={`Error loading hunts`}
+        message={`Error loading hunts: ${error}`}
         onRetry={() => window.location.reload()}
       />
     );
 
   const HuntOrbit = ({ hunt, index }) => {
-    // pick a color based on index
     const color = COLOR_PALETTE[index % COLOR_PALETTE.length];
 
-    // parallax rotate only the orbit images
-    const { ref } = useParallax({ rotate: [-135, 360] });
-
-    // take up to 4 images from steps
+    // grab up to 4 artefact images
+    // TODO: map to treasuremap images
     const orbitImages = hunt.steps
       .map(step => step.artefact.imageUrl)
-      .filter(url => url)
+      .filter(Boolean)
       .slice(0, 4);
 
-
-
-      const handleStartHunt = async (hunt) => {
-        const sessionId = getSessionId();
-        try {
-          const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
-            method: "POST",
-            headers: { "Session-id": sessionId },
-          });
-          if (!res.ok) {
-            throw new Error(`Failed to start hunt (${res.status})`);
-          }
-          // only navigate once the POST succeeds
-          navigate("/artefactsCollection", { state: { hunt } });
-        } catch (e) {
-          console.error("Error starting hunt:", e);
-          alert("Unable to start hunt. Please try again.");
+    const handleStartHunt = async hunt => {
+      const sessionId = getSessionId();
+      try {
+        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
+          method: "POST",
+          headers: { "Session-id": sessionId },
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to start hunt (${res.status})`);
         }
-      };
+        const local = hunts.find(h => h.id === hunt.id);
+        if (
+          local?.currentStepId != null ||
+          local?.currentStepId !== hunt.steps[0]?.id
+        ) {
+          return navigate("/artefactsCollection", { state: { hunt } });
+        }
+
+        startHunt(hunt.id);
+        navigate("/artefactsCollection", { state: { hunt } });
+      } catch (e) {
+        console.error("Error starting hunt:", e);
+        alert("Unable to start hunt. Please try again.");
+      }
+    };
 
     return (
-      <div className="hunt-card" style={{ borderColor: color }}>
-        <div className="hunt-header" style={{ backgroundColor: color }}>
+      <div
+        className={`hunt-card ${color}Color`}
+        onClick={() => handleStartHunt(hunt)}
+      >
+        <div className={`hunt-header ${color}Color`}>
           <h3>{hunt.name}</h3>
         </div>
-        <p className="hunt-description">{hunt.description}</p>
 
         <div className="orbit-container">
-          {/* Static center button */}
-          <button
-          className="hunt-button center-button"
-          style={{ backgroundColor: color }}
-          onClick={() => handleStartHunt(hunt)}
-        >
-          Try Hunt
-        </button>
-
-          {/* Rotating orbit images */}
-          <div ref={ref} className="orbit-icons-container">
+          <div className="orbit-icons-container">
             {orbitImages.map((url, i) => (
               <img
                 key={i}
@@ -111,8 +118,9 @@ const ScavengerHunts = () => {
 
   return (
     <section className="scavenger-hunts">
+
       <div className="scavenger-hunts-list">
-        {hunts.map((hunt, idx) => (
+        {huntsData.map((hunt, idx) => (
           <HuntOrbit key={hunt.id} hunt={hunt} index={idx} />
         ))}
       </div>
