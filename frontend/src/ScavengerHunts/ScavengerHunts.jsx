@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ScavengerHunts.css';
-import { getSessionId } from '../utils/session.js';
-import { API } from '../utils/config.js';
-import Spinner from '../Loader/LoadingIndicator.jsx';
-import ErrorMessage from '../Error/ErrorMessage.jsx';
-import { useHuntStore } from '../stores/useHuntStore.js';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./ScavengerHunts.css";
+import { getSessionId } from "../utils/session.js";
+import { API } from "../utils/config.js";
+import Spinner from "../Loader/LoadingIndicator.jsx";
+import ErrorMessage from "../Error/ErrorMessage.jsx";
+import { useHuntStore } from "../stores/useHuntStore.js";
 import { FaCameraRetro } from "react-icons/fa";
 
 // trying something
 
-const COLOR_PALETTE = ['orange', 'blue', 'green'];
+const COLOR_PALETTE = ["orange", "blue", "green"];
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
@@ -18,7 +18,7 @@ const ScavengerHunts = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const { setHunts, startHunt } = useHuntStore();
+  const { hunts, setHunts, startHunt } = useHuntStore();
 
   useEffect(() => {
     fetch(`${API}/api/hunts/all`)
@@ -28,21 +28,26 @@ const ScavengerHunts = () => {
       })
       .then(data => {
         setHuntsData(data);
-        const transformed = data.map(h => ({
-          id: h.id,
-          currentStepId: h.steps[0]?.id ?? null,
-          steps: h.steps.map(s => ({ id: s.id, found: false })),
-        }));
-        setHunts(transformed);
+        if (hunts.length === 0) {
+          const transformed = data.map(h => ({
+            id: h.id,
+            currentStepId: h.steps[0]?.id ?? null,
+            steps: h.steps.map(s => ({
+              id: s.id,
+              found: false,
+            })),
+          }));
+
+          setHunts(transformed);
+        }
         setLoading(false);
       })
       .catch(err => {
-        console.error('Failed to load hunts:', err);
+        console.error("Failed to load hunts:", err);
         setError(err.message);
         setLoading(false);
       });
-  }, []);
-
+  }, [hunts.length, setHunts]);
 
   if (loading) return <Spinner />;
   if (error)
@@ -63,7 +68,7 @@ const ScavengerHunts = () => {
       .filter(Boolean)
       .slice(0, 4);
 
-    const handleStart = async () => {
+    const handleStartHunt = async hunt => {
       const sessionId = getSessionId();
       try {
         const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
@@ -82,23 +87,23 @@ const ScavengerHunts = () => {
         }
 
         startHunt(hunt.id);
-        navigate('/artefactsCollection', { state: { hunt } });
+        navigate("/artefactsCollection", { state: { hunt } });
       } catch (e) {
-        console.error('Error starting hunt:', e);
-        alert('Unable to start hunt. Please try again.');
+        console.error("Error starting hunt:", e);
+        alert("Unable to start hunt. Please try again.");
       }
     };
 
-
-
     return (
-      <div className={`hunt-card ${color}Color`} onClick={handleStart}>
+      <div
+        className={`hunt-card ${color}Color`}
+        onClick={() => handleStartHunt(hunt)}
+      >
         <div className={`hunt-header ${color}Color`}>
           <h3>{hunt.name}</h3>
         </div>
 
         <div className="orbit-container">
-
           <div className="orbit-icons-container">
             {orbitImages.map((url, i) => (
               <img
@@ -116,7 +121,6 @@ const ScavengerHunts = () => {
 
   return (
     <section className="scavenger-hunts">
-
       {/* <div className={`hunt-explanation`}>
         <div className={`hunt-header `}>
           <h3>Choose a Quest</h3>
@@ -125,7 +129,6 @@ const ScavengerHunts = () => {
       </div> */}
 
       <div className="scavenger-hunts-list">
-
         {huntsData.map((hunt, idx) => (
           <HuntOrbit key={hunt.id} hunt={hunt} index={idx} />
         ))}
@@ -139,5 +142,3 @@ export default ScavengerHunts;
 /*
 
 */
-
-
