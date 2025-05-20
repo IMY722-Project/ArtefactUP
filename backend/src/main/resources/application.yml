@@ -5,7 +5,9 @@ spring:
     compose:
       enabled: false
   profiles:
-    active: ${spring.profiles.active}
+    active: ${SPRING_PROFILE:local}
   datasource:
     driver-class-name: org.postgresql.Driver
+
+
   
