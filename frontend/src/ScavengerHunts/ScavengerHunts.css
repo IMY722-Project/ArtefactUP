@@ -1,6 +1,6 @@
 /* Root variables (you can adjust) */
 :root {
-  --stone-size: 80px;
+  --stone-size: 100px;
   --stone-color: #ffffffb4;      /* golden “stone” */
   --connector-color: #555;
   --label-color: #333;
@@ -12,17 +12,19 @@
   display: flex;
   justify-content: center;
   font-family: var(--font-family);
+  overflow: visible;
 }
-
-/* The horizontal “path” of circles */
 .hunt-path {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 40px; /* space between stones */
+  justify-content: space-between;
+  align-items: flex-start;     /* align to top of the tallest row */
+  gap: 60px;            
+  height: 280px;          /* height of the path */
+  padding-bottom: 20px;
 }
 
-/* Each stone (circle) */
+/* Base stone */
 .hunt-circle {
   position: relative;
   width: var(--stone-size);
@@ -36,29 +38,31 @@
   transition: transform 0.2s ease;
 }
 
+/* Hover pop */
 .hunt-circle:hover {
   transform: scale(1.1);
 }
 
-/* Draw a little connector line to the previous stone */
-.hunt-circle:not(:first-child)::before {
-  content: "";
-  position: absolute;
-  width: 40px;              /* length of connector */
-  height: 4px;
-  background: var(--connector-color);
-  left: -50px;              /* pull left by stone radius + gap/2 */
-  top: 50%;
-  transform: translateY(-50%);
+/* Diagonal offset: push every 2nd, 4th, 6th… stone down */
+.hunt-circle:nth-child(2n) {
+  transform: translateY(20px);
 }
 
-/* The star icon inside */
-.circle-icon {
-  color:var(--label-color);
-  font-size: 1.5rem;
-}
+/* If you want them in a more pronounced diagonal, you can stagger more:
+   - 1st stone: no offset
+   - 2nd stone: 20px down
+   - 3rd stone: 40px down
+   - 4th stone: 20px down
+   - etc.
+*/
+.hunt-circle:nth-child(4n+1) { transform: translateY(0);  }
+.hunt-circle:nth-child(4n+2) { transform: translateY(60px); }
+.hunt-circle:nth-child(4n+3) { transform: translateY(120px); }
+.hunt-circle:nth-child(4n+4) { transform: translateY(60px); }
 
-/* Label below each stone */
+
+/* Keep the icon and label as before */
+.circle-icon { color: var(--label-color); font-size: 1.5rem; }
 .hunt-label {
   position: absolute;
   top: calc(100% + 8px);
@@ -68,16 +72,12 @@
   color: var(--label-color);
 }
 
-/* Responsive: reduce gap on small screens */
+/* Responsiveness */
 @media (max-width: 600px) {
-  .hunt-path {
-    gap: 20px;
-  }
+  .hunt-path { gap: 40px; }
   .hunt-circle {
     width: 60px;
     height: 60px;
   }
-  .circle-icon {
-    font-size: 1.2rem;
-  }
+  .circle-icon { font-size: 1.2rem; }
 }
