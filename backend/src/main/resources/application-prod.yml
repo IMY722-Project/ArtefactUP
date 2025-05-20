@@ -7,11 +7,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  ai:
+    openai:
+      api-key: ${LAMBDAKEY}
 aws:
   secret.key: ${AWS_SECRET_KEY}
   access.key: ${AWS_ACCESS_KEY}
   endpoint: https://s3.af-south-1.amazonaws.com
   s3:
-ai:
-    openai:
-      api-key: ${LAMBDAKEY}
+    bucket-name: museum-artefacts-aup
