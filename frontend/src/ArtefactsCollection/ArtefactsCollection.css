@@ -35,6 +35,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 16px;
+  align-items: center;
 }
 
 /* Artefact Card */
@@ -184,4 +185,29 @@ background: linear-gradient( #f6b64ef1, #d15555e2);
   text-align: center;
   position: relative;
   z-index: 1;
+}
+
+
+.ac-navigation{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 80%;
+
+}
+.nav-btn {
+  background: var(--primary-color);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+}
+.nav-btn-disabled {
+  visibility: hidden;
+  cursor: not-allowed;
 }
