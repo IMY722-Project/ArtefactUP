@@ -6,9 +6,6 @@ import { API } from "../utils/config.js";
 import Spinner from "../Loader/LoadingIndicator.jsx";
 import ErrorMessage from "../Error/ErrorMessage.jsx";
 import { useHuntStore } from "../stores/useHuntStore.js";
-import { FaCameraRetro } from "react-icons/fa";
-
-// trying something
 
 const COLOR_PALETTE = ["orange", "blue", "green"];
 
@@ -121,12 +118,6 @@ const ScavengerHunts = () => {
 
   return (
     <section className="scavenger-hunts">
-      {/* <div className={`hunt-explanation`}>
-        <div className={`hunt-header `}>
-          <h3>Choose a Quest</h3>
-        </div>
-          <p>when you find an artifact, use <FaCameraRetro/> to scan it </p>
-      </div> */}
 
       <div className="scavenger-hunts-list">
         {huntsData.map((hunt, idx) => (
@@ -138,7 +129,3 @@ const ScavengerHunts = () => {
 };
 
 export default ScavengerHunts;
-
-/*
-
-*/

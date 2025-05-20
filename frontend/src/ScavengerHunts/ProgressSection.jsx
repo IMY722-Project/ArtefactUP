@@ -59,7 +59,7 @@ const ProgressSection = () => {
           <div className='progress-markers-wrapper'>
             <div>
               <div className='progress-icon-div'>
-                <img src='/images/map_brown.png' className='progress-icon' />
+                <img src='/images/map_brown.png' className='progress-icon' alt="Map icon" />
               </div>
 
               <p className="progress-text">
@@ -68,7 +68,7 @@ const ProgressSection = () => {
             </div>
             <div>
               <div className='progress-icon-div'>
-                <img src='/images/frame_brown.png' className='progress-icon' />
+                <img src='/images/frame_brown.png' className='progress-icon' alt="Frame icon" />
               </div>
               <p className="progress-text">
                 {artefactsFoundNoCurrent}{" "}

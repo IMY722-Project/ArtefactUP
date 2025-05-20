@@ -134,7 +134,7 @@ const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
 
         <button
           className="ac-btn reveal-btn"
-          onClick={() => onReveal(step.artefact)}
+          onClick={() => onReveal(step)}
         >
           <FaEye className="btn-icon "/> Show
           {/* skip, show, reveal */}
