@@ -109,6 +109,7 @@ const ArtefactsCollection = () => {
           <ClueCard
             step={currentStep}
             isCurrent={currentStep.id === hunt.currentStepId}
+            isFound={hunt.steps.find(s => s.id === currentStep.id).found}
             onScan={handleScan}
             onReveal={handleReveal}
           />
@@ -124,17 +125,17 @@ const ArtefactsCollection = () => {
   );
 }
 
-const ClueCard = ({ step, isCurrent, onScan, onReveal }) => {
+const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
   const [hintVisible, setHintVisible] = useState(false);
   const toggleHint = () => setHintVisible(v => !v);
-
+console.log("ArtefactsCollection step", step);
   return (
     <div className="ac-card">
       <div className="ac-card-image">
         <img
           src={step.artefact.imageUrl}
           alt={`Clue #${step.stepNumber}`}
-          className="ac-image pixelated"
+          className={`ac-card-img ${isFound ? "" : "pixelated"}`}
         />
       </div>
       <div className="ac-card-header">
