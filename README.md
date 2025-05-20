@@ -19,3 +19,6 @@ A Progressive Web App (PWA) showcasing artifacts from various museums at the Uni
 
 # Api Docs
 - navigate to http://localhost:8080/swagger-ui/index.html#/
+
+psql -U postgres -d museum_db -f large_sql.sql
+set AWS_REGION=af-south-1

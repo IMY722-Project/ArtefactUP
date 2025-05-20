@@ -1,9 +1,11 @@
 /* Global Styles */
+
 .home {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Montserrat', sans-serif; */
+  
   background: #f7f7f7;
 }
 
@@ -61,6 +63,10 @@
   cursor: pointer;
   padding: 5px;
 }
+/* TODO: why is there a menu-btn and a menu-button? */
+.menu-button {
+  background-color: #fff;
+}
 
 .menu-icon {
   width: 25px;
@@ -91,10 +97,16 @@
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #ffbc40, #ff9914);
+  background: var(--bg-home-grad);
   text-align: center;
   color: #fff;
-  padding: 80px 20px;
+  padding: 50px 20px;
+  height: 90vh;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-content: space-around;
+  min-height: fit-content;
 }
 
 .hero h1 {
@@ -109,21 +121,56 @@
 
 .cta-button {
   background: #fff;
-  color: #ff9914;
+  /* color: #cf214c; */
+  color: var(--primary-color);
   text-decoration: none;
   padding: 12px 30px;
   border-radius: 30px;
   font-size: 1rem;
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
-}
-
-.cta-button:hover {
-  background: #ffbc40;
-  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 50px 0px;
+  filter: drop-shadow( #b73232 0px 7px 4px);
+  font-family: var(--font-heading);
 }
 
 /* Content Sections */
 .content-section {
   padding: 40px 20px;
+}
+
+.wave-container {
+  height: 100%; width: 100%;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  line-height: 0; */
+}
+
+.museum-illustration {
+  max-height: 100%;
+}
+
+/* TODO: make that line at the bottom less harsh */
+/* .content-section {
+background: linear-gradient(#ff4b4b,#fff, #fff,#fff);
+} */
+
+/* adjusting for larger screen instead of smaller */
+@media only screen and (min-width: 900px) {
+
+  .museum-illustration {
+    height: 400px;
+  }
+
+  .cta-button {
+    margin: 10px auto
+  }
+
 }

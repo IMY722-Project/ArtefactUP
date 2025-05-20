@@ -1,9 +1,9 @@
 // src/components/ProgressSection.jsx
-import React, { useState, useEffect } from "react";
-import "./ProgressSection.css";
-import { getSessionId } from "../utils/session.js";
-import { API } from "../utils/config.js";
+import React, { useEffect, useState } from "react";
 import Spinner from "../Loader/LoadingIndicator.jsx";
+import { API } from "../utils/config.js";
+import { getSessionId } from "../utils/session.js";
+import "./ProgressSection.css";
 
 const ProgressSection = () => {
   const [progress, setProgress] = useState(null);
@@ -48,7 +48,6 @@ const ProgressSection = () => {
 
   return (
     <section className="progress-section">
-      <h2 className="progress-title">Hunt Progress</h2>
       {totalHunts > 0 ? (
         <>
           <div className="progress-bar-container">
@@ -57,14 +56,27 @@ const ProgressSection = () => {
               style={{ width: `${huntPercent}%` }}
             />
           </div>
-          <p className="progress-text">
-            {completedHunts} of {totalHunts} hunts completed ({huntPercent}%)
-          </p>
-          <p className="progress-text">
-            {artefactsFoundNoCurrent}{" "}
-            {artefactsFoundNoCurrent === 1 ? "artefact" : "artefacts"} found of{" "}
-            {totalArtefacts}
-          </p>
+          <div className='progress-markers-wrapper'>
+            <div>
+              <div className='progress-icon-div'>
+                <img src='/images/map_brown.png' className='progress-icon' alt="Map icon" />
+              </div>
+
+              <p className="progress-text">
+                {completedHunts} / {totalHunts} Quests
+              </p>
+            </div>
+            <div>
+              <div className='progress-icon-div'>
+                <img src='/images/frame_brown.png' className='progress-icon' alt="Frame icon" />
+              </div>
+              <p className="progress-text">
+                {artefactsFoundNoCurrent}{" "}
+                / {totalArtefacts} Artifacts
+              </p>
+
+            </div>
+          </div>
         </>
       ) : (
         <p className="progress-text">Begin a hunt!</p>
@@ -74,3 +86,5 @@ const ProgressSection = () => {
 };
 
 export default ProgressSection;
+// TODO: replace w more descriptive icons
+// museum quests, museum missions, quest meter, quest log, 
