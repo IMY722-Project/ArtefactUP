@@ -12,7 +12,8 @@ const ScavengerHunts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { hunts, setHunts, startHunt, completeHunt, goToStep } = useHuntStore();
+  const { hunts, setHunts, startHunt, completeHunt, goToStep, attemptedHunts } =
+    useHuntStore();
 
   useEffect(() => {
     fetch(`${API}/api/hunts/all`)
@@ -50,15 +51,15 @@ const ScavengerHunts = () => {
 
   const handleStartHunt = async hunt => {
     const local = hunts.find(h => h.id === hunt.id);
-   
 
     const sessionId = getSessionId();
-    
+
     if (local?.completed) {
       return navigate("/artefactsCollection", { state: { hunt } });
     }
 
-    if (local?.started) {
+    if (attemptedHunts.includes(hunt.id)) {
+      // startHunt(hunt.id);
       try {
         const res = await fetch(`${API}/api/hunts/progress/${hunt.id}`, {
           method: "GET",
@@ -74,8 +75,7 @@ const ScavengerHunts = () => {
         if (huntData.completed && !local?.completed) {
           completeHunt(hunt.id);
           console.log("Hunt completed:");
-        }
-         else if (huntData.currentStep.id !== local.currentStepId) {
+        } else if (huntData.currentStep.id !== local.currentStepId) {
           goToStep(hunt.id, huntData.currentStep.id);
           console.log("Hunt step changed:", huntData.currentStepId);
         }
