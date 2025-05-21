@@ -4,10 +4,12 @@ import Spinner from "../Loader/LoadingIndicator.jsx";
 import { API } from "../utils/config.js";
 import { getSessionId } from "../utils/session.js";
 import "./ProgressSection.css";
+import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ProgressSection = () => {
   const [progress, setProgress] = useState(null);
   const [error, setError] = useState(null);
+  const { hunts } = useHuntStore();
 
   useEffect(() => {
     const sessionId = getSessionId();
@@ -39,9 +41,13 @@ const ProgressSection = () => {
     return <Spinner />;
   }
 
-  const { completedHunts, totalHunts, artefactsFound, totalArtefacts } =
+  const { completedHunts, totalArtefacts } =
     progress;
-  const artefactsFoundNoCurrent = artefactsFound - 1;
+  const  totalHunts  = hunts.length;
+  const totalFound = hunts.reduce((count, hunt) => {
+    const foundSteps = hunt.steps.filter(step => step.found).length;
+    return count + foundSteps;
+  }, 0);
 
   const huntPercent =
     totalHunts > 0 ? Math.round((completedHunts / totalHunts) * 100) : 0;
@@ -71,8 +77,8 @@ const ProgressSection = () => {
                 <img src='/images/frame_brown.png' className='progress-icon' alt="Frame icon" />
               </div>
               <p className="progress-text">
-                {artefactsFoundNoCurrent}{" "}
-                / {totalArtefacts} Artifacts
+                {totalFound}{" "}
+                / {totalArtefacts} Artefacts
               </p>
 
             </div>
@@ -86,5 +92,3 @@ const ProgressSection = () => {
 };
 
 export default ProgressSection;
-// TODO: replace w more descriptive icons
-// museum quests, museum missions, quest meter, quest log, 
