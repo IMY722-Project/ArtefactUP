@@ -1,5 +1,7 @@
 package za.ac.up.artifactup.service.impl;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
@@ -78,8 +80,12 @@ public class UserHuntProgressServiceImpl implements UserHuntProgressService<User
         int completed = (int) userHuntProgressRepository.countBySessionIdAndCompletedTrue(sessionId);
         int artefactsFound = Math.toIntExact(Optional.ofNullable(userHuntProgressRepository.sumOfArtefactsFound(sessionId)).orElse(0L));
         int totalArtefacts = (int) scavengerHuntStepRepository.count();
+        int totalHunts = scavengerHuntService.count();
+        List<Integer> attemptedHuntIds = userHuntProgressRepository.findAllBySessionId(sessionId).stream().flatMap(Collection::stream)
+                .map(userHuntProgress -> userHuntProgress.getHunt().getId().intValue())
+                .toList();
 
-        return new UserHuntStatsDTO(attempted, completed, artefactsFound, totalArtefacts);
+        return new UserHuntStatsDTO(attempted, completed, artefactsFound, totalArtefacts, totalHunts, attemptedHuntIds);
     }
 
 }

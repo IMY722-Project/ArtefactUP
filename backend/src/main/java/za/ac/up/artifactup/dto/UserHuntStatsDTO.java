@@ -1,5 +1,7 @@
 package za.ac.up.artifactup.dto;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,4 +13,6 @@ public class UserHuntStatsDTO {
     private int huntsCompleted;
     private int artefactsFound;
     private int totalArtefactsAvailable;
+    private int totalHuntsAvailable;
+    private List<Integer> attemptedHuntIds;
 }

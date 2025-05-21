@@ -1,5 +1,6 @@
 package za.ac.up.artifactup.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +16,17 @@ public interface UserHuntProgressRepository extends JpaRepository<UserHuntProgre
 
     long countBySessionIdAndCompletedTrue(String sessionId); // hunts completed
 
-    @Query("SELECT SUM(u.currentStep) FROM UserHuntProgress u WHERE u.sessionId = :sessionId")
+    @Query("""
+                SELECT SUM(
+                    CASE\s
+                        WHEN h.completed = true THEN h.currentStep\s
+                        ELSE h.currentStep - 1\s
+                    END
+                )\s
+                FROM UserHuntProgress h WHERE h.sessionId = :sessionId
+            """)
     Long sumOfArtefactsFound(@Param("sessionId") String sessionId);
+
+    Optional<List<UserHuntProgress>> findAllBySessionId(String sessionId);
 
 }
