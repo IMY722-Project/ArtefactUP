@@ -96,8 +96,7 @@
 
 /* Keep the icon and label as before */
 .circle-icon {
-  color: var(--label-color);
-  font-size: 1.5rem;
+  width: 60%;
 }
 .hunt-label {
   position: absolute;

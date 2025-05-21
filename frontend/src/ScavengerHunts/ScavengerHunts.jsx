@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
@@ -10,8 +9,8 @@ import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { hunts, setHunts, startHunt } = useHuntStore();
 
@@ -27,7 +26,7 @@ const ScavengerHunts = () => {
           const transformed = data.map(h => ({
             id: h.id,
             currentStepId: h.steps[0]?.id ?? null,
-            steps: h.steps.map(s => ({ id: s.id, found: false }))
+            steps: h.steps.map(s => ({ id: s.id, found: false })),
           }));
           setHunts(transformed);
         }
@@ -49,31 +48,29 @@ const ScavengerHunts = () => {
       />
     );
 
-    const handleStartHunt = async hunt => {
-      const local = hunts.find(h => h.id === hunt.id);
-      if (
-        local?.started
-      ) {
-        return navigate("/artefactsCollection", { state: { hunt } });
+  const handleStartHunt = async hunt => {
+    const local = hunts.find(h => h.id === hunt.id);
+    if (local?.started) {
+      return navigate("/artefactsCollection", { state: { hunt } });
+    }
+
+    const sessionId = getSessionId();
+    try {
+      const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
+        method: "POST",
+        headers: { "Session-id": sessionId },
+      });
+      if (!res.ok) {
+        throw new Error(`Failed to start hunt (${res.status})`);
       }
 
-      const sessionId = getSessionId();
-      try {
-        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
-          method: "POST",
-          headers: { "Session-id": sessionId },
-        });
-        if (!res.ok) {
-          throw new Error(`Failed to start hunt (${res.status})`);
-        }
-
-        startHunt(hunt.id);
-        navigate("/artefactsCollection", { state: { hunt } });
-      } catch (e) {
-        console.error("Error starting hunt:", e);
-        alert("Unable to start hunt. Please try again.");
-      }
-    };
+      startHunt(hunt.id);
+      navigate("/artefactsCollection", { state: { hunt } });
+    } catch (e) {
+      console.error("Error starting hunt:", e);
+      alert("Unable to start hunt. Please try again.");
+    }
+  };
 
   return (
     <section className="scavenger-hunts">
@@ -84,7 +81,11 @@ const ScavengerHunts = () => {
             className="hunt-circle"
             onClick={() => handleStartHunt(hunt)}
           >
-            <FaStar className="circle-icon" />
+            <img
+              src="/images/map_gold.png"
+              className="circle-icon"
+              alt="map_gold"
+            />
             <span className="hunt-label">{hunt.name}</span>
           </div>
         ))}
