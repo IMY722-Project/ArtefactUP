@@ -14,5 +14,7 @@ public interface ScavengerHuntService<T> {
     Optional<T> findByName(String name);
 
     Optional<T> findById(Long id);
+
+    int count();
 }
 
