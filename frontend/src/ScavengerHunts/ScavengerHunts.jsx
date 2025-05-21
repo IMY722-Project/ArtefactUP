@@ -12,7 +12,7 @@ const ScavengerHunts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { hunts, setHunts, startHunt } = useHuntStore();
+  const { hunts, setHunts, startHunt, completeHunt, goToStep } = useHuntStore();
 
   useEffect(() => {
     fetch(`${API}/api/hunts/all`)
@@ -50,11 +50,44 @@ const ScavengerHunts = () => {
 
   const handleStartHunt = async hunt => {
     const local = hunts.find(h => h.id === hunt.id);
-    if (local?.started) {
+   
+
+    const sessionId = getSessionId();
+    
+    if (local?.completed) {
       return navigate("/artefactsCollection", { state: { hunt } });
     }
 
-    const sessionId = getSessionId();
+    if (local?.started) {
+      try {
+        const res = await fetch(`${API}/api/hunts/progress/${hunt.id}`, {
+          method: "GET",
+          headers: { "Session-id": sessionId },
+        });
+        if (!res.ok) {
+          throw new Error(`Failed to fetch hunt progress (${res.status})`);
+        }
+        const huntData = await res.json();
+        console.log("Hunt data:", huntData);
+        console.log("Local hunt data:", local);
+
+        if (huntData.completed && !local?.completed) {
+          completeHunt(hunt.id);
+          console.log("Hunt completed:");
+        }
+         else if (huntData.currentStep.id !== local.currentStepId) {
+          goToStep(hunt.id, huntData.currentStep.id);
+          console.log("Hunt step changed:", huntData.currentStepId);
+        }
+      } catch (e) {
+        console.error("Error hunting hunt:", e);
+        alert("Unable to try. Please try again.");
+      }
+      console.log("Local hunt data:", local);
+      console.log("Hunt data:", hunt);
+      return navigate("/artefactsCollection", { state: { hunt } });
+    }
+
     try {
       const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
         method: "POST",
