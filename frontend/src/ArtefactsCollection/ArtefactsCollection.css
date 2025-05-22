@@ -206,6 +206,7 @@
 
 .nav-btn {
   /* background: var(--primary-color); */
+  background: none;
   color: var(--primary-color);
   padding: 8px 12px;
   border-radius: 12px;
@@ -218,6 +219,7 @@
 
 .nav-btn-disabled {
   color: var(--disabled-color);
+  background: none;
   cursor: not-allowed;
   padding: 8px 12px;
   border-radius: 12px;

@@ -21,7 +21,7 @@ function App() {
           <Route path="/scan" element={<ScanPage />} />
 
       </Routes>
-        <ChatBot/>
+        {/* <ChatBot/> */}
     </ParallaxProvider>
   );
 }
