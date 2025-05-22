@@ -10,16 +10,13 @@ import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ScanPage = () => {
   const { state } = useLocation();
-   // Will remove after discussion regarding scavenger hunt
-  // eslint-disable-next-line no-unused-vars
-  const { huntId, artefactId } = state || {};
+  const { huntId, artefactId, current } = state || {};
   const navigate = useNavigate();
   const [capturedImage, setCapturedImage] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const [showIncorrect, setShowIncorrect] = useState(false);
-  const [currentStep, setCurrentStep] = useState({});
   const { markStepFound } =
     useHuntStore();
 
@@ -78,12 +75,11 @@ const ScanPage = () => {
       }
 
       const result = await response.json();
-      setCurrentStep(result.scavengerHuntStep);
       if (!result.matched) {
         setShowIncorrect(true);
       } else {
         markStepFound(huntId, artefactId);
-        navigate("/artefactDetails", { state: { artefact: currentStep.artefact } });
+        navigate("/artefactDetails", { state: { artefact: current.artefact } });
       }
     } catch (err) {
       console.error("Validation failed:", err);
@@ -100,7 +96,7 @@ const ScanPage = () => {
   };
   const reveal = () => {
     setShowIncorrect(false);
-    navigate("/artefactDetails", { state: { artefact: currentStep.artefact } });
+    navigate("/artefactDetails", { state: { artefact: current.artefact } });
   };
 
   return (
