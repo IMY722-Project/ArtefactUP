@@ -120,12 +120,7 @@
 
   cursor: pointer;
   /* transition: background 0.3s ease; */
-  height: 40px;
-  font-weight: 550;
-  font-size: 1rem;
-  color: var(--text-bright);
-  display: flex;
-  align-items: center;
+
   margin: 10px 15px;
 }
 
@@ -165,7 +160,6 @@
   background-attachment: fixed;
 }
 
-/* TODO: dont apply this to root - may beed a new div */
 /* Container for the entire page */
 .artefacts-collection-page {
   max-width: 100%;

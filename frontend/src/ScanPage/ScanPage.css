@@ -1,71 +1,77 @@
 /* Overall page styling */
-.scan-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #fadd9d;
-    min-height: 100vh;
-    /* font-family: 'Arial', sans-serif; */
-    color: #fff;
-  }
-  
+.scan-page-wrapper {
+  background: url(../../public/images/bg_pattern.png) repeat-y;
+  background-size: 100%;
+  background-attachment: fixed;
+}
 
-  /* Container for the webcam / captured image */
-  .scan-container {
-    position: relative;
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 2px solid #ffae2b;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #ffbc40;
-  }
-  
-  /* Webcam and captured image styles */
-  .webcam-feed,
-  .captured-image {
-    width: 100%;
-    height: 500px;
-    /* height: auto; */
-    display: block;
-  }
-  
-  /* Overlay on camera preview */
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.45);
-    text-align: center;
-    padding: 10px;
-    font-size: 1rem;
-  }
-  
-  /* Action buttons */
-  .scan-actions {
-    margin-top: 20px;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .capture-button,
-  .retake-button, 
-  .submit-button {
-    padding: 10px 20px;
-    background: #FF4412;
-    border: none;
-    border-radius: 12px;
-    font-size: 1rem;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-/*   
-  .capture-button:hover,
-  .retake-button:hover, 
-  .submit-button:hover {
-    background: #FF4412;
-  } */
-  
+.scan-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  /* font-family: 'Arial', sans-serif; */
+  color: #fff;
+  background: linear-gradient(#fff, #ffb96dc8, #c74141e2);
+
+}
+
+
+/* Container for the webcam / captured image */
+.scan-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  border: 2px solid #ffae2b;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffbc40;
+}
+
+/* Webcam and captured image styles */
+.webcam-feed,
+.captured-image {
+  width: 100%;
+  height: 500px;
+  /* height: auto; */
+  display: block;
+}
+
+/* Overlay on camera preview */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* Action buttons */
+.scan-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.capture-button,
+.retake-button,
+.submit-button {
+
+}
+
+/* .capture-button,
+.retake-button,
+.submit-button {
+  padding: 10px 20px;
+  background: #FF4412;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+} */

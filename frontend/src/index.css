@@ -63,5 +63,13 @@ img {
   background: #fff;
   filter: drop-shadow(#54343462 0px 7px 4px);
   text-decoration: none;
+  font-weight: 750;
+  height: 40px;
+  font-size: 1rem;
+  color: var(--text-bright);
+
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
 
 }

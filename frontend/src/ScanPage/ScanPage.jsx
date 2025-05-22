@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { API } from "../utils/config.js";
 import { useHuntStore } from "../stores/useHuntStore.js";
+import { FaCameraRetro } from "react-icons/fa";
 
 const ScanPage = () => {
   const { state } = useLocation();
@@ -104,8 +105,9 @@ const ScanPage = () => {
   };
 
   return (
+    <div className="scan-page-wrapper">
     <div className="scan-page">
-      <TopCircle pageTitle="Scan" />
+      <TopCircle pageTitle="Scan the artwork" />
 
       <div className="scan-container">
         {!capturedImage ? (
@@ -124,8 +126,8 @@ const ScanPage = () => {
 
       <div className="scan-actions">
         {!capturedImage ? (
-          <button className="capture-button" onClick={handleCapture}>
-            Capture
+          <button className="capture-button button" onClick={handleCapture}>
+            <FaCameraRetro className="btn-icon "/> Capture
           </button>
         ) : (
           <>
@@ -150,6 +152,7 @@ const ScanPage = () => {
           onClose={() => setShowIncorrect(false)}
         />
       )}
+    </div>
     </div>
   );
 };
