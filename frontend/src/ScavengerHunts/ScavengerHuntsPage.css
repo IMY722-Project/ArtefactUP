@@ -15,7 +15,7 @@
 .scavenger-hunts-page-wrapper {
   background: url(../../public/images/bg-map-2.png) repeat-y;
   background-size: 100%;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 
 /* Wrapper for top circle and overlay */
