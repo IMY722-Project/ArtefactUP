@@ -228,11 +228,11 @@
 .congrats-banner {
   margin-top: 20px;
   padding: 12px 16px;
-  background: #28a745;
+  /* background: #28a745;
   color: white;
   border-radius: 8px;
   font-weight: bold;
-  text-align: center;
+  text-align: center; */
   animation: fadeIn 0.5s ease-out;
 }
 

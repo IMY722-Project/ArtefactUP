@@ -107,10 +107,12 @@ const ArtefactsCollection = () => {
             <MdOutlineArrowCircleRight />
           </button>
         </div>
-        
+
         {hunt.completed && (
           <div className="congrats-banner">
-            Quest Completed
+            <img src="/images/quest-complete-banner-2.png" alt="
+            Quest Completed" />
+
           </div>
         )}
 
