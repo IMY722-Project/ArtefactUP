@@ -152,19 +152,20 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-        {isCurrent && !isFound && (
+        {/* Maybe we don't need a hint? */}
+        {/* {isCurrent && !isFound && (
           <button className="ac-btn hint-btn button" onClick={toggleHint}>
             <FaMagnifyingGlass className="btn-icon " /> Hint
           </button>
-        )}
+        )} */}
 
         <button
           className="ac-btn reveal-btn button"
           onClick={() => onReveal(step)}
         >
           <FaEye className="btn-icon " /> Reveal
-          {/* skip, show, reveal */}
         </button>
+
         {isCurrent && !isFound && (
           <button className="ac-btn scan-btn button" onClick={() => onScan(step.id)}>
             {/* <FaCameraRetro className="cam-icon" /> */}
@@ -174,7 +175,7 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
           </button>
         )}
       </div>
-      {hintVisible && <div className="ac-hint">{step.hint}</div>}
+      {/* {hintVisible && <div className="ac-hint">{step.hint}</div>} */}
     </div>
   );
 };

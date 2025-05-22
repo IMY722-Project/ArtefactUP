@@ -111,7 +111,8 @@
 /* Card Actions */
 .ac-card-actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+
   gap: 8px;
 }
 
@@ -125,6 +126,7 @@
   color: var(--text-bright);
   display: flex;
   align-items: center;
+  margin: 10px 15px;
 }
 
 .btn-icon {
