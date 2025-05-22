@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./ScavengerHunts.css";
 import { getSessionId } from "../utils/session.js";
@@ -10,10 +9,11 @@ import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ScavengerHunts = () => {
   const [huntsData, setHuntsData] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const { hunts, setHunts, startHunt } = useHuntStore();
+  const { hunts, setHunts, startHunt, completeHunt, goToStep, attemptedHunts } =
+    useHuntStore();
 
   useEffect(() => {
     fetch(`${API}/api/hunts/all`)
@@ -27,7 +27,7 @@ const ScavengerHunts = () => {
           const transformed = data.map(h => ({
             id: h.id,
             currentStepId: h.steps[0]?.id ?? null,
-            steps: h.steps.map(s => ({ id: s.id, found: false }))
+            steps: h.steps.map(s => ({ id: s.id, found: false })),
           }));
           setHunts(transformed);
         }
@@ -49,31 +49,61 @@ const ScavengerHunts = () => {
       />
     );
 
-    const handleStartHunt = async hunt => {
-      const local = hunts.find(h => h.id === hunt.id);
-      if (
-        local?.started
-      ) {
-        return navigate("/artefactsCollection", { state: { hunt } });
-      }
+  const handleStartHunt = async hunt => {
+    const local = hunts.find(h => h.id === hunt.id);
 
-      const sessionId = getSessionId();
+    const sessionId = getSessionId();
+
+    if (local?.completed) {
+      return navigate("/artefactsCollection", { state: { hunt } });
+    }
+
+    if (attemptedHunts.includes(hunt.id)) {
+      // startHunt(hunt.id);
       try {
-        const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
-          method: "POST",
+        const res = await fetch(`${API}/api/hunts/progress/${hunt.id}`, {
+          method: "GET",
           headers: { "Session-id": sessionId },
         });
         if (!res.ok) {
-          throw new Error(`Failed to start hunt (${res.status})`);
+          throw new Error(`Failed to fetch hunt progress (${res.status})`);
         }
+        const huntData = await res.json();
+        console.log("Hunt data:", huntData);
+        console.log("Local hunt data:", local);
 
-        startHunt(hunt.id);
-        navigate("/artefactsCollection", { state: { hunt } });
+        if (huntData.completed && !local?.completed) {
+          completeHunt(hunt.id);
+          console.log("Hunt completed:");
+        } else if (huntData.currentStep.id !== local.currentStepId) {
+          goToStep(hunt.id, huntData.currentStep.id);
+          console.log("Hunt step changed:", huntData.currentStepId);
+        }
       } catch (e) {
-        console.error("Error starting hunt:", e);
-        alert("Unable to start hunt. Please try again.");
+        console.error("Error hunting hunt:", e);
+        alert("Unable to try. Please try again.");
       }
-    };
+      console.log("Local hunt data:", local);
+      console.log("Hunt data:", hunt);
+      return navigate("/artefactsCollection", { state: { hunt } });
+    }
+
+    try {
+      const res = await fetch(`${API}/api/hunts/progress/start/${hunt.id}`, {
+        method: "POST",
+        headers: { "Session-id": sessionId },
+      });
+      if (!res.ok) {
+        throw new Error(`Failed to start hunt (${res.status})`);
+      }
+
+      startHunt(hunt.id);
+      navigate("/artefactsCollection", { state: { hunt } });
+    } catch (e) {
+      console.error("Error starting hunt:", e);
+      alert("Unable to start hunt. Please try again.");
+    }
+  };
 
   return (
     <section className="scavenger-hunts">
@@ -84,7 +114,11 @@ const ScavengerHunts = () => {
             className="hunt-circle"
             onClick={() => handleStartHunt(hunt)}
           >
-            <FaStar className="circle-icon" />
+            <img
+              src="/images/map_gold.png"
+              className="circle-icon"
+              alt="map_gold"
+            />
             <span className="hunt-label">{hunt.name}</span>
           </div>
         ))}
