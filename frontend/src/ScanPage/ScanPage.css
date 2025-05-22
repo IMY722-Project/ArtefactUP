@@ -23,10 +23,12 @@
   width: 90%;
   max-width: 600px;
   margin: 20px auto;
-  border: 2px solid #ffae2b;
+  /* border: 2px solid #ffae2b; */
   border-radius: 8px;
   overflow: hidden;
-  background: #ffbc40;
+  background: var(--disabled-color);
+  box-sizing: border-box;
+
 }
 
 /* Webcam and captured image styles */
@@ -39,7 +41,7 @@
 }
 
 /* Overlay on camera preview */
-.overlay {
+/* .overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -48,6 +50,27 @@
   text-align: center;
   padding: 10px;
   font-size: 1rem;
+} */
+
+.overlay {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
+  filter: drop-shadow(#54343462 0px 7px 4px);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-bright);
+  width: 90%;
+
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
+  box-sizing: border-box;
+
 }
 
 /* Action buttons */
@@ -57,11 +80,6 @@
   gap: 20px;
 }
 
-.capture-button,
-.retake-button,
-.submit-button {
-
-}
 
 /* .capture-button,
 .retake-button,

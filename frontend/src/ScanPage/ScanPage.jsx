@@ -11,7 +11,7 @@ import { FaCameraRetro } from "react-icons/fa";
 
 const ScanPage = () => {
   const { state } = useLocation();
-   // Will remove after discussion regarding scavenger hunt
+  // Will remove after discussion regarding scavenger hunt
   // eslint-disable-next-line no-unused-vars
   const { huntId, artefactId } = state || {};
   const navigate = useNavigate();
@@ -106,53 +106,54 @@ const ScanPage = () => {
 
   return (
     <div className="scan-page-wrapper">
-    <div className="scan-page">
-      <TopCircle pageTitle="Scan the artwork" />
+      <div className="scan-page">
+        <TopCircle pageTitle="Scan the artwork" />
 
-      <div className="scan-container">
-        {!capturedImage ? (
-          <video ref={videoRef} className="webcam-feed" autoPlay playsInline />
-        ) : (
-          <img
-            src={capturedImage}
-            alt="Captured Artefact"
-            className="captured-image"
-          />
-        )}
         <div className="overlay">
           <p>Align the artefact within the frame</p>
         </div>
-      </div>
 
-      <div className="scan-actions">
-        {!capturedImage ? (
-          <button className="capture-button button" onClick={handleCapture}>
-            <FaCameraRetro className="btn-icon "/> Capture
-          </button>
-        ) : (
-          <>
-            <button className="retake-button" onClick={handleRetake}>
-              Retake
+        <div className="scan-container">
+          {!capturedImage ? (
+            <video ref={videoRef} className="webcam-feed" autoPlay playsInline />
+          ) : (
+            <img
+              src={capturedImage}
+              alt="Captured Artefact"
+              className="captured-image"
+            />
+          )}
+        </div>
+
+        <div className="scan-actions">
+          {!capturedImage ? (
+            <button className="capture-button button" onClick={handleCapture}>
+              <FaCameraRetro className="btn-icon " /> Capture
             </button>
-            <button
-              className="submit-button"
-              onClick={handleSubmit}
-              disabled={submitting}
-            >
-              {submitting ? "Submitting..." : "Submit"}
-            </button>
-          </>
+          ) : (
+            <>
+              <button className="retake-button" onClick={handleRetake}>
+                Retake
+              </button>
+              <button
+                className="submit-button"
+                onClick={handleSubmit}
+                disabled={submitting}
+              >
+                {submitting ? "Submitting..." : "Submit"}
+              </button>
+            </>
+          )}
+        </div>
+
+        {showIncorrect && (
+          <ValidationPopup
+            onRetry={retry}
+            onReveal={reveal}
+            onClose={() => setShowIncorrect(false)}
+          />
         )}
       </div>
-
-      {showIncorrect && (
-        <ValidationPopup
-          onRetry={retry}
-          onReveal={reveal}
-          onClose={() => setShowIncorrect(false)}
-        />
-      )}
-    </div>
     </div>
   );
 };
