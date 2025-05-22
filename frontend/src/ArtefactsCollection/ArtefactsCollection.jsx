@@ -9,7 +9,8 @@ import { FaCheck } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowCircleLeft } from "react-icons/md";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
-
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 
 import "./ArtefactsCollection.css";
@@ -86,12 +87,20 @@ const ArtefactsCollection = () => {
       <TopCircle pageTitle={huntData.name} />
 
       <div className="ac-main">
+        {hunt.completed && (
+          <div className="congrats-banner">
+            <img className="banner-img" src="/images/quest-complete-banner-2.png" alt="
+            Quest Completed" />
+
+          </div>
+        )}
+
         <div className="ac-navigation">
           <button
             onClick={handlePrev}
             className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
           >
-            <MdOutlineArrowCircleLeft />
+            <FaArrowCircleLeft />
           </button>
 
           <span className="nav-indicator">
@@ -104,17 +113,9 @@ const ArtefactsCollection = () => {
               ? "nav-btn"
               : "nav-btn-disabled"}
           >
-            <MdOutlineArrowCircleRight />
+            <FaArrowCircleRight />
           </button>
         </div>
-
-        {hunt.completed && (
-          <div className="congrats-banner">
-            <img src="/images/quest-complete-banner-2.png" alt="
-            Quest Completed" />
-
-          </div>
-        )}
 
         {currentStep && (
           <ClueCard

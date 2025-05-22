@@ -2,7 +2,7 @@
 .top-circle-gen {
   width: 100%;
   min-height: fit-content;
-  height: 100px;
+  height: 80px;
   /* background: var(--top-circle-grad); */
   border-bottom-left-radius: 100% 30%;
   border-bottom-right-radius: 100% 30%;
@@ -11,9 +11,15 @@
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  gap: 10px;
-    padding-bottom: 10px;
+  gap: 40px;
+  /* padding-bottom: 10px; */
 
+}
+
+.questTitle {
+  /* font-family: var(--font-family); */
+  font-weight: 200;
+  font-size: 1.6rem;
 }
 
 /* Title Overlaid on the Half-Circle */
