@@ -54,7 +54,7 @@ const ArtefactsCollection = () => {
     setCurrentIndex(i => Math.min(i + 1, visibleSteps.length - 1));
 
   const handleScan = stepId => {
-    navigate("/scan", { state: { huntId: huntData.id, artefactId: stepId } });
+    navigate("/scan", { state: { huntId: huntData.id, artefactId: stepId, current: currentStep } });
   };
   const handleReveal = async step => {
     const sessionId = getSessionId();
