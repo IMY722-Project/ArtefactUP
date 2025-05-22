@@ -96,12 +96,16 @@
 .hunt-label {
   position: absolute;
   top: calc(100% + 8px);
-  width: 100%;
+  width: fit-content;
   text-align: center;
   color: var(--text-dark);
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 400;
+  background-color: #ffffffcc;
+  margin:auto;
+  padding: 3px 9px;
+  border-radius: 11px;
 }
 
 
