@@ -53,9 +53,9 @@
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+/* .nav-links a:hover {
   color: #ff5a5f;
-}
+} */
 
 .menu-btn {
   background: none;

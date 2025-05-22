@@ -70,9 +70,9 @@
 }
 
 /* keep your existing hover pop */
-.hunt-circle:hover {
+/* .hunt-circle:hover {
   transform: scale(1.1);
-}
+} */
 
 /* Diagonal offset: push every 2nd, 4th, 6th… stone down */
 .hunt-circle:nth-child(2n) {
