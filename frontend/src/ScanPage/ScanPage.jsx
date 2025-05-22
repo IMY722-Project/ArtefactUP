@@ -132,11 +132,11 @@ const ScanPage = () => {
             </button>
           ) : (
             <>
-              <button className="retake-button" onClick={handleRetake}>
+              <button className="retake-button button" onClick={handleRetake}>
                 Retake
               </button>
               <button
-                className="submit-button"
+                className="submit-button button"
                 onClick={handleSubmit}
                 disabled={submitting}
               >
