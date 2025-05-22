@@ -3,12 +3,18 @@
   max-width: 100%;
   min-height: 100vh;
   /* background-color: #f9ebd7; */
-  background: var(--bg-grad2);
+  /* background: var(--bg-grad2); */
+  background: linear-gradient(#ffbf8e9b, #ff9558bb, #bc3959bb);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+#root {
+  background: url(../../public/images/bg-map-2.png) repeat-y;
+  background-size: 100%;
+  background-attachment: fixed;
+}
 
 /* Wrapper for top circle and overlay */
 .top-circle-wrapper {
