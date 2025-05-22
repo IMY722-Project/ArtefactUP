@@ -11,15 +11,15 @@
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  gap: 40px;
+  gap: 0px;
   /* padding-bottom: 10px; */
 
 }
 
 .questTitle {
   /* font-family: var(--font-family); */
-  font-weight: 200;
-  font-size: 1.6rem;
+  font-weight: 600;
+  font-size: 1.9rem;
 }
 
 /* Title Overlaid on the Half-Circle */

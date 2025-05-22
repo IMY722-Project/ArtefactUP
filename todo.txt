@@ -1,3 +1,3 @@
-- remove chat button from all screens
+- add chatbot to its own page
 - change nav indicator to show number of all the steps
 - navigating through quest - check if artifact is first or last  - if so - give nav btn a diff class so it can be hidden
