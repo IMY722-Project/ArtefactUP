@@ -153,20 +153,20 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
       </div>
       <div className="ac-card-actions">
         {isCurrent && !isFound && (
-          <button className="ac-btn hint-btn" onClick={toggleHint}>
+          <button className="ac-btn hint-btn button" onClick={toggleHint}>
             <FaMagnifyingGlass className="btn-icon " /> Hint
           </button>
         )}
 
         <button
-          className="ac-btn reveal-btn"
+          className="ac-btn reveal-btn button"
           onClick={() => onReveal(step)}
         >
           <FaEye className="btn-icon " /> Reveal
           {/* skip, show, reveal */}
         </button>
         {isCurrent && !isFound && (
-          <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
+          <button className="ac-btn scan-btn button" onClick={() => onScan(step.id)}>
             {/* <FaCameraRetro className="cam-icon" /> */}
             <FaCheck className="btn-icon " /> Got it
             {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}

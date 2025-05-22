@@ -90,7 +90,7 @@
 
 /* Keep the icon and label as before */
 .circle-icon {
-  width: 60%;
+  width: 80%;
 }
 
 .hunt-label {
@@ -103,9 +103,11 @@
   font-size: 1.3rem;
   font-weight: 400;
   background-color: #ffffffcc;
-  margin:auto;
-  padding: 3px 9px;
-  border-radius: 11px;
+  margin: auto;
+  padding: 8px 15px;
+  border-radius: 20px;
+  filter: drop-shadow(#54343462 0px 7px 4px);
+
 }
 
 

@@ -6,6 +6,7 @@
   /* background: var(--bg-grad2); */
   /* background: linear-gradient(#ffbf8e9b, #ff9558bb, #bc3959bb); */
   background: linear-gradient( #ffb96dc8, #e96363c8,#742237bd);
+  /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
   overflow: hidden;

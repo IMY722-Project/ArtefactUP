@@ -1,4 +1,3 @@
-
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 
@@ -12,9 +11,9 @@
   --text-light: #f7f7f7;
   --text-bright: #e62d2d;
   --accent-color: #ffbf3e;
-  --disabled-color:#63636360;
+  --disabled-color: #63636360;
   --font-family: 'Montserrat', 'Hevetica', sans-serif;
-  --font-heading: 'Kurale','PT Serif', 'Monserrat', 'Helvetica', sans-serif;
+  --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
   --bg-home-grad: linear-gradient(#ffffff, #da9456, #ff4b4b);
   /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
@@ -54,4 +53,15 @@ code {
 
 img {
   max-width: 100%;
+}
+
+.button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  min-width: fit-content;
+  background: #fff;
+  filter: drop-shadow(#54343462 0px 7px 4px);
+  text-decoration: none;
+
 }
