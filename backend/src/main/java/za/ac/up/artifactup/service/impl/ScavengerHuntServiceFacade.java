@@ -49,4 +49,9 @@ public class ScavengerHuntServiceFacade implements ScavengerHuntService<Scavenge
         return service.findById(id)
                 .map(mapper::toDto);
     }
+
+    @Override
+    public int count() {
+        return service.count();
+    }
 }
