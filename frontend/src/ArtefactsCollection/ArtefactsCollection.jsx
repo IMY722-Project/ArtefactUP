@@ -37,7 +37,7 @@ const ArtefactsCollection = () => {
     setCurrentIndex(
       huntData.steps.findIndex(s => s.id === hunt.currentStepId)
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
 
 
@@ -66,8 +66,8 @@ const ArtefactsCollection = () => {
         throw new Error(`Reveal failed (${res.status})`);
       }
       markStepFound(huntData.id, step.id);
-      
-      
+
+
       const thisHunt = hunts.find(h => h.id === huntData.id);
       const idx = thisHunt.steps.findIndex(s => s.id === step.id);
       const nextStepObj = thisHunt.steps[idx + 1];
@@ -91,7 +91,7 @@ const ArtefactsCollection = () => {
             onClick={handlePrev}
             className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
           >
-            <MdOutlineArrowCircleLeft/>
+            <MdOutlineArrowCircleLeft />
           </button>
 
           <span className="nav-indicator">
@@ -104,9 +104,15 @@ const ArtefactsCollection = () => {
               ? "nav-btn"
               : "nav-btn-disabled"}
           >
-            <MdOutlineArrowCircleRight/>
+            <MdOutlineArrowCircleRight />
           </button>
         </div>
+        
+        {hunt.completed && (
+          <div className="congrats-banner">
+            Quest Completed
+          </div>
+        )}
 
         {currentStep && (
           <ClueCard
@@ -118,11 +124,7 @@ const ArtefactsCollection = () => {
           />
         )}
 
-        {hunt.completed && (
-          <div className="congrats-banner">
-            🎉 Congratulations, you’ve completed this hunt! 🎉
-          </div>
-        )}
+
       </div>
     </div>
   );
@@ -144,9 +146,9 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-        {isCurrent && !isFound&& (
+        {isCurrent && !isFound && (
           <button className="ac-btn hint-btn" onClick={toggleHint}>
-            <FaMagnifyingGlass className="btn-icon "/> Hint
+            <FaMagnifyingGlass className="btn-icon " /> Hint
           </button>
         )}
 
@@ -154,16 +156,16 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
           className="ac-btn reveal-btn"
           onClick={() => onReveal(step)}
         >
-          <FaEye className="btn-icon "/> Reveal
+          <FaEye className="btn-icon " /> Reveal
           {/* skip, show, reveal */}
         </button>
-        {isCurrent && !isFound &&(
-        <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
-          {/* <FaCameraRetro className="cam-icon" /> */}
-          <FaCheck className="btn-icon "/> Got it
-          {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
+        {isCurrent && !isFound && (
+          <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
+            {/* <FaCameraRetro className="cam-icon" /> */}
+            <FaCheck className="btn-icon " /> Got it
+            {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
 
-        </button>
+          </button>
         )}
       </div>
       {hintVisible && <div className="ac-hint">{step.hint}</div>}
