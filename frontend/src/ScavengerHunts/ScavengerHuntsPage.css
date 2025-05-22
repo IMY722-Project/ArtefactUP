@@ -47,6 +47,7 @@
 }
 
 
+
 .menu-button {
   /* TODO: change - fix overlap */
 
@@ -56,6 +57,7 @@
   z-index: 10;
 }
 
+/* adjusting for larger screen instead of smaller */
 @media (min-width: 900px) {
   .museum-icon {
     width: 30%;
