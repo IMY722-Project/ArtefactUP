@@ -6,6 +6,9 @@ import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { MdOutlineArrowCircleLeft } from "react-icons/md";
+import { MdOutlineArrowCircleRight } from "react-icons/md";
 
 
 
@@ -88,7 +91,7 @@ const ArtefactsCollection = () => {
             onClick={handlePrev}
             className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
           >
-            Prev
+            <MdOutlineArrowCircleLeft/>
           </button>
 
           <span className="nav-indicator">
@@ -101,7 +104,7 @@ const ArtefactsCollection = () => {
               ? "nav-btn"
               : "nav-btn-disabled"}
           >
-            Next
+            <MdOutlineArrowCircleRight/>
           </button>
         </div>
 
@@ -151,7 +154,7 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
           className="ac-btn reveal-btn"
           onClick={() => onReveal(step)}
         >
-          <FaEye className="btn-icon "/> Show
+          <FaEye className="btn-icon "/> Reveal
           {/* skip, show, reveal */}
         </button>
         {isCurrent && !isFound &&(

@@ -3,7 +3,7 @@
   width: 100%;
   min-height: fit-content;
   height: 100px;
-  background: var(--top-circle-grad);
+  /* background: var(--top-circle-grad); */
   border-bottom-left-radius: 100% 30%;
   border-bottom-right-radius: 100% 30%;
   position: relative;
