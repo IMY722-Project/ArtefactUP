@@ -83,7 +83,9 @@ const ArtefactsCollection = () => {
   };
 
   return (
-    <div className="artefacts-collection-page">
+    <div className="artefacts-collection-page-wrapper">
+          <div className="artefacts-collection-page">
+
       <TopCircle pageTitle={huntData.name} />
 
       <div className="ac-main">
@@ -129,6 +131,7 @@ const ArtefactsCollection = () => {
 
 
       </div>
+    </div>
     </div>
   );
 }

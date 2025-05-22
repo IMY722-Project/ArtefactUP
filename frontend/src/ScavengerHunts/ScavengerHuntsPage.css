@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-#root {
+.scavenger-hunts-page-wrapper {
   background: url(../../public/images/bg-map-2.png) repeat-y;
   background-size: 100%;
   background-attachment: fixed;
@@ -28,11 +28,11 @@
   height: 45%;
 
   /* opt1 */
-  background: var(--top-circle-grad);
+  /* background: var(--top-circle-grad);
   border-bottom-left-radius: 100% 30%;
-  border-bottom-right-radius: 100% 30%;
+  border-bottom-right-radius: 100% 30%; */
   /* -- */
-  /* background: linear-gradient(#fff,#fff,#ffc491, #ffffff00); */
+  background: linear-gradient(#fff,#fff, #ffffff71,#ffffff71, #ffffff00);
   display: flex;
   justify-content: center;
   position: relative;

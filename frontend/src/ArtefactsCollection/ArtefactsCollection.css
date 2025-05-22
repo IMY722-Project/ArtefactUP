@@ -160,7 +160,7 @@
 }
 
 
-#root {
+.artefacts-collection-page-wrapper{
   background: url(../../public/images/bg_pattern.png) repeat-y;
   background-size: 100%;
   background-attachment: fixed;
@@ -180,7 +180,7 @@
   /* yellow */
   /* background: linear-gradient( #c37f32ce, #ff7676cf, #9a3e3eea); */
   /* background: linear-gradient( #c37f32ed, #ff7676f1, #9a3e3eea); */
-  background: linear-gradient(#fff, #f6b64ec8, #c74141e2);
+  background: linear-gradient(#fff, #ffb96dc8, #c74141e2);
 
 
 
