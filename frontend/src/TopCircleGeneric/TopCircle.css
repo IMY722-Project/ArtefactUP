@@ -1,6 +1,7 @@
 /* Half-Circle Header */
 .top-circle-gen {
   width: 100%;
+  min-height: fit-content;
   height: 100px;
   background: var(--top-circle-grad);
   border-bottom-left-radius: 100% 30%;
