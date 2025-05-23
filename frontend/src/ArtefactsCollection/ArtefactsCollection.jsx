@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import {
+  FaArrowCircleLeft,
+  FaArrowCircleRight,
+  FaCheck,
+  FaEye,
+} from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
-import { FaEye } from "react-icons/fa";
-import { FaCheck } from "react-icons/fa";
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { FaArrowCircleRight } from "react-icons/fa";
 
-
-import "./ArtefactsCollection.css";
-import { getSessionId } from "../utils/session.js";
-import { API } from "../utils/config.js";
 import { useEffect } from "react";
-
+import { API } from "../utils/config.js";
+import { getSessionId } from "../utils/session.js";
+import "./ArtefactsCollection.css";
 
 const ArtefactsCollection = () => {
   const navigate = useNavigate();
@@ -30,12 +30,9 @@ const ArtefactsCollection = () => {
     setVisibleSteps(
       huntData.steps.filter(step => visibleStepIds.includes(step.id))
     );
-    setCurrentIndex(
-      huntData.steps.findIndex(s => s.id === hunt.currentStepId)
-    );
+    setCurrentIndex(huntData.steps.findIndex(s => s.id === hunt.currentStepId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
-
 
   if (!huntData) {
     navigate(-1);
@@ -49,7 +46,9 @@ const ArtefactsCollection = () => {
     setCurrentIndex(i => Math.min(i + 1, visibleSteps.length - 1));
 
   const handleScan = stepId => {
-    navigate("/scan", { state: { huntId: huntData.id, artefactId: stepId, current: currentStep } });
+    navigate("/scan", {
+      state: { huntId: huntData.id, artefactId: stepId, current: currentStep },
+    });
   };
   const handleReveal = async step => {
     const sessionId = getSessionId();
@@ -62,7 +61,6 @@ const ArtefactsCollection = () => {
         throw new Error(`Reveal failed (${res.status})`);
       }
       markStepFound(huntData.id, step.id);
-
 
       const thisHunt = hunts.find(h => h.id === huntData.id);
       const idx = thisHunt.steps.findIndex(s => s.id === step.id);
@@ -79,57 +77,59 @@ const ArtefactsCollection = () => {
 
   return (
     <div className="artefacts-collection-page-wrapper">
-          <div className="artefacts-collection-page">
+      <div className="artefacts-collection-page">
+        <TopCircle pageTitle={huntData.name} />
 
-      <TopCircle pageTitle={huntData.name} />
+        <div className="ac-main">
+          {hunt.completed && (
+            <div className="congrats-banner">
+              <img
+                className="banner-img"
+                src="/images/quest-complete-banner-2.png"
+                alt="
+            Quest Completed"
+              />
+            </div>
+          )}
 
-      <div className="ac-main">
-        {hunt.completed && (
-          <div className="congrats-banner">
-            <img className="banner-img" src="/images/quest-complete-banner-2.png" alt="
-            Quest Completed" />
+          <div className="ac-navigation">
+            <button
+              onClick={handlePrev}
+              className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
+            >
+              <FaArrowCircleLeft />
+            </button>
 
+            <span className="nav-indicator">
+              {currentIndex + 1} / {visibleSteps.length}
+            </span>
+
+            <button
+              onClick={handleNext}
+              className={
+                currentIndex < visibleSteps.length - 1
+                  ? "nav-btn"
+                  : "nav-btn-disabled"
+              }
+            >
+              <FaArrowCircleRight />
+            </button>
           </div>
-        )}
 
-        <div className="ac-navigation">
-          <button
-            onClick={handlePrev}
-            className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
-          >
-            <FaArrowCircleLeft />
-          </button>
-
-          <span className="nav-indicator">
-            {currentIndex + 1} / {visibleSteps.length}
-          </span>
-
-          <button
-            onClick={handleNext}                     // always wired up
-            className={currentIndex < visibleSteps.length - 1
-              ? "nav-btn"
-              : "nav-btn-disabled"}
-          >
-            <FaArrowCircleRight />
-          </button>
+          {currentStep && (
+            <ClueCard
+              step={currentStep}
+              isCurrent={currentStep.id === hunt.currentStepId}
+              isFound={hunt.steps.find(s => s.id === currentStep.id).found}
+              onScan={handleScan}
+              onReveal={handleReveal}
+            />
+          )}
         </div>
-
-        {currentStep && (
-          <ClueCard
-            step={currentStep}
-            isCurrent={currentStep.id === hunt.currentStepId}
-            isFound={hunt.steps.find(s => s.id === currentStep.id).found}
-            onScan={handleScan}
-            onReveal={handleReveal}
-          />
-        )}
-
-
       </div>
     </div>
-    </div>
   );
-}
+};
 
 const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
   return (
@@ -145,24 +145,45 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-
-        <button
-          className="ac-btn reveal-btn button"
-          onClick={() => onReveal(step)}
-        >
-          <FaEye className="btn-icon " /> Reveal
-        </button>
-
         {isCurrent && !isFound && (
-          <button className="ac-btn scan-btn button" onClick={() => onScan(step.id)}>
-            {/* <FaCameraRetro className="cam-icon" /> */}
-            <FaCheck className="btn-icon " /> Got it
-            {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
+          <>
+            <button
+              className="ac-btn reveal-btn button"
+              onClick={() => onReveal(step)}
+            >
+              <FaEye className="btn-icon " /> Reveal
+            </button>
 
-          </button>
+            <button
+              className="ac-btn scan-btn button"
+              onClick={() => onScan(step.id)}
+            >
+              <FaCheck className="btn-icon " /> Got it
+            </button>
+          </>
         )}
       </div>
-      {/* {hintVisible && <div className="ac-hint">{step.hint}</div>} */}
+      {isFound && (
+        <div className="info-section">
+          <div className="text-info">
+            <h1 className="artefact-title">{step.artefact.title}</h1>
+            <p className="artefact-subtitle">{step.artefact.creator}</p>
+            <p className="artefact-meta">
+              <strong>Estimated date:</strong> {step.artefact.dateCreated}
+            </p>
+            <p className="artefact-meta">
+              <strong>Location Created:</strong> {step.artefact.locationCreated}
+            </p>
+            <p className="artefact-meta">
+              <strong>Medium:</strong> {step.artefact.medium}
+            </p>
+            <div
+              className="artefact-description"
+              dangerouslySetInnerHTML={{ __html: step.artefact.description }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
