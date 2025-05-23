@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
-// import { FaCameraRetro } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
-import { MdArrowBackIosNew } from "react-icons/md";
-import { MdOutlineArrowCircleLeft } from "react-icons/md";
-import { MdOutlineArrowCircleRight } from "react-icons/md";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaArrowCircleRight } from "react-icons/fa";
 
@@ -137,8 +132,6 @@ const ArtefactsCollection = () => {
 }
 
 const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
-  const [hintVisible, setHintVisible] = useState(false);
-  const toggleHint = () => setHintVisible(v => !v);
   return (
     <div className="ac-card">
       <div className="ac-card-image">
@@ -152,12 +145,6 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-        {/* Maybe we don't need a hint? */}
-        {/* {isCurrent && !isFound && (
-          <button className="ac-btn hint-btn button" onClick={toggleHint}>
-            <FaMagnifyingGlass className="btn-icon " /> Hint
-          </button>
-        )} */}
 
         <button
           className="ac-btn reveal-btn button"
