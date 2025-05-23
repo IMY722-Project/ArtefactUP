@@ -25,7 +25,7 @@ const ValidationPopup = ({ isCorrect, onRetry, onReveal, onClose }) => {
             </button>
             )}
             <button className="vp-btn vp-reveal" onClick={onReveal}>
-              {isCorrect ? "View Artefact" : "Reveal Artefact"}
+              {isCorrect ? "Next Clue" : "Reveal Artefact"}
             </button>
           </div>
         </div>
