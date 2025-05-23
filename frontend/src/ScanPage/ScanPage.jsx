@@ -10,18 +10,15 @@ import { useHuntStore } from "../stores/useHuntStore.js";
 
 const ScanPage = () => {
   const { state } = useLocation();
-   // Will remove after discussion regarding scavenger hunt
-  // eslint-disable-next-line no-unused-vars
-  const { huntId, artefactId } = state || {};
+  const { huntId, artefactId,current} = state || {};
   const navigate = useNavigate();
   const [capturedImage, setCapturedImage] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const videoRef = useRef(null);
   const streamRef = useRef(null);
+  const [showCorrect, setShowCorrect] = useState(false);
   const [showIncorrect, setShowIncorrect] = useState(false);
-  const [currentStep, setCurrentStep] = useState({});
-  const { markStepFound } =
-    useHuntStore();
+  const { hunts, markStepFound, goToStep } = useHuntStore();
 
   useEffect(() => {
     if (!capturedImage) {
@@ -65,25 +62,27 @@ const ScanPage = () => {
 
       const sessionId = getSessionId();
 
-      const response = await fetch(`${API}/api/hunts/steps/${huntId}/validate`, {
-        method: "POST",
-        headers: {
-          "Session-id": sessionId,
-        },
-        body: formData,
-      });
+      const response = await fetch(
+        `${API}/api/hunts/steps/${huntId}/validate`,
+        {
+          method: "POST",
+          headers: {
+            "Session-id": sessionId,
+          },
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`Server returned ${response.status}`);
       }
 
       const result = await response.json();
-      setCurrentStep(result.scavengerHuntStep);
       if (!result.matched) {
         setShowIncorrect(true);
       } else {
         markStepFound(huntId, artefactId);
-        navigate("/artefactDetails", { state: { artefact: currentStep.artefact } });
+        setShowCorrect(true);
       }
     } catch (err) {
       console.error("Validation failed:", err);
@@ -98,9 +97,35 @@ const ScanPage = () => {
     setShowIncorrect(false);
     handleRetake();
   };
-  const reveal = () => {
+  const reveal = async () => {
     setShowIncorrect(false);
-    navigate("/artefactDetails", { state: { artefact: currentStep.artefact } });
+    const sessionId = getSessionId();
+        try {
+          const res = await fetch(`${API}/api/hunts/steps/${huntId}/reveal`, {
+            method: "POST",
+            headers: { "Session-id": sessionId },
+          });
+          if (!res.ok) {
+            throw new Error(`Reveal failed (${res.status})`);
+          }
+          markStepFound(huntId, artefactId);
+    
+          const thisHunt = hunts.find(h => h.id === huntId);
+          const idx = thisHunt.steps.findIndex(s => s.id === current.id);
+          const nextStepObj = thisHunt.steps[idx + 1];
+          if (nextStepObj) {
+            goToStep(huntId, nextStepObj.id);
+          }
+          navigate(-1);
+        } catch (e) {
+          console.error("Error revealing artefact:", e);
+          alert("Sorry, could not reveal artefact. Please try again.");
+        }
+  };
+
+  const navCorrect = () => {
+    setShowCorrect(false);
+    navigate(-1);
   };
 
   return (
@@ -145,9 +170,18 @@ const ScanPage = () => {
 
       {showIncorrect && (
         <ValidationPopup
+          isCorrect={false}
           onRetry={retry}
           onReveal={reveal}
           onClose={() => setShowIncorrect(false)}
+        />
+      )}
+      {showCorrect && (
+        <ValidationPopup
+          isCorrect={true}
+          onRetry={null}
+          onReveal={navCorrect}
+          onClose={() => setShowCorrect(false)}
         />
       )}
     </div>

@@ -24,7 +24,7 @@ function Home() {
         <p>Discover history, art, and innovation in the UP museums.</p>
         <button
           id="explore-hunts-btn"
-          className="cta-button"
+          className="cta-button button"
           onClick={() => navigate(`/scavengerHunts`)}
         >
           Explore Quests
