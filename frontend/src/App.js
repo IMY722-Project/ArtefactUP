@@ -7,7 +7,7 @@ import ArtefactsCollection from './ArtefactsCollection/ArtefactsCollection';
 import ScanPage from './ScanPage/ScanPage';
 import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import ChatBot from "./Chat/ChatBot";
+// import ChatBot from "./Chat/ChatBot";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/scan" element={<ScanPage />} />
 
       </Routes>
-        <ChatBot/>
+        {/* <ChatBot/> */}
     </ParallaxProvider>
   );
 }

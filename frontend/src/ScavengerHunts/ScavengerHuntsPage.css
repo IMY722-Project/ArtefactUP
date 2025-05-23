@@ -3,12 +3,20 @@
   max-width: 100%;
   min-height: 100vh;
   /* background-color: #f9ebd7; */
-  background: var(--bg-grad2);
+  /* background: var(--bg-grad2); */
+  /* background: linear-gradient(#ffbf8e9b, #ff9558bb, #bc3959bb); */
+  background: linear-gradient( #ffb96dc8, #e96363c8,#742237bd);
+  /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
+.scavenger-hunts-page-wrapper {
+  background: url(../../public/images/bg-map-2.png) repeat-y;
+  background-size: 100%;
+  /* background-attachment: fixed; */
+}
 
 /* Wrapper for top circle and overlay */
 .top-circle-wrapper {
@@ -22,11 +30,11 @@
   height: 45%;
 
   /* opt1 */
-  background: var(--top-circle-grad);
+  /* background: var(--top-circle-grad);
   border-bottom-left-radius: 100% 30%;
-  border-bottom-right-radius: 100% 30%;
+  border-bottom-right-radius: 100% 30%; */
   /* -- */
-  /* background: linear-gradient(#fff,#fff,#ffc491, #ffffff00); */
+  background: linear-gradient(#fff,#fff, #ffffff71,#ffffff71, #ffffff00);
   display: flex;
   justify-content: center;
   position: relative;
@@ -47,6 +55,7 @@
 }
 
 
+
 .menu-button {
   /* TODO: change - fix overlap */
 
@@ -56,6 +65,7 @@
   z-index: 10;
 }
 
+/* adjusting for larger screen instead of smaller */
 @media (min-width: 900px) {
   .museum-icon {
     width: 30%;

@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useHuntStore } from "../stores/useHuntStore.js";
 import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
-// import { FaCameraRetro } from "react-icons/fa";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
-
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 
 import "./ArtefactsCollection.css";
@@ -34,7 +33,7 @@ const ArtefactsCollection = () => {
     setCurrentIndex(
       huntData.steps.findIndex(s => s.id === hunt.currentStepId)
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
 
 
@@ -63,8 +62,8 @@ const ArtefactsCollection = () => {
         throw new Error(`Reveal failed (${res.status})`);
       }
       markStepFound(huntData.id, step.id);
-      
-      
+
+
       const thisHunt = hunts.find(h => h.id === huntData.id);
       const idx = thisHunt.steps.findIndex(s => s.id === step.id);
       const nextStepObj = thisHunt.steps[idx + 1];
@@ -79,16 +78,26 @@ const ArtefactsCollection = () => {
   };
 
   return (
-    <div className="artefacts-collection-page">
+    <div className="artefacts-collection-page-wrapper">
+          <div className="artefacts-collection-page">
+
       <TopCircle pageTitle={huntData.name} />
 
       <div className="ac-main">
+        {hunt.completed && (
+          <div className="congrats-banner">
+            <img className="banner-img" src="/images/quest-complete-banner-2.png" alt="
+            Quest Completed" />
+
+          </div>
+        )}
+
         <div className="ac-navigation">
           <button
             onClick={handlePrev}
             className={currentIndex > 0 ? "nav-btn" : "nav-btn-disabled"}
           >
-            Prev
+            <FaArrowCircleLeft />
           </button>
 
           <span className="nav-indicator">
@@ -101,7 +110,7 @@ const ArtefactsCollection = () => {
               ? "nav-btn"
               : "nav-btn-disabled"}
           >
-            Next
+            <FaArrowCircleRight />
           </button>
         </div>
 
@@ -115,19 +124,14 @@ const ArtefactsCollection = () => {
           />
         )}
 
-        {hunt.completed && (
-          <div className="congrats-banner">
-            🎉 Congratulations, you’ve completed this hunt! 🎉
-          </div>
-        )}
+
       </div>
+    </div>
     </div>
   );
 }
 
 const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
-  const [hintVisible, setHintVisible] = useState(false);
-  const toggleHint = () => setHintVisible(v => !v);
   return (
     <div className="ac-card">
       <div className="ac-card-image">
@@ -141,29 +145,24 @@ const ClueCard = ({ step, isCurrent, isFound, onScan, onReveal }) => {
         <span className="ac-clue">Clue: {step.clue}</span>
       </div>
       <div className="ac-card-actions">
-        {isCurrent && !isFound&& (
-          <button className="ac-btn hint-btn" onClick={toggleHint}>
-            <FaMagnifyingGlass className="btn-icon "/> Hint
-          </button>
-        )}
 
         <button
-          className="ac-btn reveal-btn"
+          className="ac-btn reveal-btn button"
           onClick={() => onReveal(step)}
         >
-          <FaEye className="btn-icon "/> Show
-          {/* skip, show, reveal */}
+          <FaEye className="btn-icon " /> Reveal
         </button>
-        {isCurrent && !isFound &&(
-        <button className="ac-btn scan-btn" onClick={() => onScan(step.id)}>
-          {/* <FaCameraRetro className="cam-icon" /> */}
-          <FaCheck className="btn-icon "/> Got it
-          {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
 
-        </button>
+        {isCurrent && !isFound && (
+          <button className="ac-btn scan-btn button" onClick={() => onScan(step.id)}>
+            {/* <FaCameraRetro className="cam-icon" /> */}
+            <FaCheck className="btn-icon " /> Got it
+            {/* TODO: find more explanatory labels - Confirm, got it, collect, found it is too long */}
+
+          </button>
         )}
       </div>
-      {hintVisible && <div className="ac-hint">{step.hint}</div>}
+      {/* {hintVisible && <div className="ac-hint">{step.hint}</div>} */}
     </div>
   );
 };
