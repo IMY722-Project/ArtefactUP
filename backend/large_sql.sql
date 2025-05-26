@@ -1,6 +1,30 @@
-
 insert into museum (id, description, image_url, location, name)
 values (1, 'not known', '', '', 'unknown');
+-- Insert into museum table
+
+-- 1. Old Merensky Building
+INSERT INTO museum (id, description, image_url, location, name)
+VALUES (2,
+        'The Old Merensky Building, dating from 1937, houses the University of Pretoria Museum classical and contemporary sculpture collections. It was constructed on the 11th of October 1937 and designed by the South African Architect Gerard Moerdyk (1890-1958). Its architecture is influenced by Art Deco, Neo Classicism and African architecture, as well as local Cape Dutch and Regency styles. It has been declared a national monument which houses both the museum/art collections and the extensive library collections.',
+        '',
+        'University of Pretoria Museums, Hatfield Campus',
+        'Old Merensky Building');
+
+-- 2. Old Arts Building
+INSERT INTO museum (id, description, image_url, location, name)
+VALUES (3,
+        'The Old Arts Building was designed by the London-born architect, Piercy (Patrick) James Eagle (1875-1932), a student of Sir Herbert Baker (1862-1946). Its architecture blends Cape-Dutch and Neo-Romanesque styles. The sandstone building features original stained-glass windows, slate floors, a centralised clock tower and Oregon pine flooring. It was declared a South African National Monument and has been a Museum since 1968.',
+        '',
+        'University of Pretoria Museums, Hatfield Campus, Old Arts Building & Old Merensky Building',
+        'Old Arts Building');
+
+-- 3. Javett-UP Art Centre
+INSERT INTO museum (id, description, image_url, location, name)
+VALUES (4,
+        'The Javett-UP is a partnership between the University of Pretoria and the Javett Foundation. With a focus on the emancipatory potential of the arts in society, Javett-UP promotes multidisciplinary curatorial and pedagogic initiatives. It critically explores Africa’s creative histories and future aspirations through de-colonial dialogues and sustained critical enquiry.',
+        '',
+        'University of Pretoria, 23 Lynnwood Rd, Hatfield, Pretoria, 0002',
+        'Javett-UP');
 
 insert into collection (id, description, name)
 values
