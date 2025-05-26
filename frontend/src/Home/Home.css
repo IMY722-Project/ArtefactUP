@@ -53,9 +53,9 @@
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+/* .nav-links a:hover {
   color: #ff5a5f;
-}
+} */
 
 .menu-btn {
   background: none;
@@ -122,20 +122,13 @@
 }
 
 .cta-button {
-  background: #fff;
   /* color: #cf214c; */
   color: var(--primary-color);
-  text-decoration: none;
-  padding: 12px 30px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-  border: none;
-  border-radius: 10px;
+  font-weight: 800;
+  /* transition: background 0.3s, color 0.3s; */
   font-size: 1.5rem;
   margin: 50px 0px;
-  filter: drop-shadow( #b73232 0px 7px 4px);
+  padding: 26px 22px;
   font-family: var(--font-heading);
 }
 

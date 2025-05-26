@@ -135,3 +135,98 @@ VALUES (29, 10, 2, 916, 1, 'Find the artefact titled ''Zulu beer pot'' from 1980
 INSERT INTO scavenger_hunt_step (id, hunt_id, step_number, artefact_id, museum_id, clue, hint)
 VALUES (30, 10, 3, 765, 1, 'Find the artefact titled ''Fishing Boats'' from 1962.',
         'Created by Nils Andersen and made of WatercoloronPaper.');
+
+
+
+-- new artifacts
+-- Artefact Insert: Woven Abstract
+INSERT INTO artefact (creator, date_created, description, location_created, medium,
+                      physical_dimensions, rights, title, collection_id, museum_id, image_url)
+VALUES ('Christo Coetzee',
+        '1984',
+        'This piece is made from multiple canvases woven together. It was created for an Avante Garde exhibition at the Taipei Fine Arts Museum in Taiwan in 1985.',
+        'Bridge Gallery',
+        'Oil on Cut Canvas',
+        '1x1',
+        'Copyright University of Pretoria',
+        'Woven Abstract',
+        3,
+        4,
+        '
+woven_abstract.jpg');
+
+-- Artefact Insert: City Deep
+INSERT INTO artefact (creator, date_created, description, location_created, medium,
+                      physical_dimensions, rights, title, collection_id, museum_id, image_url)
+VALUES ('Norman Catherine',
+        '1996',
+        'A sculpture of a miner in the artist''s iconic grotesque and cartoonish style. This artwork belongs to the South32 Collection courtesy on temporary loan to the University of Pretoria.',
+        'Old Merensky',
+        'Painted Resin Sculpture',
+        '1X1',
+        'Copyright University of Pretoria',
+        'City Deep',
+        30,
+        2,
+        'city_deep.jpg');
+
+-- Artefact Insert: Nihilist Calendar
+INSERT INTO artefact (creator, date_created, description, location_created, medium,
+                      physical_dimensions, rights, title, collection_id, museum_id, image_url)
+VALUES ('Francke Gretchen Crots',
+        '2018',
+        'A coaster for all the Sadists born in September. Inspired by Elisha Shapiro''s Nihilist Calendar celebrating random events each year.',
+        'Old Arts',
+        'Ceramic',
+        '1X1',
+        'Copyright University of Pretoria',
+        'Nihilist Calendar',
+        15,
+        3,
+        'Nihilist_calendar.jpg');
+
+-- Artefact Insert: Emotional Scars
+INSERT INTO artefact (creator, date_created, description, location_created, medium,
+                      physical_dimensions, rights, title, collection_id, museum_id, image_url)
+VALUES ('Blessing Ngobeni',
+        '2020',
+        'Emotional Scars is a linocut artwork printed on paper by Blessing Ngobeni. This expressive piece delves into themes of trauma and healing.',
+        'Old Arts',
+        'Linocut on paper',
+        '1X1',
+        'Copyright University of Pretoria',
+        'Emotional Scars',
+        25,
+        3,
+        'Emotional_scars.jpg');
+
+-- new scavenger hunt
+-- Insert Scavenger Hunt
+INSERT INTO scavenger_hunt (id, name, description)
+VALUES (11, 'The Absurd and the Abstract',
+        'Track down pieces that blur reality and embrace the surreal, grotesque, or purely abstract. This hunt will lead you through unexpected forms and philosophies.');
+
+-- Hunt Step 1: Emotional Scars
+INSERT INTO scavenger_hunt_step (id, hunt_id, step_number, artefact_id, museum_id, clue, hint)
+VALUES (31, 11, 1, 1006, 3,
+        'Find an artwork that explores trauma through sharp and powerful impressions.',
+        'A linocut titled ''Emotional Scars'' by Blessing Ngobeni created in 2020.');
+
+-- Hunt Step 2: City Deep
+INSERT INTO scavenger_hunt_step (id, hunt_id, step_number, artefact_id, museum_id, clue, hint)
+VALUES (32, 11, 2, 1004, 2,
+        'Look for a miner brought to life through bold, cartoonish exaggeration.',
+        'Sculpted by Norman Catherine in 1996 using painted resin.');
+
+-- Hunt Step 3: Nihilist Calendar
+INSERT INTO scavenger_hunt_step (id, hunt_id, step_number, artefact_id, museum_id, clue, hint)
+VALUES (33, 11, 3, 1005, 3,
+        'Track down a calendar that celebrates chaos and irony.',
+        'A ceramic coaster by Francke Gretchen Crots from 2018.');
+
+-- Hunt Step 4: Woven Abstract
+INSERT INTO scavenger_hunt_step (id, hunt_id, step_number, artefact_id, museum_id, clue, hint)
+VALUES (34, 11, 4, 1003, 4,
+        'Search for woven chaos made for the avant-garde.',
+        'Christo Coetzee’s mixed-media work from 1984 created for a show in Taiwan.');
+

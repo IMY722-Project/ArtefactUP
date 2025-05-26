@@ -9,6 +9,7 @@ import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 
 const ScavengerHuntsPage = () => {
   return (
+    <div className="scavenger-hunts-page-wrapper">
     <div className="scavenger-hunts-page">
       <div className="top-circle-wrapper">
         <div className="top-circle">
@@ -28,6 +29,7 @@ const ScavengerHuntsPage = () => {
         </div>
       </div>
       <ScavengerHunts />
+    </div>
     </div>
   );
 };

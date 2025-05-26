@@ -49,7 +49,7 @@ jobs:
         run: docker rm -f artifactup
       - name: Run Docker Container
         run: |
-          docker run -d -p 8080:8080 -p 5005:5005 --name artifactup \
+          docker run --restart=always -d -p 8080:8080 -p 5005:5005 --name artifactup \
             -e AWS_DB_USER=${{ secrets.AWS_DB_USER }} \
             -e AWS_DB_PASS=${{ secrets.AWS_DB_PASS }} \
             -e AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} \

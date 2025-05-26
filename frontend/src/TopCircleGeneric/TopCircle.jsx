@@ -17,7 +17,7 @@ const TopCircle = ({ pageTitle }) => {
         </button>
       </div>
       <div className="title-container-gen">
-        <h1 className="title">{pageTitle}</h1>
+        <h1 className="title questTitle">{pageTitle}</h1>
       </div>
     </div>
   );
