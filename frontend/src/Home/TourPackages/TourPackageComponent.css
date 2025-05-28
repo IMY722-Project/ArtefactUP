@@ -1,6 +1,6 @@
 .tour-package-card {
   background: #fff;
-  border-radius: 16px;
+    border-radius: var(--border-rad);
   padding: 20px;
   width: 280px;
   margin: 10px;
