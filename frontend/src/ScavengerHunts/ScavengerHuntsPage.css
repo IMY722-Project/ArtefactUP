@@ -75,4 +75,9 @@
   .orbit-icon {
     height: 190px;
   }
+
+  .scavenger-hunts-page-wrapper {
+  background: url(../../public/images/bg-map-landscape-1.png);
+  background-size: 100%;
+}
 }
