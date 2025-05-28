@@ -59,7 +59,7 @@ img {
   max-width: 100%;
 }
 
-.button, .error-retry-btn {
+.button, .error-retry-btn, .capture-button {
   padding: 8px 12px;
   border: none;
   border-radius: 20px;
