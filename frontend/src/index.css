@@ -24,11 +24,15 @@
   --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
   --top-circle-grad: linear-gradient(#fff, #ffffff71);
 
+  --white-bg-transp: #ffffffcc;
+  --border-rad: 20px;
+
 }
 
 body {
   margin: 0;
   font-family: var(--font-family);
+  color: var(--text-dark);
 }
 
 /* h1, h2  {
@@ -55,7 +59,7 @@ img {
   max-width: 100%;
 }
 
-.button {
+.button, .error-retry-btn {
   padding: 8px 12px;
   border: none;
   border-radius: 20px;
@@ -72,4 +76,8 @@ img {
   align-items: center;
   font-family: var(--font-family);
 
+}
+
+p {
+  font-size: 1.2rem;
 }

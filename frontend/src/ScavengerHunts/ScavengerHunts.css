@@ -102,12 +102,15 @@
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 800;
-  background-color: #ffffffcc;
+  background-color: var(--white-bg-transp);
   margin: auto;
   padding: 8px 15px;
-  border-radius: 20px;
+  border-radius: var(--border-rad);
   filter: drop-shadow(#54343462 0px 7px 4px);
+}
 
+.progress-overlay {
+  margin: 5px auto;
 }
 
 

@@ -1,4 +1,16 @@
 .error-message {
+  margin: 0px auto;
+  background-color: var(--white-bg-transp);
+  padding: 15px;
+  border-radius: var(--border-rad);
+}
+
+.error-retry-btn {
+  margin: 0px auto;
+}
+
+
+/* .error-message {
     text-align: center;
     flex-direction: column;
     color: #922;
@@ -21,4 +33,6 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.2s;
-  }
+  } */
+
+
