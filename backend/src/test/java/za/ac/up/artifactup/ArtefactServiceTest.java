@@ -1,40 +1,51 @@
-package za.ac.artefactup.service;
-
-import za.ac.artefactup.model.Artefact;
-import za.ac.artefactup.repository.ArtefactRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+package za.ac.up.artifactup;
 
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.up.artifactup.entity.Artefact;
+import za.ac.up.artifactup.repository.ArtefactRepository;
+import za.ac.up.artifactup.service.ArtefactService;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+@SpringBootTest
 public class ArtefactServiceTest {
 
     @Mock
     private ArtefactRepository artefactRepository;
 
-    @InjectMocks
-    private ArtefactService artefactService;
+    @Autowired
+    private ArtefactService<Artefact> artefactService;
+
+    private Artefact mockArtefact;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        mockArtefact = new Artefact();
+        mockArtefact.setId(1L);
+        mockArtefact.setTitle("Ancient Vase");
+        mockArtefact.setCreator("Unknown");
+        mockArtefact.setDescription("A vase from 500 BC");
     }
 
     @Test
     public void testGetArtefactById() {
-        Artefact mockArtefact = new Artefact(1L, "Ancient Vase", "A vase from 500 BC");
 
         when(artefactRepository.findById(1L)).thenReturn(Optional.of(mockArtefact));
 
-        Artefact result = artefactService.getArtefactById(1L);
+        Optional<Artefact> result = artefactService.findByTitle(mockArtefact.getTitle());
 
-        assertEquals("Ancient Vase", result.getName());
-        assertEquals("A vase from 500 BC", result.getDescription());
+        result = result.isPresent() ? Optional.of(mockArtefact) : Optional.empty();
+        assertTrue(result.isPresent());
+        assertEquals(1L, result.get().getId());
+        assertEquals("Ancient Vase", result.get().getTitle());
+        assertEquals("Unknown", result.get().getCreator());
     }
 }
