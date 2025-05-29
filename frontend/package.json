@@ -48,8 +48,6 @@
     "@testing-library/react": "^16.3.0",
     "cypress": "^14.4.0",
     "jest": "^27.5.1"
-  },
-  "jest": {
-    "testEnvironment": "jsdom"
   }
+  
 }
