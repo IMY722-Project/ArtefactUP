@@ -1,7 +1,7 @@
 package za.ac.artefactup.service;
 
-import za.ac.artefactup.model.Artifact;
-import za.ac.artefactup.repository.ArtifactRepository;
+import za.ac.artefactup.model.Artefact;
+import za.ac.artefactup.repository.ArtefactRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -13,13 +13,13 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class ArtifactServiceTest {
+public class ArtefactServiceTest {
 
     @Mock
-    private ArtifactRepository artifactRepository;
+    private ArtefactRepository artefactRepository;
 
     @InjectMocks
-    private ArtifactService artifactService;
+    private ArtefactService artefactService;
 
     @BeforeEach
     public void setUp() {
@@ -27,12 +27,12 @@ public class ArtifactServiceTest {
     }
 
     @Test
-    public void testGetArtifactById() {
-        Artifact mockArtifact = new Artifact(1L, "Ancient Vase", "A vase from 500 BC");
+    public void testGetArtefactById() {
+        Artefact mockArtefact = new Artefact(1L, "Ancient Vase", "A vase from 500 BC");
 
-        when(artifactRepository.findById(1L)).thenReturn(Optional.of(mockArtifact));
+        when(artefactRepository.findById(1L)).thenReturn(Optional.of(mockArtefact));
 
-        Artifact result = artifactService.getArtifactById(1L);
+        Artefact result = artefactService.getArtefactById(1L);
 
         assertEquals("Ancient Vase", result.getName());
         assertEquals("A vase from 500 BC", result.getDescription());
