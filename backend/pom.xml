@@ -137,7 +137,6 @@
             </activation>
             <properties>
                 <spring.profiles.active>local</spring.profiles.active>
-                <maven.test.skip>true</maven.test.skip>
             </properties>
         </profile>
         <profile>
