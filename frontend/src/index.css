@@ -1,28 +1,29 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Kurale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
-
-@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Kurale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --primary-color: #ff5a5f;
-  --secondary-color: #1a1a1a;
-  --bg-color: #f7f7f7;
-  --text-dark: #532c2c;
-  --text-light: #f7f7f7;
-  --text-bright: #e62d2d;
-  --accent-color: #ffbf3e;
-  --disabled-color: #63636360;
-  --font-family: 'Montserrat', 'Hevetica', sans-serif;
-  --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
-  --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
-  --bg-home-grad: linear-gradient(#ffffff, #da9456, #d05252);
-  /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
-  --menu-bg: linear-gradient(180deg, #e39e69, #b15d4c);
-  --bg-grad2: linear-gradient(#e39e69, #ff9558, #bc3959);
-  --text-bright-dark: #931a38;
+    --primary-color: #ff5a5f;
+    --secondary-color: #1a1a1a;
+    --bg-color: #f7f7f7;
+    --text-dark: #532c2c;
+    --text-light: #f7f7f7;
+    --text-bright: #e62d2d;
+    --accent-color: #ffbf3e;
+    --disabled-color: #63636360;
+    --font-family: 'Montserrat', 'Hevetica', sans-serif;
+    --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
+    --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
+    --bg-home-grad: linear-gradient(#ffffff, #da9456, #d05252);
+    /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
+    --menu-bg: linear-gradient(180deg, #e39e69, #b15d4c);
+    --bg-grad2: linear-gradient(#e39e69, #ff9558, #bc3959);
+    --text-bright-dark: #931a38;
 
-  --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
-  --top-circle-grad: linear-gradient(#fff, #ffffff71);
+    --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
+    --top-circle-grad: linear-gradient(#fff, #ffffff71);
 
   --white-bg-transp: #ffffffcc;
   --border-rad: 20px;
@@ -33,6 +34,7 @@ body {
   margin: 0;
   font-family: var(--font-family);
   color: var(--text-dark);
+
 }
 
 /* h1, h2  {
@@ -40,23 +42,23 @@ body {
 } */
 
 h1 {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 600;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 h2 {
-  font-family: var(--font-heading);
+    font-family: var(--font-heading);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 
 img {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .button, .error-retry-btn, .capture-button, .retake-button, .submit-button {
@@ -72,9 +74,9 @@ img {
   font-size: 1rem;
   color: var(--text-bright);
 
-  display: flex;
-  align-items: center;
-  font-family: var(--font-family);
+    display: flex;
+    align-items: center;
+    font-family: var(--font-family);
 
 }
 
