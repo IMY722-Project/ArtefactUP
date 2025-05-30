@@ -42,7 +42,7 @@
 /* Artefact Card */
 .ac-card {
   background: #ffffffb4;
-  border-radius: 8px;
+  border-radius: var(--border-rad);
   padding: 12px;
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@
   /* height: 160px; */
   max-width: 100%;
   overflow: hidden;
-  border-radius: 10px;
+    border-radius: var(--border-rad);
 }
 
 .ac-image {
@@ -95,7 +95,7 @@
   width: 100%;
   height: auto;
   object-fit: fill;
-  border-radius: 10px;
+    border-radius: var(--border-rad);
   /* max-width: 300px; */
 }
 
@@ -154,7 +154,7 @@
 }
 
 
-.artefacts-collection-page-wrapper{
+.artefacts-collection-page-wrapper {
   background: url(../../public/images/bg_pattern.png) repeat-y;
   background-size: 100%;
   background-attachment: fixed;
@@ -242,61 +242,60 @@
   font-size: 1.3rem;
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px)
   }
 
-/* Info Section: Artefact Image and Details */
-.info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-.image-wrapper {
-  display: flex;
-  justify-content: center;
-}
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 
-.artefact-image {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .artefact-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-.text-info {
-  padding: 0 20px;
-  text-align: left;
-}
+  .text-info {
+    padding: 0 20px;
+    text-align: left;
+  }
 
-.artefact-title {
-  font-size: 2rem;
-  margin: 10px 0;
-  color: var(--secondary-color);
-}
+  .artefact-title {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: var(--secondary-color);
+  }
 
-.artefact-subtitle {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--accent-color);
-  margin-bottom: 10px;
-}
+  .artefact-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+  }
 
-.artefact-meta {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
+  .artefact-meta {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
 
-.artefact-description p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+  .artefact-description p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 
   to {
     opacity: 1;
     transform: translateY(0)
   }
-}
+} */

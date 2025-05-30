@@ -2,9 +2,6 @@
 :root {
   --stone-size: 100px;
   --stone-color: #ffffffb4;
-  /* golden “stone” */
-  /* --connector-color: #555;
-  --label-color: #333; */
 }
 
 /* Container for the path of stones */
@@ -30,24 +27,10 @@
 /* Base stone */
 .hunt-circle {
   position: relative;
-  /* width: var(--stone-size); */
-  /* height: var(--stone-size); */
-  /* background: var(--stone-color); */
-  /* border-radius: 50%; */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  /* transition: transform 0.2s ease; */
-  /* make it look like a cylinder face: */
-  /* background: radial-gradient(
-    circle at 50% 30%,
-     rgba(255, 255, 255, 0.7) 0%,
-     var(--stone-color) 60% 
-  ); */
-  /* box-shadow: inset 0 6px 8px rgba(0, 0, 0, 0.2),
-    inset 0 -6px 8px rgba(0, 0, 0, 0.3),
-     0 4px 6px rgba(0, 0, 0, 0.15);  */
 }
 
 /* Add the cylindrical “wall” under the face: */
@@ -69,28 +52,15 @@
   /* behind the circle */
 }
 
-/* keep your existing hover pop */
-/* .hunt-circle:hover {
-  transform: scale(1.1);
-} */
-
 /* Diagonal offset: push every 2nd, 4th, 6th… stone down */
 .hunt-circle:nth-child(2n) {
   transform: translateX(100px);
 }
 
-/* If you want them in a more pronounced diagonal, you can stagger more:
-   - 1st stone: no offset
-   - 2nd stone: 20px down
-   - 3rd stone: 40px down
-   - 4th stone: 20px down
-   - etc.
-*/
-
-
 /* Keep the icon and label as before */
 .circle-icon {
-  width: 80%;
+  /* width: 80%; */
+  width: 200px;
 }
 
 .hunt-label {
@@ -102,25 +72,32 @@
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 800;
-  background-color: #ffffffcc;
+  background-color: var(--white-bg-transp);
   margin: auto;
   padding: 8px 15px;
-  border-radius: 20px;
+  border-radius: var(--border-rad);
   filter: drop-shadow(#54343462 0px 7px 4px);
+}
 
+.progress-overlay {
+  margin: 5px auto;
 }
 
 
-/* Responsiveness */
-/* @media (max-width: 600px) {
-  .hunt-path {
-    gap: 40px;
+@media (min-width:900px) {
+  .hunt-circle:nth-child(2n) {
+    transform: translateX(70%);
   }
-  .hunt-circle {
-    width: 80px;
-    height: 80px;
+
+  .hunt-circle:nth-child(2n-1) {
+    transform: translateX(-30%);
   }
+
   .circle-icon {
-    font-size: 1.2rem;
+    width: 300px;
   }
-} */
+
+  .hunt-path {
+    justify-content: center;
+  }
+}

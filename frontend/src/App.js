@@ -19,9 +19,9 @@ function App() {
                     <Route path="/artefactsCollection" element={<ArtefactsCollection/>}/>
                     <Route path="/scavengerHunts" element={<ScavengerHuntsPage/>}/>
                     <Route path="/scan" element={<ScanPage/>}/>
+                    <Route path="/chat" element={<ChatBot/>}/>
 
                 </Routes>
-                <ChatBot/>
             </ParallaxProvider>
     );
 }

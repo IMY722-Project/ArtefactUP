@@ -1,6 +1,6 @@
 .tour-packages-container {
   background: #fff;
-  border-radius: 8px;
+    border-radius: var(--border-rad);
   padding: 40px 20px;
   text-align: center;
   margin-top: 20px;
@@ -27,7 +27,7 @@
   color: #fff;
   background-color: #ff9914;
   border: none;
-  border-radius: 25px;
+    border-radius: var(--border-rad);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
