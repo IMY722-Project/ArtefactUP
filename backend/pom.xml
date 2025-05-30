@@ -90,6 +90,12 @@
             <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
             <version>${spring.ai.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -132,6 +138,12 @@
             </activation>
             <properties>
                 <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
             </properties>
         </profile>
         <profile>
