@@ -59,3 +59,7 @@ build/
 ### VS Code ###
 .vscode/
 /node_modules/
+
+### TestReports ###
+/frontend/src/test/frontend-report.json
+/frontend/src/test/frontend-report.html

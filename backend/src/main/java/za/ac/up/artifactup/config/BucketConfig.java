@@ -8,6 +8,7 @@ import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.regions.Region;
 
 import java.net.URI;
 
@@ -35,6 +36,7 @@ public class BucketConfig {
         .builder()
         .endpointOverride(URI.create(awsEndpoint))
         .credentialsProvider(StaticCredentialsProvider.create(credentials))
+        .region(Region.AF_SOUTH_1)
         .build();
   }
 
