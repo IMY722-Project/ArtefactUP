@@ -1,4 +1,4 @@
-package za.ac.up.artifactup;
+package za.ac.up.artefact;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,7 +38,7 @@ public class ArtefactControllerIntegrationTest {
     @Test
     public void testGetArtefactById() throws Exception {
         mockMvc.perform(get("/api/artefacts/1")
-                        .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Ancient Vase"));
     }

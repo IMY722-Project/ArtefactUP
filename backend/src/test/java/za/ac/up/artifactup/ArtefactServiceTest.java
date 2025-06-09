@@ -1,4 +1,4 @@
-package za.ac.up.artifactup;
+package za.ac.up.artefact;
 
 import java.util.Optional;
 
