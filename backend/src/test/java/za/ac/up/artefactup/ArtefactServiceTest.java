@@ -1,29 +1,29 @@
 package za.ac.up.artefactup;
 
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import za.ac.up.artefactup.entity.Artefact;
 import za.ac.up.artefactup.repository.ArtefactRepository;
-import za.ac.up.artefactup.service.ArtefactService;
-import za.ac.up.artefactup.BackendApplication;
+import za.ac.up.artefactup.service.impl.ArtefactServiceImpl;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest(classes = BackendApplication.class)
+@ExtendWith(MockitoExtension.class)
 public class ArtefactServiceTest {
 
-    @Mock
+    @MockBean
     private ArtefactRepository artefactRepository;
 
-    @Autowired
-    private ArtefactService<Artefact> artefactService;
+    @InjectMocks
+    private ArtefactServiceImpl artefactService;
 
     private Artefact mockArtefact;
 
@@ -37,15 +37,12 @@ public class ArtefactServiceTest {
     }
 
     @Test
-    public void testGetArtefactById() {
+    public void testFindByTitle() {
+        when(artefactRepository.findByTitle("Ancient Vase")).thenReturn(Optional.of(mockArtefact));
 
-        when(artefactRepository.findById(1L)).thenReturn(Optional.of(mockArtefact));
+        Optional<Artefact> result = artefactService.findByTitle("Ancient Vase");
 
-        Optional<Artefact> result = artefactService.findByTitle(mockArtefact.getTitle());
-
-        result = result.isPresent() ? Optional.of(mockArtefact) : Optional.empty();
         assertTrue(result.isPresent());
-        assertEquals(1L, result.get().getId());
         assertEquals("Ancient Vase", result.get().getTitle());
         assertEquals("Unknown", result.get().getCreator());
     }
