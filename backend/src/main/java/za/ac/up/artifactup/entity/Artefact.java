@@ -51,9 +51,9 @@ public class Artefact {
     private String imageUrl;
 
     @ElementCollection
-    @CollectionTable(name = "artefact_field_link",
-        joinColumns = {@JoinColumn(name = "artefact_id", referencedColumnName = "id")})
+    @CollectionTable(name = "artefact_field_link", joinColumns = {
+            @JoinColumn(name = "artefact_id", referencedColumnName = "id") })
     @MapKeyColumn(name = "artefact_field")
     @Column(name = "link")
-    private Map<String,String> fieldAdditionalInfoHttpLinks;
+    private Map<String, String> fieldAdditionalInfoHttpLinks;
 }
