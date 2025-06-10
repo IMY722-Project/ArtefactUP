@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import za.ac.up.artifactup.controller.ArtefactController;
 import za.ac.up.artifactup.dto.ArtefactDTO;
-import za.ac.up.artifactup.service.ArtefactServiceImpTest;
+import za.ac.up.artifactup.service.ArtefactService;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ class ArtefactControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private ArtefactServiceImpTest<ArtefactDTO> artefactService;
+    private ArtefactService<ArtefactDTO> artefactService;
 
     @Autowired
     private ObjectMapper objectMapper;

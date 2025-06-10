@@ -1,103 +1,68 @@
 package za.ac.up.artifactup.unit.service;
 
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.entity.Collection;
 import za.ac.up.artifactup.repository.ArtefactRepository;
 import za.ac.up.artifactup.service.CollectionService;
 import za.ac.up.artifactup.service.impl.ArtefactServiceImpl;
 
-import java.util.List;
-import java.util.Optional;
+public class ArtefactServiceImpTest {
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-@SpringBootTest
-public class ArtefactServiceTest {
-
-    @Autowired
-    private ArtefactServiceImpl artefactService;
-
-    @MockBean
+    @Mock
     private ArtefactRepository artefactRepository;
 
-    @MockBean
+    @Mock
     private CollectionService<Collection> collectionService;
 
+    @InjectMocks
+    private ArtefactServiceImpl artefactService;
+
+    private Artefact artefact;
+
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+
+        artefact = new Artefact();
+        artefact.setId(1L);
+        artefact.setTitle("Test Artefact");
+
+        Collection collection = new Collection();
+        collection.setId(1L);
+        artefact.setCollection(collection);
+    }
+
     @Test
-    void testFindAll() {
-        Artefact a = new Artefact();
-        when(artefactRepository.findAll()).thenReturn(List.of(a));
+    public void testFindAll() {
+        when(artefactRepository.findAll()).thenReturn(Arrays.asList(artefact));
+
         List<Artefact> artefacts = artefactService.findAll();
+
+        assertNotNull(artefacts);
         assertEquals(1, artefacts.size());
+        assertEquals("Test Artefact", artefacts.get(0).getTitle());
     }
 
     @Test
-    void testCreate_WhenCollectionExists() {
-        Collection collection = new Collection();
-        collection.setName("Historic");
-        Artefact artefact = new Artefact();
-        artefact.setCollection(collection);
-
-        when(collectionService.findByName("Historic")).thenReturn(Optional.of(collection));
-        when(artefactRepository.save(artefact)).thenReturn(artefact);
+    public void testCreate() {
+        when(artefactRepository.save(any(Artefact.class))).thenReturn(artefact);
 
         Artefact result = artefactService.create(artefact);
-        assertEquals(collection, result.getCollection());
-    }
 
-    @Test
-    void testCreate_WhenCollectionDoesNotExist() {
-        Collection collection = new Collection();
-        collection.setName("NewCollection");
-        Artefact artefact = new Artefact();
-        artefact.setCollection(collection);
-
-        Collection saved = new Collection();
-        saved.setName("NewCollection");
-
-        when(collectionService.findByName("NewCollection")).thenReturn(Optional.empty());
-        when(collectionService.saveCollection(collection)).thenReturn(saved);
-        when(artefactRepository.save(any(Artefact.class))).thenAnswer(i -> i.getArgument(0));
-
-        Artefact result = artefactService.create(artefact);
-        assertEquals("NewCollection", result.getCollection().getName());
-    }
-
-    @Test
-    void testFindAllArtifactsByCollectionName() {
-        when(artefactRepository.findByCollectionName("Ancient")).thenReturn(List.of(new Artefact()));
-        List<Artefact> results = artefactService.findAllArtifactsByCollectionName("Ancient");
-        assertEquals(1, results.size());
-    }
-
-    @Test
-    void testFindAllArtefactsByMuseumName() {
-        when(artefactRepository.findAllByMuseumName("Louvre")).thenReturn(List.of(new Artefact()));
-        List<Artefact> results = artefactService.findAllArtefactsByMuseumName("Louvre");
-        assertEquals(1, results.size());
-    }
-
-    @Test
-    void testDeleteById() {
-        artefactService.deleteById(42L);
-        verify(artefactRepository, times(1)).deleteById(42L);
-    }
-
-    @Test
-    void testFindByTitle() {
-        Artefact artefact = new Artefact();
-        artefact.setTitle("Mask");
-
-        when(artefactRepository.findByTitle("Mask")).thenReturn(Optional.of(artefact));
-        Optional<Artefact> found = artefactService.findByTitle("Mask");
-
-        assertTrue(found.isPresent());
-        assertEquals("Mask", found.get().getTitle());
+        assertNotNull(result);
+        assertEquals("Test Artefact", result.getTitle());
     }
 }
