@@ -1,0 +1,16 @@
+config:
+  target: "http://localhost:8080/swagger-ui.html"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+scenarios:
+  - name: "GET widgets"
+    flow:
+      - get:
+          url: "/widgets"
+  - name: "POST widget"
+    flow:
+      - post:
+          url: "/widgets"
+          json:
+            name: "LoadTest"

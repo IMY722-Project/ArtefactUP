@@ -1,27 +1,32 @@
-package za.ac.up.artefactup.repository;
+package za.ac.up.artifactup.RepositoryTests;
 
-import za.ac.up.artefactup.entity.Artefact;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import java.util.List;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ActiveProfiles;
+import za.ac.up.artifactup.entity.Artefact;
+import za.ac.up.artifactup.repository.ArtefactRepository;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
+@ActiveProfiles("test")
+@ComponentScan(basePackages = "za.ac.up.artifactup") // Ensures Spring scans entities & config
 public class ArtefactRepositoryTest {
 
     @Autowired
     private ArtefactRepository artefactRepository;
 
     @Test
-    public void testSaveAndFind() {
+    void testSaveAndFindArtefact() {
         Artefact artefact = new Artefact();
         artefact.setName("Test Artefact");
-        artefact.setDescription("Test Description");
-        artefactRepository.save(artefact);
 
-        List<Artefact> results = artefactRepository.findAll();
-        assertThat(results).isNotEmpty();
-        assertThat(results.get(0).getName()).isEqualTo("Test Artefact");
+        artefact = artefactRepository.save(artefact);
+        Artefact found = artefactRepository.findById(artefact.getId()).orElse(null);
+
+        assertThat(found).isNotNull();
+        assertThat(found.getName()).isEqualTo("Test Artefact");
     }
 }
