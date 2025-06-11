@@ -19,6 +19,7 @@ aws:
   secret.key: testkey
   access.key: testsecret
   endpoint: http://s3.localhost.localstack.cloud:4566
+  region: af-south-1
   s3:
    bucket-name: museum-artefacts
 # uncomment to use actual aws instance instead
