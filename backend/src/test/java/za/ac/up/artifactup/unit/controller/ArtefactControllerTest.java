@@ -4,12 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import za.ac.up.artifactup.TestBackendApplication;
 import za.ac.up.artifactup.controller.ArtefactController;
 import za.ac.up.artifactup.dto.ArtefactDTO;
+import za.ac.up.artifactup.dto.qualifier.ArtefactQualifier;
+import za.ac.up.artifactup.dto.qualifier.MuseumQualifier;
 import za.ac.up.artifactup.service.ArtefactService;
 
 import java.util.Collections;
@@ -23,7 +28,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(ArtefactController.class)
+@SpringBootTest(classes = TestBackendApplication.class)
+@AutoConfigureMockMvc
 public class ArtefactControllerTest {
 
     @Autowired
@@ -31,6 +37,12 @@ public class ArtefactControllerTest {
 
     @MockBean
     private ArtefactService<ArtefactDTO> serviceFacade;
+
+    @MockBean
+    private MuseumQualifier museumQualifier;
+
+    @MockBean
+    private ArtefactQualifier artefactQualifier;
 
     @Autowired
     private ObjectMapper objectMapper;
