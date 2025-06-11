@@ -1,4 +1,4 @@
-package za.ac.up.artifactup.integration.mapper;
+package za.ac.up.artifactup.unit.mapper;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 
 import java.net.URI;
@@ -21,6 +22,9 @@ public class BucketConfig {
   @Value("${aws.secret.key}")
   String awsSecretKey;
 
+  @Value("${aws.region}")
+  private String region;
+
   @Value("${aws.endpoint}")
   String awsEndpoint;
 
@@ -33,6 +37,7 @@ public class BucketConfig {
 
     return S3Client
         .builder()
+        .region(Region.of(region))
         .endpointOverride(URI.create(awsEndpoint))
         .credentialsProvider(StaticCredentialsProvider.create(credentials))
         .build();

@@ -22,8 +22,8 @@ aws:
   region: af-south-1
   s3:
    bucket-name: museum-artefacts
-# uncomment to use actual aws instance instead
-#  endpoint: https://s3.af-south-1.amazonaws.com
+
+   endpoint: https://s3.af-south-1.amazonaws.com
 #  s3:
 #    bucket-name: museum-artefacts-aup
 logging:
