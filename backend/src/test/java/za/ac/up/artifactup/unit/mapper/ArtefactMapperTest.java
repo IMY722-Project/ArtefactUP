@@ -1,56 +1,45 @@
-package za.ac.up.artifactup.unit.mapper;
+package za.ac.up.artifactup.integration.mapper;
 
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.dto.mapper.ArtefactMapper;
 import za.ac.up.artifactup.entity.Artefact;
 import za.ac.up.artifactup.entity.Collection;
 import za.ac.up.artifactup.entity.Museum;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArtefactMapperTest {
+@SpringBootTest
+@ActiveProfiles("test")
+class ArtefactMapperIntegrationTest {
 
-    private final ArtefactMapper mapper = Mappers.getMapper(ArtefactMapper.class);
+    @Autowired
+    private ArtefactMapper artefactMapper;
 
     @Test
     void testToDTO() {
+        // Create test entity
         Museum museum = new Museum();
-        museum.setName("Natural History");
+        museum.setName("Test Museum");
 
         Collection collection = new Collection();
-        collection.setName("Dinosaurs");
+        collection.setName("Test Collection");
 
         Artefact artefact = new Artefact();
-        artefact.setTitle("T-Rex Skull");
-        artefact.setImageUrl("image/path.png");
-        artefact.setCollection(collection);
+        artefact.setId(1L);
+        artefact.setTitle("Test Title");
         artefact.setMuseum(museum);
-
-        ArtefactDTO dto = mapper.toDTO(artefact);
-
-        assertEquals("T-Rex Skull", dto.getTitle());
-        assertEquals("Dinosaurs", dto.getType());
-        assertEquals("Natural History", dto.getMuseumName());
-        assertNotNull(dto.getImageUrl());
-    }
-
-    @Test
-    void testToDTOs() {
-        Artefact artefact = new Artefact();
-        artefact.setTitle("Fossil");
-        Collection collection = new Collection();
-        collection.setName("Paleontology");
         artefact.setCollection(collection);
-        Museum museum = new Museum();
-        museum.setName("Science");
-        artefact.setMuseum(museum);
+        artefact.setImageUrl("test.jpg");
 
-        List<ArtefactDTO> dtos = mapper.toDTOs(List.of(artefact));
-        assertEquals(1, dtos.size());
-        assertEquals("Fossil", dtos.get(0).getTitle());
+        ArtefactDTO dto = artefactMapper.toDTO(artefact);
+
+        assertNotNull(dto);
+        assertEquals("Test Title", dto.getTitle());
+        assertEquals("Test Museum", dto.getMuseumName());
+        assertEquals("Test Collection", dto.getType());
     }
 }

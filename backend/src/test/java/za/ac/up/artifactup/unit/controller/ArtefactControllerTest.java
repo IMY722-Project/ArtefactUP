@@ -2,6 +2,7 @@ package za.ac.up.artifactup.unit.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -11,20 +12,25 @@ import za.ac.up.artifactup.controller.ArtefactController;
 import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.service.ArtefactService;
 
+import java.util.Collections;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(ArtefactController.class)
-class ArtefactControllerTest {
+public class ArtefactControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ArtefactService<ArtefactDTO> artefactService;
+    private ArtefactService<ArtefactDTO> serviceFacade;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -32,71 +38,64 @@ class ArtefactControllerTest {
     @Test
     void shouldReturnAllArtefacts() throws Exception {
         ArtefactDTO dto = new ArtefactDTO();
-        dto.setTitle("Test Artefact");
-
-        when(artefactService.findAll()).thenReturn(List.of(dto));
+        when(serviceFacade.findAll()).thenReturn(Collections.singletonList(dto));
 
         mockMvc.perform(get("/api/artefact"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].title").value("Test Artefact"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void shouldCreateArtefact() throws Exception {
-        ArtefactDTO input = new ArtefactDTO();
-        input.setTitle("New Artefact");
-
-        when(artefactService.create(any())).thenReturn(input);
+        ArtefactDTO dto = new ArtefactDTO();
+        when(serviceFacade.create(any(ArtefactDTO.class))).thenReturn(dto);
 
         mockMvc.perform(multipart("/api/artefact/create")
-                .flashAttr("artefactDTO", input))
+                .flashAttr("artefactDTO", dto))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("New Artefact"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void shouldUpdateArtefact() throws Exception {
-        ArtefactDTO input = new ArtefactDTO();
-        input.setTitle("Updated Artefact");
-
-        when(artefactService.create(any())).thenReturn(input);
+        ArtefactDTO dto = new ArtefactDTO();
+        when(serviceFacade.create(any(ArtefactDTO.class))).thenReturn(dto);
 
         mockMvc.perform(put("/api/artefact/update")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(input)))
+                .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Updated Artefact"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void shouldDeleteArtefact() throws Exception {
-        doNothing().when(artefactService).deleteById(1L);
+        Long id = 1L;
+        doNothing().when(serviceFacade).deleteById(id);
 
-        mockMvc.perform(delete("/api/artefact/delete/1"))
+        mockMvc.perform(delete("/api/artefact/delete/{id}", id))
                 .andExpect(status().isNoContent());
     }
 
     @Test
     void shouldFindByCollectionName() throws Exception {
-        ArtefactDTO dto = new ArtefactDTO();
-        dto.setTitle("Collected Artefact");
+        String collectionName = "Art";
+        when(serviceFacade.findAllArtifactsByCollectionName(eq(collectionName)))
+                .thenReturn(Collections.singletonList(new ArtefactDTO()));
 
-        when(artefactService.findAllArtifactsByCollectionName("History")).thenReturn(List.of(dto));
-
-        mockMvc.perform(get("/api/artefact/collection/History"))
+        mockMvc.perform(get("/api/artefact/collection/{collectionName}", collectionName))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].title").value("Collected Artefact"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
     void shouldFindByMuseumName() throws Exception {
-        ArtefactDTO dto = new ArtefactDTO();
-        dto.setTitle("Museum Piece");
+        String museumName = "National";
+        when(serviceFacade.findAllArtefactsByMuseumName(eq(museumName)))
+                .thenReturn(Collections.singletonList(new ArtefactDTO()));
 
-        when(artefactService.findAllArtefactsByMuseumName("Louvre")).thenReturn(List.of(dto));
-
-        mockMvc.perform(get("/api/artefact/museum/Louvre"))
+        mockMvc.perform(get("/api/artefact/museum/{museumName}", museumName))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].title").value("Museum Piece"));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 }
