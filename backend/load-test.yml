@@ -1,16 +1,69 @@
 config:
-  target: "http://localhost:8080/swagger-ui.html"
+  # The base URL of your running backend API
+  target: "http://localhost:8080"
+  
+  # A more intense load phase:
+  # Ramp up from 1 to 50 new users per second over 2 minutes.
   phases:
-    - duration: 60
-      arrivalRate: 10
+    - duration: 120
+      arrivalRate: 1
+      rampTo: 50
+      name: "Ramp-up phase"
+
+  # Define default headers and variables to be used across scenarios.
+  defaults:
+    headers:
+      # Each virtual user will have a unique Session-id.
+      # Artillery generates a UUID for us with {{ $uuid }}.
+      "Session-id": "{{ $uuid }}"
+  
+  # Define variables that we can use in our scenarios.
+  variables:
+    huntId: "1" # We'll test with the first scavenger hunt.
+
 scenarios:
-  - name: "GET widgets"
+  # Scenario 1: The "Casual Browser" - 80% of our traffic
+  # This user looks at museums, artifacts, and asks the chatbot a question.
+  - name: "Casual Museum Browser"
+    weight: 8
     flow:
       - get:
-          url: "/widgets"
-  - name: "POST widget"
-    flow:
+          url: "/api/museum"
+          expect:
+            - statusCode: 200
+      - get:
+          url: "/api/artefact"
+          expect:
+            - statusCode: 200
       - post:
-          url: "/widgets"
+          url: "/api/museum/chat"
           json:
-            name: "LoadTest"
+            question: "Tell me a fun fact about ancient Rome."
+          expect:
+            - statusCode: 200
+
+  # Scenario 2: The "Scavenger Hunt Player" - 20% of our traffic
+  # This user starts a hunt, checks progress, and reveals a clue.
+  - name: "Scavenger Hunt Player"
+    weight: 2
+    flow:
+      - get:
+          url: "/api/hunts/all"
+          expect:
+            - statusCode: 200
+      - post:
+          url: "/api/hunts/progress/start/{{ huntId }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: "/api/hunts/progress/{{ huntId }}"
+          expect:
+            - statusCode: 200
+      - post:
+          url: "/api/hunts/steps/{{ huntId }}/reveal"
+          expect:
+            - statusCode: 200
+      - get:
+          url: "/api/hunts/progress/completed/count"
+          expect:
+            - statusCode: 200
