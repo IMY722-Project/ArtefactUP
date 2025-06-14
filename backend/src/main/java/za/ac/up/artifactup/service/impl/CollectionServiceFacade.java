@@ -1,6 +1,8 @@
 package za.ac.up.artifactup.service.impl;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.CollectionDTO;
 import za.ac.up.artifactup.dto.mapper.CollectionMapper;
@@ -9,6 +11,7 @@ import za.ac.up.artifactup.service.CollectionService;
 
 import java.util.Optional;
 
+@Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CollectionServiceFacade implements CollectionService<CollectionDTO> {

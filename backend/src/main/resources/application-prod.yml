@@ -14,5 +14,6 @@ aws:
   secret.key: ${AWS_SECRET_KEY}
   access.key: ${AWS_ACCESS_KEY}
   endpoint: https://s3.af-south-1.amazonaws.com
+  region: af-south-1
   s3:
     bucket-name: museum-artefacts-aup

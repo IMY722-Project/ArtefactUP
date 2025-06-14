@@ -2,6 +2,7 @@ package za.ac.up.artifactup.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.entity.Artefact;
@@ -13,7 +14,7 @@ import za.ac.up.artifactup.service.CollectionService;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CollectionServiceImpl implements CollectionService<Collection> {
