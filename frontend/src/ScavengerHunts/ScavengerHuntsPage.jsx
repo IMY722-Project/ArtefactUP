@@ -29,6 +29,7 @@ const ScavengerHuntsPage = () => {
         </div>
       </div>
       <ScavengerHunts />
+      <div className="hunt-footer"></div>
     </div>
     </div>
   );

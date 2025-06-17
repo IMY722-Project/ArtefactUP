@@ -64,6 +64,11 @@
   left: 10px; */
   z-index: 10;
 }
+ 
+.hunt-footer{
+  height: 140px;
+  background: linear-gradient(#ffffff00, #74223781, #742237);
+}
 
 /* adjusting for larger screen instead of smaller */
 @media (min-width: 900px) {

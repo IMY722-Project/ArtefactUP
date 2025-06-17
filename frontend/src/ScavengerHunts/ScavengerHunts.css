@@ -40,27 +40,24 @@
   left: 5%;
   right: 5%;
   bottom: -15%;
-  /* hang below the circle */
+
   height: 20%;
-  /* thickness of the cylinder wall */
-  background: linear-gradient(to bottom,
-      var(--stone-color) 0%,
-      darken(var(--stone-color), 15%) 100%);
-  border-radius: 50% / 20%;
-  /* squash into an oval */
+
   z-index: -1;
-  /* behind the circle */
 }
 
 /* Diagonal offset: push every 2nd, 4th, 6th… stone down */
 .hunt-circle:nth-child(2n) {
-  transform: translateX(100px);
+  transform: translateX(120px);
+}
+
+.hunt-circle:nth-child(2n-1) {
+  transform: translateX(-20px);
 }
 
 /* Keep the icon and label as before */
 .circle-icon {
-  /* width: 80%; */
-  width: 200px;
+  width: 180px;
 }
 
 .hunt-label {
