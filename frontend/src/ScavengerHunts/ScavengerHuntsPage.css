@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+        margin: 0;
+      padding: 0;
 }
 
 .scavenger-hunts-page-wrapper {
@@ -67,6 +69,7 @@
  
 .hunt-footer{
   height: 140px;
+  margin-top: auto;
   background: linear-gradient(#ffffff00, #74223781, #742237);
 }
 

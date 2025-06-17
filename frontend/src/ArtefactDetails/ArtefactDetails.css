@@ -1,28 +1,19 @@
-/* Overall Page Container */
-.artefact-details {
-  position: relative;
-  max-width: 100%;
-  min-height: 100vh;
-  /* background: var(--bg-grad3); */
-  background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7, #931a38d5);
-
+.text-info {
   font-family: var(--font-family);
   color: var(--text-dark);
-  overflow: hidden;
-  padding-top: 60px;
-  /* Space for header */
-  padding: 10px 10px 100px 10px;
 }
 
+
+
 /* Header with Close Button */
-.artefact-header {
+/* .artefact-header {
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 10;
-}
+} */
 
-.close-button {
+/* .close-button {
   background: rgba(0, 0, 0, 0.7);
   border: none;
   color: #fff;
@@ -35,7 +26,7 @@
   display: flex;
   flex-direction: column;
 
-}
+} */
 
 /* Main Content */
 .artefact-content {
@@ -73,12 +64,6 @@
 .text-info {
   padding: 0 20px;
   text-align: left;
-}
-
-.artefact-title {
-  font-size: 2rem;
-  margin: 10px 0;
-  color: var(--secondary-color);
 }
 
 .artefact-subtitle {
@@ -138,4 +123,9 @@
   border-width: 10px 10px 0;
   border-style: solid;
   border-color: #8ed3e7 transparent transparent transparent;
+}
+
+.text-info a {
+  color:var(--text-dark);
+  text-decoration: none;
 }
