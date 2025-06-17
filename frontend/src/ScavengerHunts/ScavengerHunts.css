@@ -86,15 +86,15 @@
 
 @media (min-width:900px) {
   .hunt-circle:nth-child(2n) {
-    transform: translateX(70%);
+    transform: translateX(110%);
   }
 
   .hunt-circle:nth-child(2n-1) {
-    transform: translateX(-30%);
+    transform: translateX(-60%);
   }
 
   .circle-icon {
-    width: 300px;
+    width: 250px;
   }
 
   .hunt-path {
