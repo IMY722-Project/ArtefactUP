@@ -9,7 +9,7 @@
     --text-dark: #532c2c;
     --text-light: #f7f7f7;
     --text-bright: #e62d2d;
-    --accent-color: #ffbf3e;
+    --accent-color: #ff9914;
     --disabled-color: #63636360;
     --font-family: 'Montserrat', 'Hevetica', sans-serif;
     --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
@@ -47,6 +47,7 @@ h1 {
 
 h2 {
     font-family: var(--font-heading);
+    font-size: 2rem;
 }
 
 code {

@@ -6,7 +6,8 @@
   min-height: 100vh;
   /* font-family: 'Montserrat', sans-serif; */
   
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
+  /* background: var(--bg-home-grad); */
 }
 
 /* Navbar */
@@ -101,7 +102,7 @@
   text-align: center;
   color: #fff;
   padding: 50px 20px;
-  height: 90vh;
+  /* height: 90vh; */
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
@@ -135,6 +136,7 @@
 /* Content Sections */
 .content-section {
   padding: 40px 20px;
+  background: #e6c8b0;
 }
 
 .wave-container {
@@ -152,10 +154,10 @@
   max-height: 100%;
   width: fit-content;
 }
-
-/* TODO: make that line at the bottom less harsh */
-/* .content-section {
-background: linear-gradient(#ff4b4b,#fff, #fff,#fff);
+/* 
+.footer {
+  height: 15px;
+  background: #9f6363;
 } */
 
 /* adjusting for larger screen instead of smaller */

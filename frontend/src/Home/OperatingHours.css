@@ -23,3 +23,8 @@
   margin-bottom: 10px;
   color: #666;
 } */
+.operating-hours-container {
+   background-color: var(--white-bg-transp);
+   border-radius: var(--border-rad);
+   padding: 30px;
+}

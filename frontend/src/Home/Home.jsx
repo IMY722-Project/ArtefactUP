@@ -35,6 +35,9 @@ function Home() {
         <OperatingHours />
         <TourPackages />
       </div>
+
+      <div className="footer">
+      </div>
     </div>
   );
 }
