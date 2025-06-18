@@ -183,5 +183,25 @@
 .wavy-div {
   background: var(--content-bg);
   margin: 0;
+
+  position: relative;
+  margin-top: -2px;
   padding: 0;
+}
+
+.wavy-svg {
+  margin-top: -2px;
+}
+/* 
+.wavy-div svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+} */
+
+.content-section {
+  margin-top: -2px;
 }
