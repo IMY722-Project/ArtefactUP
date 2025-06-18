@@ -83,12 +83,12 @@ const ArtefactsCollection = () => {
         <div className="ac-main">
           {hunt.completed && (
             <div className="congrats-banner">
-              <img
+              {/* <img
                 className="banner-img"
                 src="/images/complete-banner-4.png"
                 alt="
             Quest Completed"
-              />
+              /> */}
             </div>
           )}
 

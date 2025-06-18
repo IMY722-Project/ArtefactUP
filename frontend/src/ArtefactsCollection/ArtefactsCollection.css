@@ -69,10 +69,7 @@
 
 /* actual image */
 .ac-card-img {
-  /* max-height: 400px; */
-  /* width: auto; */
   border-radius: var(--border-rad);
-
   object-fit: contain;
   width: 100%;
 }
@@ -152,16 +149,8 @@
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  /*  var(--bg-grad2) */
-  /* background: linear-gradient(135deg, #ff3e3e9f, #ff7e4ba7,#931a38d5); */
-  /*red*/
-  /* background: linear-gradient(135deg, #3ed5ff9f, #863c88a7,#3c1e82d5); */
-  /*blue*/
-  /* background: linear-gradient(135deg, #ffba189f, #d15151a7, #964e0fd5); */
-  /* yellow */
-  /* background: linear-gradient( #c37f32ce, #ff7676cf, #9a3e3eea); */
-  /* background: linear-gradient( #c37f32ed, #ff7676f1, #9a3e3eea); */
-  background: linear-gradient(#fff, #ffb96dc8, #c74141e2);
+
+  background: linear-gradient(#fff, #cf813ec8, #c74141e2);
 
 
 
