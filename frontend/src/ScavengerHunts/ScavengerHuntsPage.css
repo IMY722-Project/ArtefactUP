@@ -122,3 +122,13 @@
   z-index: 1;
   margin-top: -2px;
 }
+
+.museum-icon {
+  width: 80%;
+  margin: auto;
+}
+
+.museum-img {
+  max-width: 100%;
+  height: fit-content;
+}

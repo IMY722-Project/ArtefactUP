@@ -19,7 +19,7 @@ const ScavengerHuntsPage = () => {
             <div class="quest-header">
               <div className="scavenger-header">
                 <div className="museum-icon">
-                  <img src="/images/museum_illustration.png" alt="Museum Illustration" />
+                  <img className="museum-img" src="/images/home_art_3.png" alt="Museum Illustration" />
                 </div>
                 <h1 className="scavenger-title">Museum Quests</h1>
               </div>
