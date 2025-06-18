@@ -4,6 +4,26 @@
   margin-bottom: 16px;
 }
 
+.back-button-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Close Button Styles */
+.back-button {
+  background-color: transparent;
+  border: none;
+  font-size: larger;
+  font-weight: bolder;
+  color: var(--text-bright);
+  width: fit-content;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
 .ac-header h1 {
   font-size: 1.8rem;
   color: var(--text-dark);
