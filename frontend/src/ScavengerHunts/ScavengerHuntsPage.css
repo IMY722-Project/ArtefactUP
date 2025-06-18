@@ -5,13 +5,13 @@
   /* background-color: #f9ebd7; */
   /* background: var(--bg-grad2); */
   /* background: linear-gradient(#ffbf8e9b, #ff9558bb, #bc3959bb); */
-  background: linear-gradient( #ffb96dc8, #e96363c8,#742237bd);
+  background: linear-gradient(#ffb96dc8, #e96363c8, #742237bd);
   /* background-attachment: fixed; */
   display: flex;
   flex-direction: column;
   overflow: hidden;
-        margin: 0;
-      padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .scavenger-hunts-page-wrapper {
@@ -30,19 +30,19 @@
 .top-circle {
   width: 100%;
   height: 45%;
-
-  /* opt1 */
-  /* background: var(--top-circle-grad);
-  border-bottom-left-radius: 100% 30%;
-  border-bottom-right-radius: 100% 30%; */
-  /* -- */
-  background: linear-gradient(#fff,#fff, #ffffff71,#ffffff71, #ffffff00);
+  /* background: linear-gradient(#fff,#fff, #ffffff71,#ffffff71, #ffffff00); */
   display: flex;
   justify-content: center;
   position: relative;
   z-index: 1;
   flex-direction: column;
   padding-bottom: 40px;
+  /* background: #fff; */
+}
+
+.quest-header {
+  background: var(--bg-hunts-grad);
+  margin: 0;
 }
 
 /* Title Overlaid on the Half-Circle */
@@ -65,9 +65,10 @@
   top: 25px;
   left: 10px; */
   z-index: 10;
+  margin: 0;
 }
- 
-.hunt-footer{
+
+.hunt-footer {
   height: 140px;
   margin-top: auto;
   background: linear-gradient(#ffffff00, #74223781, #742237);
@@ -85,7 +86,39 @@
   }
 
   .scavenger-hunts-page-wrapper {
-  background: url(../../public/images/bg-map-landscape-1.png);
-  background-size: 100%;
+    background: url(../../public/images/bg-map-landscape-1.png);
+    background-size: 100%;
+  }
 }
+
+.wave-path {
+  fill: #f8ceaf;
+  margin: 0;
+  padding: 0;
+}
+
+.wavy-div-hunts {
+  line-height: 0; /* Removes vertical whitespace */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.wavy-div-hunts svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* hides thin lines btn divs: */
+.quest-header {
+  position: relative;
+  z-index: 2;
+  margin-top:-2px;
+}
+
+.wavy-div-hunts {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;
 }
