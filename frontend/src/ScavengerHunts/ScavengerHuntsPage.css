@@ -76,8 +76,16 @@
 
 /* adjusting for larger screen instead of smaller */
 @media (min-width: 900px) {
+
+  .museum-img {
+    max-width: 100%;
+    height: fit-content;
+    width: 550px;
+    margin: auto;
+  }
+
   .museum-icon {
-    width: 30%;
+    width: 60%;
     margin: auto;
   }
 
@@ -98,7 +106,8 @@
 }
 
 .wavy-div-hunts {
-  line-height: 0; /* Removes vertical whitespace */
+  line-height: 0;
+  /* Removes vertical whitespace */
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -114,7 +123,7 @@
 .quest-header {
   position: relative;
   z-index: 2;
-  margin-top:-2px;
+  margin-top: -2px;
 }
 
 .wavy-div-hunts {
@@ -125,10 +134,17 @@
 
 .museum-icon {
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
+  align-content: center;
 }
 
 .museum-img {
   max-width: 100%;
-  height: fit-content;
+  display: block;
+  margin: 0 auto;
+  height: auto;
+}
+
+.scavenger-header {
+  margin: auto;
 }
