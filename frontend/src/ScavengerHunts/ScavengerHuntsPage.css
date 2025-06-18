@@ -81,12 +81,12 @@
   .museum-img {
     max-width: 100%;
     height: fit-content;
-    width: 550px;
+    width: 250px;
     margin: auto;
   }
 
   .museum-icon {
-    width: 60%;
+    /* width: 60%; */
     margin: auto;
   }
 

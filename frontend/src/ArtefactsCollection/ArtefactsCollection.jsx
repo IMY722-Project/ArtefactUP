@@ -85,7 +85,7 @@ const ArtefactsCollection = () => {
             <div className="congrats-banner">
               <img
                 className="banner-img"
-                src="/images/quest-complete-banner-2.png"
+                src="/images/complete-banner-4.png"
                 alt="
             Quest Completed"
               />
