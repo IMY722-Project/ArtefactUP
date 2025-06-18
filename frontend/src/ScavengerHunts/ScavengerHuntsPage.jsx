@@ -16,7 +16,7 @@ const ScavengerHuntsPage = () => {
             <div className="menu-button">
               <HamburgerMenu />
             </div>
-            <div class="quest-header">
+            <div className="quest-header">
               <div className="scavenger-header">
                 <div className="museum-icon">
                   <img className="museum-img" src="/images/home_art_3.png" alt="Museum Illustration" />
