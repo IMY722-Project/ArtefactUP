@@ -12,7 +12,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 // --- Import all necessary classes ---
-import za.ac.up.artifactup.TestBackendApplication;
 import za.ac.up.artifactup.config.BucketConfig;
 import za.ac.up.artifactup.controller.*;
 import za.ac.up.artifactup.dto.ArtefactDTO;
@@ -34,7 +33,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = TestBackendApplication.class)
+@SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @TestPropertySource(properties = { "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect" })
