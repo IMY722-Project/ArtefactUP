@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import za.ac.up.artifactup.TestBackendApplication;
 import za.ac.up.artifactup.dto.ArtefactDTO;
 import za.ac.up.artifactup.dto.mapper.ArtefactMapper;
 import za.ac.up.artifactup.entity.Artefact;
@@ -12,7 +13,7 @@ import za.ac.up.artifactup.entity.Museum;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(classes = TestBackendApplication.class)
 @ActiveProfiles("test")
 class ArtefactMapperIntegrationTest {
 
