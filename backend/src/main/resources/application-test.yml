@@ -7,6 +7,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    properties:
+      hibernate.type.preferred_enum_jdbc_type: VARCHAR
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
 
