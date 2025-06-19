@@ -2,7 +2,7 @@
 /**
  * cypress/e2e/scavenger-hunt.cy.js
  *
- * This test is simulates a user clicking the main "Explore Quests" button,
+ * This test simulates a user clicking the main "Explore Quests" button,
  * navigating to the quests page, and starting the first hunt.
  */
 describe('Scavenger Hunt Flow', () => {
