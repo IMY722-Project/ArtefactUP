@@ -43,12 +43,12 @@
 .ac-card {
   background: #ffffffb4;
   border-radius: var(--border-rad);
-  padding: 12px;
+  padding: 12px ;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 85%;
-  margin: 0px auto;
+  margin: 0px auto 15px;
 }
 
 

@@ -64,6 +64,14 @@ const ArtefactsCollection = () => {
       }
       markStepFound(huntData.id, step.id);
 
+      // auto update step otherwise he nav btns dont change
+      const thisHunt = hunts.find(h => h.id === huntData.id);
+      const idx = thisHunt.steps.findIndex(s => s.id === step.id);
+      const nextStepObj = thisHunt.steps[idx + 1];
+      if (nextStepObj) {
+        goToStep(huntData.id, nextStepObj.id);
+      }
+
       setVisibleSteps(
         hunt.steps
           .filter(s => s.found || s.id === hunt.currentStepId)
