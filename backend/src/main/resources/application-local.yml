@@ -2,14 +2,14 @@ spring:
   docker:
     compose:
       enabled: true
-      file: "./compose_db.yaml"
+      file: "./backend/compose_db.yaml"
   datasource:
     url: jdbc:postgresql://localhost:5432/museum_db
     username: postgres
     password: postgres
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
   ai:
