@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 // --- Import all necessary classes ---
@@ -36,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = TestBackendApplication.class)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@TestPropertySource(properties = { "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect" })
 public class ArtefactControllerTest {
 
         @Autowired
