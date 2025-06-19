@@ -12,6 +12,8 @@ import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { useEffect } from "react";
 import { API } from "../utils/config.js";
 import { getSessionId } from "../utils/session.js";
+import { startConfettiAnimation } from "../utils/confetti.js";
+
 import "./ArtefactsCollection.css";
 
 const ArtefactsCollection = () => {
@@ -34,6 +36,14 @@ const ArtefactsCollection = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
 
+  useEffect(() => {
+    if (hunt?.completed) {
+      // Trigger confetti animation or play sound
+      startConfettiAnimation("artefacts-collection-page");
+
+    }
+  }, [hunt?.completed]);
+
   if (!huntData) {
     navigate(-1);
     return null;
@@ -51,7 +61,6 @@ const ArtefactsCollection = () => {
     });
   };
   const handleReveal = async step => {
-
 
     const sessionId = getSessionId();
     try {
