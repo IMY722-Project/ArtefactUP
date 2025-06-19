@@ -1,15 +1,17 @@
 package za.ac.up.artifactup;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * This is a dummy Application class for testing purposes.
- * When the tests run, Spring will find and use this class to build the
- * ApplicationContext instead of the real BackendApplication.
- *
- * Crucially, this class does NOT have the @EnableJpaRepositories annotation,
- * which prevents the database layer from being loaded during unit tests.
+ * Test Application class for testing purposes.
+ * Includes necessary configurations for test context to load properly.
  */
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = "za.ac.up.artifactup.repository")
+@EntityScan(basePackages = "za.ac.up.artifactup.entity")
+@ComponentScan(basePackages = "za.ac.up.artifactup")
 public class TestBackendApplication {
 }

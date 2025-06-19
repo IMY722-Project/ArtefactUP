@@ -1,16 +1,46 @@
 spring:
+
+  main:
+    allow-bean-definition-overriding: true
+     
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  
+  
   jpa:
     hibernate:
       ddl-auto: create-drop
-    properties:
-      hibernate.type.preferred_enum_jdbc_type: VARCHAR
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
+    defer-datasource-initialization: true
+  
+  # Disable external service auto-configurations that might cause issues
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration
+      - org.springframework.ai.autoconfigure.SpringAiAutoConfiguration
+      - org.springframework.boot.autoconfigure.docker.compose.DockerComposeAutoConfiguration
+  
+  # Disable AWS auto-configuration
+  cloud:
+    aws:
+      credentials:
+        access-key: dummy
+        secret-key: dummy
+      region:
+        static: us-east-1
+        auto: false
+      stack:
+        auto: false
 
+# Logging configuration for debugging
+logging:
+  level:
+    za.ac.up.artifactup: DEBUG
+    org.springframework.boot.autoconfigure: INFO
+    org.springframework.context: INFO
 
 

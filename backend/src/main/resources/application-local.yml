@@ -3,6 +3,9 @@ spring:
     compose:
       enabled: true
       file: "./compose_db.yaml"
+  main:
+    allow-bean-definition-overriding: true
+    
   datasource:
     url: jdbc:postgresql://localhost:5432/museum_db
     username: postgres
