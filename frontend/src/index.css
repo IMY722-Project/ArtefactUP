@@ -27,6 +27,8 @@
   --white-bg-transp: #ffffffcc;
   --border-rad: 20px;
   --content-bg: #e6c8b0;
+  --bg-grad-opacity: linear-gradient(#e39e69dd, #f17c38ee, #bc395af9);
+
 
 }
 
