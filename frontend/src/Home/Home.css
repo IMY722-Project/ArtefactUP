@@ -4,9 +4,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* font-family: 'Montserrat', sans-serif; */
-  
-  background: #f7f7f7;
 }
 
 /* Navbar */
@@ -14,8 +11,8 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -63,6 +60,7 @@
   cursor: pointer;
   padding: 5px;
 }
+
 /* TODO: why is there a menu-btn and a menu-button? */
 .menu-button {
   background-color: #fff;
@@ -101,7 +99,7 @@
   text-align: center;
   color: #fff;
   padding: 50px 20px;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
@@ -135,10 +133,12 @@
 /* Content Sections */
 .content-section {
   padding: 40px 20px;
+  background: var(--content-bg);
 }
 
 .wave-container {
-  height: 100%; width: 100%;
+  height: 100%;
+  width: 100%;
   /* position: absolute;
   bottom: 0;
   left: 0;
@@ -153,9 +153,10 @@
   width: fit-content;
 }
 
-/* TODO: make that line at the bottom less harsh */
-/* .content-section {
-background: linear-gradient(#ff4b4b,#fff, #fff,#fff);
+/* 
+.footer {
+  height: 15px;
+  background: #9f6363;
 } */
 
 /* adjusting for larger screen instead of smaller */
@@ -166,7 +167,41 @@ background: linear-gradient(#ff4b4b,#fff, #fff,#fff);
   }
 
   .cta-button {
-    margin: 10px auto
+    margin: 0px auto
   }
 
+  .hero {
+    padding: 10px 20px;
+  }
+
+  .content-section {
+    padding: 40px 200px;
+  }
+
+}
+
+.wavy-div {
+  background: var(--content-bg);
+  margin: 0;
+
+  position: relative;
+  margin-top: -2px;
+  padding: 0;
+}
+
+.wavy-svg {
+  margin-top: -2px;
+}
+/* 
+.wavy-div svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+} */
+
+.content-section {
+  margin-top: -2px;
 }

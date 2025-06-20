@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Kurale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Kurale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /*@tailwind base;*/
 /*@tailwind components;*/
@@ -16,29 +17,33 @@
     @tailwind utilities;
 }
 
+
 :root {
-    --primary-color: #ff5a5f;
-    --secondary-color: #1a1a1a;
-    --bg-color: #f7f7f7;
-    --text-dark: #532c2c;
-    --text-light: #f7f7f7;
-    --text-bright: #e62d2d;
-    --accent-color: #ffbf3e;
-    --disabled-color: #63636360;
-    --font-family: 'Montserrat', 'Hevetica', sans-serif;
-    --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
-    --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
-    --bg-home-grad: linear-gradient(#ffffff, #da9456, #d05252);
-    /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
-    --menu-bg: linear-gradient(180deg, #e39e69, #b15d4c);
-    --bg-grad2: linear-gradient(#e39e69, #ff9558, #bc3959);
-    --text-bright-dark: #931a38;
+  --primary-color: #ff5a5f;
+  --secondary-color: #1a1a1a;
+  --bg-color: #f7f7f7;
+  --text-dark: #532c2c;
+  --text-light: #f7f7f7;
+  --text-bright: #e62d2d;
+  --accent-color: #ff9914;
+  --disabled-color: #63636360;
+  --font-family: 'Montserrat', 'Hevetica', sans-serif;
+  --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
+  --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
+  --bg-home-grad: linear-gradient(#ffffff, #da9456, #d05252);
+  /* --menu-bg: linear-gradient(135deg, #ffb057, #d66049); */
+  --menu-bg: linear-gradient(180deg, #e39e69, #b15d4c);
+  --bg-grad2: linear-gradient(#e39e69, #ff9558, #bc3959);
+  --text-bright-dark: #931a38;
 
-    --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
-    --top-circle-grad: linear-gradient(#fff, #ffffff71);
-
+  --bg-grad3: linear-gradient(135deg, #ffbf3e, #ff8d8d);
+  --top-circle-grad: linear-gradient(#fff, #ffffff71);
+  --bg-hunts-grad: linear-gradient(#ffffff, #f8ceaf);
   --white-bg-transp: #ffffffcc;
   --border-rad: 20px;
+  --content-bg: #e6c8b0;
+  --bg-grad-opacity: linear-gradient(#e39e69dd, #f17c38ee, #bc395af9);
+
 
 }
 
@@ -54,29 +59,34 @@ body {
 } */
 
 h1 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 600;
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
 h2 {
-    font-family: var(--font-heading);
+  font-family: var(--font-heading);
+  font-size: 2rem;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
-.button, .error-retry-btn, .capture-button, .retake-button, .submit-button {
+.button,
+.error-retry-btn,
+.capture-button,
+.retake-button,
+.submit-button {
   padding: 8px 12px;
   border: none;
-    border-radius: var(--border-rad);
+  border-radius: var(--border-rad);
   min-width: fit-content;
   background: #fff;
   filter: drop-shadow(#54343462 0px 7px 4px);
@@ -86,12 +96,63 @@ img {
   font-size: 1rem;
   color: var(--text-bright);
 
-    display: flex;
-    align-items: center;
-    font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family);
 
 }
 
 p {
   font-size: 1.2rem;
 }
+
+.confetti-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #5e8fcf;
+  opacity: 0.7;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-2vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--fall-distance, 100vh)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* @keyframes squigglyFall {
+  0% {
+    transform: translate(0, -5vh) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-5px, 25vh) rotate(180deg);
+  }
+  50% {
+    transform: translate(5px, 50vh) rotate(360deg);
+  }
+  75% {
+    transform: translate(-5px, 75vh) rotate(540deg);
+  }
+  100% {
+    transform: translate(0, 100vh) rotate(720deg);
+    opacity: 0;
+  }
+} */

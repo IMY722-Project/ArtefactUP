@@ -1,3 +1,9 @@
+/* Header */
+.ac-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
 .back-button-container {
   display: flex;
   height: 100%;
@@ -16,12 +22,6 @@
   height: 40px;
   cursor: pointer;
   transition: background 0.3s ease;
-}
-
-/* Header */
-.ac-header {
-  text-align: center;
-  margin-bottom: 16px;
 }
 
 .ac-header h1 {
@@ -43,12 +43,12 @@
 .ac-card {
   background: #ffffffb4;
   border-radius: var(--border-rad);
-  padding: 12px;
+  padding: 12px ;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 85%;
-  margin: 0px auto;
+  margin: 0px auto 15px;
 }
 
 
@@ -80,13 +80,18 @@
 }
 
 /* Card Image */
+/* div for img */
 .ac-card-image {
   text-align: center;
-  /* margin-bottom: 8px; */
-  /* height: 160px; */
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-    border-radius: var(--border-rad);
+}
+
+/* actual image */
+.ac-card-img {
+  border-radius: var(--border-rad);
+  object-fit: contain;
+  width: 100%;
 }
 
 .ac-image {
@@ -95,7 +100,7 @@
   width: 100%;
   height: auto;
   object-fit: fill;
-    border-radius: var(--border-rad);
+  border-radius: var(--border-rad);
   /* max-width: 300px; */
 }
 
@@ -164,16 +169,8 @@
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  /*  var(--bg-grad2) */
-  /* background: linear-gradient(135deg, #ff3e3e9f, #ff7e4ba7,#931a38d5); */
-  /*red*/
-  /* background: linear-gradient(135deg, #3ed5ff9f, #863c88a7,#3c1e82d5); */
-  /*blue*/
-  /* background: linear-gradient(135deg, #ffba189f, #d15151a7, #964e0fd5); */
-  /* yellow */
-  /* background: linear-gradient( #c37f32ce, #ff7676cf, #9a3e3eea); */
-  /* background: linear-gradient( #c37f32ed, #ff7676f1, #9a3e3eea); */
-  background: linear-gradient(#fff, #ffb96dc8, #c74141e2);
+
+  background: linear-gradient(#fff, #cf813ec8, #c74141e2);
 
 
 
@@ -224,6 +221,10 @@
   border-radius: 12px;
   border: none;
   font-size: 2.3rem;
+}
+
+.nav-btn-end {
+  color: aqua;
 }
 
 .congrats-banner {

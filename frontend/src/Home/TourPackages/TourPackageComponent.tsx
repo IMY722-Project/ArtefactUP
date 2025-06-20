@@ -16,7 +16,7 @@ const TourPackageComponent: React.FC<TourPackageComponentProps> = ({ tour }) => 
       <ul className="tour-bullets">
         {tour.bullets.map((bullet, index) => (
           <li key={index} className="tour-bullet">
-            <span className="bullet-icon">•</span> {bullet}
+            {bullet}
           </li>
         ))}
       </ul>
