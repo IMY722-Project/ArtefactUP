@@ -36,7 +36,7 @@ export default function Artefact() {
                 setSelectedArtefact(null);
                 setShowArtefactForm(true);
             }} className="admin-button" />
-            <DataTable value={artefacts} paginator rows={10} className="p-datatable-gridlines">
+            <DataTable value={artefacts} paginator rows={10} className="p-datatable-gridlines  rounded-lg overflow-hidden">
                 <Column field="title" header="Title" />
                 <Column field="creator" header="Creator" />
                 <Column field="museumName" header="Museum" />

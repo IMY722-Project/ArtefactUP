@@ -35,7 +35,7 @@ export default function Hunt() {
                 setSelectedHunt(null);
                 setShowHuntForm(true);
             }} className="admin-button" />
-            <DataTable value={hunts} paginator rows={10} className="p-datatable-gridlines">
+            <DataTable value={hunts} paginator rows={10} className="p-datatable-gridlines  rounded-lg overflow-hidden">
                 <Column field="name" header="Name" />
                 <Column field="description" header="Description" />
                 <Column body={(rowData) => actionBodyTemplate(rowData, 'hunt')} header="Actions" />
