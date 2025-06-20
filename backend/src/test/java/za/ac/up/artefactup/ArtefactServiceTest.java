@@ -1,5 +1,7 @@
 package za.ac.up.artefactup;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,8 +12,6 @@ import za.ac.up.artefactup.entity.Artefact;
 import za.ac.up.artefactup.repository.ArtefactRepository;
 import za.ac.up.artefactup.service.impl.ArtefactServiceImpl;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class ArtefactServiceTest {
 
-    @MockBean
+    @Mock
     private ArtefactRepository artefactRepository;
 
     @InjectMocks

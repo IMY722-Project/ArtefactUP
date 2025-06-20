@@ -1,45 +1,54 @@
 package za.ac.up.artefactup;
 
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import za.ac.up.artefactup.entity.Artefact;
-import za.ac.up.artefactup.repository.ArtefactRepository;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import za.ac.up.artefactup.controller.ArtefactController;
+import za.ac.up.artefactup.dto.ArtefactDTO;
+import za.ac.up.artefactup.service.ArtefactService;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 public class ArtefactControllerIntegrationTest {
 
-    @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private ArtefactRepository artefactRepository;
+    @InjectMocks
+    private ArtefactController artefactController;
+
+    @Mock
+    private ArtefactService<ArtefactDTO> artefactService;
 
     @BeforeEach
     public void setup() {
-        artefactRepository.deleteAll(); // clean before test
-        Artefact artefact = new Artefact();
+        mockMvc = MockMvcBuilders.standaloneSetup(artefactController).build();
+        ArtefactDTO artefact = new ArtefactDTO();
         artefact.setId(1L);
         artefact.setTitle("Ancient Vase");
         artefact.setCreator("Unknown");
         artefact.setDescription("A vase from 500 BC");
-        artefactRepository.save(artefact);
+        List<ArtefactDTO> artefacts = List.of(artefact);
+        when(artefactService.findAll()).thenReturn(artefacts);
     }
 
     @Test
     public void testGetArtefactById() throws Exception {
-        mockMvc.perform(get("/api/artefacts/1")
-                .contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/artefact")
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Ancient Vase"));
+                .andExpect(jsonPath("$[0].id").value(1))
+                .andExpect(jsonPath("$[0].title").value("Ancient Vase"));
     }
 }
