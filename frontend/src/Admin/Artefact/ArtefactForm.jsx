@@ -1,11 +1,11 @@
-import {Sidebar} from "primereact/sidebar";
-import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
-import {Dropdown} from "primereact/dropdown";
-import {InputTextarea} from "primereact/inputtextarea";
-import {useEffect, useState} from "react";
+import { Sidebar } from "primereact/sidebar";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
+import { InputTextarea } from "primereact/inputtextarea";
+import { useEffect, useState } from "react";
 
-export default function ArtefactForm ({ visible, onHide, artefact, onSave, museums }) {
+export default function ArtefactForm({ visible, onHide, artefact, onSave, museums }) {
     const [formData, setFormData] = useState(artefact || {
         title: '', creator: '', description: '', museumName: '', dateCreated: '',
         locationCreated: '', physicalDimensions: '', type: '', rights: '', medium: '', imageUrl: ''
@@ -23,8 +23,8 @@ export default function ArtefactForm ({ visible, onHide, artefact, onSave, museu
     };
 
     return (
-        <Sidebar position="right" header={artefact ? "Edit Artefact" : "Create Artefact"} visible={visible} onHide={onHide} style={{ width: '50vw' }}>
-            <div className="p-fluid">
+        <Sidebar position="right" header={artefact ? "Edit Artefact" : "Create Artefact"} visible={visible} onHide={onHide} style={{ width: '50vw' }} >
+            <div className="p-fluid form-class">
                 <div className="p-field mb-4">
                     <label htmlFor="title">Title</label>
                     <InputText id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
@@ -69,7 +69,10 @@ export default function ArtefactForm ({ visible, onHide, artefact, onSave, museu
                     <label htmlFor="imageUrl">Image URL</label>
                     <InputText id="imageUrl" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} />
                 </div>
-                <Button label="Save" onClick={handleSubmit} />
+                <div className='w-full flex items-center justify-center'>
+
+                    <Button label="Save" className=" form-button" onClick={handleSubmit} />
+                </div>
             </div>
         </Sidebar>
     );

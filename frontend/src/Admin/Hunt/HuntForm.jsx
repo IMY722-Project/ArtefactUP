@@ -1,11 +1,11 @@
-import {useEffect, useState} from "react";
-import {Sidebar} from "primereact/sidebar";
-import {InputText} from "primereact/inputtext";
-import {InputTextarea} from "primereact/inputtextarea";
-import {Dropdown} from "primereact/dropdown";
-import {Button} from "primereact/button";
+import { useEffect, useState } from "react";
+import { Sidebar } from "primereact/sidebar";
+import { InputText } from "primereact/inputtext";
+import { InputTextarea } from "primereact/inputtextarea";
+import { Dropdown } from "primereact/dropdown";
+import { Button } from "primereact/button";
 
-export default function HuntForm ({ visible, onHide, hunt, onSave, artefacts, museums }) {
+export default function HuntForm({ visible, onHide, hunt, onSave, artefacts, museums }) {
     const [formData, setFormData] = useState(hunt || { name: '', description: '', steps: [{ scavengerHuntName: '', stepNumber: 1, artefact: null, museumName: '', clue: '', hint: '' }] });
 
     useEffect(() => {
@@ -24,8 +24,8 @@ export default function HuntForm ({ visible, onHide, hunt, onSave, artefacts, mu
     };
 
     return (
-        <Sidebar position="right" header={hunt ? "Edit Scavenger Hunt" : "Create Scavenger Hunt"} visible={visible} onHide={onHide} style={{ width: '50vw' }}>
-            <div className="p-fluid">
+        <Sidebar position="right" header={hunt ? "Edit Scavenger Hunt" : "Create Quest / Scavenger Hunt"} visible={visible} onHide={onHide} style={{ width: '50vw' }}>
+            <div className="p-fluid form-class">
                 <div className="p-field mb-4">
                     <label htmlFor="name">Name</label>
                     <InputText id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
@@ -65,9 +65,15 @@ export default function HuntForm ({ visible, onHide, hunt, onSave, artefacts, mu
                             </div>
                         </div>
                     ))}
-                    <Button label="Add Step" onClick={addStep} className="p-button-text" />
+                    <div className='w-full flex items-center justify-center'>
+
+                        <Button label="Add Step" onClick={addStep} className="p-button-text form-button-secondary" />
+                    </div>
                 </div>
-                <Button label="Save" onClick={handleSubmit} />
+                <div className='w-full flex items-center justify-center'>
+
+                    <Button label="Save" className=" form-button" onClick={handleSubmit} />
+                </div>
             </div>
         </Sidebar>
     );

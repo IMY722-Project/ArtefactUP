@@ -1,17 +1,17 @@
-import {Sidebar} from 'primereact/sidebar';
-import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
-import {useEffect, useState} from "react";
-import {InputTextarea} from "primereact/inputtextarea";
-import {Dropdown} from "primereact/dropdown";
-import {Calendar} from "primereact/calendar";
+import { Sidebar } from 'primereact/sidebar';
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { useEffect, useState } from "react";
+import { InputTextarea } from "primereact/inputtextarea";
+import { Dropdown } from "primereact/dropdown";
+import { Calendar } from "primereact/calendar";
 
-export default function MuseumForm({visible, onHide, museum, onSave}) {
+export default function MuseumForm({ visible, onHide, museum, onSave }) {
     const [formData, setFormData] = useState(museum || {
         name: '',
         location: '',
         description: '',
-        openingHours: [{day: '', openingTime: '', closingTime: ''}],
+        openingHours: [{ day: '', openingTime: '', closingTime: '' }],
         imageUrl: ''
     });
 
@@ -29,7 +29,7 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
     const addOpeningHour = () => {
         setFormData({
             ...formData,
-            openingHours: [...formData.openingHours, {day: '', openingTime: '', closingTime: ''}]
+            openingHours: [...formData.openingHours, { day: '', openingTime: '', closingTime: '' }]
         });
     };
 
@@ -46,22 +46,22 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
 
     return (
         <Sidebar position="right" header={museum ? "Edit Museum" : "Create Museum"} visible={visible} onHide={onHide}
-                 style={{width: '50vw'}}>
-            <div className="p-fluid">
+            style={{ width: '50vw' }}>
+            <div className="p-fluid form-class">
                 <div className="p-field mb-4">
                     <label htmlFor="name">Name</label>
                     <InputText id="name" value={formData.name}
-                               onChange={(e) => setFormData({...formData, name: e.target.value})}/>
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="location">Location</label>
                     <InputText id="location" value={formData.location}
-                               onChange={(e) => setFormData({...formData, location: e.target.value})}/>
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })} />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="description">Description</label>
                     <InputTextarea id="description" value={formData.description}
-                                   onChange={(e) => setFormData({...formData, description: e.target.value})} rows={4}/>
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} />
                 </div>
                 <div className="p-field mb-4">
                     <label>Opening Hours</label>
@@ -73,7 +73,7 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
                                 onChange={(e) => {
                                     const newHours = [...formData.openingHours];
                                     newHours[index].day = e.value;
-                                    setFormData({...formData, openingHours: newHours});
+                                    setFormData({ ...formData, openingHours: newHours });
                                 }}
                                 placeholder="Select Day"
                                 className="w-40"
@@ -90,7 +90,7 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
                                         : '';
                                     const newHours = [...formData.openingHours];
                                     newHours[index].openingTime = timeString;
-                                    setFormData({...formData, openingHours: newHours});
+                                    setFormData({ ...formData, openingHours: newHours });
                                 }}
                                 timeOnly
                                 hourFormat="24"
@@ -109,7 +109,7 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
                                         : '';
                                     const newHours = [...formData.openingHours];
                                     newHours[index].closingTime = timeString;
-                                    setFormData({...formData, openingHours: newHours});
+                                    setFormData({ ...formData, openingHours: newHours });
                                 }}
                                 timeOnly
                                 hourFormat="24"
@@ -123,22 +123,27 @@ export default function MuseumForm({visible, onHide, museum, onSave}) {
                                 className="p-button-text p-button-danger"
                                 onClick={() => {
                                     const newHours = formData.openingHours.filter((_, i) => i !== index);
-                                    setFormData({...formData, openingHours: newHours});
+                                    setFormData({ ...formData, openingHours: newHours });
                                 }}
                                 tooltip="Remove"
-                                tooltipOptions={{position: 'top'}}
+                                tooltipOptions={{ position: 'top' }}
                             />
                         </div>
                     ))}
+                    <div className='w-full flex items-center justify-center'>
 
-                    <Button label="Add Opening Hour" onClick={addOpeningHour} className="p-button-text"/>
+                        <Button label="Add Opening Hour" onClick={addOpeningHour} className="p-button-text  form-button-secondary" />
+                    </div>
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="imageUrl">Image URL</label>
                     <InputText id="imageUrl" value={formData.imageUrl}
-                               onChange={(e) => setFormData({...formData, imageUrl: e.target.value})}/>
+                        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} />
                 </div>
-                <Button label="Save" onClick={handleSubmit}/>
+                <div className='w-full flex items-center justify-center'>
+                    <Button label="Save" className=' form-button' onClick={handleSubmit} />
+                </div>
+
             </div>
         </Sidebar>
     );

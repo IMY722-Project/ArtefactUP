@@ -55,9 +55,9 @@ export default function SideNav() {
             <div>
                 <button
                     onClick={() => signOutRedirect()}
-                    className="w-full flex items-center gap-2 px-3 py-2 text-red-600 hover:bg-red-100 hover:text-red-800 rounded-md transition-colors"
+                    className="w-full flex items-center gap-2 px-3 py-2  text-white hover:bg-red-100 hover:text-red-800 rounded-md transition-colors"
                 >
-                    <i className="pi pi-sign-out text-sm" />
+                    <i className="pi pi-sign-out text-sm text-white" />
                     <span>Logout</span>
                 </button>
             </div>
