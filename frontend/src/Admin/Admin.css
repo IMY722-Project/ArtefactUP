@@ -99,9 +99,15 @@
 
 }
 
-.form-class {
+.form-class, .p-datatable-gridlines , .p-datatable-table,
+.form-class label,
+.form-class .p-inputtext,
+.form-class .p-inputtextarea,
+.form-class .p-dropdown,
+.form-class .p-button,
+.form-class .p-button-label, .p-datatable .p-datatable-tbody > tr, .p-datatable-thead > tr > th {
     font-family: var(--text-font) !important;
-    color: var(--text-dark);
+    color: var(--text-dark) !important;
 
 }
 
