@@ -26,7 +26,7 @@ export default function SideNav() {
     };
 
     return (
-        <div className="flex flex-col justify-between h-screen w-64 navbar-div">
+        <div className="flex flex-col justify-between h-screen w-64 lg:w-min navbar-div">
             {/* Top Section */}
             <div>
                 <h2 className="text-xl font-bold mb-6 leading-relaxed">ArtefactUP Admin</h2>

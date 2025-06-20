@@ -33,8 +33,6 @@
     font-family: var(--text-font);
     color: #fff;
     margin: 26px 0px;
-    /* height: 2.5rem; */
-    /* padding: 0.5rem 1rem; */
     padding: 10px ;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -4px rgba(0, 0, 0, 0.1);
@@ -42,6 +40,8 @@
     font-size: 0.875rem;
     font-weight: 600;
     transition: color 0.2s, background-color 0.2s;
+    min-width: 200px;
+    align-content: center;
 }
 
 .admin-button .p-button-label {

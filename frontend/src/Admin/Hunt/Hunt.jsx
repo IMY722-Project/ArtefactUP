@@ -32,7 +32,7 @@ export default function Hunt() {
             <Button label="Create Scavenger Hunt" onClick={() => {
                 setSelectedHunt(null);
                 setShowHuntForm(true);
-            }} className="mb-4"/>
+            }} className="admin-button"/>
             <DataTable value={hunts} paginator rows={10} className="p-datatable-gridlines">
                 <Column field="name" header="Name"/>
                 <Column field="description" header="Description"/>

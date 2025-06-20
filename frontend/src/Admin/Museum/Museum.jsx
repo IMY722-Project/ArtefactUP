@@ -35,7 +35,7 @@ export default function Museum() {
                             <p className="text-[#532c2c] mt-4">Manage your museum collections</p>
                         </div>
                         <button
-                              className="inline-flex items-center  admin-button"
+                              className="inline-flex items-center justify-center admin-button"
 
                             onClick={() => {
                                 setSelectedMuseum(null);
@@ -46,7 +46,7 @@ export default function Museum() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                       d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-3 10V9a2 2 0 012-2h2a2 2 0 012 2v10M9 21v-7a2 2 0 012-2h2a2 2 0 012 2v7"/>
                             </svg>
-                            Create Museum
+                            <span>Create Museum</span>
                         </button>
                     </div>
 
