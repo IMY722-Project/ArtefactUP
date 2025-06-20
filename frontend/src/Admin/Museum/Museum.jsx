@@ -31,11 +31,11 @@ export default function Museum() {
                 <div>
                     <div className="items-center">
                         <div>
-                            <h1 className="text-3xl font-bold text-orange-900">Museums</h1>
+                            <h1 className="text-3xl font-bold ">Museums</h1>
                             <p className="text-[#532c2c] mt-4">Manage your museum collections</p>
                         </div>
                         <button
-                              className="inline-flex items-center gap-2 h-10 px-4 py-2 shadow-lg rounded-md text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 admin-button"
+                              className="inline-flex items-center  admin-button"
 
                             onClick={() => {
                                 setSelectedMuseum(null);

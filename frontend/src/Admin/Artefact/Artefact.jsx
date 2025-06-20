@@ -33,7 +33,7 @@ export default function Artefact() {
             <Button label="Create Artefact" onClick={() => {
                 setSelectedArtefact(null);
                 setShowArtefactForm(true);
-            }} className="mb-4"/>
+            }} className="admin-button"/>
             <DataTable value={artefacts} paginator rows={10} className="p-datatable-gridlines">
                 <Column field="title" header="Title"/>
                 <Column field="creator" header="Creator"/>

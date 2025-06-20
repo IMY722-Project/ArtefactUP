@@ -26,7 +26,7 @@ export default function Admin() {
     return (
         <div className="flex h-screen w-screen overflow-hidden page-wrapper">
             <SideNav/>
-            <div className="flex-1 overflow-auto">
+            <div className="flex-1 overflow-auto m-4">
                 <Outlet/>
             </div>
         </div>
