@@ -3,6 +3,7 @@ import {useAuth} from "react-oidc-context";
 import SideNav from "./SideNav";
 import {Navigate, Outlet} from "react-router";
 import {useLocation, useNavigate} from "react-router";
+import "./Admin.css";
 
 export default function Admin() {
     const auth = useAuth();
@@ -23,7 +24,7 @@ export default function Admin() {
     }
 
     return (
-        <div className="flex h-screen w-screen overflow-hidden bg-gradient-to-br from-orange-100 via-orange-50 via-red-50 to-red-100">
+        <div className="flex h-screen w-screen overflow-hidden page-wrapper">
             <SideNav/>
             <div className="flex-1 overflow-auto">
                 <Outlet/>

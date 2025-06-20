@@ -26,10 +26,10 @@ export default function SideNav() {
     };
 
     return (
-        <div className="flex flex-col justify-between h-screen w-64 bg-gradient-to-b from-orange-100 to-orange-200 p-4 text-orange-900 shadow-md">
+        <div className="flex flex-col justify-between h-screen w-64 navbar-div">
             {/* Top Section */}
             <div>
-                <h2 className="text-xl font-bold mb-6">ArtefactUP Admin</h2>
+                <h2 className="text-xl font-bold mb-6 leading-relaxed">ArtefactUP Admin</h2>
 
                 <nav className="space-y-2">
                     {navItems.map(({ to, label, icon }) => (
@@ -37,10 +37,10 @@ export default function SideNav() {
                             key={to}
                             to={to}
                             className={({ isActive }) =>
-                                `flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-orange-300 hover:text-orange-900 ${
+                                `flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-[#e6c8b0] hover:text-orange-900 ${
                                     isActive
-                                        ? 'bg-orange-300 font-semibold text-orange-900'
-                                        : 'text-orange-800'
+                                        ? 'active-nav-link font-semibold text-orange-900'
+                                        : 'inactive-nav-link text-orange-800'
                                 }`
                             }
                         >

@@ -29,19 +29,20 @@ export default function Museum() {
         <div >
             <div className="m-10">
                 <div>
-                    <div className="flex justify-between items-center">
+                    <div className="items-center">
                         <div>
                             <h1 className="text-3xl font-bold text-orange-900">Museums</h1>
-                            <p className="text-orange-700 mt-1">Manage your museum collections</p>
+                            <p className="text-[#532c2c] mt-4">Manage your museum collections</p>
                         </div>
                         <button
-                            className="inline-flex items-center gap-2 h-10 px-4 py-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white shadow-lg rounded-md text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                              className="inline-flex items-center gap-2 h-10 px-4 py-2 shadow-lg rounded-md text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 admin-button"
+
                             onClick={() => {
                                 setSelectedMuseum(null);
                                 setShowMuseumForm(true);
                             }}
                         >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                       d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-3 10V9a2 2 0 012-2h2a2 2 0 012 2v10M9 21v-7a2 2 0 012-2h2a2 2 0 012 2v7"/>
                             </svg>
