@@ -99,13 +99,17 @@
 
 }
 
-.form-class, .p-datatable-gridlines , .p-datatable-table,
+.form-class,
+.p-datatable-gridlines,
+.p-datatable-table,
 .form-class label,
 .form-class .p-inputtext,
 .form-class .p-inputtextarea,
 .form-class .p-dropdown,
 .form-class .p-button,
-.form-class .p-button-label, .p-datatable .p-datatable-tbody > tr, .p-datatable-thead > tr > th {
+.form-class .p-button-label,
+.p-datatable .p-datatable-tbody>tr,
+.p-datatable-thead>tr>th {
     font-family: var(--text-font) !important;
     color: var(--text-dark) !important;
 
@@ -117,3 +121,15 @@
     font-size: 1.8rem;
     font-weight: 600;
 }
+
+.admin-table tr th {
+    /* background: #ffb073; */
+    background: none;
+    border: none;
+}
+
+.p-datatable-thead {
+    background: linear-gradient(135deg, #ff8b3e86, #ff4b4b86, #c0194386);
+}
+
+/* ------- */
