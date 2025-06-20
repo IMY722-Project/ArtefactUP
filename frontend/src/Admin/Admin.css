@@ -55,7 +55,7 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -4px rgba(0, 0, 0, 0.1);
     border-radius: 0.375rem;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 600;
     transition: color 0.2s, background-color 0.2s;
     min-width: 400px;
@@ -109,8 +109,8 @@
 .form-class .p-dropdown,
 .p-datatable .p-datatable-tbody>tr,
 .p-datatable-thead>tr>th {
-    font-family: var(--text-font) ;
-    color: var(--text-dark) ;
+    font-family: var(--text-font);
+    color: var(--text-dark);
 
 }
 
@@ -127,8 +127,15 @@
     border: none;
 }
 
-.p-datatable-thead {
+.admin-table .p-datatable-tbody>tr>td {
+    background-color: #ffede091;
+    /* example: light beige */
+}
+
+.p-datatable-thead,
+.p-paginator-bottom {
     background: linear-gradient(135deg, #ff8b3e86, #ff4b4b86, #c0194386);
+    border: none;
 }
 
 .admin-museum-illustration {
@@ -145,7 +152,7 @@
     margin-bottom: 25px;
 }
 
-.hunt-input-field{
+.hunt-input-field {
     background: #f8eee5;
     border: none;
 }
@@ -157,30 +164,46 @@
 .form-class label {
     font-weight: 600;
 }
+
 /* ------- */
 
 /* there has to be an easier way but whatevs */
 .p-inputtext:focus,
 .p-inputtextarea:focus,
-.p-dropdown .p-inputtext:focus, .p-inputtextarea:focus, .p-dropdown-panel:focus, .p-dropdown-label:focus {
-  outline: 0;
-  border: 1px solid #e27934 !important;              
-  box-shadow: 0 0 2px 2px rgba(255, 102, 0, 0.75) !important;
-   /*box-shadow: 0 0 12px 6px rgba(255, 102, 0, 0.75);
+.p-dropdown .p-inputtext:focus,
+.p-inputtextarea:focus,
+.p-dropdown-panel:focus,
+.p-dropdown-label:focus {
+    outline: 0;
+    border: 1px solid #e27934 !important;
+    box-shadow: 0 0 2px 2px rgba(255, 102, 0, 0.75) !important;
+    /*box-shadow: 0 0 12px 6px rgba(255, 102, 0, 0.75);
   */
-  z-index: 1;
+    z-index: 1;
 }
 
 .hide-scroll::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* Works on Firefox */
 .hide-scroll {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
 }
 
 /* .hide-scroll {
     overflow-y: hidden;
 } */
+
+.p-paginator-element {
+    background: #ffffffc8;
+    color: var(--text-dark);
+}
+
+.p-disabled {
+    background: #ffffff66;
+
+}
