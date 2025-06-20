@@ -96,7 +96,7 @@
 }
 
 .form-button-secondary:hover {
-    background: #ffb379;
+    background: #9dd5ff;
 
 }
 
@@ -137,4 +137,36 @@
     height: auto;
 }
 
+
+.step-div {
+    padding: 20px;
+    background: var(--content-bg);
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.hunt-input-field{
+    background: #f8eee5;
+    border: none;
+}
+
+.form-class {
+    padding: 0 60px;
+}
+
+.form-class label {
+    font-weight: 600;
+}
 /* ------- */
+
+/* there has to be an easier way but whatevs */
+.p-inputtext:focus,
+.p-inputtextarea:focus,
+.p-dropdown .p-inputtext:focus, .p-inputtextarea:focus, .p-dropdown-panel:focus, .p-dropdown-label:focus {
+  outline: 0;
+  border: 1px solid #e27934 !important;              
+  box-shadow: 0 0 2px 2px rgba(255, 102, 0, 0.75) !important;
+   /*box-shadow: 0 0 12px 6px rgba(255, 102, 0, 0.75);
+  */
+  z-index: 1;
+}

@@ -51,17 +51,17 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                 <div className="p-field mb-4">
                     <label htmlFor="name">Name</label>
                     <InputText id="name" value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="location">Location</label>
                     <InputText id="location" value={formData.location}
-                        onChange={(e) => setFormData({ ...formData, location: e.target.value })} />
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="description">Description</label>
                     <InputTextarea id="description" value={formData.description}
-                        onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} />
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label>Opening Hours</label>
@@ -76,7 +76,7 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                                     setFormData({ ...formData, openingHours: newHours });
                                 }}
                                 placeholder="Select Day"
-                                className="w-40"
+                                className="w-40 hunt-input-field"
                             />
                             <Calendar
                                 value={hour.openingTime ? new Date(`1970-01-01T${hour.openingTime}`) : null}
@@ -96,6 +96,7 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                                 hourFormat="24"
                                 className="w-40"
                                 placeholder="09:00"
+                                className="hunt-input-field"
                             />
                             <Calendar
                                 value={hour.closingTime ? new Date(`1970-01-01T${hour.closingTime}`) : null}
@@ -115,6 +116,7 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                                 hourFormat="24"
                                 className="w-40"
                                 placeholder="17:00"
+                                className="hunt-input-field"
                             />
 
                             {/* Delete Button */}
@@ -138,7 +140,7 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                 <div className="p-field mb-4">
                     <label htmlFor="imageUrl">Image URL</label>
                     <InputText id="imageUrl" value={formData.imageUrl}
-                        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} />
+                        onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className='w-full flex items-center justify-center'>
                     <Button label="Save" className=' form-button' onClick={handleSubmit} />

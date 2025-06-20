@@ -27,47 +27,47 @@ export default function ArtefactForm({ visible, onHide, artefact, onSave, museum
             <div className="p-fluid form-class">
                 <div className="p-field mb-4">
                     <label htmlFor="title">Title</label>
-                    <InputText id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
+                    <InputText id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="creator">Creator</label>
-                    <InputText id="creator" value={formData.creator} onChange={(e) => setFormData({ ...formData, creator: e.target.value })} />
+                    <InputText id="creator" value={formData.creator} onChange={(e) => setFormData({ ...formData, creator: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="description">Description</label>
-                    <InputTextarea id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} />
+                    <InputTextarea id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="museumName">Museum</label>
-                    <Dropdown id="museumName" value={formData.museumName} options={museums.map(m => ({ label: m.name, value: m.name }))} onChange={(e) => setFormData({ ...formData, museumName: e.value })} placeholder="Select a Museum" />
+                    <Dropdown id="museumName" value={formData.museumName} options={museums.map(m => ({ label: m.name, value: m.name }))} onChange={(e) => setFormData({ ...formData, museumName: e.value })} placeholder="Select a Museum" className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="dateCreated">Date Created</label>
-                    <InputText id="dateCreated" value={formData.dateCreated} onChange={(e) => setFormData({ ...formData, dateCreated: e.target.value })} />
+                    <InputText id="dateCreated" value={formData.dateCreated} onChange={(e) => setFormData({ ...formData, dateCreated: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="locationCreated">Location Created</label>
-                    <InputText id="locationCreated" value={formData.locationCreated} onChange={(e) => setFormData({ ...formData, locationCreated: e.target.value })} />
+                    <InputText id="locationCreated" value={formData.locationCreated} onChange={(e) => setFormData({ ...formData, locationCreated: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="physicalDimensions">Physical Dimensions</label>
-                    <InputText id="physicalDimensions" value={formData.physicalDimensions} onChange={(e) => setFormData({ ...formData, physicalDimensions: e.target.value })} />
+                    <InputText id="physicalDimensions" value={formData.physicalDimensions} onChange={(e) => setFormData({ ...formData, physicalDimensions: e.target.value })}className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="type">Type</label>
-                    <InputText id="type" value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} />
+                    <InputText id="type" value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="rights">Rights</label>
-                    <InputText id="rights" value={formData.rights} onChange={(e) => setFormData({ ...formData, rights: e.target.value })} />
+                    <InputText id="rights" value={formData.rights} onChange={(e) => setFormData({ ...formData, rights: e.target.value })} className="hunt-input-field" />
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="medium">Medium</label>
-                    <InputText id="medium" value={formData.medium} onChange={(e) => setFormData({ ...formData, medium: e.target.value })} />
+                    <InputText id="medium" value={formData.medium} onChange={(e) => setFormData({ ...formData, medium: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="imageUrl">Image URL</label>
-                    <InputText id="imageUrl" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} />
+                    <InputText id="imageUrl" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className='w-full flex items-center justify-center'>
 

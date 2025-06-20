@@ -24,20 +24,20 @@ export default function HuntForm({ visible, onHide, hunt, onSave, artefacts, mus
     };
 
     return (
-        <Sidebar position="right" header={hunt ? "Edit Scavenger Hunt" : "Create Quest / Scavenger Hunt"} visible={visible} onHide={onHide} style={{ width: '50vw' }}>
+        <Sidebar position="right" header={hunt ? "Edit Scavenger Hunt" : "Create Quest / Scavenger Hunt"} visible={visible} onHide={onHide} style={{ width: '50vw' }} className="form-sidebar">
             <div className="p-fluid form-class">
                 <div className="p-field mb-4">
                     <label htmlFor="name">Name</label>
-                    <InputText id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+                    <InputText id="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label htmlFor="description">Description</label>
-                    <InputTextarea id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} />
+                    <InputTextarea id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} rows={4} className="hunt-input-field"/>
                 </div>
                 <div className="p-field mb-4">
                     <label>Steps</label>
                     {formData.steps.map((step, index) => (
-                        <div key={index} className="border p-2 mb-2">
+                        <div key={index} className="border p-2 mb-2 step-div">
                             <div className="p-field mb-2">
                                 <label htmlFor={`artefact-${index}`}>Artefact</label>
                                 <Dropdown id={`artefact-${index}`} value={step.artefact} options={artefacts.map(a => ({ label: a.title, value: a }))} onChange={(e) => {
@@ -45,7 +45,7 @@ export default function HuntForm({ visible, onHide, hunt, onSave, artefacts, mus
                                     newSteps[index].artefact = e.value;
                                     newSteps[index].museumName = e.value?.museumName || '';
                                     setFormData({ ...formData, steps: newSteps });
-                                }} placeholder="Select an Artefact" />
+                                }} placeholder="Select an Artefact" className="hunt-input-field"/>
                             </div>
                             <div className="p-field mb-2">
                                 <label htmlFor={`clue-${index}`}>Clue</label>
@@ -53,7 +53,7 @@ export default function HuntForm({ visible, onHide, hunt, onSave, artefacts, mus
                                     const newSteps = [...formData.steps];
                                     newSteps[index].clue = e.target.value;
                                     setFormData({ ...formData, steps: newSteps });
-                                }} />
+                                }} className="hunt-input-field"/>
                             </div>
                             <div className="p-field mb-2">
                                 <label htmlFor={`hint-${index}`}>Hint</label>
@@ -61,7 +61,7 @@ export default function HuntForm({ visible, onHide, hunt, onSave, artefacts, mus
                                     const newSteps = [...formData.steps];
                                     newSteps[index].hint = e.target.value;
                                     setFormData({ ...formData, steps: newSteps });
-                                }} />
+                                }} className="hunt-input-field"/>
                             </div>
                         </div>
                     ))}
