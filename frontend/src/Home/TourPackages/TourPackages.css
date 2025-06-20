@@ -1,16 +1,16 @@
 .tour-packages-container {
-  background: #fff;
-    border-radius: var(--border-rad);
+  background: var(--white-bg-transp);
+  border-radius: var(--border-rad);
   padding: 40px 20px;
   text-align: center;
   margin-top: 20px;
 }
 
-.tour-packages-container h2 {
+/* .tour-packages-container h2 {
   font-size: 2.2rem;
   margin-bottom: 30px;
   color: #333;
-}
+} */
 
 .tour-packages-list {
   display: flex;
@@ -27,7 +27,8 @@
   color: #fff;
   background-color: #ff9914;
   border: none;
-    border-radius: var(--border-rad);
+  border-radius: var(--border-rad);
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+

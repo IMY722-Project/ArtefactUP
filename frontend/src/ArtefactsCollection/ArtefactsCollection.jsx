@@ -12,6 +12,8 @@ import TopCircle from "../TopCircleGeneric/TopCircle.jsx";
 import { useEffect } from "react";
 import { API } from "../utils/config.js";
 import { getSessionId } from "../utils/session.js";
+import { startConfettiAnimation } from "../utils/confetti.js";
+
 import "./ArtefactsCollection.css";
 
 const ArtefactsCollection = () => {
@@ -34,6 +36,14 @@ const ArtefactsCollection = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunts, huntData]);
 
+  useEffect(() => {
+    if (hunt?.completed) {
+      // Trigger confetti animation or play sound
+      startConfettiAnimation("artefacts-collection-page");
+
+    }
+  }, [hunt?.completed]);
+
   if (!huntData) {
     navigate(-1);
     return null;
@@ -51,6 +61,7 @@ const ArtefactsCollection = () => {
     });
   };
   const handleReveal = async step => {
+
     const sessionId = getSessionId();
     try {
       const res = await fetch(`${API}/api/hunts/steps/${huntData.id}/reveal`, {
@@ -62,13 +73,20 @@ const ArtefactsCollection = () => {
       }
       markStepFound(huntData.id, step.id);
 
+      // auto update step otherwise he nav btns dont change
       const thisHunt = hunts.find(h => h.id === huntData.id);
       const idx = thisHunt.steps.findIndex(s => s.id === step.id);
       const nextStepObj = thisHunt.steps[idx + 1];
       if (nextStepObj) {
         goToStep(huntData.id, nextStepObj.id);
       }
-      navigate("/artefactDetails", { state: { artefact: step.artefact } });
+
+      setVisibleSteps(
+        hunt.steps
+          .filter(s => s.found || s.id === hunt.currentStepId)
+          .map(s => huntData.steps.find(hs => hs.id === s.id))
+      );
+
     } catch (e) {
       console.error("Error revealing artefact:", e);
       alert("Sorry, could not reveal artefact. Please try again.");

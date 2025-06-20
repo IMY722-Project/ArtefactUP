@@ -1,40 +1,6 @@
-/* Overall Page Container */
-.artefact-details {
-  position: relative;
-  max-width: 100%;
-  min-height: 100vh;
-  /* background: var(--bg-grad3); */
-  background: linear-gradient(135deg, #ff8b3e9f, #ff4b4ba7, #931a38d5);
-
+.text-info {
   font-family: var(--font-family);
   color: var(--text-dark);
-  overflow: hidden;
-  padding-top: 60px;
-  /* Space for header */
-  padding: 10px 10px 100px 10px;
-}
-
-/* Header with Close Button */
-.artefact-header {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 10;
-}
-
-.close-button {
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  color: #fff;
-  font-size: 0.8rem;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--border-rad);
-  cursor: pointer;
-  transition: background 0.3s ease;
-  display: flex;
-  flex-direction: column;
-
 }
 
 /* Main Content */
@@ -75,17 +41,11 @@
   text-align: left;
 }
 
-.artefact-title {
-  font-size: 2rem;
-  margin: 10px 0;
-  color: var(--secondary-color);
-}
-
 .artefact-subtitle {
-  font-size: 1.2rem;
-  font-style: italic;
   color: var(--accent-color);
-  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0;
 }
 
 .artefact-meta {
@@ -93,9 +53,10 @@
   margin-bottom: 10px;
 }
 
-.artefact-description p {
+.artefact-description {
   font-size: 1rem;
   line-height: 1.5;
+  margin-top: 40px;
 }
 
 /* Mascot Section */
@@ -120,7 +81,7 @@
 } */
 
 .mascot-bubble {
-  background: #8ed3e7;
+  /* background: #8ed3e7; */
   color: var(--secondary-color);
   padding: 15px 20px;
   border-radius: 20px;
@@ -138,4 +99,9 @@
   border-width: 10px 10px 0;
   border-style: solid;
   border-color: #8ed3e7 transparent transparent transparent;
+}
+
+.text-info a {
+  color:var(--text-dark);
+  text-decoration: none;
 }
