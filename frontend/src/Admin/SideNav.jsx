@@ -29,6 +29,11 @@ export default function SideNav() {
         <div className="flex flex-col justify-between h-screen w-64 navbar-div">
             {/* Top Section */}
             <div>
+                <img
+                    src="/images/museum_illustration.png"
+                    className="admin-museum-illustration"
+                    alt="Museum illustration"
+                />
                 <h2 className="text-xl font-bold mb-6 leading-relaxed">ArtefactUP Admin</h2>
 
                 <nav className="space-y-2">
@@ -37,10 +42,9 @@ export default function SideNav() {
                             key={to}
                             to={to}
                             className={({ isActive }) =>
-                                `flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-[#e6c8b0] hover:text-orange-900 ${
-                                    isActive
-                                        ? 'active-nav-link font-semibold text-orange-900'
-                                        : 'inactive-nav-link text-orange-800'
+                                `flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-[#e6c8b0] hover:text-orange-900 ${isActive
+                                    ? 'active-nav-link font-semibold text-orange-900'
+                                    : 'inactive-nav-link text-orange-800'
                                 }`
                             }
                         >

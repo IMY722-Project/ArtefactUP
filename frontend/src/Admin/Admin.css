@@ -49,7 +49,7 @@
     border: none;
     background: linear-gradient(90deg, #5ad6f5, #4593cf);
     font-family: var(--text-font);
-    color: #fff;
+    color: #fff !important;
     margin: 26px 0px;
     padding: 10px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -77,7 +77,8 @@
     border: none;
     /* background: linear-gradient(135deg, #ffbf3e, #ff923e); */
     /* background: #5c92bb; */
-    background: #d98d53;
+    /* background: #d98d53; */
+    background: #4e9eda;
     font-family: var(--text-font);
     color: #fff;
     /* color: var(--text-dark); */
@@ -106,12 +107,10 @@
 .form-class .p-inputtext,
 .form-class .p-inputtextarea,
 .form-class .p-dropdown,
-.form-class .p-button,
-.form-class .p-button-label,
 .p-datatable .p-datatable-tbody>tr,
 .p-datatable-thead>tr>th {
-    font-family: var(--text-font) !important;
-    color: var(--text-dark) !important;
+    font-family: var(--text-font) ;
+    color: var(--text-dark) ;
 
 }
 
@@ -130,6 +129,12 @@
 
 .p-datatable-thead {
     background: linear-gradient(135deg, #ff8b3e86, #ff4b4b86, #c0194386);
+}
+
+.admin-museum-illustration {
+    width: 80%;
+    margin: 35px auto 15px;
+    height: auto;
 }
 
 /* ------- */
