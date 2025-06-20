@@ -9,7 +9,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); */
 }
 
 .progress-title {
@@ -49,17 +48,20 @@
 .progress-icon-div {
   /* padding: 30px 30px 3px 30px; */
   /* font-size: 2rem */
-  margin-top: 10px;
+  margin: 10px;
+  height: 100px;
+  width: 100px;
 }
 
 .progress-icon {
-  height: 100px;
-  width: auto;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .progress-markers-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 80%;
 }
 

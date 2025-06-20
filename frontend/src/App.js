@@ -6,24 +6,24 @@ import ArtefactDetails from './ArtefactDetails/ArtefactDetails';
 import ArtefactsCollection from './ArtefactsCollection/ArtefactsCollection';
 import ScanPage from './ScanPage/ScanPage';
 import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
-import { ParallaxProvider } from 'react-scroll-parallax';
-// import ChatBot from "./Chat/ChatBot";
+import {ParallaxProvider} from 'react-scroll-parallax';
+import ChatBot from "./Chat/ChatBot";
 
 function App() {
-  return (
-    <ParallaxProvider>
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/artefactDetails" element={<ArtefactDetails />} />
-          <Route path="/artefactsCollection" element={<ArtefactsCollection />} />
-          <Route path="/scavengerHunts" element={<ScavengerHuntsPage />} />
-          <Route path="/scan" element={<ScanPage />} />
+    return (
+            <ParallaxProvider>
+                <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/admin" element={<Admin/>}/>
+                    <Route path="/artefactDetails" element={<ArtefactDetails/>}/>
+                    <Route path="/artefactsCollection" element={<ArtefactsCollection/>}/>
+                    <Route path="/scavengerHunts" element={<ScavengerHuntsPage/>}/>
+                    <Route path="/scan" element={<ScanPage/>}/>
+                    <Route path="/chat" element={<ChatBot/>}/>
 
-      </Routes>
-        {/* <ChatBot/> */}
-    </ParallaxProvider>
-  );
+                </Routes>
+            </ParallaxProvider>
+    );
 }
 
 export default App;

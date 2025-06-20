@@ -1,3 +1,9 @@
+/* Header */
+.ac-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
 .back-button-container {
   display: flex;
   height: 100%;
@@ -18,12 +24,6 @@
   transition: background 0.3s ease;
 }
 
-/* Header */
-.ac-header {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
 .ac-header h1 {
   font-size: 1.8rem;
   color: var(--text-dark);
@@ -42,13 +42,13 @@
 /* Artefact Card */
 .ac-card {
   background: #ffffffb4;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: var(--border-rad);
+  padding: 12px ;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 85%;
-  margin: 0px auto;
+  margin: 0px auto 15px;
 }
 
 
@@ -80,13 +80,18 @@
 }
 
 /* Card Image */
+/* div for img */
 .ac-card-image {
   text-align: center;
-  /* margin-bottom: 8px; */
-  /* height: 160px; */
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
-  border-radius: 10px;
+}
+
+/* actual image */
+.ac-card-img {
+  border-radius: var(--border-rad);
+  object-fit: contain;
+  width: 100%;
 }
 
 .ac-image {
@@ -95,7 +100,7 @@
   width: 100%;
   height: auto;
   object-fit: fill;
-  border-radius: 10px;
+  border-radius: var(--border-rad);
   /* max-width: 300px; */
 }
 
@@ -154,7 +159,7 @@
 }
 
 
-.artefacts-collection-page-wrapper{
+.artefacts-collection-page-wrapper {
   background: url(../../public/images/bg_pattern.png) repeat-y;
   background-size: 100%;
   background-attachment: fixed;
@@ -164,16 +169,8 @@
 .artefacts-collection-page {
   max-width: 100%;
   min-height: 100vh;
-  /*  var(--bg-grad2) */
-  /* background: linear-gradient(135deg, #ff3e3e9f, #ff7e4ba7,#931a38d5); */
-  /*red*/
-  /* background: linear-gradient(135deg, #3ed5ff9f, #863c88a7,#3c1e82d5); */
-  /*blue*/
-  /* background: linear-gradient(135deg, #ffba189f, #d15151a7, #964e0fd5); */
-  /* yellow */
-  /* background: linear-gradient( #c37f32ce, #ff7676cf, #9a3e3eea); */
-  /* background: linear-gradient( #c37f32ed, #ff7676f1, #9a3e3eea); */
-  background: linear-gradient(#fff, #ffb96dc8, #c74141e2);
+
+  background: linear-gradient(#fff, #cf813ec8, #c74141e2);
 
 
 
@@ -226,6 +223,10 @@
   font-size: 2.3rem;
 }
 
+.nav-btn-end {
+  color: aqua;
+}
+
 .congrats-banner {
   /* padding: 0px 35px; */
 
@@ -242,61 +243,60 @@
   font-size: 1.3rem;
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px)
   }
 
-/* Info Section: Artefact Image and Details */
-.info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+  .info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-.image-wrapper {
-  display: flex;
-  justify-content: center;
-}
+  .image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 
-.artefact-image {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .artefact-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-.text-info {
-  padding: 0 20px;
-  text-align: left;
-}
+  .text-info {
+    padding: 0 20px;
+    text-align: left;
+  }
 
-.artefact-title {
-  font-size: 2rem;
-  margin: 10px 0;
-  color: var(--secondary-color);
-}
+  .artefact-title {
+    font-size: 2rem;
+    margin: 10px 0;
+    color: var(--secondary-color);
+  }
 
-.artefact-subtitle {
-  font-size: 1.2rem;
-  font-style: italic;
-  color: var(--accent-color);
-  margin-bottom: 10px;
-}
+  .artefact-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+  }
 
-.artefact-meta {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
+  .artefact-meta {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
 
-.artefact-description p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+  .artefact-description p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
 
   to {
     opacity: 1;
     transform: translateY(0)
   }
-}
+} */
