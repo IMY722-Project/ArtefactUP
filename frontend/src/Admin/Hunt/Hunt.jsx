@@ -1,8 +1,8 @@
-import {Button} from "primereact/button";
-import {DataTable} from "primereact/datatable";
-import {Column} from "primereact/column";
+import { Button } from "primereact/button";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 import DashboardApi from "../data-access/DashboardAPI";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import HuntForm from "./HuntForm";
 
 export default function Hunt() {
@@ -28,15 +28,17 @@ export default function Hunt() {
     );
 
     return (
-        <div>
+        <div className="m-10">
+            <h1 className="text-3xl font-bold ">Hunt</h1>
+
             <Button label="Create Scavenger Hunt" onClick={() => {
                 setSelectedHunt(null);
                 setShowHuntForm(true);
-            }} className="admin-button"/>
+            }} className="admin-button" />
             <DataTable value={hunts} paginator rows={10} className="p-datatable-gridlines">
-                <Column field="name" header="Name"/>
-                <Column field="description" header="Description"/>
-                <Column body={(rowData) => actionBodyTemplate(rowData, 'hunt')} header="Actions"/>
+                <Column field="name" header="Name" />
+                <Column field="description" header="Description" />
+                <Column body={(rowData) => actionBodyTemplate(rowData, 'hunt')} header="Actions" />
             </DataTable>
             <HuntForm
                 visible={showHuntForm || !!selectedHunt}
