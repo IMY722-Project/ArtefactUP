@@ -4,7 +4,7 @@ import { useAuth } from 'react-oidc-context';
 const navItems = [
     { to: 'museum', label: 'Museums', icon: 'pi pi-home' },
     { to: 'artefact', label: 'Artefacts', icon: 'pi pi-building' },
-    { to: 'hunt', label: 'Hunts', icon: 'pi pi-folder' },
+    { to: 'hunt', label: 'Quests', icon: 'pi pi-folder' },
 ];
 
 export default function SideNav() {

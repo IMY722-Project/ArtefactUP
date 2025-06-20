@@ -29,7 +29,7 @@ export default function Hunt() {
 
     return (
         <div className="m-10">
-            <h1 className="text-3xl font-bold ">Hunt</h1>
+            <h1 className="text-3xl font-bold ">Quests</h1>
 
             <Button label="Create Scavenger Hunt" onClick={() => {
                 setSelectedHunt(null);
