@@ -94,7 +94,7 @@ export default function Museum() {
                                     </div>
                                 </div>
                                 <div className="p-6 pt-0">
-                                    <p className="text-gray-700 leading-relaxed">{museum.description}</p>
+                                    <p className="leading-relaxed">{museum.description}</p>
                                 </div>
                             </div>
                         ))}

@@ -170,3 +170,17 @@
   */
   z-index: 1;
 }
+
+.hide-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Works on Firefox */
+.hide-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+/* .hide-scroll {
+    overflow-y: hidden;
+} */

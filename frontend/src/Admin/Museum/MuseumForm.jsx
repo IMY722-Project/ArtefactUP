@@ -94,9 +94,8 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                                 }}
                                 timeOnly
                                 hourFormat="24"
-                                className="w-40"
+                                className="w-40 hunt-input-field"
                                 placeholder="09:00"
-                                className="hunt-input-field"
                             />
                             <Calendar
                                 value={hour.closingTime ? new Date(`1970-01-01T${hour.closingTime}`) : null}
@@ -114,9 +113,8 @@ export default function MuseumForm({ visible, onHide, museum, onSave }) {
                                 }}
                                 timeOnly
                                 hourFormat="24"
-                                className="w-40"
+                                className="w-40 hunt-input-fiel"
                                 placeholder="17:00"
-                                className="hunt-input-field"
                             />
 
                             {/* Delete Button */}
