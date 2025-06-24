@@ -9,7 +9,8 @@ const HamburgerMenu = () => {
     const links = [
         {label: "Home", href: "/"},
         {label: "Quests", href: "/scavengerHunts"},
-        {label: "Chat", href:"/chat"}
+        {label: "Chat", href:"/chat"},
+        {label: "Admin", href:"/admin"}
     ];
     return (
             <div className="hamburger-menu">

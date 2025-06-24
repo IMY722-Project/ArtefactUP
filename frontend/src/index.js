@@ -8,11 +8,11 @@ import {AuthProvider} from "react-oidc-context";
 
 
 const cognitoAuthConfig = {
-    authority: process.env.REACT_APP_AUTH_URL,
-    client_id: process.env.REACT_APP_AUTH_CLIENT_ID,
+    authority: "https://cognito-idp.af-south-1.amazonaws.com/af-south-1_NybjqizIp",
+    client_id: "4rvbqp39tna28ef1rhh43rdpei",
     redirect_uri: process.env.REACT_APP_AUTH_REDIRECT_URL,
-    response_type: process.env.REACT_APP_AUTH_RESPONSE_TYPE,
-    scope: process.env.REACT_APP_AUTH_SCOPE,
+    response_type: "code",
+    scope: "email openid phone",
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

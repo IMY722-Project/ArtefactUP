@@ -4,7 +4,7 @@
   border-radius: 8px;
   max-width: 600px;
   text-align: center;
-  font-family: var(--font-family);
+  font-family: var(---text-font);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,11 +12,14 @@
 }
 
 .progress-title {
-  /* margin-bottom: 16px; */
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-color);
   margin: 5px;
+}
+
+.start-text {
+  font-family: var(--text-font);
 }
 
 /* Container for the progress bar */
@@ -33,7 +36,7 @@
 .progress-bar {
   height: 100%;
   /* background: var(--bg-grad1); */
-  background: linear-gradient(90deg,#ff4875, #ff7b3d, #ffbe5b);
+  background: linear-gradient(90deg, #ff4875, #ff7b3d, #ffbe5b);
   transition: width 0.3s ease-in-out;
 }
 
@@ -64,4 +67,3 @@
   justify-content: center;
   width: 80%;
 }
-

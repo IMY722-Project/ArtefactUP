@@ -121,7 +121,7 @@
 
 .cta-button {
   /* color: #cf214c; */
-  color: var(--primary-color);
+  color: var(--text-bright);
   font-weight: 800;
   /* transition: background 0.3s, color 0.3s; */
   font-size: 1.5rem;

@@ -1,39 +1,30 @@
 import React from "react";
 import {useAuth} from "react-oidc-context";
-
+import SideNav from "./SideNav";
+import {Outlet, useLocation, useNavigate} from "react-router";
+import "./Admin.css";
 
 export default function Admin() {
-
     const auth = useAuth();
-
-    const signOutRedirect = () => {
-        const clientId = process.env.REACT_APP_AUTH_CLIENT_ID;
-        const logoutUri = process.env.REACT_APP_AUTH_LOGOUT_URI;
-        const cognitoDomain = process.env.REACT_APP_AUTH_COGNITO_DOMAIN;
-        window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
-    };
-
-    if (auth?.isLoading) {
-        return <div>Loading...</div>;
-    }
+    const navigate = useNavigate();
+    const location = useLocation();
 
     if (auth.error) {
+        console.log(auth.error);
         return <div>Encountering error... {auth?.error.message}</div>;
     }
 
-    if (auth.isAuthenticated) {
-        return (
-            <div>
-                <pre> Hello: {auth.user?.profile.email} </pre>
-                <button onClick={() => auth.removeUser()}>Sign out</button>
-            </div>
-        );
+    if (!auth.isAuthenticated && !auth?.isLoading && location.pathname !== "/admin/login") {
+        navigate("/admin/login");
     }
-    return (
 
-            <div>
-                <button onClick={() => auth.signinRedirect()}>Sign in</button>
-                <button onClick={() => signOutRedirect()}>Sign out</button>
+    return (
+        <div className="flex h-screen w-screen overflow-hidden page-wrapper hide-scroll">
+            <SideNav/>
+            <div className="flex-1 overflow-auto my-4 mx-10 hide-scroll">
+                <Outlet/>
             </div>
+        </div>
+
     );
 }

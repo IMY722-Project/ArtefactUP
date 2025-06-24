@@ -12,7 +12,8 @@ import java.util.Map;
 public class Artefact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "artefact_seq")
+    @SequenceGenerator(name = "artefact_seq", sequenceName = "artefact_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false, length = 500)

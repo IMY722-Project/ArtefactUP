@@ -1,13 +1,6 @@
 package za.ac.up.artifactup.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +11,8 @@ import java.util.List;
 @Setter
 public class Museum {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "museum_seq")
+    @SequenceGenerator(name = "museum_seq", sequenceName = "museum_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)

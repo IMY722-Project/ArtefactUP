@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&family=Kurale&family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap'); */
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+
+@layer tailwind-base, primereact, tailwind-utilities;
+
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
 
 
 :root {
@@ -13,6 +28,7 @@
   --accent-color: #ff9914;
   --disabled-color: #63636360;
   --font-family: 'Montserrat', 'Hevetica', sans-serif;
+  --text-font: 'Montserrat', 'Hevetica', sans-serif;
   --font-heading: 'Kurale', 'PT Serif', 'Monserrat', 'Helvetica', sans-serif;
   --bg-grad1: linear-gradient(135deg, #ff8b3e, #ff4b4b, #c01943);
   --bg-home-grad: linear-gradient(#ffffff, #da9456, #d05252);
@@ -34,7 +50,7 @@
 
 body {
   margin: 0;
-  font-family: var(--font-family);
+  font-family: var(--text-font);
   color: var(--text-dark);
 
 }
@@ -83,7 +99,7 @@ img {
 
   display: flex;
   align-items: center;
-  font-family: var(--font-family);
+  font-family: var(--text-font);
 
 }
 
@@ -121,6 +137,8 @@ p {
     opacity: 0;
   }
 }
+
+
 
 /* @keyframes squigglyFall {
   0% {

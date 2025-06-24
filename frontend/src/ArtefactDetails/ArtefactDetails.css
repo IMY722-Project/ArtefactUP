@@ -1,5 +1,5 @@
 .text-info {
-  font-family: var(--font-family);
+  font-family: var(--text-font);
   color: var(--text-dark);
 }
 

@@ -13,7 +13,8 @@ import java.time.LocalTime;
 public class OpeningHours {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "opening_hours_seq")
+    @SequenceGenerator(name = "opening_hours_seq", sequenceName = "opening_hours_id_seq", allocationSize = 1)
     private Long id;
 
     @Enumerated(EnumType.STRING)

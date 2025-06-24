@@ -1,0 +1,209 @@
+.page-wrapper {
+    background: var(--content-bg);
+}
+
+.navbar-div {
+    background: var(--bg-grad2);
+    padding: 15px;
+}
+
+.active-nav-link {
+    background: #ffddc2ba;
+}
+
+.inactive-nav-link {
+    background: #e6c8b05e;
+}
+
+.inactive-nav-link:hover {
+    background: #ffecde;
+}
+
+.active-nav-link:hover {
+    background: #ffecde;
+
+}
+
+.admin-button {
+    /* padding: 28px; */
+    /* background: linear-gradient(135deg, #ffbf3e, #d45d5d); */
+    /* background: linear-gradient(135deg, #f76f6f, #54a3e8); */
+    border: none;
+    background: linear-gradient(90deg, #5ad6f5, #4593cf);
+    font-family: var(--text-font);
+    color: #fff;
+    margin: 26px 0px;
+    padding: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s, background-color 0.2s;
+    min-width: 200px;
+    align-content: center;
+    width: fit-content;
+}
+
+.form-button {
+    border: none;
+    background: linear-gradient(90deg, #5ad6f5, #4593cf);
+    font-family: var(--text-font);
+    color: #fff !important;
+    margin: 26px 0px;
+    padding: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.2s, background-color 0.2s;
+    min-width: 400px;
+    align-content: center;
+    width: fit-content;
+    height: 3rem;
+}
+
+.form-button:hover {
+    background: linear-gradient(90deg, #78e4ff, #59b7ff);
+
+}
+
+.admin-button .p-button-label {
+    font-weight: 600 !important;
+}
+
+.form-button-secondary {
+    border: none;
+    /* background: linear-gradient(135deg, #ffbf3e, #ff923e); */
+    /* background: #5c92bb; */
+    /* background: #d98d53; */
+    background: #4e9eda;
+    font-family: var(--text-font);
+    color: #fff;
+    /* color: var(--text-dark); */
+    margin: 26px auto;
+    padding: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: color 0.2s, background-color 0.2s;
+    min-width: 200px;
+    align-content: center;
+    width: fit-content;
+}
+
+.form-button-secondary:hover {
+    background: #9dd5ff;
+
+}
+
+.form-class,
+.p-datatable-gridlines,
+.p-datatable-table,
+.form-class label,
+.form-class .p-inputtext,
+.form-class .p-inputtextarea,
+.form-class .p-dropdown,
+.p-datatable .p-datatable-tbody>tr,
+.p-datatable-thead>tr>th {
+    font-family: var(--text-font);
+    color: var(--text-dark);
+
+}
+
+.p-sidebar-header {
+    font-family: var(--font-heading) !important;
+    color: var(--text-dark);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.admin-table tr th {
+    /* background: #ffb073; */
+    background: none;
+    border: none;
+}
+
+.admin-table .p-datatable-tbody>tr>td {
+    background-color: #ffede091;
+    /* example: light beige */
+}
+
+.p-datatable-thead,
+.p-paginator-bottom {
+    background: linear-gradient(135deg, #ff8b3e86, #ff4b4b86, #c0194386);
+    border: none;
+}
+
+.admin-museum-illustration {
+    width: 80%;
+    margin: 35px auto 15px;
+    height: auto;
+}
+
+
+.step-div {
+    padding: 20px;
+    background: var(--content-bg);
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.hunt-input-field {
+    background: #f8eee5;
+    border: none;
+}
+
+.form-class {
+    padding: 0 60px;
+}
+
+.form-class label {
+    font-weight: 600;
+}
+
+/* ------- */
+
+/* there has to be an easier way but whatevs */
+.p-inputtext:focus,
+.p-inputtextarea:focus,
+.p-dropdown .p-inputtext:focus,
+.p-inputtextarea:focus,
+.p-dropdown-panel:focus,
+.p-dropdown-label:focus {
+    outline: 0;
+    border: 1px solid #e27934 !important;
+    box-shadow: 0 0 2px 2px rgba(255, 102, 0, 0.75) !important;
+    /*box-shadow: 0 0 12px 6px rgba(255, 102, 0, 0.75);
+  */
+    z-index: 1;
+}
+
+.hide-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Works on Firefox */
+.hide-scroll {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+/* .hide-scroll {
+    overflow-y: hidden;
+} */
+
+.p-paginator-element {
+    background: #ffffffc8;
+    color: var(--text-dark);
+}
+
+.p-disabled {
+    background: #ffffff66;
+
+}

@@ -94,7 +94,7 @@ const ProgressSection = () => {
           </div>
         </>
       ) : (
-        <p className="progress-text">Begin a hunt!</p>
+        <p className="progress-text start-text">Start a quest!</p>
       )}
     </section>
   );
