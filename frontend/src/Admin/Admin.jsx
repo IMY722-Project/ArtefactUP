@@ -1,8 +1,7 @@
 import React from "react";
 import {useAuth} from "react-oidc-context";
 import SideNav from "./SideNav";
-import {Navigate, Outlet} from "react-router";
-import {useLocation, useNavigate} from "react-router";
+import {Outlet, useLocation, useNavigate} from "react-router";
 import "./Admin.css";
 
 export default function Admin() {

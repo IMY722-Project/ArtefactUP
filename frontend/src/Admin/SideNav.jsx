@@ -1,5 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { useAuth } from 'react-oidc-context';
+import {NavLink} from 'react-router-dom';
 
 const navItems = [
     { to: 'museum', label: 'Museums', icon: 'pi pi-home' },
