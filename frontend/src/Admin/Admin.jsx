@@ -16,10 +16,6 @@ export default function Admin() {
     }
 
     if (!auth.isAuthenticated && !auth?.isLoading && location.pathname !== "/admin/login") {
-        // return (
-        //     <Navigate to="/admin/login"/>
-        // );
-        // console.log("booo")
         navigate("/admin/login");
     }
 

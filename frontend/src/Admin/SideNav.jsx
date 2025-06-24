@@ -8,15 +8,6 @@ const navItems = [
 ];
 
 export default function SideNav() {
-    const auth = useAuth();
-    const navigate = useNavigate();
-
-    // const signOutRedirect = () => {
-    //     const clientId = process.env.REACT_APP_AUTH_CLIENT_ID;
-    //     const logoutUri = process.env.REACT_APP_AUTH_LOGOUT_URI;
-    //     const cognitoDomain = process.env.REACT_APP_AUTH_COGNITO_DOMAIN;
-    //     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
-    // };
 
     const signOutRedirect = () => {
         const clientId = "4rvbqp39tna28ef1rhh43rdpei";
