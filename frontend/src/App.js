@@ -8,7 +8,6 @@ import ScanPage from './ScanPage/ScanPage';
 import ScavengerHuntsPage from './ScavengerHunts/ScavengerHuntsPage';
 import {ParallaxProvider} from 'react-scroll-parallax';
 import ChatBot from "./Chat/ChatBot";
-import Login from "./Admin/login/Login";
 import { PrimeReactProvider } from 'primereact/api';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import 'primeicons/primeicons.css';
@@ -35,10 +34,6 @@ function App() {
                         <Route path="artefact" element={<Artefact/>}/>
                         <Route path="hunt" element={<Hunt/>}/>
                     </Route>
-
-                    <Route path="/admin/login" element={<Login/>}/>
-
-
                 </Routes>
             </ParallaxProvider>
         </PrimeReactProvider>

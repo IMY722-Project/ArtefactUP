@@ -15,7 +15,7 @@ export default function Admin() {
     }
 
     if (!auth.isAuthenticated && !auth?.isLoading && location.pathname !== "/admin/login") {
-        navigate("/admin/login");
+        auth.signinRedirect().finally();
     }
 
     return (
@@ -25,6 +25,5 @@ export default function Admin() {
                 <Outlet/>
             </div>
         </div>
-
     );
 }
